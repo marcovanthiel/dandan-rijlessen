@@ -164,7 +164,7 @@ header.site :focus-visible{outline-color:#fff}
 
 /* ---- fase 1: landing, auth, paywall, watermerk ---- */
 .cta{display:inline-block;background:#fff;color:var(--brand-dark,#14488f);font-weight:700;padding:10px 18px;border-radius:10px;margin-top:6px}
-.landtaal a{color:#fff;opacity:.75}.landtaal a.is-actief{opacity:1;font-weight:700;text-decoration:underline}
+.landtaal a{color:var(--brand-dark,#14488f);opacity:.8;font-weight:600}.landtaal a.is-actief{opacity:1;font-weight:800;text-decoration:underline}
 .usps{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
 .usps li{background:#fff;border:1px solid #e3e9f2;border-radius:12px;padding:12px 16px}
 .usps li::before{content:"✓ ";color:#1a7f4b;font-weight:700}
