@@ -19,16 +19,32 @@
    periode-passen zonder automatische verlenging, met voor de doelgroep
    gelukkige prijspunten: **3 maanden €38, 6 maanden €58, 12 maanden €88**.
    Gratis account = ~2% preview. Kortingscodes per campagne.
-3. **Betaalprovider: BESLOTEN 9-7-2026 = Stripe** (WeChat Pay, Alipay, iDEAL,
-   kaarten; WeChat Pay/Alipay alleen éénmalig, past bij periode-passen).
-   Actie Marco: Stripe-account aanmaken en WeChat Pay-activatie aanvragen.
+3. **Betaalprovider: HERZIEN door besluit 5.** Stripe was het advies voor een
+   NL-onderneming, maar Stripe bedient geen ondernemingen op het Chinese
+   vasteland. Met de Chinese registratie (besluit 5) ligt een **native
+   WeChat Pay/Alipay-handelsaccount** voor de hand; dat lost de
+   WeChat Pay-wens direct en zonder omweg op. Definitieve keuze zodra de
+   Chinese entiteit vaststaat; iDEAL/kaarten voor niet-Chinese klanten
+   vergt dan een aanvullende route (te onderzoeken in fase 0).
 4. **Doeltalen: BESLOTEN 9-7-2026**: Chinees eerst (staat); nieuwe talen
    activeren op klantvraag uit de kandidatenlijst (Arabisch, Turks, Pools,
    Oekraïens, Spaans, Portugees, Hindi, Vietnamees, Koreaans, Japans, Thai);
    de vertaalpijplijn (§7) maakt dat configuratie in plaats van bouwwerk.
-5. **Juridische basis (open).** Verkoop loopt via de bestaande onderneming
-   (zelfde als dandanshop): algemene voorwaarden, privacyverklaring, btw op
-   digitale diensten en afstand van herroepingsrecht bij directe levering.
+5. **Juridische basis: BESLOTEN 9-7-2026 = commercie via registratie in
+   China.** De onderneming en de commercie worden in China geregistreerd;
+   Chinese commerciële voorwaarden zijn het uitgangspunt. Consequenties om
+   in fase 0 te verifiëren (geen juridisch advies, wel harde aandachtspunten):
+   - Verkoop aan consumenten die in de EU wonen: EU-consumentenrecht en de
+     AVG gelden voor EU-klanten ongeacht het vestigingsland van de verkoper;
+     de voorwaarden worden dus Chinees mét een EU-paragraaf. Juridische
+     check inplannen.
+   - Hosting kan op Cloudflare blijven (buiten China). Moet de site ook vlot
+     bereikbaar zijn ín China (klanten die zich vóór emigratie oriënteren),
+     dan is een ICP-licentie + hosting in China nodig; kan met de Chinese
+     entiteit, besluit in een latere fase.
+   - Domein: dandandrive.nl blijft het voorstel voor de doelgroep in
+     Nederland; dandandrive.cn lijkt vrij (rdap.org-check 9-7-2026, bij
+     registratie definitief verifiëren) en is defensief het overwegen waard.
 
 ## 2. Doel en uitgangspunten
 
@@ -68,8 +84,9 @@ bron, CI-deploy.
   proefcontent, prijzen, veelgestelde vragen.
 - **Auth**: e-mailcode/magic-link (bewezen patroon rotary/beroepenavond),
   accounttabel met taalvoorkeur, pasgeldigheid en voortgang.
-- **Betalen**: Stripe Checkout; de **webhook is de bron van waarheid** voor de
-  toegangsstatus; bevestiging + factuur via Resend.
+- **Betalen**: checkout van de gekozen provider (zie besluit 3; native WeChat
+  Pay/Alipay bij Chinese entiteit); de **webhook/notificatie is de bron van
+  waarheid** voor de toegangsstatus; bevestiging + factuur via Resend.
 - Bestaande kwaliteitsbasis blijft: strikte CSP, alles self-hosted, WCAG,
   cookieloze eigen statistiek (uitgebreid met conversie).
 
@@ -79,7 +96,7 @@ bron, CI-deploy.
 |---|---|---|
 | 0. Fundament | Besluiten §1 genomen; domein geregistreerd; juridische teksten | Marco |
 | 1. Platform | Worker + D1 + auth + accounts + taalvoorkeur; content server-side met 2%-preview; publieke NL/EN-landing | Fase 0 |
-| 2. Betalen | Stripe-checkout met WeChat Pay/Alipay/iDEAL; periode-passen; webhook + mails; btw/facturen | Fase 1 |
+| 2. Betalen | Checkout via provider uit besluit 3 (WeChat Pay/Alipay native); periode-passen; webhook + mails; belasting/facturen | Fase 1 |
 | 3. Theoriemodule | Eigen theoriecontent B + oefenvragen-engine (quizzen, proefexamens met tijdslimiet, voortgang, foutenanalyse) | Fase 1 |
 | 4. Kopieer-remming | Maatregelenpakket §6 volledig actief | Fase 1 |
 | 5. Marketing | SEO/hreflang per taal, OG/TikTok-assets, UTM + conversiemeting, leadmagneet, kortings-/campagnecodes, drip-mails | Fase 2 |
