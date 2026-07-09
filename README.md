@@ -1,6 +1,6 @@
 # Dandan's rijlessen · 丹丹的驾驶课
 
-Statische website met de Nederlandse praktijkopleiding (RIS-methode), uitgelegd als
+Accountplatform (sinds 9-7-2026) met de Nederlandse praktijkopleiding (RIS-methode), uitgelegd als
 **origineel lesmateriaal** voor Chinese rijbewijs-B-leerlingen. Tweetalig: Chinese lestekst
 met Nederlandse referentie-koppen. Doorzoekbaar, responsive, zonder dependencies.
 

@@ -1,6 +1,10 @@
 # Deploy: Dandan's rijlessen → dandandrive.nl
 
-Statische, zero-dependency site (build met Node). **LIVE op https://dandandrive.nl** (+ www);
+Zero-dependency **accountplatform** (fase 1 commercieel plan, live 9-7-2026):
+worker (eigen mini-router) + D1 (accounts/sessies/passen/statistiek) +
+statische assets. Lescontent wordt server-side per gebruiker gerenderd
+(paywall: gratis account ziet de proefles, pas ontgrendelt alles); de build
+genereert daarvoor `worker-content.js` uit `content/*.md`. **LIVE op https://dandandrive.nl** (+ www);
 artnijmegen.nl verwijst door (301) sinds de verhuizing van 9-7-2026. Opgezet volgens de standaard van alle marcovanthiel-sites:
 **Cloudflare Workers Static Assets + GitHub Actions auto-deploy.**
 
@@ -42,3 +46,23 @@ Handmatig deployen (nood): `npm run deploy` (build + `wrangler deploy`, Node 22)
 ## Auteursrecht
 Originele lesteksten over publieke verkeersregels/rijtechniek. **Geen** scans,
 foto's of illustraties uit het bronboek. Voeg alleen eigen/rechtenvrij beeld toe.
+
+## Fase 1: accounts en paywall (sinds 9-7-2026)
+- **D1**: database `dandandrive` (binding `DB`); schema in `schema.sql`
+  (idempotent; toepassen met `wrangler d1 execute dandandrive --remote --file=schema.sql`).
+  Admin-seed: marco@marcovanthiel.nl.
+- **Login**: e-mailcode (6 cijfers, 10 min, max 5 pogingen, 60 s tussen codes)
+  via Resend; secret `RESEND_API_KEY` op de worker (`wrangler secret put`).
+  Afzender tijdelijk inlog@dandanshop.nl (Resend gratis plan = 1 domein);
+  OPEN PUNT: eigen Resend-account voor @dandandrive.nl.
+- **Paywall**: /leren, /module-N, /boek-index, /search.json, /pagemap.json
+  vereisen login; volledige toegang vraagt een geldige pas (tabel `passes`)
+  of admin. Passen toekennen: /admin (tot online betalen live is).
+- **Kopieer-remming v1**: accountwatermerk, user-select/copy/context-blok
+  (assets/les.js), printblokkade op beschermde pagina's. Open punt fase 4:
+  beelden accountgebonden serveren (staan nu nog als statische assets).
+- **Statistiek**: cookieloze events in D1 (view/signup/login/locked_view,
+  utm_source als bron); overzicht onder /admin.
+- **Lokaal ontwikkelen**: `wrangler d1 execute dandandrive --local --file=schema.sql`,
+  dan `npx wrangler dev`; zonder RESEND_API_KEY toont het loginscherm de code
+  (DEV-modus), zodat de hele stroom lokaal te testen is.

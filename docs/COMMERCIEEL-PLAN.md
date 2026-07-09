@@ -94,7 +94,7 @@ bron, CI-deploy.
 | Fase | Resultaat | Afhankelijk van |
 |---|---|---|
 | 0. Fundament | Besluiten §1 genomen; domein geregistreerd; juridische teksten | Marco |
-| 1. Platform | Worker + D1 + auth + accounts + taalvoorkeur; content server-side met 2%-preview; publieke NL/EN-landing | Fase 0 |
+| 1. Platform | **LIVE 9-7-2026**: Worker + D1, e-mailcode-login, passen, server-side content met 2%-preview, NL/EN-landing, admin, cookieloze statistiek, kopieer-remming v1 | klaar |
 | 2. Betalen | Checkout via provider uit besluit 3 (WeChat Pay/Alipay native); periode-passen; webhook + mails; belasting/facturen | Fase 1 |
 | 3. Theoriemodule | Eigen theoriecontent B + oefenvragen-engine (quizzen, proefexamens met tijdslimiet, voortgang, foutenanalyse) | Fase 1 |
 | 4. Kopieer-remming | Maatregelenpakket §6 volledig actief | Fase 1 |
