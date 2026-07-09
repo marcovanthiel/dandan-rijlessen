@@ -5,6 +5,7 @@ Statische website met de Nederlandse praktijkopleiding (RIS-methode), uitgelegd 
 met Nederlandse referentie-koppen. Doorzoekbaar, responsive, zonder dependencies.
 
 - **Inhoud wijzigen:** `content/*.md` (per module) → `node build.js`.
-- **Deployen:** zie `DEPLOY.md` (Cloudflare Pages, domein artnijmegen.nl).
+- **Deployen:** zie `DEPLOY.md` (Workers Static Assets, domein artnijmegen.nl).
+- **Commercieel plan:** zie `docs/COMMERCIEEL-PLAN.md` (accounts, betaald model, theoriemodule, meertaligheid).
 
 5 modules · 46 rijstappen (scripts) + examen/ADAS/oefeningen.
