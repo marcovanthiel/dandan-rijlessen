@@ -178,6 +178,7 @@ function renderIndex(modules){
         <p class="nl-only" style="font-size:.95rem">${esc(SITE.tagNl)}</p>
       </div></section>`
     + `<main><div class="container">
+        <div class="modbanner">${G.moduleBanner(0)}</div>
         <div class="note">五个模块按照"分步"方法循序渐进：从车辆操控到复杂路况，再到考试。每个步骤都有要点说明。<br>
         <span class="nl-only">Vijf modules, stap voor stap — van voertuigbeheersing tot het examen.</span></div>
         <div class="grid">${cards}</div>
@@ -212,6 +213,7 @@ function renderModule(m, modules){
     + header('',modules)
     + `<main><div class="container">
         <div class="crumbs"><a href="index.html">首页</a> › 模块${m.modNum}</div>
+        <div class="modbanner">${G.moduleBanner(m.modNum)}</div>
         <div class="module-head">
           <div class="kicker">模块 ${m.modNum} / Module ${m.modNum}</div>
           <h1>${esc(m.modZh)}</h1>

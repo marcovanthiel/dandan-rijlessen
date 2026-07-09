@@ -44,15 +44,20 @@ const STEP_ICON={'1':'check','2':'check','3':'door','4':'door','5':'seat','6':'w
 function iconFor(step,zh){ if(step&&STEP_ICON[step])return icon(STEP_ICON[step]); if(/学习方法|leermodel/i.test(zh))return icon('compass'); if(/路考|examen/i.test(zh))return icon('flag'); if(/辅助|ADAS/i.test(zh))return icon('radar'); if(/巩固|练习|oefening/i.test(zh))return icon('list'); return icon('check'); }
 function moduleIcon(num){ return icon(['compass','wheel','road','roundabout','shield','flag'][Number(num)]||'compass'); }
 
-/* ---------------- illustratie-componenten (vlak, verfijnd) ---------------- */
-const PAL = { // egale kleurenpaletten per tint: [body, onderband, dak, koplamp, achterlicht]
-  blue:['#3f80e6','#356fce','#5a97f4','#fff1bf','#ff6b6b'],
-  gray:['#b6c2d1','#a3b0c1','#c8d2df','#f2f5f9','#e88a86'],
-  red :['#e86a5f','#d6544a','#f28d85','#fff1bf','#ffd2cf'],
-  teal:['#2fb0a3','#26978c','#54c6bb','#fff1bf','#ff6b6b']
-};
+/* ---------------- illustratie-componenten (semi-realistisch vector) ---------------- */
+const GRAD = { blue:'gBlue', gray:'gGray', red:'gRed', teal:'gTeal' };
+const ACC = { blue:['#fff1bf','#ff6b6b'], gray:['#f2f5f9','#e88a86'], red:['#fff1bf','#ffd2cf'], teal:['#fff1bf','#ff6b6b'] };
 const DEFS = `<defs>
-<filter id="sh" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="1.4" stdDeviation="2.6" flood-color="#20304a" flood-opacity="0.12"/></filter>
+<linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5c98f2"/><stop offset=".55" stop-color="#3f80e6"/><stop offset="1" stop-color="#356fce"/></linearGradient>
+<linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ccd6e1"/><stop offset=".55" stop-color="#b6c2d1"/><stop offset="1" stop-color="#a3b0c1"/></linearGradient>
+<linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0897f"/><stop offset=".55" stop-color="#e86a5f"/><stop offset="1" stop-color="#d6544a"/></linearGradient>
+<linearGradient id="gTeal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4dc3b6"/><stop offset=".55" stop-color="#2fb0a3"/><stop offset="1" stop-color="#26978c"/></linearGradient>
+<linearGradient id="gGlass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef6ff"/><stop offset="1" stop-color="#c7ddf6"/></linearGradient>
+<radialGradient id="gTire" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#59636f"/><stop offset="1" stop-color="#2b333d"/></radialGradient>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6ff"/><stop offset="1" stop-color="#eef6ff"/></linearGradient>
+<linearGradient id="gGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e5f1df"/><stop offset="1" stop-color="#dcebd4"/></linearGradient>
+<filter id="sh" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="1.2" stdDeviation="2.2" flood-color="#20304a" flood-opacity="0.14"/></filter>
+<filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3.2"/></filter>
 <marker id="a" markerWidth="11" markerHeight="11" refX="6.8" refY="3" orient="auto"><path d="M0 0l7 3-7 3z" fill="#2f6fe0"/></marker>
 <marker id="ao" markerWidth="11" markerHeight="11" refX="6.8" refY="3" orient="auto"><path d="M0 0l7 3-7 3z" fill="#e5730a"/></marker>
 </defs>`;
@@ -60,46 +65,75 @@ function svg(vb,label,inner){ return `<svg viewBox="0 0 ${vb}" class="figsvg" ro
 function cap(x,y,t,cls){ return `<text x="${x}" y="${y}" text-anchor="middle" class="${cls||'caption'}">${t}</text>`; }
 
 // auto van boven (naar boven), tone: blue/gray/red/teal
-function carTop(cx,cy,s,tone){ const P=PAL[tone||'blue'];
+function carTop(cx,cy,s,tone){ tone=tone||'blue'; const g=GRAD[tone], ac=ACC[tone];
  return `<g transform="translate(${cx} ${cy}) scale(${s})">
- ${[[-22,-31],[22,-31],[-22,20],[22,20]].map(w=>`<rect x="${w[0]-3.5}" y="${w[1]}" width="7" height="17" rx="3" fill="#39434f"/>`).join('')}
- <g filter="url(#sh)"><rect x="-23" y="-47" width="46" height="94" rx="16" fill="${P[0]}"/></g>
- <path d="M-23 12 h46 v18 a16 16 0 0 1 -16 16 h-14 a16 16 0 0 1 -16 -16 Z" fill="${P[1]}"/>
- <rect x="-23" y="-47" width="46" height="12" rx="8" fill="#ffffff" opacity=".10"/>
- <rect x="-16.5" y="-15" width="33" height="35" rx="9" fill="${P[2]}"/>
- <path d="M-16 -17 Q0 -23 16 -17 L13 -31 Q0 -37 -13 -31 Z" fill="#dceafb"/>
- <path d="M-14 20 Q0 25 14 20 L12.5 32 Q0 37.5 -12.5 32 Z" fill="#dceafb"/>
- <path d="M-23 -20 l-5.5 2.6 5.5 2.6 Z" fill="${P[1]}"/><path d="M23 -20 l5.5 2.6 -5.5 2.6 Z" fill="${P[1]}"/>
- <rect x="-18" y="-46.5" width="9" height="4" rx="2" fill="${P[3]}"/><rect x="9" y="-46.5" width="9" height="4" rx="2" fill="${P[3]}"/>
- <rect x="-18" y="42.5" width="9" height="4" rx="2" fill="${P[4]}"/><rect x="9" y="42.5" width="9" height="4" rx="2" fill="${P[4]}"/>
+ <ellipse cx="1" cy="2" rx="27" ry="47" fill="#20304a" opacity=".14" filter="url(#soft)"/>
+ ${[[-22,-31],[22,-31],[-22,20],[22,20]].map(w=>`<rect x="${w[0]-3.5}" y="${w[1]}" width="7.5" height="17" rx="3" fill="url(#gTire)"/>`).join('')}
+ <path d="M-23 -31 C-23 -44 -14 -47 0 -47 C14 -47 23 -44 23 -31 L23 33 C23 44 15 47 0 47 C-15 47 -23 44 -23 33 Z" fill="url(#${g})"/>
+ <path d="M-23 -20 C-23 -40 -14 -46 0 -46 C14 -46 23 -40 23 -20 L23 -12 C10 -18 -10 -18 -23 -12 Z" fill="#ffffff" opacity=".14"/>
+ <path d="M-16.5 -15 h33 a0 0 0 0 1 0 0 v27 a8 8 0 0 1 -8 8 h-17 a8 8 0 0 1 -8 -8 Z" fill="#ffffff" opacity=".10"/>
+ <path d="M-16 -17 Q0 -23 16 -17 L13 -31 Q0 -37 -13 -31 Z" fill="url(#gGlass)"/>
+ <path d="M-12 -30 L-4 -18 L-8 -18 Z" fill="#ffffff" opacity=".5"/>
+ <path d="M-14 20 Q0 25 14 20 L12.5 32 Q0 37.5 -12.5 32 Z" fill="url(#gGlass)"/>
+ <rect x="-16.5" y="-13" width="33" height="30" rx="8" fill="#ffffff" opacity=".07"/>
+ <path d="M-23 -20 l-6 2.8 6 2.8 Z" fill="url(#${g})"/><path d="M23 -20 l6 2.8 -6 2.8 Z" fill="url(#${g})"/>
+ <rect x="-18" y="-46" width="9" height="4" rx="2" fill="${ac[0]}"/><rect x="9" y="-46" width="9" height="4" rx="2" fill="${ac[0]}"/>
+ <rect x="-18" y="42" width="9" height="4" rx="2" fill="${ac[1]}"/><rect x="9" y="42" width="9" height="4" rx="2" fill="${ac[1]}"/>
  </g>`; }
 // auto van opzij (naar rechts)
-function carSide(cx,cy,s,tone){ const P=PAL[tone||'blue'];
+function carSide(cx,cy,s,tone){ tone=tone||'blue'; const g=GRAD[tone], ac=ACC[tone];
+ const body="M-55 12 C-54 3 -48 -1 -39 -3 L-25 -21 C-19 -26 -7 -28 5 -28 L19 -28 C29 -27 35 -21 41 -10 L50 -8 C55 -7 56 -1 56 8 L56 12 C56 16 52 18 48 18 L-48 18 C-53 18 -55 16 -55 12 Z";
  return `<g transform="translate(${cx} ${cy}) scale(${s})">
- <g filter="url(#sh)"><path d="M-55 12 C-54 3 -48 -1 -39 -3 L-25 -21 C-19 -26 -7 -28 5 -28 L19 -28 C29 -27 35 -21 41 -10 L50 -8 C55 -7 56 -1 56 8 L56 12 C56 16 52 18 48 18 L-48 18 C-53 18 -55 16 -55 12 Z" fill="${P[0]}"/></g>
- <path d="M-55 11 L56 11 L56 12 C56 16 52 18 48 18 L-48 18 C-53 18 -55 16 -55 12 Z" fill="${P[1]}"/>
- <path d="M-23 -6 L-13 -19 L1 -19 L1 -6 Z" fill="#dceafb"/>
- <path d="M5 -6 L5 -19 L18 -19 L29 -6 Z" fill="#dceafb"/>
- <path d="M3 -6 V13" stroke="${P[1]}" stroke-width="1.4"/>
- <rect x="-16" y="4" width="10" height="2.4" rx="1.2" fill="${P[1]}"/>
- <rect x="49" y="-2" width="6" height="6" rx="2" fill="${P[3]}"/>
- <g><circle cx="-31" cy="18" r="11.5" fill="#39434f"/><circle cx="-31" cy="18" r="4.8" fill="#d5dde8"/></g>
- <g><circle cx="33" cy="18" r="11.5" fill="#39434f"/><circle cx="33" cy="18" r="4.8" fill="#d5dde8"/></g>
+ <ellipse cx="1" cy="20" rx="54" ry="7" fill="#20304a" opacity=".14" filter="url(#soft)"/>
+ <path d="${body}" fill="url(#${g})"/>
+ <path d="M-55 12 C-54 3 -48 -1 -39 -3 L-25 -21 C-19 -26 -7 -28 5 -28 L19 -28 C29 -27 35 -21 41 -10 L50 -8 C55 -7 56 -1 56 6 C30 -2 -28 -2 -55 8 Z" fill="#ffffff" opacity=".16"/>
+ <path d="M-23 -6 L-13 -19 L1 -19 L1 -6 Z" fill="url(#gGlass)"/>
+ <path d="M5 -6 L5 -19 L18 -19 L29 -6 Z" fill="url(#gGlass)"/>
+ <path d="M-20 -7 L-12 -17 L-8 -17 Z" fill="#ffffff" opacity=".5"/>
+ <path d="M3 -6 V13" stroke="#22324c" stroke-opacity=".16" stroke-width="1.3"/>
+ <rect x="-16" y="3.5" width="11" height="2.4" rx="1.2" fill="#22324c" opacity=".28"/>
+ <rect x="49" y="-2" width="6.5" height="6.5" rx="2.5" fill="${ac[0]}"/>
+ <g><circle cx="-31" cy="18" r="12" fill="url(#gTire)"/><circle cx="-31" cy="18" r="5.4" fill="#e6ebf2"/><circle cx="-31" cy="18" r="2.2" fill="#aab6c6"/></g>
+ <g><circle cx="33" cy="18" r="12" fill="url(#gTire)"/><circle cx="33" cy="18" r="5.4" fill="#e6ebf2"/><circle cx="33" cy="18" r="2.2" fill="#aab6c6"/></g>
  </g>`; }
 function person(cx,cy,s,c){ c=c||'#33507a'; return `<g transform="translate(${cx} ${cy}) scale(${s})">
  <circle cx="0" cy="-15" r="4.6" fill="${c}"/><path d="M0 -10 C3 -10 4 -8 4 -4 L4 2 -4 2 -4 -4 C-4 -8 -3 -10 0 -10Z" fill="${c}"/>
  <path d="M-3 2 L-5 15 M3 2 L5 15" stroke="${c}" stroke-width="2.6" stroke-linecap="round"/></g>`; }
 function cyclistTop(cx,cy,s){ s=s||1; return `<g transform="translate(${cx} ${cy}) scale(${s})">
  <rect x="-4" y="-13" width="8" height="26" rx="4" fill="#e8a13a"/><circle cx="0" cy="-16" r="4" fill="#33507a"/></g>`; }
-function treeTop(cx,cy,r){ return `<g filter="url(#sh)"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#8fc98a"/></g><circle cx="${cx-r*0.3}" cy="${cy-r*0.3}" r="${r*0.5}" fill="#a6d8a0" opacity=".7"/>`; }
-// wegen: egaal grijs met nette markering
-function roadH(x,y,w,h){ return `<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="#e8edf3"/>
-<rect x="${x}" y="${y}" width="${w}" height="4" rx="2" fill="#dbe2ec"/>
+function treeTop(cx,cy,r){ return `<g filter="url(#sh)"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#7cbf82"/></g><circle cx="${cx}" cy="${cy}" r="${r*0.7}" fill="#8fce8c"/><circle cx="${cx-r*0.28}" cy="${cy-r*0.28}" r="${r*0.4}" fill="#aede9f" opacity=".8"/>`; }
+function bush(cx,cy,r){ return `<g><circle cx="${cx-r*0.6}" cy="${cy}" r="${r*0.7}" fill="#9ed49a"/><circle cx="${cx+r*0.6}" cy="${cy}" r="${r*0.7}" fill="#9ed49a"/><circle cx="${cx}" cy="${cy-r*0.3}" r="${r}" fill="#aede9f"/></g>`; }
+function building(x,y,w,h,c){ c=c||'#c9d6e4'; return `<g filter="url(#sh)"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="${c}"/></g><rect x="${x}" y="${y}" width="${w}" height="6" rx="3" fill="#ffffff" opacity=".18"/>${Array.from({length:Math.floor(h/16)}).map((_,r)=>Array.from({length:Math.max(1,Math.floor(w/14))}).map((__,k)=>`<rect x="${x+6+k*14}" y="${y+10+r*16}" width="7" height="9" rx="1.5" fill="#eef4fb" opacity=".85"/>`).join('')).join('')}`; }
+function cloud(cx,cy,s){ s=s||1; return `<g transform="translate(${cx} ${cy}) scale(${s})" fill="#ffffff" opacity=".85"><circle cx="0" cy="0" r="11"/><circle cx="13" cy="2" r="9"/><circle cx="-12" cy="3" r="8"/><rect x="-14" y="0" width="30" height="9" rx="4"/></g>`; }
+// wegen met groene bermen en struiken
+function roadH(x,y,w,h){ const v=7; return `<g>
+<rect x="${x}" y="${y-v}" width="${w}" height="${h+2*v}" rx="9" fill="url(#gGround)"/>
+${bush(x+w*0.16,y-v+3,5)}${bush(x+w*0.62,y+h+v-3,5)}${bush(x+w*0.86,y-v+3,4)}
+<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#e8edf3"/>
+<rect x="${x}" y="${y}" width="${w}" height="3.5" fill="#dbe2ec"/><rect x="${x}" y="${y+h-3.5}" width="${w}" height="3.5" fill="#dbe2ec"/>
 <line x1="${x+8}" y1="${y+h/2}" x2="${x+w-8}" y2="${y+h/2}" stroke="#ffffff" stroke-width="3" stroke-dasharray="15 13" stroke-linecap="round"/></g>`; }
-function roadV(x,y,w,h){ return `<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="#e8edf3"/>
-<rect x="${x}" y="${y}" width="4" height="${h}" rx="2" fill="#dbe2ec"/>
+function roadV(x,y,w,h){ const v=7; return `<g>
+<rect x="${x-v}" y="${y}" width="${w+2*v}" height="${h}" rx="9" fill="url(#gGround)"/>
+${bush(x-v+3,y+h*0.2,5)}${bush(x+w+v-3,y+h*0.56,5)}
+<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#e8edf3"/>
+<rect x="${x}" y="${y}" width="3.5" height="${h}" fill="#dbe2ec"/><rect x="${x+w-3.5}" y="${y}" width="3.5" height="${h}" fill="#dbe2ec"/>
 <line x1="${x+w/2}" y1="${y+8}" x2="${x+w/2}" y2="${y+h-8}" stroke="#ffffff" stroke-width="3" stroke-dasharray="15 13" stroke-linecap="round"/></g>`; }
 function sign(cx,cy,r,fill,stroke,txt){ return `<g filter="url(#sh)"><circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="3"/></g><text x="${cx}" y="${cy+r*0.30}" text-anchor="middle" class="signtxt">${txt}</text>`; }
+// brede sfeerbanner per module
+function moduleBanner(num){ const tone=['blue','blue','gray','teal','blue','blue'][Number(num)]||'blue';
+ return `<svg viewBox="0 0 900 190" class="bannersvg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="module banner">${DEFS}
+ <rect x="0" y="0" width="900" height="190" fill="url(#gSky)"/>
+ ${cloud(140,42,1.3)}${cloud(520,34,1)}${cloud(770,52,1.5)}
+ ${building(60,70,70,70,'#cdd9e7')}${building(150,50,54,90,'#d7e1ee')}${building(220,84,80,56,'#c6d3e3')}
+ ${building(640,60,64,80,'#d7e1ee')}${building(720,80,90,60,'#cdd9e7')}${building(822,54,58,86,'#d2dded')}
+ <rect x="0" y="140" width="900" height="50" fill="url(#gGround)"/>
+ ${treeTop(360,150,16)}${treeTop(470,156,13)}${treeTop(600,150,15)}
+ <rect x="0" y="150" width="900" height="34" fill="#e8edf3"/>
+ <rect x="0" y="150" width="900" height="4" fill="#dbe2ec"/>
+ <line x1="10" y1="167" x2="890" y2="167" stroke="#ffffff" stroke-width="4" stroke-dasharray="26 22" stroke-linecap="round"/>
+ <g transform="rotate(90 250 167)">${carTop(250,167,0.72,tone)}</g>
+ <g transform="rotate(-90 640 167)">${carTop(640,167,0.72,'gray')}</g>
+ </svg>`; }
 
 /* ---------------- diagrammen ---------------- */
 const F = {};
@@ -246,4 +280,4 @@ function figFor(step, zh){
   return '';
 }
 
-module.exports = { iconFor, moduleIcon, figFor };
+module.exports = { iconFor, moduleIcon, figFor, moduleBanner };
