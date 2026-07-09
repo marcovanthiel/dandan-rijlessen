@@ -143,10 +143,10 @@ We maken kopiëren **onaantrekkelijk, beperkt en herleidbaar**:
   organische groeimotor.
 - E-mailflows (Resend): welkom, studieplanning, "je pas verloopt", win-back.
 
-## 9. Verbetervoorstellen (aanvullend, ter besluit)
+## 9. Verbetervoorstellen (bevestigde backlog, uitvoering later; besluit Marco 9-7-2026)
 
 1. **Oefenexamen-simulator als kernproduct**: CBR-achtige opzet (tijdslimiet,
-   vraagtypen, direct feedback, foutenanalyse per onderwerp) — dit is waar
+   vraagtypen, direct feedback, foutenanalyse per onderwerp): dit is waar
    klanten voor betalen; de lesstof is de onderbouwing.
 2. **Voortgang en leerpad**: per stap/onderwerp afvinken, "klaar voor examen"-
    indicator, studieschema richting examendatum.
