@@ -5,6 +5,7 @@
 // lestekst in de lestaal (nu zh) met nette fallback-melding.
 import { SITE, HOME_BANNER, CONTENT, LESTALEN, TOTAL_PAGES } from './worker-content.js';
 import { t, TALEN, TAALNAMEN } from './i18n.js';
+import * as F from './features.js';
 
 const SEC = {
   'X-Content-Type-Options': 'nosniff',
@@ -28,7 +29,9 @@ function shell(L, title, body, o = {}) {
   const noindex = o.noindex ? '<meta name="robots" content="noindex">' : '';
   const desc = o.desc || SITE.tagZh + ' ' + SITE.tagNl;
   const canon = SITE.baseUrl + (o.path || '/');
-  return `<!doctype html><html lang="${L}"><head>
+  const rtl = L === 'ar' ? ' dir="rtl"' : '';
+  const hreflang = o.hreflang ? TALEN.map((x) => `<link rel="alternate" hreflang="${x}" href="${SITE.baseUrl}/?taal=${x}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${SITE.baseUrl}/">` : '';
+  return `<!doctype html><html lang="${L}"${rtl}><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}">${noindex}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="apple-touch-icon" href="/favicon.svg">
@@ -36,22 +39,23 @@ function shell(L, title, body, o = {}) {
 <meta property="og:type" content="website"><meta property="og:site_name" content="Dandan Drive">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canon}"><meta property="og:image" content="${SITE.baseUrl}/og.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image">${hreflang}
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/style.css">
 </head><body data-nl="on"${o.gated ? ' class="beschermd"' : ''}>
 <a class="skip-link" href="#inhoud">${esc(t(L, 'skip'))}</a>${body}
-<script src="/assets/search.js" defer></script>${o.gated ? '<script src="/assets/les.js" defer></script>' : ''}
+<script src="/assets/search.js" defer></script><script src="/assets/interactie.js" defer></script>${o.gated ? '<script src="/assets/les.js" defer></script>' : ''}
 </body></html>`;
 }
 function siteHeader(L, user, mods) {
-  const nav = mods.map((m) => `<a href="/${m.slug}">${esc(t(L, 'nav.module', { n: m.num }))}</a>`).join('');
+  const nav = `<a href="/leren">${esc(t(L, 'leren.kop'))}</a><a href="/oefenexamen">${esc(t(L, 'nav.examen'))}</a><a href="/begrippen">${esc(t(L, 'nav.begrippen'))}</a>`;
   const rechts = user
     ? `<a href="/account">👤 ${esc(user.email.split('@')[0])}</a>${user.is_admin ? '<a href="/admin">beheer</a>' : ''}`
     : `<a href="/login">${esc(t(L, 'nav.login'))}</a>`;
   return `<header class="site"><div class="container">
   <a class="brand" href="/" style="color:#fff"><span class="logo">丹</span>
     <span><span lang="nl">Dandan Drive</span><small>${esc(SITE.titleZh)} · 驾照路考</small></span></a>
-  <nav><a href="/">${esc(t(L, 'nav.home'))}</a>${user ? nav + `<a href="/boek-index">${esc(t(L, 'nav.boek'))}</a>` : ''}${rechts}
+  <nav><a href="/">${esc(t(L, 'nav.home'))}</a>${user ? nav + `<a href="/boek-index">${esc(t(L, 'nav.boek'))}</a>` : `<a href="/prijzen">${esc(t(L, 'landing.prijskop'))}</a>`}${rechts}
   ${user ? `<label class="searchbox">🔍<input id="q" type="search" placeholder="${esc(t(L, 'nav.zoek'))}" autocomplete="off" aria-label="${esc(t(L, 'nav.zoek'))}"></label>` : ''}</nav>
   </div><div id="results" class="container" style="display:none"></div></header>`;
 }
@@ -73,7 +77,7 @@ async function getUser(req, env) {
   const tk = cookies(req).dd_sess;
   if (!tk) return null;
   const r = await env.DB.prepare(
-    `SELECT u.id, u.email, u.lang, u.is_admin FROM sessions s JOIN users u ON u.id = s.user_id
+    `SELECT u.id, u.email, u.lang, u.is_admin, u.exam_date, u.ref_code FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.token_hash = ? AND s.expires_at > datetime('now')`
   ).bind(await sha256(tk)).first();
   return r || null;
@@ -85,6 +89,16 @@ function taalVan(req, user, url) {
   const c = cookies(req).dd_lang;
   if (c && TALEN.includes(c)) return c;
   return user ? 'zh' : 'nl';
+}
+// Best-effort gedrags-rem per isolate (echte bron = D1-events; zie DEPLOY.md)
+const RATE = new Map();
+function overRateLimit(userId) {
+  const uur = Math.floor(Date.now() / 3600000);
+  const k = userId + ':' + uur;
+  const cur = (RATE.get(k) || 0) + 1;
+  RATE.set(k, cur);
+  if (RATE.size > 5000) RATE.clear();
+  return cur > 240;
 }
 async function activePass(env, userId) {
   return env.DB.prepare(`SELECT kind, ends_at FROM passes WHERE user_id = ? AND ends_at > datetime('now') ORDER BY ends_at DESC LIMIT 1`).bind(userId).first();
@@ -118,12 +132,8 @@ async function mailCode(env, L, email, code) {
 }
 
 // ---------- landing ----------
-const PRIJZEN = [
-  { kind: '1m', mnd: 1, eur: 18 }, { kind: '3m', mnd: 3, eur: 38 },
-  { kind: '6m', mnd: 6, eur: 58 }, { kind: '12m', mnd: 12, eur: 88 },
-];
-function landingBody(L) {
-  const kaarten = PRIJZEN.map((p) => `<div class="card" style="text-align:center"><div class="mnum">${p.mnd}</div>
+function landingBody(L, reviewsHtml) {
+  const kaarten = F.PASSEN.map((p) => `<div class="card" style="text-align:center"><div class="mnum">${p.mnd}</div>
     <h3>€ ${p.eur}</h3><div class="count">${esc(p.mnd === 1 ? t(L, 'landing.mnd1') : t(L, 'landing.mnd', { n: p.mnd }))}</div></div>`).join('');
   const taalkeuze = TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="is-actief"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join(' · ');
   return `
@@ -138,7 +148,10 @@ function landingBody(L) {
   <ul class="usps"><li>${esc(t(L, 'landing.usp1'))}</li><li>${esc(t(L, 'landing.usp2'))}</li><li>${esc(t(L, 'landing.usp3'))}</li></ul>
   <h2 style="margin-top:28px">${esc(t(L, 'landing.prijskop'))}</h2>
   <div class="grid">${kaarten}</div>
-  <div class="note">${esc(t(L, 'landing.betaal'))}</div>`;
+  <div class="note">${esc(t(L, 'landing.betaal'))}</div>
+  <div class="note boektip">📖 ${esc(t(L, 'boektip'))} <a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a></div>
+  ${reviewsHtml || ''}
+  <p style="margin-top:22px"><a href="/partner">${esc(t(L, 'nav.partner'))}</a></p>`;
 }
 
 // ---------- lespagina's ----------
@@ -156,10 +169,13 @@ const lockCard = (L, p) => `<article class="script lock" id="${p.id}">
   ${p.nl ? `<div class="nl-title nl-only" lang="nl">${esc(p.nl)}</div>` : ''}
   <p class="locktekst">${esc(t(L, 'lock.tekst'))} <a href="/account">${esc(t(L, 'lock.bekijk'))}</a></p>
 </article>`;
-function moduleBody(L, m, vol, user) {
+function moduleBody(L, m, vol, user, doneSet) {
   const lesT = lesTaalVoor(L);
-  const toc = m.parts.map((p) => `<li><a href="#${p.id}">${p.page ? `<span class="tocpage">p.${p.page}</span> ` : ''}${esc(p.label)}${vol || p.preview ? '' : ' 🔒'}</a></li>`).join('');
-  const delen = m.parts.map((p) => (vol || p.preview ? p.html : lockCard(L, p))).join('\n');
+  const key = (p) => `${m.sectie[0]}:${m.slug}:${p.id}`;
+  const afvink = (p) => `<form method="post" action="/voortgang" class="afvink"><input type="hidden" name="key" value="${key(p)}"><input type="hidden" name="terug" value="/${m.slug}#${p.id}">
+    <button class="${doneSet.has(key(p)) ? 'is-af' : ''}">${doneSet.has(key(p)) ? '✓ ' + esc(t(L, 'pad.af')) : esc(t(L, 'pad.markeer'))}</button></form>`;
+  const toc = m.parts.map((p) => `<li><a href="#${p.id}">${doneSet.has(key(p)) ? '<span class="tick">✓</span> ' : ''}${p.page ? `<span class="tocpage">p.${p.page}</span> ` : ''}${esc(p.label)}${vol || p.preview ? '' : ' 🔒'}</a></li>`).join('');
+  const delen = m.parts.map((p) => (vol || p.preview ? p.html + afvink(p) : lockCard(L, p))).join('\n');
   const taalnote = L !== lesT ? `<div class="note">${esc(t(L, 'module.lestaal'))}</div>` : '';
   return `<div class="crumbs"><a href="/leren">${esc(t(L, 'module.crumb'))}</a> › ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
   <div class="modbanner">${m.banner}</div>
@@ -179,18 +195,6 @@ function boekIndexBody(L, pmap) {
   <div class="pagefind"><label>${esc(t(L, 'boek.label', { n: TOTAL_PAGES }))} <input id="pageq" type="number" min="1" max="${TOTAL_PAGES}" placeholder="5"></label>
   <button id="pagego">${esc(t(L, 'boek.ga'))}</button> <span id="pagemsg" class="pagemsg"></span></div>
   <table class="pagetable"><thead><tr><th>${esc(t(L, 'boek.thkop'))}</th><th>${esc(t(L, 'boek.thonderwerp'))}</th><th>${esc(t(L, 'boek.thmodule'))}</th></tr></thead><tbody>${rows}</tbody></table>`;
-}
-function lerenBody(L, user, pas, mods) {
-  const kaarten = mods.map((m) => `<a class="card" href="/${m.slug}"><span class="mnum">${m.num}</span>
-    <h3 lang="${lesTaalVoor(L)}">${esc(m.zh)}</h3><div class="nl nl-only" lang="nl">${esc(m.nl)}</div>
-    <div class="count">${esc(t(L, 'leren.onderdelen', { n: m.parts.length }))}${pas || user.is_admin ? '' : m.num === '1' ? ' · ' + esc(t(L, 'leren.preview')) : ' · 🔒'}</div></a>`).join('');
-  const status = pas
-    ? `<div class="note">${esc(t(L, 'leren.pas', { tot: String(pas.ends_at).slice(0, 10) }))}</div>`
-    : user.is_admin ? ''
-    : `<div class="note">${esc(t(L, 'leren.gratis'))} <a href="/account">${esc(t(L, 'leren.passen'))}</a></div>`;
-  return `<div class="modbanner">${HOME_BANNER}</div>${status}
-  <div class="note">${esc(t(L, 'leren.intro'))}</div>
-  <div class="grid">${kaarten}</div>`;
 }
 const loginBody = (L, o = {}) => `
   <h1>${esc(t(L, 'login.kop'))}</h1>
@@ -232,7 +236,25 @@ export default {
     if (pad === '/' && request.method === 'GET') {
       if (user) return redirect('/leren');
       recordEvent(env, ctx, 'view', '/', refVan(request, url));
-      return page(L, 'Dandan Drive · ' + SITE.titleZh, landingBody(L), { path: '/', desc: t(L, 'landing.sub') });
+      const rows = ((await env.DB.prepare(`SELECT naam, taal, tekst, sterren FROM reviews WHERE zichtbaar = 1 ORDER BY created_at DESC LIMIT 6`).all()).results) || [];
+      const opts = { path: '/', desc: t(L, 'landing.sub'), hreflang: true };
+      const refc = url.searchParams.get('ref');
+      const resp = page(L, 'Dandan Drive · ' + SITE.titleZh, landingBody(L, F.reviewsBlok(L, rows)), opts);
+      if (refc && /^[A-Z0-9]{4,12}$/i.test(refc)) resp.headers.append('Set-Cookie', `dd_ref=${refc.toUpperCase()}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`);
+      return resp;
+    }
+    if (pad === '/partner' && request.method === 'GET')
+      return page(L, t(L, 'nav.partner') + ' · Dandan Drive', F.partnerBody(L), { path: '/partner' });
+    if (pad === '/prijzen' && request.method === 'GET')
+      return page(L, t(L, 'landing.prijskop') + ' · Dandan Drive', F.prijzenBody(L, user), { user, path: '/prijzen' });
+    if (pad === '/boek' && request.method === 'GET') {
+      recordEvent(env, ctx, 'boekklik', '/boek', '');
+      // Affiliate-parameter configureerbaar via env.BOEK_URL (aanname: bol.com-zoeklink tot een partnerdeal er is)
+      return redirect(env.BOEK_URL || 'https://www.bol.com/nl/nl/s/?searchtext=rijopleiding+in+stappen+theorieboek');
+    }
+    if (pad === '/webhook/wechat' && request.method === 'POST') {
+      // Fase 2: hier komt de WeChat Pay-notificatie (handtekening verifiëren, order op paid zetten, pas activeren).
+      return new Response('betaalprovider nog niet actief', { status: 501 });
     }
     if (pad === '/login' && request.method === 'GET')
       return page(L, t(L, 'login.kop') + ' · Dandan Drive', loginBody(L), { noindex: true, path: '/login' });
@@ -265,12 +287,15 @@ export default {
       await env.DB.prepare(`DELETE FROM login_codes WHERE email = ?`).bind(email).run();
       let u = await env.DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
       if (!u) {
-        u = await env.DB.prepare(`INSERT INTO users (email, lang) VALUES (?, ?) RETURNING id`).bind(email, L).first();
-        recordEvent(env, ctx, 'signup', '', '');
+        const ref = (cookies(request).dd_ref || '').toUpperCase().slice(0, 12) || null;
+        u = await env.DB.prepare(`INSERT INTO users (email, lang, referred_by) VALUES (?, ?, ?) RETURNING id`).bind(email, L, ref).first();
+        recordEvent(env, ctx, 'signup', '', ref ? 'ref' : '');
       }
       const token = crypto.randomUUID() + crypto.randomUUID();
       await env.DB.prepare(`INSERT INTO sessions (token_hash, user_id, expires_at, ua) VALUES (?, ?, datetime('now','+30 days'), ?)`)
         .bind(await sha256(token), u.id, (request.headers.get('User-Agent') || '').slice(0, 120)).run();
+      await env.DB.prepare(`DELETE FROM sessions WHERE user_id = ? AND token_hash NOT IN (
+        SELECT token_hash FROM sessions WHERE user_id = ? ORDER BY created_at DESC LIMIT 3)`).bind(u.id, u.id).run();
       recordEvent(env, ctx, 'login', '', '');
       return redirect('/leren', { 'Set-Cookie': `dd_sess=${token}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax` });
     }
@@ -280,25 +305,125 @@ export default {
       return redirect('/', { 'Set-Cookie': 'dd_sess=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax' });
     }
 
-    // vanaf hier: inloggen vereist
-    const gated = pad === '/leren' || pad === '/boek-index' || pad === '/account' || pad === '/account/taal' || pad === '/admin' || pad === '/search.json' || pad === '/pagemap.json' || /^\/module-\d+$/.test(pad);
+    // vanaf hier: inloggen vereist (incl. lesbeelden: /img en /foto zijn niet meer publiek)
+    const gated = pad === '/leren' || pad === '/boek-index' || pad === '/account' || pad.startsWith('/account/') || pad === '/admin' || pad === '/search.json' || pad === '/pagemap.json' || /^\/(module|theorie)-\d+$/.test(pad) || pad === '/begrippen' || pad.startsWith('/oefenexamen') || pad === '/voortgang' || pad === '/bestellen' || pad.startsWith('/betalen') || pad === '/voucher' || pad.startsWith('/img/');
     if (gated && !user) {
       recordEvent(env, ctx, 'locked_view', pad, refVan(request, url));
       return redirect('/login');
     }
+    if (gated && overRateLimit(user.id)) return page(L, '429', `<h1>${esc(t(L, 'rate.kop'))}</h1><div class="note">${esc(t(L, 'rate.tekst'))}</div>`, { user, status: 429, noindex: true });
+    if (pad.startsWith('/img/')) return env.ASSETS.fetch(request);
     const inhoud = CONTENT[lesTaalVoor(L)];
     if (pad === '/leren') {
       const pas = await activePass(env, user.id);
+      const done = new Set(((await env.DB.prepare(`SELECT part_key FROM progress WHERE user_id = ?`).bind(user.id).all()).results || []).map((r) => r.part_key));
+      let totaal = 0, af = 0;
+      const modsMetPct = inhoud.modules.map((m) => {
+        const keys = m.parts.map((p) => `${m.sectie[0]}:${m.slug}:${p.id}`);
+        const d = keys.filter((k) => done.has(k)).length;
+        totaal += keys.length; af += d;
+        return { ...m, pct: keys.length ? Math.round((d / keys.length) * 100) : 0 };
+      });
+      const klaarPct = totaal ? Math.round((af / totaal) * 100) : 0;
       recordEvent(env, ctx, 'view', '/leren', '');
-      return page(L, t(L, 'leren.kop') + ' · Dandan Drive', lerenBody(L, user, pas, inhoud.modules), { user, noindex: true, path: '/leren' });
+      return page(L, t(L, 'leren.kop') + ' · Dandan Drive', F.lerenBody(L, user, pas, { ...inhoud, modules: modsMetPct }, klaarPct, user.exam_date, HOME_BANNER), { user, noindex: true, path: '/leren' });
     }
-    if (/^\/module-\d+$/.test(pad)) {
+    if (pad === '/voortgang' && request.method === 'POST') {
+      const f = await request.formData();
+      const key = String(f.get('key') || '').slice(0, 80);
+      const terug = String(f.get('terug') || '/leren');
+      const bestaat = await env.DB.prepare(`SELECT 1 x FROM progress WHERE user_id = ? AND part_key = ?`).bind(user.id, key).first();
+      if (bestaat) await env.DB.prepare(`DELETE FROM progress WHERE user_id = ? AND part_key = ?`).bind(user.id, key).run();
+      else await env.DB.prepare(`INSERT OR IGNORE INTO progress (user_id, part_key) VALUES (?, ?)`).bind(user.id, key).run();
+      return redirect(terug.startsWith('/') ? terug : '/leren');
+    }
+    if (pad === '/begrippen') {
+      recordEvent(env, ctx, 'view', '/begrippen', '');
+      return page(L, t(L, 'nav.begrippen') + ' · Dandan Drive', F.begrippenBody(L), { user, gated: true, noindex: true, path: '/begrippen' });
+    }
+    if (pad === '/oefenexamen' && request.method === 'GET') {
+      const laatste = ((await env.DB.prepare(`SELECT * FROM exam_attempts WHERE user_id = ? AND finished_at IS NOT NULL ORDER BY started_at DESC LIMIT 8`).bind(user.id).all()).results) || [];
+      return page(L, t(L, 'nav.examen') + ' · Dandan Drive', F.examenOverzicht(L, laatste), { user, noindex: true, path: '/oefenexamen' });
+    }
+    if (pad === '/oefenexamen/start' && request.method === 'POST') {
+      const f = await request.formData();
+      const mode = String(f.get('mode') || 'examen');
+      if (mode !== 'examen' && !/^onderwerp:[a-z]+$/.test(mode)) return redirect('/oefenexamen');
+      const pas = await activePass(env, user.id);
+      if (!pas && !user.is_admin && mode !== 'onderwerp:gevaar')
+        return page(L, t(L, 'nav.examen'), `<h1>${esc(t(L, 'nav.examen'))}</h1><div class="note">${esc(t(L, 'quiz.pasnodig'))} <a href="/prijzen">${esc(t(L, 'leren.passen'))}</a></div>`, { user, noindex: true });
+      const ids = F.stelVragenSamen(mode);
+      const a = await env.DB.prepare(`INSERT INTO exam_attempts (user_id, mode, vragen) VALUES (?, ?, ?) RETURNING id`).bind(user.id, mode, JSON.stringify(ids)).first();
+      recordEvent(env, ctx, 'quiz_start', mode, '');
+      return redirect(`/oefenexamen/a/${a.id}/v/1`);
+    }
+    const qm = pad.match(/^\/oefenexamen\/a\/(\d+)\/v\/(\d+)$/);
+    if (qm) {
+      const attempt = await env.DB.prepare(`SELECT * FROM exam_attempts WHERE id = ? AND user_id = ?`).bind(Number(qm[1]), user.id).first();
+      if (!attempt) return redirect('/oefenexamen');
+      const nvr = Number(qm[2]);
+      const ids = JSON.parse(attempt.vragen);
+      if (nvr < 1 || nvr > ids.length) return redirect('/oefenexamen');
+      if (request.method === 'POST') {
+        const f = await request.formData();
+        const antw = JSON.parse(attempt.antwoorden || '{}');
+        antw[ids[nvr - 1]] = String(f.get('antwoord') ?? '');
+        const verlopen = attempt.mode === 'examen' && (Date.now() - new Date(attempt.started_at.replace(' ', 'T') + 'Z').getTime()) > F.EXAMEN.minuten * 60000;
+        await env.DB.prepare(`UPDATE exam_attempts SET antwoorden = ? WHERE id = ?`).bind(JSON.stringify(antw), attempt.id).run();
+        attempt.antwoorden = JSON.stringify(antw);
+        if (attempt.mode !== 'examen')
+          return page(L, t(L, 'nav.examen'), F.vraagBody(L, attempt, nvr, true), { user, gated: true, noindex: true });
+        if (nvr < ids.length && !verlopen) return redirect(`/oefenexamen/a/${attempt.id}/v/${nvr + 1}`);
+        return redirect(`/oefenexamen/a/${attempt.id}/resultaat`);
+      }
+      return page(L, t(L, 'nav.examen'), F.vraagBody(L, attempt, nvr, false), { user, gated: true, noindex: true });
+    }
+    const rm = pad.match(/^\/oefenexamen\/a\/(\d+)\/resultaat$/);
+    if (rm) {
+      const attempt = await env.DB.prepare(`SELECT * FROM exam_attempts WHERE id = ? AND user_id = ?`).bind(Number(rm[1]), user.id).first();
+      if (!attempt) return redirect('/oefenexamen');
+      if (!attempt.finished_at) {
+        const r = F.scoreAttempt(attempt);
+        await env.DB.prepare(`UPDATE exam_attempts SET finished_at = datetime('now'), score = ?, totaal = ?, geslaagd = ? WHERE id = ?`)
+          .bind(r.goed, r.totaal, r.geslaagd === null ? null : (r.geslaagd ? 1 : 0), attempt.id).run();
+        recordEvent(env, ctx, 'quiz_klaar', attempt.mode, r.geslaagd ? 'geslaagd' : '');
+      }
+      return page(L, t(L, 'quiz.analyse') + ' · Dandan Drive', F.resultaatBody(L, attempt), { user, gated: true, noindex: true });
+    }
+    if (pad === '/bestellen' && request.method === 'POST') {
+      const f = await request.formData();
+      const p = F.PASSEN.find((x) => x.kind === String(f.get('kind')));
+      if (!p) return redirect('/prijzen');
+      const id = crypto.randomUUID();
+      await env.DB.prepare(`INSERT INTO orders (id, user_id, kind, amount_cents) VALUES (?, ?, ?, ?)`).bind(id, user.id, p.kind, p.eur * 100).run();
+      recordEvent(env, ctx, 'order', p.kind, '');
+      return redirect('/betalen/' + id);
+    }
+    const bm = pad.match(/^\/betalen\/([0-9a-f-]{36})$/);
+    if (bm && request.method === 'GET') {
+      const order = await env.DB.prepare(`SELECT * FROM orders WHERE id = ? AND user_id = ?`).bind(bm[1], user.id).first();
+      if (!order) return redirect('/prijzen');
+      return page(L, t(L, 'betaal.kop') + ' · Dandan Drive', F.betaalBody(L, order), { user, noindex: true });
+    }
+    if (pad === '/voucher' && request.method === 'POST') {
+      const f = await request.formData();
+      const code = String(f.get('code') || '').trim().toUpperCase().slice(0, 20);
+      const v = await env.DB.prepare(`SELECT * FROM vouchers WHERE code = ? AND used_count < max_uses AND (expires_at IS NULL OR expires_at > datetime('now'))`).bind(code).first();
+      if (!v) return page(L, t(L, 'voucher.kop'), `<h1>${esc(t(L, 'voucher.kop'))}</h1><div class="note fout" role="alert">${esc(t(L, 'voucher.ongeldig'))}</div><p><a class="cta" href="/prijzen">← ${esc(t(L, 'landing.prijskop'))}</a></p>`, { user, noindex: true, status: 400 });
+      const mnd = { '1m': 1, '3m': 3, '6m': 6, '12m': 12 }[v.kind] || 1;
+      await env.DB.prepare(`UPDATE vouchers SET used_count = used_count + 1 WHERE code = ?`).bind(code).run();
+      await env.DB.prepare(`INSERT INTO passes (user_id, kind, ends_at, source) VALUES (?, ?, datetime('now', ?), ?)`).bind(user.id, v.kind, `+${mnd} months`, 'voucher:' + code).run();
+      recordEvent(env, ctx, 'voucher', v.campagne || code, '');
+      return redirect('/leren');
+    }
+    if (/^\/(module|theorie)-\d+$/.test(pad)) {
       const m = inhoud.modules.find((x) => '/' + x.slug === pad);
       if (!m) return page(L, '404', `<h1>${esc(t(L, 'p404'))}</h1>`, { user, status: 404, noindex: true });
       const pas = await activePass(env, user.id);
       const vol = !!pas || !!user.is_admin;
+      const done = new Set(((await env.DB.prepare(`SELECT part_key FROM progress WHERE user_id = ?`).bind(user.id).all()).results || []).map((r) => r.part_key));
       recordEvent(env, ctx, vol ? 'view' : 'locked_view', pad, '');
-      return page(L, m.zh + ' · Dandan Drive', moduleBody(L, m, vol, user), { user, gated: true, noindex: true, path: pad });
+      return page(L, m.zh + ' · Dandan Drive', moduleBody(L, m, vol, user, done), { user, gated: true, noindex: true, path: pad });
     }
     if (pad === '/boek-index') {
       const pas = await activePass(env, user.id);
@@ -316,8 +441,19 @@ export default {
       }
       return redirect('/account');
     }
+    if (pad === '/account/examen' && request.method === 'POST') {
+      const f = await request.formData();
+      const d = String(f.get('datum') || '');
+      await env.DB.prepare(`UPDATE users SET exam_date = ? WHERE id = ?`).bind(/^\d{4}-\d{2}-\d{2}$/.test(d) ? d : null, user.id).run();
+      return redirect('/account');
+    }
     if (pad === '/account' && request.method === 'GET') {
       const pas = await activePass(env, user.id);
+      if (!user.ref_code) {
+        user.ref_code = Array.from(crypto.getRandomValues(new Uint8Array(4))).map((b) => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('') + String(user.id % 97);
+        await env.DB.prepare(`UPDATE users SET ref_code = ? WHERE id = ?`).bind(user.ref_code, user.id).run();
+      }
+      const refs = await env.DB.prepare(`SELECT COUNT(*) n FROM users WHERE referred_by = ?`).bind(user.ref_code).first();
       const opties = TALEN.map((x) => `<option value="${x}"${x === user.lang ? ' selected' : ''}>${TAALNAMEN[x]}</option>`).join('');
       return page(L, t(L, 'account.kop') + ' · Dandan Drive', `
         <h1>${esc(t(L, 'account.kop'))}</h1>
@@ -328,19 +464,45 @@ export default {
           <label>${esc(t(L, 'account.taal'))} <select name="taal">${opties}</select></label>
           <button>${esc(t(L, 'account.taalopslaan'))}</button>
         </form>
+        <form method="post" action="/account/examen" class="authform rij">
+          <label>${esc(t(L, 'pad.datumlabel'))} <input type="date" name="datum" value="${esc(user.exam_date || '')}"></label>
+          <button>${esc(t(L, 'pad.datumopslaan'))}</button>
+        </form>
+        <h2>${esc(t(L, 'ref.kop'))}</h2>
+        <div class="note">${esc(t(L, 'ref.uitleg'))}<br>
+        <code class="deellink">https://dandandrive.nl/?ref=${esc(user.ref_code)}</code>
+        <button class="kopieer" data-kopieer="https://dandandrive.nl/?ref=${esc(user.ref_code)}">${esc(t(L, 'ref.kopieer'))}</button>
+        · ${esc(t(L, 'ref.aantal', { n: refs.n }))}</div>
         <form method="post" action="/logout" class="authform"><button>${esc(t(L, 'account.uitloggen'))}</button></form>`, { user, noindex: true, path: '/account' });
     }
     if (pad === '/admin' && user.is_admin) {
       if (request.method === 'POST') {
         const f = await request.formData();
-        const email = String(f.get('email') || '').trim().toLowerCase();
+        const actie = String(f.get('actie') || 'pas');
         const kind = String(f.get('kind') || '3m');
         const mnd = { '1m': 1, '3m': 3, '6m': 6, '12m': 12 }[kind] || 3;
-        if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-          let u = await env.DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
-          if (!u) u = await env.DB.prepare(`INSERT INTO users (email) VALUES (?) RETURNING id`).bind(email).first();
-          await env.DB.prepare(`INSERT INTO passes (user_id, kind, ends_at, source) VALUES (?, ?, datetime('now', ?), 'admin')`)
-            .bind(u.id, kind, `+${mnd} months`).run();
+        if (actie === 'pas') {
+          const emails = String(f.get('email') || '').toLowerCase().split(/[\s,;]+/).filter((e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)).slice(0, 100);
+          for (const email of emails) {
+            let u = await env.DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
+            if (!u) u = await env.DB.prepare(`INSERT INTO users (email) VALUES (?) RETURNING id`).bind(email).first();
+            await env.DB.prepare(`INSERT INTO passes (user_id, kind, ends_at, source) VALUES (?, ?, datetime('now', ?), 'admin')`).bind(u.id, kind, `+${mnd} months`).run();
+          }
+        } else if (actie === 'voucher') {
+          const aantal = Math.min(Number(f.get('aantal') || 1), 100);
+          const campagne = String(f.get('campagne') || '').slice(0, 40);
+          const codes = [];
+          for (let i = 0; i < aantal; i++) {
+            const code = 'DD' + Array.from(crypto.getRandomValues(new Uint8Array(6))).map((b) => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('');
+            await env.DB.prepare(`INSERT INTO vouchers (code, kind, campagne, max_uses) VALUES (?, ?, ?, ?)`).bind(code, kind, campagne, Number(f.get('max_uses') || 1)).run();
+            codes.push(code);
+          }
+          return page(L, 'Vouchers', `<h1>Vouchers aangemaakt (${codes.length})</h1><pre class="codeblok">${codes.join('\n')}</pre><p><a class="cta" href="/admin">← beheer</a></p>`, { user, noindex: true });
+        } else if (actie === 'review') {
+          await env.DB.prepare(`INSERT INTO reviews (naam, taal, tekst, sterren, zichtbaar) VALUES (?, ?, ?, ?, 1)`)
+            .bind(String(f.get('naam') || '').slice(0, 60), String(f.get('taal') || 'zh').slice(0, 5), String(f.get('tekst') || '').slice(0, 400), Math.min(5, Math.max(1, Number(f.get('sterren') || 5)))).run();
+        } else if (actie === 'review_toggle') {
+          await env.DB.prepare(`UPDATE reviews SET zichtbaar = 1 - zichtbaar WHERE id = ?`).bind(Number(f.get('id'))).run();
         }
         return redirect('/admin');
       }
@@ -350,11 +512,28 @@ export default {
       const stats = (await env.DB.prepare(`SELECT day, type, SUM(count) n FROM events WHERE day > date('now','-14 days') GROUP BY day, type ORDER BY day DESC`).all()).results;
       return page(L, 'Beheer · Dandan Drive', `
         <h1>Beheer</h1>
-        <h2>Pas toekennen</h2>
+        <h2>Passen toekennen (één of meer e-mailadressen)</h2>
         <form method="post" action="/admin" class="authform rij">
-          <label>e-mail <input type="email" name="email" required></label>
+          <input type="hidden" name="actie" value="pas">
+          <label>e-mail(s) <textarea name="email" rows="2" required placeholder="een@adres.nl, twee@adres.nl"></textarea></label>
           <label>pas <select name="kind"><option value="1m">1 maand</option><option value="3m" selected>3 maanden</option><option value="6m">6 maanden</option><option value="12m">12 maanden</option></select></label>
           <button>toekennen</button></form>
+        <h2>Vouchers (campagnes, partners, referral-beloningen)</h2>
+        <form method="post" action="/admin" class="authform rij">
+          <input type="hidden" name="actie" value="voucher">
+          <label>aantal <input type="number" name="aantal" value="1" min="1" max="100"></label>
+          <label>pas <select name="kind"><option value="1m">1 maand</option><option value="3m">3 maanden</option><option value="6m">6 maanden</option><option value="12m">12 maanden</option></select></label>
+          <label>campagne <input name="campagne" placeholder="tiktok-jan"></label>
+          <label>max. gebruik <input type="number" name="max_uses" value="1" min="1" max="1000"></label>
+          <button>aanmaken</button></form>
+        <h2>Review toevoegen (alleen échte slagingsverhalen)</h2>
+        <form method="post" action="/admin" class="authform rij">
+          <input type="hidden" name="actie" value="review">
+          <label>naam <input name="naam" required></label>
+          <label>taal <input name="taal" value="zh" size="3"></label>
+          <label>sterren <input type="number" name="sterren" value="5" min="1" max="5"></label>
+          <label>tekst <textarea name="tekst" rows="2" required></textarea></label>
+          <button>plaatsen</button></form>
         <h2>Gebruikers (${leden.length})</h2>
         <table class="pagetable"><thead><tr><th>e-mail</th><th>taal</th><th>sinds</th><th>pas geldig tot</th></tr></thead><tbody>
         ${leden.map((l) => `<tr><td>${esc(l.email)}${l.is_admin ? ' 👑' : ''}</td><td>${esc(l.lang)}</td><td>${esc(String(l.created_at).slice(0, 10))}</td><td>${l.pas_tot ? esc(String(l.pas_tot).slice(0, 10)) : '-'}</td></tr>`).join('')}

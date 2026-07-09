@@ -124,7 +124,9 @@ function splitTitle(h){ // "步骤 1 · 车外检查 (Controle buiten de auto)" 
   return {zh,nl};
 }
 function parseModule(file){
-  const fnameNum = (path.basename(file).match(/Module\s*(\d+)/i)||[])[1] || '';
+  const base = path.basename(file);
+  const sectie = /^Theorie/i.test(base) ? 'theorie' : 'praktijk';
+  const fnameNum = (base.match(/(?:Module|Theorie)\s*(\d+)/i)||[])[1] || '';
   const raw = fs.readFileSync(file,'utf8').replace(/^---[\s\S]*?---\s*/,''); // strip frontmatter
   const lines = raw.split('\n');
   let modZh='',modNl='',modNum='',intro=[]; const blocks=[];
@@ -159,7 +161,7 @@ function parseModule(file){
   if(/Slotdeel/i.test(modNl) || /结业/.test(modZh)){ modZh='结业部分'; modNl='Slotdeel: examen · ADAS · oefeningen'; }
   // drop empty divider blocks (no body text)
   const scripts = blocks.filter(b=>b.body.join('').trim().length>0);
-  return {modZh,modNl,modNum,intro,scripts,slug:'module-'+(modNum||blocks.length)};
+  return {modZh,modNl,modNum,intro,scripts,sectie,slug:(sectie==='theorie'?'theorie-':'module-')+(modNum||blocks.length)};
 }
 
 // ---------- templates ----------
@@ -402,18 +404,24 @@ const SEARCH_JS = `
 
 // ---------- worker-content: gegenereerde ESM-module voor de paywall-worker ----------
 function writeWorkerContent(perTaal){
+  const vragen = [];
+  const vdir = path.join(ROOT, 'content', 'vragen');
+  if(fs.existsSync(vdir)) for(const f of fs.readdirSync(vdir)) if(/\.json$/.test(f))
+    vragen.push(...JSON.parse(fs.readFileSync(path.join(vdir,f),'utf8')));
+  const lexicon = fs.existsSync(path.join(ROOT,'content','lexicon.json'))
+    ? JSON.parse(fs.readFileSync(path.join(ROOT,'content','lexicon.json'),'utf8')) : [];
   const inhoud = {};
   for(const [taal, d] of Object.entries(perTaal)){
     inhoud[taal] = {
       modules: d.modules.map(m=>({
-    num: String(m.modNum), slug: m.slug, zh: m.modZh, nl: m.modNl,
+    num: String(m.modNum), slug: m.slug, sectie: m.sectie, zh: m.modZh, nl: m.modNl,
     introHtml: m.intro.length?('<div class="note">'+bodyToHtml(m.intro)+'</div>'):'',
     banner: G.moduleBanner(m.modNum),
     parts: m.scripts.map(s=>({
       id: s.id, step: s.step||'', zh: s.zh, nl: s.nl||'', page: s.page||null,
       label: (s.step?('步骤 '+s.step+' · '):'')+ s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''),
       html: articleHtml(m, s),
-      preview: String(m.modNum)==='1' && (s.id==='leermodel' || s.id==='s1')
+      preview: String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1')
     }))
       })),
       pmap: d.pmap,
@@ -425,6 +433,8 @@ function writeWorkerContent(perTaal){
     + 'export const HOME_BANNER = '+JSON.stringify(G.moduleBanner(0))+';\n'
     + 'export const CONTENT = '+JSON.stringify(inhoud)+';\n'
     + 'export const LESTALEN = '+JSON.stringify(Object.keys(inhoud))+';\n'
+    + 'export const VRAGEN = '+JSON.stringify(vragen)+';\n'
+    + 'export const LEXICON = '+JSON.stringify(lexicon)+';\n'
     + 'export const TOTAL_PAGES = '+TOTAL_PAGES+';\n';
   fs.writeFileSync(path.join(ROOT,'worker-content.js'), out);
 }
@@ -442,9 +452,9 @@ function main(){
     mods.sort((a,b)=>Number(a.modNum)-Number(b.modNum));
     for(const m of mods){ let sec=0; for(const s of m.scripts){
       s.id = s.step ? 's'+s.step : asciiSectionId(s.zh, ++sec);
-      s.page = pageForScript(s.step, s.zh);
+      s.page = m.sectie==='praktijk' ? pageForScript(s.step, s.zh) : null;   // boekpagina's = praktijkboek
     }}
-    perTaal[taal] = { modules: mods, pmap: buildPageMap(mods) };
+    perTaal[taal] = { modules: mods, pmap: buildPageMap(mods.filter(m=>m.sectie==='praktijk')) };
     if(taal==='zh' || !modules){ modules = mods; pmap = perTaal[taal].pmap; }
   }
   // Sinds fase 1 (commercieel plan) schrijft de build GEEN lespagina's of
@@ -458,6 +468,37 @@ function main(){
   // assets
   fs.copyFileSync(path.join(ASSETS_SRC,'style.css'), path.join(DIST,'assets','style.css'));
   fs.copyFileSync(path.join(ASSETS_SRC,'les.js'), path.join(DIST,'assets','les.js'));
+  fs.copyFileSync(path.join(ASSETS_SRC,'interactie.js'), path.join(DIST,'assets','interactie.js'));
+  for(const ic of ['icon-192.png','icon-512.png']) if(fs.existsSync(path.join(ASSETS_SRC,ic))) fs.copyFileSync(path.join(ASSETS_SRC,ic), path.join(DIST,ic));
+  // PWA: manifest + service worker (cachet alleen de schil, nooit lescontent)
+  fs.writeFileSync(path.join(DIST,'manifest.webmanifest'), JSON.stringify({
+    name: 'Dandan Drive', short_name: 'Dandan Drive', start_url: '/leren',
+    display: 'standalone', background_color: '#0b1e3d', theme_color: '#0b1e3d', lang: 'zh',
+    icons: [
+      { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+      { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }
+    ]
+  }));
+  fs.writeFileSync(path.join(DIST,'sw.js'),
+    "// Dandan Drive PWA: alleen statische schil cachen; lescontent en beelden\n" +
+    "// bewust NIET offline (kopieerbescherming).\n" +
+    "const CACHE='dd-schil-v1';\n" +
+    "const SCHIL=['/assets/style.css','/assets/search.js','/assets/interactie.js','/favicon.svg','/manifest.webmanifest'];\n" +
+    "self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SCHIL)).then(()=>self.skipWaiting()))});\n" +
+    "self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});\n" +
+    "self.addEventListener('fetch',e=>{\n" +
+    "  const u=new URL(e.request.url);\n" +
+    "  if(e.request.method!=='GET'||u.origin!==location.origin)return;\n" +
+    "  if(u.pathname.startsWith('/img/')||u.pathname.startsWith('/module')||u.pathname.startsWith('/theorie')||u.pathname.startsWith('/oefenexamen'))return;\n" +
+    "  if(SCHIL.includes(u.pathname))e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)));\n" +
+    "});\n");
+  // SEO: sitemap met taalvarianten van de publieke pagina's
+  const TALEN_SEO = ['zh','nl','en','tr','ar','pl','uk','ru','es','pt','hi','vi'];
+  const urls = ['/','/prijzen','/partner'].flatMap(p => [SITE.baseUrl+p, ...TALEN_SEO.map(l=>SITE.baseUrl+p+'?taal='+l)]);
+  fs.writeFileSync(path.join(DIST,'sitemap.xml'),
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    urls.map(u=>'  <url><loc>'+u.replace(/&/g,'&amp;')+'</loc></url>').join('\n') + '\n</urlset>\n');
   // foto's meenemen (indien aanwezig)
   let nPhoto=0;
   if(fs.existsSync(IMG)){
@@ -482,7 +523,7 @@ function main(){
     "\n" +
     "/assets/*\n" +
     "  Cache-Control: public, max-age=3600\n");
-  fs.writeFileSync(path.join(DIST,'robots.txt'), "User-agent: *\nDisallow: /login\nDisallow: /account\nDisallow: /admin\nAllow: /\n");
+  fs.writeFileSync(path.join(DIST,'robots.txt'), "User-agent: *\nDisallow: /login\nDisallow: /account\nDisallow: /admin\nDisallow: /oefenexamen\nAllow: /\nSitemap: "+SITE.baseUrl+"/sitemap.xml\n");
   console.log('Built '+modules.length+' modules, '+modules.reduce((n,m)=>n+m.scripts.length,0)+' onderdelen -> '+DIST);
 }
 main();
