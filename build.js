@@ -3,6 +3,7 @@
    Reads content/*.md (original bilingual lesson material) and writes to dist/. */
 const fs = require('fs');
 const path = require('path');
+const G = require('./graphics.js');
 
 const ROOT = __dirname;
 const CONTENT = path.join(ROOT, 'content');
@@ -148,6 +149,7 @@ function footer(){
 function renderIndex(modules){
   const cards = modules.map(m=>`
   <a class="card" href="${m.slug}.html">
+    <div class="card-ico">${G.moduleIcon(m.modNum)}</div>
     <span class="mnum">${m.modNum}</span>
     <h3>${esc(m.modZh)}</h3>
     <div class="nl nl-only">${esc(m.modNl)}</div>
@@ -178,13 +180,18 @@ function renderModule(m, modules){
   const cards = m.scripts.map(s=>{
     const zhTitle = s.zh;
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
+    const fig = G.figFor(s.step, s.zh);
     return `<article class="script" id="${s.id}" data-page="${s.page||''}">
       <div class="script-top">
-        <h2>${s.step?`<span class="step">步骤 ${esc(s.step)}</span> · `:''}${esc(zhTitle.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''))}</h2>
+        <div class="script-title">
+          <span class="script-icon">${G.iconFor(s.step, s.zh)}</span>
+          <h2>${s.step?`<span class="step">步骤 ${esc(s.step)}</span> · `:''}${esc(zhTitle.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''))}</h2>
+        </div>
         ${pageBadge}
       </div>
       ${s.nl?`<div class="nl-title nl-only">${esc(s.nl)}</div>`:''}
       ${bodyToHtml(s.body)}
+      ${fig?`<figure class="fig">${fig}</figure>`:''}
     </article>`;
   }).join('\n');
   const introHtml = m.intro.length?`<div class="note">${bodyToHtml(m.intro)}</div>`:'';

@@ -114,3 +114,18 @@ mark{background:#fff3b0;padding:0 2px;border-radius:3px}
 .pagetable .pcol{white-space:nowrap}
 .pagetable .mcol{color:var(--muted);white-space:nowrap;font-size:.88rem}
 .pagetable .nl{color:var(--muted);font-size:.85rem}
+
+/* graphics: iconen + diagrammen */
+.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block}
+.script-title{display:flex;align-items:center;gap:12px;min-width:0}
+.script-icon{flex:0 0 auto;width:40px;height:40px;border-radius:10px;background:var(--accent);color:var(--brand-dark);display:grid;place-items:center}
+.card-ico{width:44px;height:44px;border-radius:11px;background:var(--accent);color:var(--brand-dark);display:grid;place-items:center;margin-bottom:6px}
+.card-ico .i{width:26px;height:26px}
+figure.fig{margin:16px 0 4px;padding:14px;background:linear-gradient(180deg,#fbfdff,#f2f7ff);border:1px solid var(--line);border-radius:12px;text-align:center}
+.figsvg{max-width:100%;height:auto;stroke-linecap:round;stroke-linejoin:round}
+.figsvg text{font-family:inherit}
+.figsvg .zhlbl{font-size:14px;font-weight:700;fill:var(--brand-dark)}
+.figsvg .nllbl{font-size:10px;fill:var(--muted)}
+.figsvg .caption{font-size:12px;fill:var(--muted)}
+.figsvg .warnlbl{font-size:11px;font-weight:700;fill:#c0392b}
+@media(max-width:520px){.script-icon{width:34px;height:34px}.script-icon .i{width:18px;height:18px}}
