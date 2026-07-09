@@ -161,3 +161,25 @@ header.site :focus-visible{outline-color:#fff}
   a{text-decoration:none;color:#000}
   .fig.photo img{max-width:80%}
 }
+
+/* ---- fase 1: landing, auth, paywall, watermerk ---- */
+.cta{display:inline-block;background:#fff;color:var(--brand-dark,#14488f);font-weight:700;padding:10px 18px;border-radius:10px;margin-top:6px}
+.landtaal a{color:#fff;opacity:.75}.landtaal a.is-actief{opacity:1;font-weight:700;text-decoration:underline}
+.usps{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
+.usps li{background:#fff;border:1px solid #e3e9f2;border-radius:12px;padding:12px 16px}
+.usps li::before{content:"✓ ";color:#1a7f4b;font-weight:700}
+.authform{max-width:420px;margin:18px 0;display:grid;gap:12px}
+.authform label{display:grid;gap:6px;font-weight:600}
+.authform input,.authform select{padding:10px 12px;border:1px solid #c8d2e0;border-radius:9px;font-size:1rem}
+.authform button{padding:10px 16px;border:0;border-radius:9px;background:var(--brand-dark,#14488f);color:#fff;font-weight:700;cursor:pointer}
+.authform.rij{grid-template-columns:1fr auto auto;align-items:end;max-width:640px}
+.note.fout{border-color:#c0392b;color:#8f2318}
+.les-wrap{position:relative;user-select:none;-webkit-user-select:none}
+.wm{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:5}
+.wm span{position:absolute;transform:rotate(-24deg);font-size:13px;color:rgba(20,72,143,.07);white-space:nowrap;user-select:none}
+.script.lock{opacity:.85;background:repeating-linear-gradient(-45deg,#fff,#fff 12px,#f4f7fb 12px,#f4f7fb 24px)}
+.locktekst{color:#5b6b7b}
+@media print{
+  body.beschermd main,body.beschermd header.site nav{display:none!important}
+  body.beschermd::after{content:"受版权保护的内容,不可打印。 / Beschermde inhoud, printen is uitgeschakeld · dandandrive.nl";display:block;padding:40px;font-size:14pt}
+}

@@ -255,12 +255,7 @@ function renderIndex(modules){
     + footer();
 }
 
-function renderModule(m, modules){
-  const toc = m.scripts.map(s=>{
-    const label = (s.step?('步骤 '+s.step+' · '):'')+ s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,'');
-    return `<li><a href="#${s.id}">${s.page?`<span class="tocpage">p.${s.page}</span> `:''}${esc(label)}</a></li>`;
-  }).join('');
-  const cards = m.scripts.map(s=>{
+function articleHtml(m, s){
     const zhTitle = s.zh;
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
     const fig = G.figFor(s.step, s.zh);
@@ -282,7 +277,14 @@ function renderModule(m, modules){
       ${bodyToHtml(s.body)}
       ${figHtml}
     </article>`;
-  }).join('\n');
+}
+
+function renderModule(m, modules){
+  const toc = m.scripts.map(s=>{
+    const label = (s.step?('步骤 '+s.step+' · '):'')+ s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,'');
+    return `<li><a href="#${s.id}">${s.page?`<span class="tocpage">p.${s.page}</span> `:''}${esc(label)}</a></li>`;
+  }).join('');
+  const cards = m.scripts.map(s=>articleHtml(m,s)).join('\n');
   const introHtml = m.intro.length?`<div class="note">${bodyToHtml(m.intro)}</div>`:'';
   return head(m.modZh+' · '+SITE.titleZh,'',{path:m.slug,desc:m.modZh+' · '+m.modNl+' · '+SITE.tagZh})
     + header('',modules)
@@ -397,6 +399,30 @@ const SEARCH_JS = `
 })();
 `;
 
+
+// ---------- worker-content: gegenereerde ESM-module voor de paywall-worker ----------
+function writeWorkerContent(modules, pmap){
+  const mods = modules.map(m=>({
+    num: String(m.modNum), slug: m.slug, zh: m.modZh, nl: m.modNl,
+    introHtml: m.intro.length?('<div class="note">'+bodyToHtml(m.intro)+'</div>'):'',
+    banner: G.moduleBanner(m.modNum),
+    parts: m.scripts.map(s=>({
+      id: s.id, step: s.step||'', zh: s.zh, nl: s.nl||'', page: s.page||null,
+      label: (s.step?('步骤 '+s.step+' · '):'')+ s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''),
+      html: articleHtml(m, s),
+      preview: String(m.modNum)==='1' && (s.id==='leermodel' || s.id==='s1')
+    }))
+  }));
+  const out = '// GEGENEREERD door build.js; niet handmatig bewerken.\n'
+    + 'export const SITE = '+JSON.stringify(SITE)+';\n'
+    + 'export const HOME_BANNER = '+JSON.stringify(G.moduleBanner(0))+';\n'
+    + 'export const MODULES = '+JSON.stringify(mods)+';\n'
+    + 'export const PMAP = '+JSON.stringify(pmap)+';\n'
+    + 'export const SEARCH = '+JSON.stringify(buildSearch(modules))+';\n'
+    + 'export const TOTAL_PAGES = '+TOTAL_PAGES+';\n';
+  fs.writeFileSync(path.join(ROOT,'worker-content.js'), out);
+}
+
 // ---------- run ----------
 function main(){
   fs.mkdirSync(path.join(DIST,'assets'),{recursive:true});
@@ -410,13 +436,17 @@ function main(){
   }}
   // paginamap boek -> website
   const pmap = buildPageMap(modules);
-  // pages
-  fs.writeFileSync(path.join(DIST,'index.html'), renderIndex(modules));
-  for(const m of modules) fs.writeFileSync(path.join(DIST,m.slug+'.html'), renderModule(m,modules));
-  fs.writeFileSync(path.join(DIST,'boek-index.html'), renderBookIndex(pmap, modules));
-  fs.writeFileSync(path.join(DIST,'pagemap.json'), JSON.stringify(pmap));
+  // Sinds fase 1 (commercieel plan) schrijft de build GEEN lespagina's of
+  // zoekindexen meer naar dist: alle content wordt door de worker per
+  // ingelogde gebruiker gerenderd (paywall). De content gaat als gegenereerde
+  // ESM-module (worker-content.js, projectroot) mee in de worker-bundel.
+  writeWorkerContent(modules, pmap);
+  for(const f of ['index.html','boek-index.html','pagemap.json','search.json'])
+    if(fs.existsSync(path.join(DIST,f))) fs.unlinkSync(path.join(DIST,f));
+  for(const m of modules) if(fs.existsSync(path.join(DIST,m.slug+'.html'))) fs.unlinkSync(path.join(DIST,m.slug+'.html'));
   // assets
   fs.copyFileSync(path.join(ASSETS_SRC,'style.css'), path.join(DIST,'assets','style.css'));
+  fs.copyFileSync(path.join(ASSETS_SRC,'les.js'), path.join(DIST,'assets','les.js'));
   // foto's meenemen (indien aanwezig)
   let nPhoto=0;
   if(fs.existsSync(IMG)){
@@ -424,7 +454,6 @@ function main(){
     for(const f of fs.readdirSync(IMG)){ if(/\.(png|jpe?g|webp)$/i.test(f)){ fs.copyFileSync(path.join(IMG,f), path.join(dimg,f)); nPhoto++; } }
   }
   fs.writeFileSync(path.join(DIST,'assets','search.js'), SEARCH_JS);
-  fs.writeFileSync(path.join(DIST,'search.json'), JSON.stringify(buildSearch(modules)));
   fs.writeFileSync(path.join(DIST,'favicon.svg'), FAVICON_SVG);
   // social-preview (og.png) meenemen indien aanwezig in de projectroot
   if(fs.existsSync(path.join(ROOT,'og.png'))) fs.copyFileSync(path.join(ROOT,'og.png'), path.join(DIST,'og.png'));
@@ -442,7 +471,7 @@ function main(){
     "\n" +
     "/assets/*\n" +
     "  Cache-Control: public, max-age=3600\n");
-  fs.writeFileSync(path.join(DIST,'robots.txt'), "User-agent: *\nAllow: /\n");
+  fs.writeFileSync(path.join(DIST,'robots.txt'), "User-agent: *\nDisallow: /login\nDisallow: /account\nDisallow: /admin\nAllow: /\n");
   console.log('Built '+modules.length+' modules, '+modules.reduce((n,m)=>n+m.scripts.length,0)+' onderdelen -> '+DIST);
 }
 main();
