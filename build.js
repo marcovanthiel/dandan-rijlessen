@@ -6,7 +6,7 @@ const path = require('path');
 const G = require('./graphics.js');
 
 const ROOT = __dirname;
-const CONTENT = path.join(ROOT, 'content');
+const CONTENT = path.join(ROOT, 'content');  // per lestaal: content/zh/*.md, later content/<taal>/*.md
 const DIST = path.join(ROOT, 'dist');
 const ASSETS_SRC = path.join(ROOT, 'assets');
 const IMG = path.join(ROOT, 'img');
@@ -401,8 +401,11 @@ const SEARCH_JS = `
 
 
 // ---------- worker-content: gegenereerde ESM-module voor de paywall-worker ----------
-function writeWorkerContent(modules, pmap){
-  const mods = modules.map(m=>({
+function writeWorkerContent(perTaal){
+  const inhoud = {};
+  for(const [taal, d] of Object.entries(perTaal)){
+    inhoud[taal] = {
+      modules: d.modules.map(m=>({
     num: String(m.modNum), slug: m.slug, zh: m.modZh, nl: m.modNl,
     introHtml: m.intro.length?('<div class="note">'+bodyToHtml(m.intro)+'</div>'):'',
     banner: G.moduleBanner(m.modNum),
@@ -412,13 +415,16 @@ function writeWorkerContent(modules, pmap){
       html: articleHtml(m, s),
       preview: String(m.modNum)==='1' && (s.id==='leermodel' || s.id==='s1')
     }))
-  }));
+      })),
+      pmap: d.pmap,
+      search: buildSearch(d.modules)
+    };
+  }
   const out = '// GEGENEREERD door build.js; niet handmatig bewerken.\n'
     + 'export const SITE = '+JSON.stringify(SITE)+';\n'
     + 'export const HOME_BANNER = '+JSON.stringify(G.moduleBanner(0))+';\n'
-    + 'export const MODULES = '+JSON.stringify(mods)+';\n'
-    + 'export const PMAP = '+JSON.stringify(pmap)+';\n'
-    + 'export const SEARCH = '+JSON.stringify(buildSearch(modules))+';\n'
+    + 'export const CONTENT = '+JSON.stringify(inhoud)+';\n'
+    + 'export const LESTALEN = '+JSON.stringify(Object.keys(inhoud))+';\n'
     + 'export const TOTAL_PAGES = '+TOTAL_PAGES+';\n';
   fs.writeFileSync(path.join(ROOT,'worker-content.js'), out);
 }
@@ -426,21 +432,26 @@ function writeWorkerContent(modules, pmap){
 // ---------- run ----------
 function main(){
   fs.mkdirSync(path.join(DIST,'assets'),{recursive:true});
-  const files = fs.readdirSync(CONTENT).filter(f=>/\.md$/i.test(f)).sort();
-  let modules = files.map(f=>parseModule(path.join(CONTENT,f)));
-  modules.sort((a,b)=>Number(a.modNum)-Number(b.modNum));
-  // assign stable ASCII ids + boek-paginanummers per onderdeel
-  for(const m of modules){ let sec=0; for(const s of m.scripts){
-    s.id = s.step ? 's'+s.step : asciiSectionId(s.zh, ++sec);
-    s.page = pageForScript(s.step, s.zh);
-  }}
-  // paginamap boek -> website
-  const pmap = buildPageMap(modules);
+  const talen = fs.readdirSync(CONTENT).filter(d=>fs.statSync(path.join(CONTENT,d)).isDirectory()).sort();
+  const perTaal = {};
+  let modules = null, pmap = null;   // zh blijft leidend voor totalen/log
+  for(const taal of talen){
+    const dir = path.join(CONTENT, taal);
+    const files = fs.readdirSync(dir).filter(f=>/\.md$/i.test(f)).sort();
+    const mods = files.map(f=>parseModule(path.join(dir,f)));
+    mods.sort((a,b)=>Number(a.modNum)-Number(b.modNum));
+    for(const m of mods){ let sec=0; for(const s of m.scripts){
+      s.id = s.step ? 's'+s.step : asciiSectionId(s.zh, ++sec);
+      s.page = pageForScript(s.step, s.zh);
+    }}
+    perTaal[taal] = { modules: mods, pmap: buildPageMap(mods) };
+    if(taal==='zh' || !modules){ modules = mods; pmap = perTaal[taal].pmap; }
+  }
   // Sinds fase 1 (commercieel plan) schrijft de build GEEN lespagina's of
   // zoekindexen meer naar dist: alle content wordt door de worker per
   // ingelogde gebruiker gerenderd (paywall). De content gaat als gegenereerde
   // ESM-module (worker-content.js, projectroot) mee in de worker-bundel.
-  writeWorkerContent(modules, pmap);
+  writeWorkerContent(perTaal);
   for(const f of ['index.html','boek-index.html','pagemap.json','search.json'])
     if(fs.existsSync(path.join(DIST,f))) fs.unlinkSync(path.join(DIST,f));
   for(const m of modules) if(fs.existsSync(path.join(DIST,m.slug+'.html'))) fs.unlinkSync(path.join(DIST,m.slug+'.html'));
