@@ -9,15 +9,12 @@
 
 ## 1. Gevraagde besluiten
 
-1. **Merknaam en domein: voorstel "Dandan Drive" (dandandrive.nl).**
-   Voorgesteld 9-7-2026: persoonlijk merk rond Dandan (werkt op TikTok en in
-   alle talen; sluit aan op de bestaande merkfamilie met dandanshop), "Drive"
-   is internationaal begrijpelijk. dandandrive.nl is vrij (RDAP-check
-   9-7-2026); .com is bezet, acceptabel omdat de doelgroep in Nederland woont.
-   Registratie na akkoord Marco; artnijmegen.nl wordt redirect.
-2. **Prijsmodel: BESLOTEN 9-7-2026** (voorstel Claude, akkoord Marco):
-   periode-passen zonder automatische verlenging, met voor de doelgroep
-   gelukkige prijspunten: **3 maanden €38, 6 maanden €58, 12 maanden €88**.
+1. **Merknaam en domein: BESLOTEN 9-7-2026 = "Dandan Drive" (dandandrive.nl).**
+   Marco registreert het domein zelf en meldt wanneer het op Cloudflare klaar
+   staat; daarna verhuizen we de website (worker-domeinkoppeling + redirect
+   vanaf artnijmegen.nl). Tot dat sein blijft artnijmegen.nl live.
+2. **Prijsmodel: BESLOTEN 9-7-2026**: periode-passen zonder automatische
+   verlenging: **1 maand €18, 3 maanden €38, 6 maanden €58, 12 maanden €88**.
    Gratis account = ~2% preview. Kortingscodes per campagne.
 3. **Betaalprovider: HERZIEN door besluit 5.** Stripe was het advies voor een
    NL-onderneming, maar Stripe bedient geen ondernemingen op het Chinese
@@ -26,6 +23,8 @@
    WeChat Pay-wens direct en zonder omweg op. Definitieve keuze zodra de
    Chinese entiteit vaststaat; iDEAL/kaarten voor niet-Chinese klanten
    vergt dan een aanvullende route (te onderzoeken in fase 0).
+   BESLOTEN 9-7-2026: het wordt een **Chinese entiteit**; Dandan helpt bij de
+   oprichting. Betaalkeuze volgt zodra de entiteit er is.
 4. **Doeltalen: BESLOTEN 9-7-2026**: Chinees eerst (staat); nieuwe talen
    activeren op klantvraag uit de kandidatenlijst (Arabisch, Turks, Pools,
    Oekraïens, Spaans, Portugees, Hindi, Vietnamees, Koreaans, Japans, Thai);
