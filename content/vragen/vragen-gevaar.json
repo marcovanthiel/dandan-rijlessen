@@ -1,0 +1,302 @@
+[
+{
+"id": "gevaar-1",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Je rijdt 50 binnen de kom. Tussen geparkeerde auto's rolt een bal de weg op.",
+"zh": "市区 50 km/h,皮球从停放车辆间滚上路面。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 0,
+"uitleg_nl": "Een bal betekent bijna altijd een kind: direct remmen.",
+"uitleg_zh": "球后多半跟着孩子:立即制动。"
+},
+{
+"id": "gevaar-2",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Je nadert een bushalte waar een bus stilstaat; je ziet er niemand omheen.",
+"zh": "接近公交站,公交停靠,周围看不到人。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 1,
+"uitleg_nl": "Achter de bus kunnen overstekers schuilgaan: gas los, remklaar.",
+"uitleg_zh": "公交遮挡可能藏着过街者:松油门备刹。"
+},
+{
+"id": "gevaar-3",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Op de snelweg rijdt het verkeer voor je op ruime afstand gelijkmatig door.",
+"zh": "高速上前方车流距离充足、行驶平稳。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 2,
+"uitleg_nl": "Geen signaal van gevaar: niets doen is hier het juiste antwoord.",
+"uitleg_zh": "无危险信号:什么也不做才是正确答案。"
+},
+{
+"id": "gevaar-4",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "In een woonwijk staat een auto in een uitrit met brandende achteruitrijlichten.",
+"zh": "居民区内一辆车在出入口,倒车灯亮着。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 0,
+"uitleg_nl": "Direct conflict dreigt: de auto kan achteruit de weg op komen.",
+"uitleg_zh": "冲突迫近:对方可能倒出,制动。"
+},
+{
+"id": "gevaar-5",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Voor je rijdt een fietser; uit een zijstraat rechts nadert langzaam een auto die moet wachten.",
+"zh": "前方骑车人;右侧支路一辆须让行的车缓慢接近。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 1,
+"uitleg_nl": "Nog geen acuut conflict, wel onzeker: snelheid eruit met gas los.",
+"uitleg_zh": "尚未成形但不确定:松油门留余地。"
+},
+{
+"id": "gevaar-6",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Bij regen zie je verderop remlichten aangaan in de file.",
+"zh": "雨天,前方车流远处亮起刹车灯。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 0,
+"uitleg_nl": "Remlichten in de file bij regen: nu zelf remmen om de golf op te vangen.",
+"uitleg_zh": "雨中车流刹车灯亮:立即制动化解冲击波。"
+},
+{
+"id": "gevaar-7",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Een voetganger staat bij een zebra en kijkt op zijn telefoon, zonder aanstalten.",
+"zh": "行人站在斑马线旁看手机,没有过街迹象。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 1,
+"uitleg_nl": "Zebra + onvoorspelbare voetganger: gas los en observeren.",
+"uitleg_zh": "斑马线+不可预测行人:松油门观察。"
+},
+{
+"id": "gevaar-8",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Je rijdt op een voorrangsweg buiten de kom; ver voor je steekt een tractor de weg op.",
+"zh": "市外优先道路,远处拖拉机驶入道路。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 1,
+"uitleg_nl": "Afstand is groot: gas los volstaat om ruimte te houden.",
+"uitleg_zh": "距离尚远:松油门保持余地即可。"
+},
+{
+"id": "gevaar-9",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Rechts van je rijdt een vrachtwagen; jullie naderen samen een versmalling.",
+"zh": "右侧卡车与你同时接近道路变窄处。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 0,
+"uitleg_nl": "De ruimte verdwijnt: afremmen en achter de vrachtwagen invoegen.",
+"uitleg_zh": "空间即将消失:制动并入卡车之后。"
+},
+{
+"id": "gevaar-10",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "In het donker loopt buiten de kom iemand zonder verlichting op jouw weghelft.",
+"zh": "夜间市外,有人无灯走在你的车道上。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 0,
+"uitleg_nl": "Acuut gevaar op je pad: krachtig snelheid terugnemen.",
+"uitleg_zh": "正前方紧急危险:大幅减速。"
+},
+{
+"id": "gevaar-11",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Je ziet in je spiegel een motor die snel nadert en wil inhalen; de weg voor je is vrij.",
+"zh": "后视镜中摩托快速接近欲超车,你前方畅通。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 2,
+"uitleg_nl": "Koers en snelheid houden zodat de motor veilig kan passeren.",
+"uitleg_zh": "保持速度与路线,让摩托安全超越。"
+},
+{
+"id": "gevaar-12",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Voor je remt een auto plotseling voor een overstekende kat.",
+"zh": "前车为横穿的猫突然刹车。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 0,
+"uitleg_nl": "Direct remmen; de reden doet er op dat moment niet toe.",
+"uitleg_zh": "立即制动,原因当下并不重要。"
+},
+{
+"id": "gevaar-13",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Een geparkeerde auto links heeft de voorwielen naar de weg gedraaid en de bestuurder zit erin.",
+"zh": "左侧停放车辆前轮已转向路面,驾驶人在车内。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 1,
+"uitleg_nl": "Wegrijden dreigt maar is nog niet begonnen: gas los, remklaar.",
+"uitleg_zh": "可能起步但尚未动:松油门备刹。"
+},
+{
+"id": "gevaar-14",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Schoolzone, 8:30 uur, kinderen op het trottoir aan beide kanten.",
+"zh": "校区 8:30,两侧人行道都有孩子。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 1,
+"uitleg_nl": "Nog niemand op de rijbaan: snelheid eruit en breed kijken.",
+"uitleg_zh": "尚无人上路:降速、扩大观察。"
+},
+{
+"id": "gevaar-15",
+"ond": "gevaar",
+"type": "gevaar",
+"nl": "Op de rotonde voor je twijfelt een fietser zichtbaar of hij zal oversteken.",
+"zh": "环岛前骑车人明显犹豫是否横穿。",
+"opts_nl": [
+"Remmen",
+"Gas loslaten",
+"Niets"
+],
+"opts_zh": [
+"制动",
+"松油门",
+"什么也不做"
+],
+"juist": 0,
+"uitleg_nl": "Twijfelende fietser op je pad: remmen en oogcontact zoeken.",
+"uitleg_zh": "犹豫的骑车人在你路径上:制动并寻求眼神确认。"
+}
+]

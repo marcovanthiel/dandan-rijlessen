@@ -1,0 +1,1360 @@
+[
+{
+"id": "wetgeving-1",
+"ond": "wetgeving",
+"type": "kennis",
+"nl": "Hoort een fietser bij de bestuurders?",
+"zh": "骑自行车的人属于'驾驶人'(bestuurder)吗?",
+"opts_nl": [
+"Ja",
+"Nee"
+],
+"opts_zh": [
+"是",
+"否"
+],
+"juist": 0,
+"uitleg_nl": "Iedereen die een voertuig bestuurt is bestuurder, ook fietsers.",
+"uitleg_zh": "凡驾驭车辆者都是 bestuurder,包括骑车人。"
+},
+{
+"id": "wetgeving-2",
+"ond": "wetgeving",
+"type": "kennis",
+"nl": "Wat is de maximale toegestane massa die je met alleen rijbewijs B mag rijden?",
+"zh": "仅持 B 照可驾驶的车辆最大总质量是多少?",
+"opts_nl": [
+"2500 kg",
+"3500 kg",
+"4250 kg"
+],
+"opts_zh": [
+"2500 公斤",
+"3500 公斤",
+"4250 公斤"
+],
+"juist": 1,
+"uitleg_nl": "Rijbewijs B geldt tot en met 3500 kg toegestane maximummassa.",
+"uitleg_zh": "B 照上限为总质量 3500 kg。"
+},
+{
+"id": "wetgeving-3",
+"ond": "wetgeving",
+"type": "kennis",
+"nl": "Hoe lang geldt voor de meeste beginnende bestuurders de strengere alcohollimiet van 0,2 promille?",
+"zh": "新手驾驶人 0.2‰ 酒精上限一般适用多少年?",
+"opts_nl": [
+"2 jaar",
+"5 jaar",
+"10 jaar"
+],
+"opts_zh": [
+"2 年",
+"5 年",
+"10 年"
+],
+"juist": 1,
+"uitleg_nl": "De beginnersregeling duurt 5 jaar (7 jaar wie voor z'n 21e begint).",
+"uitleg_zh": "新手期为 5 年(21 岁前取得驾照:7 年)。"
+},
+{
+"id": "wetgeving-4",
+"ond": "wetgeving",
+"type": "kennis",
+"nl": "Een duwer van een fiets aan de hand is volgens de regels een:",
+"zh": "推着自行车步行的人按规则属于:",
+"opts_nl": [
+"bestuurder",
+"voetganger",
+"fietser"
+],
+"opts_zh": [
+"驾驶人",
+"行人",
+"骑车人"
+],
+"juist": 1,
+"uitleg_nl": "Wie een fiets aan de hand meevoert, is voetganger.",
+"uitleg_zh": "推行自行车者按行人对待。"
+},
+{
+"id": "wetgeving-5",
+"ond": "wetgeving",
+"type": "inzicht",
+"nl": "Je wilt met een aanhanger van 1000 kg rijden; je auto heeft een toegestane maximummassa van 2400 kg. Mag dit met rijbewijs B?",
+"zh": "你想拖 1000 kg 挂车,汽车总质量 2400 kg。仅 B 照可以吗?",
+"opts_nl": [
+"Ja",
+"Nee"
+],
+"opts_zh": [
+"是",
+"否"
+],
+"juist": 0,
+"uitleg_nl": "Samen 3400 kg en dat blijft binnen de 3500 kg-grens voor B.",
+"uitleg_zh": "合计 3400 kg,不超过 B 照 3500 kg 上限,可以。"
+},
+{
+"id": "wetgeving-6",
+"ond": "wetgeving",
+"type": "kennis",
+"nl": "Welke verzekering is wettelijk verplicht voor elke auto?",
+"zh": "每辆汽车法定必须投保的是哪种保险?",
+"opts_nl": [
+"allrisk",
+"WA",
+"inzittenden"
+],
+"opts_zh": [
+"全险",
+"第三者责任险(WA)",
+"乘客险"
+],
+"juist": 1,
+"uitleg_nl": "De WA-verzekering dekt schade aan anderen en is verplicht.",
+"uitleg_zh": "WA 第三者责任险为法定强制。"
+},
+{
+"id": "voorrang-1",
+"ond": "voorrang",
+"type": "kennis",
+"nl": "Op een gelijkwaardig kruispunt nadert van rechts een fietser. Wie gaat voor?",
+"zh": "同等路口右侧来了骑车人,谁先行?",
+"opts_nl": [
+"jij",
+"de fietser"
+],
+"opts_zh": [
+"你",
+"骑车人"
+],
+"juist": 1,
+"uitleg_nl": "Bestuurders van rechts gaan voor, ook fietsers.",
+"uitleg_zh": "右侧来的驾驶人优先,包括骑车人。"
+},
+{
+"id": "voorrang-2",
+"ond": "voorrang",
+"type": "kennis",
+"nl": "Je nadert haaientanden. Voor wie moet je stoppen of wachten?",
+"zh": "你驶近鲨鱼齿标线,须让谁先行?",
+"opts_nl": [
+"alleen auto's",
+"alle bestuurders op de kruisende weg",
+"ook voetgangers"
+],
+"opts_zh": [
+"仅汽车",
+"交叉道路上的所有驾驶人",
+"还包括行人"
+],
+"juist": 1,
+"uitleg_nl": "Haaientanden: voorrang verlenen aan bestuurders, niet aan voetgangers.",
+"uitleg_zh": "鲨鱼齿:让所有驾驶人先行,不含行人。"
+},
+{
+"id": "voorrang-3",
+"ond": "voorrang",
+"type": "kennis",
+"nl": "Wat moet je doen bij een stopbord (B7)?",
+"zh": "遇到八角形 STOP 标志必须怎么做?",
+"opts_nl": [
+"afremmen en doorrijden als het vrij is",
+"volledig stoppen, ook als het vrij lijkt"
+],
+"opts_zh": [
+"减速,若无车可通过",
+"完全停车,即使看似无车"
+],
+"juist": 1,
+"uitleg_nl": "Bij B7 altijd volledig tot stilstand komen.",
+"uitleg_zh": "B7 要求完全停车。"
+},
+{
+"id": "voorrang-4",
+"ond": "voorrang",
+"type": "inzicht",
+"nl": "Je slaat rechtsaf. Een fietser op het fietspad naast je gaat rechtdoor. Wie gaat voor?",
+"zh": "你右转,旁边自行车道的骑车人直行,谁先行?",
+"opts_nl": [
+"jij",
+"de fietser"
+],
+"opts_zh": [
+"你",
+"骑车人"
+],
+"juist": 1,
+"uitleg_nl": "Rechtdoorgaand verkeer op dezelfde weg gaat voor afslaand verkeer.",
+"uitleg_zh": "同一道路上直行者优先于转弯者。"
+},
+{
+"id": "voorrang-5",
+"ond": "voorrang",
+"type": "inzicht",
+"nl": "Je rijdt op een onverharde weg en kruist een verharde weg zonder borden. Wie heeft voorrang?",
+"zh": "你从非铺装道路驶向无标志的铺装道路,谁优先?",
+"opts_nl": [
+"jij",
+"verkeer op de verharde weg"
+],
+"opts_zh": [
+"你",
+"铺装道路上的交通"
+],
+"juist": 1,
+"uitleg_nl": "Vanaf een onverharde weg verleen je voorrang aan al het verkeer op de verharde weg.",
+"uitleg_zh": "非铺装路驾驶人让铺装路上所有交通先行。"
+},
+{
+"id": "voorrang-6",
+"ond": "voorrang",
+"type": "kennis",
+"nl": "Een tram nadert op een gelijkwaardig kruispunt van links. Wie gaat voor?",
+"zh": "同等路口电车从左侧驶来,谁先行?",
+"opts_nl": [
+"jij",
+"de tram"
+],
+"opts_zh": [
+"你",
+"电车"
+],
+"juist": 1,
+"uitleg_nl": "De tram gaat op gelijkwaardige kruispunten altijd voor.",
+"uitleg_zh": "同等条件下电车总是优先。"
+},
+{
+"id": "voorrang-7",
+"ond": "voorrang",
+"type": "inzicht",
+"nl": "Je rijdt achteruit een parkeervak uit. Een voetganger loopt achter je auto langs. Wat geldt?",
+"zh": "你倒车驶出车位,行人从车后经过,规则是什么?",
+"opts_nl": [
+"voetganger moet wachten",
+"jij verleent voorrang aan iedereen"
+],
+"opts_zh": [
+"行人应等待",
+"你让所有人先行"
+],
+"juist": 1,
+"uitleg_nl": "Bij bijzondere manoeuvres (achteruitrijden, wegrijden) laat je al het overige verkeer voorgaan.",
+"uitleg_zh": "倒车、起步等特殊操作须让所有其他交通先行。"
+},
+{
+"id": "voorrang-8",
+"ond": "voorrang",
+"type": "kennis",
+"nl": "Binnen de bebouwde kom wil een lijnbus wegrijden van de halte en geeft richting aan. Wat doe je?",
+"zh": "建成区内公交打灯驶离站台,你怎么做?",
+"opts_nl": [
+"doorrijden, jij gaat voor",
+"de bus de gelegenheid geven weg te rijden"
+],
+"opts_zh": [
+"继续行驶,你优先",
+"给公交驶出的机会"
+],
+"juist": 1,
+"uitleg_nl": "Binnen de kom geef je een wegrijdende lijnbus de ruimte.",
+"uitleg_zh": "建成区内应让驶离站台的公交先行。"
+},
+{
+"id": "voorrang-9",
+"ond": "voorrang",
+"type": "inzicht",
+"nl": "Een ambulance met sirene en blauw zwaailicht nadert van achteren in de file. Wat doe je?",
+"zh": "救护车鸣笛闪蓝灯从后方接近拥堵车流,你怎么做?",
+"opts_nl": [
+"blijven staan",
+"rustig ruimte maken, eventueel via de vluchtstrook uitwijken zonder gevaar"
+],
+"opts_zh": [
+"原地不动",
+"冷静让出通道,必要时安全借用紧急车道"
+],
+"juist": 1,
+"uitleg_nl": "Voorrangsvoertuigen laat je veilig en voorspelbaar passeren.",
+"uitleg_zh": "为优先车辆安全、可预期地让路。"
+},
+{
+"id": "voorrang-10",
+"ond": "voorrang",
+"type": "kennis",
+"nl": "Mag je een militaire colonne doorsnijden?",
+"zh": "可以穿插军事纵队吗?",
+"opts_nl": [
+"Ja",
+"Nee"
+],
+"opts_zh": [
+"是",
+"否"
+],
+"juist": 1,
+"uitleg_nl": "Een colonne mag je niet doorsnijden.",
+"uitleg_zh": "不得穿插纵队。"
+},
+{
+"id": "borden-1",
+"ond": "borden",
+"type": "kennis",
+"nl": "Wat betekent een rond bord met rode rand en wit vlak (C1)?",
+"zh": "红圈白底的圆形标志(C1)表示什么?",
+"opts_nl": [
+"eenrichtingsverkeer",
+"gesloten in beide richtingen",
+"parkeerverbod"
+],
+"opts_zh": [
+"单行道",
+"双向禁止通行",
+"禁止泊车"
+],
+"juist": 1,
+"uitleg_nl": "C1 sluit de weg in beide richtingen voor alle verkeer.",
+"uitleg_zh": "C1 表示对所有交通双向封闭。"
+},
+{
+"id": "borden-2",
+"ond": "borden",
+"type": "kennis",
+"nl": "Een blauw rond bord met witte pijl rechtdoor (D4) betekent:",
+"zh": "蓝底白色直行箭头(D4)表示:",
+"opts_nl": [
+"rechtdoor toegestaan",
+"verplicht rechtdoor",
+"voorrangsweg"
+],
+"opts_zh": [
+"允许直行",
+"必须直行",
+"优先道路"
+],
+"juist": 1,
+"uitleg_nl": "Blauwe ronde borden zijn geboden: verplichte rijrichting.",
+"uitleg_zh": "蓝圆是义务标志:必须按箭头方向。"
+},
+{
+"id": "borden-3",
+"ond": "borden",
+"type": "kennis",
+"nl": "Geel bord met zwarte diagonale balk (B2) betekent:",
+"zh": "黄色菱形加黑斜杠(B2)表示:",
+"opts_nl": [
+"einde voorrangsweg",
+"begin voorrangsweg",
+"einde bebouwde kom"
+],
+"opts_zh": [
+"优先道路结束",
+"优先道路开始",
+"建成区结束"
+],
+"juist": 0,
+"uitleg_nl": "B2 beëindigt de voorrangsweg; daarna gelden de gewone regels.",
+"uitleg_zh": "B2 表示优先道路结束,恢复一般规则。"
+},
+{
+"id": "borden-4",
+"ond": "borden",
+"type": "kennis",
+"nl": "Bij bord F5 (rood-wit, rode pijl naar jou gericht) geldt:",
+"zh": "F5 会车标志(红箭头指向你)含义:",
+"opts_nl": [
+"jij gaat voor",
+"tegemoetkomend verkeer gaat voor"
+],
+"opts_zh": [
+"你优先",
+"对向来车优先"
+],
+"juist": 1,
+"uitleg_nl": "De rode pijl wijst de partij aan die moet wachten.",
+"uitleg_zh": "红箭头一方须让行。"
+},
+{
+"id": "borden-5",
+"ond": "borden",
+"type": "kennis",
+"nl": "Wat betekent een onderbord 'uitgezonderd fietsers' onder een verbodsbord?",
+"zh": "禁令标志下方辅助牌'uitgezonderd fietsers'表示?",
+"opts_nl": [
+"verbod geldt extra streng voor fietsers",
+"verbod geldt niet voor fietsers"
+],
+"opts_zh": [
+"对骑车人更严格",
+"禁令不适用于骑车人"
+],
+"juist": 1,
+"uitleg_nl": "'Uitgezonderd' zondert de genoemde groep uit van het verbod.",
+"uitleg_zh": "'uitgezonderd'= 所列群体除外。"
+},
+{
+"id": "borden-6",
+"ond": "borden",
+"type": "kennis",
+"nl": "Gele doorgetrokken streep op de trottoirband betekent:",
+"zh": "路缘石上的黄色实线表示:",
+"opts_nl": [
+"verbod te parkeren",
+"verbod stil te staan",
+"laden en lossen toegestaan"
+],
+"opts_zh": [
+"禁止泊车",
+"禁止停站(含泊车)",
+"允许装卸"
+],
+"juist": 1,
+"uitleg_nl": "Gele doorgetrokken streep: stilstaan verboden, dus ook parkeren.",
+"uitleg_zh": "黄实线:禁止停站,自然也禁止泊车。"
+},
+{
+"id": "borden-7",
+"ond": "borden",
+"type": "inzicht",
+"nl": "Je rijdt een zone 30 binnen. Waar eindigt die zone?",
+"zh": "你驶入 30 区,该限速到哪里结束?",
+"opts_nl": [
+"bij het eerstvolgende kruispunt",
+"bij het einde-zonebord",
+"na 500 meter"
+],
+"opts_zh": [
+"下一个路口",
+"'区结束'标志处",
+"500 米后"
+],
+"juist": 1,
+"uitleg_nl": "Zoneborden gelden tot het bijbehorende einde-zonebord.",
+"uitleg_zh": "区型标志有效至对应的解除牌。"
+},
+{
+"id": "borden-8",
+"ond": "borden",
+"type": "kennis",
+"nl": "In een woonerf (G5) mag je maximaal:",
+"zh": "住宅区(woonerf)内最高车速为:",
+"opts_nl": [
+"15 km/h (stapvoets)",
+"30 km/h",
+"50 km/h"
+],
+"opts_zh": [
+"步行速度(约 15 km/h)",
+"30 km/h",
+"50 km/h"
+],
+"juist": 0,
+"uitleg_nl": "In het erf rijd je stapvoets; voetgangers mogen de hele breedte gebruiken.",
+"uitleg_zh": "woonerf 内须步速行驶,行人可使用整个路面。"
+},
+{
+"id": "borden-9",
+"ond": "borden",
+"type": "kennis",
+"nl": "Haaientanden op het wegdek zonder bord betekenen:",
+"zh": "路面上只有鲨鱼齿、无标志,表示:",
+"opts_nl": [
+"adviessnelheid",
+"voorrang verlenen",
+"oversteekplaats"
+],
+"opts_zh": [
+"建议速度",
+"让行",
+"人行过街处"
+],
+"juist": 1,
+"uitleg_nl": "Haaientanden hebben dezelfde betekenis als bord B6.",
+"uitleg_zh": "鲨鱼齿与 B6 标志同义:让行。"
+},
+{
+"id": "borden-10",
+"ond": "borden",
+"type": "kennis",
+"nl": "Een blok-markering (onderbroken brede strepen) naast je rijstrook markeert vaak:",
+"zh": "车道旁的宽块状虚线通常标示:",
+"opts_nl": [
+"parkeerstrook",
+"fiets- of busstrook",
+"vluchtstrook"
+],
+"opts_zh": [
+"泊车带",
+"自行车道或公交道",
+"紧急停车带"
+],
+"juist": 1,
+"uitleg_nl": "Blokmarkering scheidt vaak fiets-/busstroken van de rijbaan.",
+"uitleg_zh": "块状线常用于自行车道/公交道边界。"
+},
+{
+"id": "lichten-1",
+"ond": "lichten",
+"type": "kennis",
+"nl": "Het verkeerslicht springt op geel als je vlak voor de stopstreep rijdt en hard remmen gevaarlijk is. Wat doe je?",
+"zh": "临近停止线灯变黄,急刹危险,你怎么做?",
+"opts_nl": [
+"toch stoppen",
+"doorrijden"
+],
+"opts_zh": [
+"仍然停车",
+"继续通过"
+],
+"juist": 1,
+"uitleg_nl": "Geel = stoppen, tenzij dat niet meer veilig kan.",
+"uitleg_zh": "黄灯应停,除非已无法安全停下。"
+},
+{
+"id": "lichten-2",
+"ond": "lichten",
+"type": "kennis",
+"nl": "Wat betekent een geel knipperlicht bij een kruispunt?",
+"zh": "路口黄灯闪烁表示什么?",
+"opts_nl": [
+"voorrangsregeling via borden en regels",
+"altijd stoppen",
+"kruispunt gesloten"
+],
+"opts_zh": [
+"按标志与一般规则通行",
+"必须停车",
+"路口封闭"
+],
+"juist": 0,
+"uitleg_nl": "Knipperend geel: wees extra alert en volg borden/basisregels.",
+"uitleg_zh": "黄闪:提高警惕,按标志和基本规则。"
+},
+{
+"id": "lichten-3",
+"ond": "lichten",
+"type": "kennis",
+"nl": "Rode kruizen boven je rijstrook betekenen:",
+"zh": "车道上方红叉表示:",
+"opts_nl": [
+"strook verlaten verplicht, strook gesloten",
+"maximumsnelheid",
+"alleen voor vrachtverkeer"
+],
+"opts_zh": [
+"车道关闭,禁止使用",
+"限速",
+"仅限货车"
+],
+"juist": 0,
+"uitleg_nl": "Een rood kruis sluit de rijstrook; direct verlaten.",
+"uitleg_zh": "红叉 = 车道关闭,立即离开该车道。"
+},
+{
+"id": "lichten-4",
+"ond": "lichten",
+"type": "kennis",
+"nl": "Bij een overweg knippert wit licht. Wat betekent dat?",
+"zh": "铁路道口白灯闪烁表示?",
+"opts_nl": [
+"trein nadert",
+"je mag de overweg passeren",
+"installatie defect"
+],
+"opts_zh": [
+"列车接近",
+"可以通过",
+"设备故障"
+],
+"juist": 1,
+"uitleg_nl": "Wit knipperlicht: overweg vrij, passeren toegestaan.",
+"uitleg_zh": "白闪:道口开放,可通过。"
+},
+{
+"id": "lichten-5",
+"ond": "lichten",
+"type": "kennis",
+"nl": "Een verkeersregelaar geeft een ander teken dan het groene verkeerslicht. Wat volg je?",
+"zh": "交通指挥员手势与绿灯相矛盾,你听谁的?",
+"opts_nl": [
+"het verkeerslicht",
+"de verkeersregelaar"
+],
+"opts_zh": [
+"信号灯",
+"指挥员"
+],
+"juist": 1,
+"uitleg_nl": "Aanwijzingen gaan boven verkeerslichten en borden.",
+"uitleg_zh": "人员指挥高于信号灯与标志。"
+},
+{
+"id": "lichten-6",
+"ond": "lichten",
+"type": "kennis",
+"nl": "Het 'negenoog'-licht boven de weg geldt voor:",
+"zh": "九孔灯(negenoog)适用于:",
+"opts_nl": [
+"alle bestuurders",
+"bussen en trams",
+"fietsers"
+],
+"opts_zh": [
+"所有驾驶人",
+"公交与电车",
+"骑车人"
+],
+"juist": 1,
+"uitleg_nl": "Het negenoog regelt alleen bus- en tramverkeer.",
+"uitleg_zh": "九孔灯只针对公交与电车。"
+},
+{
+"id": "snelheid-1",
+"ond": "snelheid",
+"type": "kennis",
+"nl": "Wat is overdag (06:00-19:00) de standaardlimiet op de autosnelweg?",
+"zh": "白天(06:00-19:00)高速公路的标准限速?",
+"opts_nl": [
+"100 km/h",
+"120 km/h",
+"130 km/h"
+],
+"opts_zh": [
+"100 km/h",
+"120 km/h",
+"130 km/h"
+],
+"juist": 0,
+"uitleg_nl": "Overdag geldt 100; 's avonds en 's nachts vaak 130 (borden gaan voor).",
+"uitleg_zh": "白天 100;晚间多为 130,以标志为准。"
+},
+{
+"id": "snelheid-2",
+"ond": "snelheid",
+"type": "kennis",
+"nl": "Standaardlimiet binnen de bebouwde kom (zonder zoneborden):",
+"zh": "无区型标志时建成区内的标准限速:",
+"opts_nl": [
+"30 km/h",
+"50 km/h",
+"70 km/h"
+],
+"opts_zh": [
+"30",
+"50",
+"70"
+],
+"juist": 1,
+"uitleg_nl": "Binnen de kom geldt 50, tenzij borden anders zeggen.",
+"uitleg_zh": "建成区默认 50,标志优先。"
+},
+{
+"id": "snelheid-3",
+"ond": "snelheid",
+"type": "kennis",
+"nl": "Vuistregel veilige volgafstand bij droog weer:",
+"zh": "干燥天气下安全跟车距离的经验法则:",
+"opts_nl": [
+"1 seconde",
+"2 seconden",
+"5 seconden"
+],
+"opts_zh": [
+"1 秒",
+"2 秒",
+"5 秒"
+],
+"juist": 1,
+"uitleg_nl": "Minimaal 2 seconden; bij regen of duisternis meer.",
+"uitleg_zh": "至少 2 秒;雨天、夜间加大。"
+},
+{
+"id": "snelheid-4",
+"ond": "snelheid",
+"type": "inzicht",
+"nl": "Je snelheid verdubbelt van 50 naar 100 km/h. Je remweg wordt ongeveer:",
+"zh": "车速从 50 提到 100,制动距离大约:",
+"opts_nl": [
+"2 keer zo lang",
+"4 keer zo lang",
+"gelijk"
+],
+"opts_zh": [
+"2 倍",
+"4 倍",
+"不变"
+],
+"juist": 1,
+"uitleg_nl": "Remweg groeit met het kwadraat van de snelheid.",
+"uitleg_zh": "制动距离与速度平方成正比。"
+},
+{
+"id": "snelheid-5",
+"ond": "snelheid",
+"type": "inzicht",
+"nl": "Het begint net te regenen na een droge week. Het wegdek is dan:",
+"zh": "干燥一周后刚开始下雨,路面此时:",
+"opts_nl": [
+"direct goed stroef",
+"juist extra glad door vuil en olie",
+"alleen glad bij vorst"
+],
+"opts_zh": [
+"立即恢复抓地",
+"因油污格外滑",
+"只有结冰才滑"
+],
+"juist": 1,
+"uitleg_nl": "De eerste regen maakt een vuile weg spekglad.",
+"uitleg_zh": "初雨与油污混合,路面最滑。"
+},
+{
+"id": "snelheid-6",
+"ond": "snelheid",
+"type": "inzicht",
+"nl": "Je stuur voelt plotseling licht bij zware regen (aquaplaning). Wat doe je?",
+"zh": "暴雨中方向盘突然变轻(水滑),你怎么做?",
+"opts_nl": [
+"hard remmen",
+"gas loslaten en stuur recht houden",
+"sterk tegensturen"
+],
+"opts_zh": [
+"急刹",
+"松油门并稳住方向",
+"大幅反打方向"
+],
+"juist": 1,
+"uitleg_nl": "Bij aquaplaning: gas los, niet remmen, koers vasthouden.",
+"uitleg_zh": "水滑时松油门、不急刹、稳住方向。"
+},
+{
+"id": "snelheid-7",
+"ond": "snelheid",
+"type": "kennis",
+"nl": "Reactietijd is ongeveer 1 seconde. Hoeveel meter leg je af bij 100 km/h voordat je remt?",
+"zh": "反应约 1 秒:100 km/h 时反应距离约多少米?",
+"opts_nl": [
+"ongeveer 14 m",
+"ongeveer 28 m",
+"ongeveer 56 m"
+],
+"opts_zh": [
+"约 14 米",
+"约 28 米",
+"约 56 米"
+],
+"juist": 1,
+"uitleg_nl": "100 km/h is ~28 m/s: één seconde reactie = 28 meter.",
+"uitleg_zh": "100 km/h ≈ 28 米/秒,1 秒即 28 米。"
+},
+{
+"id": "snelheid-8",
+"ond": "snelheid",
+"type": "inzicht",
+"nl": "Achter je rijdt een bumperklever. Verstandig is:",
+"zh": "后车紧贴(bumperkleven),明智做法:",
+"opts_nl": [
+"remmen om te waarschuwen",
+"voorwaarts extra afstand opbouwen",
+"sneller gaan rijden"
+],
+"opts_zh": [
+"点刹警告",
+"加大与前车的距离",
+"提高车速"
+],
+"juist": 1,
+"uitleg_nl": "Meer ruimte vóór je compenseert de verloren ruimte achter je.",
+"uitleg_zh": "加大前方距离弥补后方安全余量。"
+},
+{
+"id": "inhalen-1",
+"ond": "inhalen",
+"type": "kennis",
+"nl": "Aan welke kant haal je in principe in?",
+"zh": "原则上从哪一侧超车?",
+"opts_nl": [
+"links",
+"rechts"
+],
+"opts_zh": [
+"左侧",
+"右侧"
+],
+"juist": 0,
+"uitleg_nl": "Inhalen doe je links; rechts alleen in de uitzonderingsgevallen.",
+"uitleg_zh": "原则左超,右超仅限例外。"
+},
+{
+"id": "inhalen-2",
+"ond": "inhalen",
+"type": "inzicht",
+"nl": "De auto voor je staat links voorgesorteerd om af te slaan. Mag je rechts passeren?",
+"zh": "前车已靠左准备左转,你可以从右侧通过吗?",
+"opts_nl": [
+"Ja",
+"Nee"
+],
+"opts_zh": [
+"是",
+"否"
+],
+"juist": 0,
+"uitleg_nl": "Links voorgesorteerd verkeer mag je rechts inhalen.",
+"uitleg_zh": "前车明确靠左转弯时允许右侧通过。"
+},
+{
+"id": "inhalen-3",
+"ond": "inhalen",
+"type": "kennis",
+"nl": "Mag je vlak voor een voetgangersoversteekplaats inhalen?",
+"zh": "可以在人行横道前超车吗?",
+"opts_nl": [
+"Ja",
+"Nee"
+],
+"opts_zh": [
+"是",
+"否"
+],
+"juist": 1,
+"uitleg_nl": "Inhalen vlak voor een zebra is verboden: zicht op overstekers ontbreekt.",
+"uitleg_zh": "斑马线前禁止超车:看不见过街行人。"
+},
+{
+"id": "inhalen-4",
+"ond": "inhalen",
+"type": "kennis",
+"nl": "Bij het verlaten van een rotonde geef je richting aan:",
+"zh": "驶离环岛时打转向灯:",
+"opts_nl": [
+"naar links",
+"naar rechts",
+"niet nodig"
+],
+"opts_zh": [
+"向左",
+"向右",
+"不需要"
+],
+"juist": 1,
+"uitleg_nl": "Afslaan van de rotonde = richting rechts aangeven.",
+"uitleg_zh": "离开环岛打右转向灯。"
+},
+{
+"id": "inhalen-5",
+"ond": "inhalen",
+"type": "kennis",
+"nl": "Bij een rijstrookversmalling gebruik je de ritsmethode. Waar voeg je in?",
+"zh": "车道缩减用拉链法,应在哪里并线?",
+"opts_nl": [
+"zo vroeg mogelijk",
+"pas bij de versmalling zelf"
+],
+"opts_zh": [
+"越早越好",
+"到并道点再交替并入"
+],
+"juist": 1,
+"uitleg_nl": "Ritsen: doorrijden tot het einde en om en om invoegen.",
+"uitleg_zh": "拉链:行驶至并道点,交替并入。"
+},
+{
+"id": "inhalen-6",
+"ond": "inhalen",
+"type": "inzicht",
+"nl": "Je haalt een fietser in binnen de kom. Hoeveel zijdelingse ruimte houd je minimaal aan?",
+"zh": "建成区内超越骑车人,至少留多少横向距离?",
+"opts_nl": [
+"ongeveer 0,3 m",
+"ongeveer 1 m",
+"2,5 m"
+],
+"opts_zh": [
+"约 0.3 米",
+"约 1 米",
+"2.5 米"
+],
+"juist": 1,
+"uitleg_nl": "Vuistregel: 1 meter binnen, 1,5 meter buiten de kom.",
+"uitleg_zh": "经验值:市内 1 米,市外 1.5 米。"
+},
+{
+"id": "parkeren-1",
+"ond": "parkeren",
+"type": "kennis",
+"nl": "Binnen hoeveel meter van een voetgangersoversteekplaats mag je niet stilstaan?",
+"zh": "距人行横道多少米内禁止停站?",
+"opts_nl": [
+"5 m",
+"10 m",
+"15 m"
+],
+"opts_zh": [
+"5 米",
+"10 米",
+"15 米"
+],
+"juist": 0,
+"uitleg_nl": "Binnen 5 meter voor een zebra is stilstaan verboden.",
+"uitleg_zh": "斑马线前 5 米内禁止停站。"
+},
+{
+"id": "parkeren-2",
+"ond": "parkeren",
+"type": "kennis",
+"nl": "Het verschil tussen stilstaan en parkeren: laden en lossen valt onder:",
+"zh": "停站与泊车的区别:装卸货物属于:",
+"opts_nl": [
+"parkeren",
+"stilstaan"
+],
+"opts_zh": [
+"泊车",
+"停站"
+],
+"juist": 1,
+"uitleg_nl": "Zolang je laadt/lost of laat in- en uitstappen is het stilstaan.",
+"uitleg_zh": "装卸或上下客期间属停站。"
+},
+{
+"id": "parkeren-3",
+"ond": "parkeren",
+"type": "kennis",
+"nl": "In een blauwe zone parkeer je met:",
+"zh": "蓝区泊车需要:",
+"opts_nl": [
+"parkeerschijf",
+"alarmlichten",
+"ontheffing altijd"
+],
+"opts_zh": [
+"停车盘",
+"警示灯",
+"特许证"
+],
+"juist": 0,
+"uitleg_nl": "Blauwe zone: parkeerschijf met aankomsttijd, binnen de maximale duur.",
+"uitleg_zh": "蓝区须放置停车盘并遵守时长。"
+},
+{
+"id": "parkeren-4",
+"ond": "parkeren",
+"type": "inzicht",
+"nl": "Je opent je portier aan de rijbaankant. De veiligste methode is:",
+"zh": "在行车道一侧开车门,最安全的方法:",
+"opts_nl": [
+"snel openen",
+"met de verre hand openen en over je schouder kijken",
+"eerst claxonneren"
+],
+"opts_zh": [
+"快速开门",
+"用远侧手开门并回头观察",
+"先按喇叭"
+],
+"juist": 1,
+"uitleg_nl": "De 'dutch reach' dwingt je om te kijken naar fietsers.",
+"uitleg_zh": "荷兰式开门法迫使你回头看骑车人。"
+},
+{
+"id": "parkeren-5",
+"ond": "parkeren",
+"type": "kennis",
+"nl": "Pech op de autosnelweg: waar wacht je op hulp?",
+"zh": "高速故障后,人应在哪里等待救援?",
+"opts_nl": [
+"in de auto",
+"achter de vangrail",
+"naast de auto op de vluchtstrook"
+],
+"opts_zh": [
+"车内",
+"护栏外",
+"紧急车道车旁"
+],
+"juist": 1,
+"uitleg_nl": "Achter de vangrail is de enige veilige wachtplek.",
+"uitleg_zh": "护栏之外才是安全等待处。"
+},
+{
+"id": "parkeren-6",
+"ond": "parkeren",
+"type": "kennis",
+"nl": "Op hoeveel meter plaats je buiten de bebouwde kom je gevarendriehoek?",
+"zh": "建成区外三角警示牌放在车后约多少米?",
+"opts_nl": [
+"10 m",
+"30 m",
+"100 m"
+],
+"opts_zh": [
+"10 米",
+"30 米",
+"100 米"
+],
+"juist": 1,
+"uitleg_nl": "Ongeveer 30 meter (op autosnelwegen ~100 m).",
+"uitleg_zh": "普通道路约 30 米(高速约 100 米)。"
+},
+{
+"id": "kwetsbaar-1",
+"ond": "kwetsbaar",
+"type": "inzicht",
+"nl": "Een bal rolt tussen geparkeerde auto's de straat op. Wat verwacht je?",
+"zh": "皮球从停车带滚上路面,你预判什么?",
+"opts_nl": [
+"niets bijzonders",
+"een kind dat erachteraan komt",
+"een hond"
+],
+"opts_zh": [
+"无特别",
+"孩子会追出来",
+"狗"
+],
+"juist": 1,
+"uitleg_nl": "Bal = kind: snelheid eruit en remklaar.",
+"uitleg_zh": "见球想到孩子:减速、备刹。"
+},
+{
+"id": "kwetsbaar-2",
+"ond": "kwetsbaar",
+"type": "kennis",
+"nl": "Een speed-pedelec (geel plaatje) hoort op:",
+"zh": "speed-pedelec(黄色小牌)应行驶在:",
+"opts_nl": [
+"het fietspad",
+"de rijbaan volgens de bromfietsregels",
+"het trottoir"
+],
+"opts_zh": [
+"自行车道",
+"按轻便摩托规则走车行道",
+"人行道"
+],
+"juist": 1,
+"uitleg_nl": "De speed-pedelec valt onder de bromfietsregels.",
+"uitleg_zh": "speed-pedelec 按 bromfiets 规则。"
+},
+{
+"id": "kwetsbaar-3",
+"ond": "kwetsbaar",
+"type": "inzicht",
+"nl": "Een vrachtwagen voor je wil rechts afslaan en zwenkt eerst naar links. Wat doe je?",
+"zh": "前方卡车要右转却先向左摆,你怎么做?",
+"opts_nl": [
+"snel rechts erlangs",
+"ruimte geven en er niet naast gaan staan",
+"claxonneren"
+],
+"opts_zh": [
+"赶紧从右侧通过",
+"保持距离,不要停在其侧面",
+"按喇叭"
+],
+"juist": 1,
+"uitleg_nl": "Vrachtwagens maken een wijde bocht; rechts ernaast is de dode hoek.",
+"uitleg_zh": "卡车转弯外摆,右侧是盲区。"
+},
+{
+"id": "kwetsbaar-4",
+"ond": "kwetsbaar",
+"type": "inzicht",
+"nl": "Bij een basisschool om 8:25 uur rijd je:",
+"zh": "上学时段经过小学门口,你应:",
+"opts_nl": [
+"de normale limiet",
+"duidelijk langzamer en remklaar",
+"alleen langzamer bij zebra's"
+],
+"opts_zh": [
+"按常规限速",
+"明显减速并备刹",
+"只在斑马线减速"
+],
+"juist": 1,
+"uitleg_nl": "Schoolomgeving op breng- en haaltijden vraagt lage snelheid.",
+"uitleg_zh": "接送时段的校区须低速高警惕。"
+},
+{
+"id": "kwetsbaar-5",
+"ond": "kwetsbaar",
+"type": "kennis",
+"nl": "Een scootmobiel mag rijden op:",
+"zh": "残障代步车可行驶于:",
+"opts_nl": [
+"alleen het trottoir",
+"trottoir, fietspad én rijbaan",
+"alleen het fietspad"
+],
+"opts_zh": [
+"仅人行道",
+"人行道、自行车道和车行道",
+"仅自行车道"
+],
+"juist": 1,
+"uitleg_nl": "Scootmobielen mogen op alle drie; houd overal rekening met ze.",
+"uitleg_zh": "三处皆可,须处处留意。"
+},
+{
+"id": "kwetsbaar-6",
+"ond": "kwetsbaar",
+"type": "inzicht",
+"nl": "Een oudere fietser slingert licht bij het opstappen. Jij:",
+"zh": "年长骑车人起步摇晃,你:",
+"opts_nl": [
+"haalt direct krap in",
+"wacht en passeert ruim",
+"belt/claxonneert"
+],
+"opts_zh": [
+"立即贴身超越",
+"稍等并宽距通过",
+"鸣笛"
+],
+"juist": 1,
+"uitleg_nl": "Extra ruimte en geduld bij instabiele fietsers.",
+"uitleg_zh": "对不稳的骑行者多给空间与耐心。"
+},
+{
+"id": "mens-1",
+"ond": "mens",
+"type": "kennis",
+"nl": "De wettelijke alcohollimiet voor een ervaren bestuurder is:",
+"zh": "经验驾驶人的法定酒精上限:",
+"opts_nl": [
+"0,2 promille",
+"0,5 promille",
+"0,8 promille"
+],
+"opts_zh": [
+"0.2‰",
+"0.5‰",
+"0.8‰"
+],
+"juist": 1,
+"uitleg_nl": "0,5 promille; beginners 0,2.",
+"uitleg_zh": "0.5‰;新手 0.2‰。"
+},
+{
+"id": "mens-2",
+"ond": "mens",
+"type": "kennis",
+"nl": "Koffie, frisse lucht of een korte wandeling na alcoholgebruik:",
+"zh": "饮酒后喝咖啡、吹风、散步:",
+"opts_nl": [
+"versnellen de afbraak",
+"veranderen niets aan het promillage",
+"halveren het promillage"
+],
+"opts_zh": [
+"加速分解",
+"不改变血液酒精浓度",
+"减半"
+],
+"juist": 1,
+"uitleg_nl": "Alleen tijd breekt alcohol af (~1 glas per uur).",
+"uitleg_zh": "只有时间能分解酒精(约每小时 1 杯)。"
+},
+{
+"id": "mens-3",
+"ond": "mens",
+"type": "kennis",
+"nl": "Medicijnen met een gele waarschuwingssticker:",
+"zh": "贴黄色警示标签的药物:",
+"opts_nl": [
+"zijn altijd verboden",
+"kunnen de rijvaardigheid beïnvloeden; lees de bijsluiter",
+"gelden alleen voor vrachtwagenchauffeurs"
+],
+"opts_zh": [
+"一律禁驾",
+"可能影响驾驶能力,须阅读说明",
+"只针对货车司机"
+],
+"juist": 1,
+"uitleg_nl": "Gele sticker = mogelijk rijgevaarlijk; overleg met apotheek.",
+"uitleg_zh": "黄标 = 可能影响驾驶,咨询药师。"
+},
+{
+"id": "mens-4",
+"ond": "mens",
+"type": "inzicht",
+"nl": "Je merkt dat je gaapt en de rijstrook niet strak houdt. De enige effectieve maatregel is:",
+"zh": "你开始打哈欠、车道保持不稳,唯一有效对策:",
+"opts_nl": [
+"muziek harder",
+"raam open",
+"stoppen en kort slapen"
+],
+"opts_zh": [
+"调大音乐",
+"开窗",
+"停车小睡"
+],
+"juist": 2,
+"uitleg_nl": "Alleen slaap helpt tegen vermoeidheid.",
+"uitleg_zh": "只有睡眠能对抗疲劳。"
+},
+{
+"id": "mens-5",
+"ond": "mens",
+"type": "kennis",
+"nl": "Handheld bellen op de fiets is:",
+"zh": "骑自行车手持打电话:",
+"opts_nl": [
+"toegestaan",
+"verboden"
+],
+"opts_zh": [
+"允许",
+"禁止"
+],
+"juist": 1,
+"uitleg_nl": "Het appverbod geldt voor alle bestuurders, ook fietsers.",
+"uitleg_zh": "手持手机禁令适用于所有驾驶人,含骑车人。"
+},
+{
+"id": "mens-6",
+"ond": "mens",
+"type": "inzicht",
+"nl": "Twee seconden op je telefoon kijken bij 100 km/h betekent blind rijden over ongeveer:",
+"zh": "100 km/h 时看手机 2 秒,相当于盲驶约:",
+"opts_nl": [
+"6 meter",
+"28 meter",
+"56 meter"
+],
+"opts_zh": [
+"6 米",
+"28 米",
+"56 米"
+],
+"juist": 2,
+"uitleg_nl": "2 x 28 meter per seconde is ruim een half voetbalveld.",
+"uitleg_zh": "2 × 28 米,超过半个足球场。"
+},
+{
+"id": "voertuig-1",
+"ond": "voertuig",
+"type": "kennis",
+"nl": "De wettelijke minimale profieldiepte van autobanden is:",
+"zh": "轮胎法定最小花纹深度:",
+"opts_nl": [
+"1,0 mm",
+"1,6 mm",
+"2,4 mm"
+],
+"opts_zh": [
+"1.0 毫米",
+"1.6 毫米",
+"2.4 毫米"
+],
+"juist": 1,
+"uitleg_nl": "Minimaal 1,6 mm; eerder vervangen is veiliger.",
+"uitleg_zh": "法定 1.6 mm,更早更换更安全。"
+},
+{
+"id": "voertuig-2",
+"ond": "voertuig",
+"type": "kennis",
+"nl": "Mistachterlicht mag alleen bij zicht onder:",
+"zh": "后雾灯仅当能见度低于多少时使用:",
+"opts_nl": [
+"50 m",
+"100 m",
+"200 m"
+],
+"opts_zh": [
+"50 米",
+"100 米",
+"200 米"
+],
+"juist": 0,
+"uitleg_nl": "Mistachterlicht: zicht < 50 m; mistvoorlichten < 200 m (of sneeuw).",
+"uitleg_zh": "后雾灯 <50 米;前雾灯 <200 米。"
+},
+{
+"id": "voertuig-3",
+"ond": "voertuig",
+"type": "kennis",
+"nl": "Adaptieve cruisecontrol (ACC):",
+"zh": "自适应巡航(ACC):",
+"opts_nl": [
+"stopt altijd voor stilstaande obstakels",
+"houdt afstand maar heeft beperkingen; jij blijft verantwoordelijk",
+"maakt handen vrij"
+],
+"opts_zh": [
+"总能识别静止障碍",
+"保持车距但有局限,责任仍在你",
+"可解放双手"
+],
+"juist": 1,
+"uitleg_nl": "ADAS assisteert; de bestuurder blijft volledig verantwoordelijk.",
+"uitleg_zh": "辅助系统只辅助,责任始终在驾驶人。"
+},
+{
+"id": "voertuig-4",
+"ond": "voertuig",
+"type": "kennis",
+"nl": "Zuinig rijden betekent onder andere:",
+"zh": "经济驾驶包括:",
+"opts_nl": [
+"laat opschakelen bij hoge toeren",
+"vroeg opschakelen rond 2000-2500 toeren",
+"altijd in z'n twee rijden"
+],
+"opts_zh": [
+"高转速换挡",
+"约 2000-2500 转尽早升挡",
+"一直用二挡"
+],
+"juist": 1,
+"uitleg_nl": "Het Nieuwe Rijden: vroeg opschakelen, anticiperen, uitrollen.",
+"uitleg_zh": "新式驾驶:早升挡、预判、滑行。"
+},
+{
+"id": "voertuig-5",
+"ond": "voertuig",
+"type": "inzicht",
+"nl": "Te lage bandenspanning zorgt voor:",
+"zh": "胎压过低会导致:",
+"opts_nl": [
+"kortere remweg",
+"hoger verbruik en slechtere wegligging",
+"betere grip in bochten"
+],
+"opts_zh": [
+"制动更短",
+"油耗升高、操控变差",
+"弯中抓地更好"
+],
+"juist": 1,
+"uitleg_nl": "Zachte banden verbruiken meer en sturen slechter.",
+"uitleg_zh": "低胎压更费油、更难控。"
+},
+{
+"id": "voertuig-6",
+"ond": "voertuig",
+"type": "kennis",
+"nl": "Na een aanrijding met alleen blikschade en discussie over de schuldvraag:",
+"zh": "仅车损但责任有争议的小事故后:",
+"opts_nl": [
+"voertuigen direct verplaatsen",
+"situatie vastleggen (foto's, schadeformulier) en dan de weg vrijmaken",
+"politie is altijd verplicht"
+],
+"opts_zh": [
+"立即挪车",
+"先取证(拍照、事故单)再让出道路",
+"必须报警"
+],
+"juist": 1,
+"uitleg_nl": "Leg vast met foto's en het Europees schadeformulier.",
+"uitleg_zh": "先拍照并填写欧洲事故单。"
+}
+]
