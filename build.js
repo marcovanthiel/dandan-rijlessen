@@ -111,11 +111,24 @@ function parseModule(file){
 }
 
 // ---------- templates ----------
+// favicon: afgeronde tegel met merkverloop en het witte merk-teken 丹 (zelfde als het logo).
+// Origineel, self-hosted SVG — schaalbaar en scherp; valt binnen de CSP (img-src 'self').
+const FAVICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#14488f"/><stop offset="1" stop-color="#1f6feb"/>
+</linearGradient></defs>
+<rect width="64" height="64" rx="14" fill="url(#g)"/>
+<text x="32" y="35" text-anchor="middle" dominant-baseline="central" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif" font-size="42" font-weight="700" fill="#ffffff">丹</text>
+</svg>`;
+
 function head(title, rel){
   return `<!doctype html><html lang="zh"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(SITE.tagZh)}">
+<link rel="icon" type="image/svg+xml" href="${rel}favicon.svg">
+<link rel="apple-touch-icon" href="${rel}favicon.svg">
+<meta name="theme-color" content="#14488f">
 <link rel="stylesheet" href="${rel}assets/style.css">
 </head><body data-nl="on">`;
 }
@@ -329,6 +342,7 @@ function main(){
   fs.copyFileSync(path.join(ASSETS_SRC,'style.css'), path.join(DIST,'assets','style.css'));
   fs.writeFileSync(path.join(DIST,'assets','search.js'), SEARCH_JS);
   fs.writeFileSync(path.join(DIST,'search.json'), JSON.stringify(buildSearch(modules)));
+  fs.writeFileSync(path.join(DIST,'favicon.svg'), FAVICON_SVG);
   // Security-headers + caching (Cloudflare Workers Static Assets / _headers).
   // Strikte CSP: alle scripts/styles/fonts self-hosted; inline style-attributen
   // vereisen style-src 'unsafe-inline'. Geen externe bronnen.
