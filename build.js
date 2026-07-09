@@ -17,6 +17,26 @@ const SITE = {
   domain: "artnijmegen.nl",
 };
 
+// ---------- boek-paginanummers (startpagina per onderdeel) ----------
+const PAGE_BY_STEP = {
+  '1':31,'2':37,'3':42,'4':45,'5':47,'6':50,'7':53,'8':56,'9':60,'10':62,
+  '11':67,'12':71,'13':75,'14':78,'15':81,'16':85,'17':88,'18':92,
+  '19':96,'20':103,'21':106,'22':111,'23':115,'24':119,'25':126,'26':134,
+  '27a':137,'27b':140,'28':145,'29a':156,'29b':159,
+  '30':163,'31':168,'32':172,'33':176,'34':182,'35':186,'36':190,'37':193,'38':197,'39':200,
+  '40':207,'41':210,'42':212,'43':214,'44':217,'45':220,'46':222
+};
+// module-intro pagina's (geen script-kaart, wijzen naar bovenkant modulepagina)
+const MODULE_INTRO_PAGE = { '2':95, '3':162, '4':206 };
+function pageForScript(step, zh){
+  if(step && PAGE_BY_STEP[step]!=null) return PAGE_BY_STEP[step];
+  if(/学习方法|Het leermodel/.test(zh)) return 1;     // voorwoord/leermodel (p.1–30; taakprocessen p.5)
+  if(/路考|rijexamen/i.test(zh)) return 225;
+  if(/辅助|安全系统|ADAS/i.test(zh)) return 227;
+  if(/巩固|练习|oefening/i.test(zh)) return 233;
+  return null;
+}
+
 // ---------- tiny markdown helpers (subset) ----------
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function inline(s){
@@ -108,7 +128,8 @@ function header(rel, modules){
   <nav>
     <a href="${rel}index.html">首页 Home</a>
     ${nav}
-    <label class="searchbox">🔍<input id="q" type="search" placeholder="搜索 / zoeken" autocomplete="off"></label>
+    <a href="${rel}boek-index.html">📖 书页</a>
+    <label class="searchbox">🔍<input id="q" type="search" placeholder="搜索 / zoeken · 页码" autocomplete="off"></label>
   </nav>
   </div>
   <div id="results" class="container" style="display:none"></div>
@@ -151,15 +172,17 @@ function renderIndex(modules){
 
 function renderModule(m, modules){
   const toc = m.scripts.map(s=>{
-    const id='s'+(s.step||slug(s.zh));
     const label = (s.step?('步骤 '+s.step+' · '):'')+ s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,'');
-    return `<li><a href="#${id}">${esc(label)}</a></li>`;
+    return `<li><a href="#${s.id}">${s.page?`<span class="tocpage">p.${s.page}</span> `:''}${esc(label)}</a></li>`;
   }).join('');
   const cards = m.scripts.map(s=>{
-    const id='s'+(s.step||slug(s.zh));
     const zhTitle = s.zh;
-    return `<article class="script" id="${id}">
-      <h2>${s.step?`<span class="step">步骤 ${esc(s.step)}</span> · `:''}${esc(zhTitle.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''))}</h2>
+    const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
+    return `<article class="script" id="${s.id}" data-page="${s.page||''}">
+      <div class="script-top">
+        <h2>${s.step?`<span class="step">步骤 ${esc(s.step)}</span> · `:''}${esc(zhTitle.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''))}</h2>
+        ${pageBadge}
+      </div>
       ${s.nl?`<div class="nl-title nl-only">${esc(s.nl)}</div>`:''}
       ${bodyToHtml(s.body)}
     </article>`;
@@ -184,6 +207,50 @@ function renderModule(m, modules){
 }
 function slug(s){return s.replace(/[^\w一-龥]+/g,'-').slice(0,24);}
 
+// ---------- boek-paginamap ----------
+const TOTAL_PAGES = 264;
+function buildPageMap(modules){
+  const pts=[];
+  for(const m of modules) for(const s of m.scripts){
+    if(s.page!=null) pts.push({page:s.page, url:m.slug+'.html#'+s.id, label:s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''), nl:s.nl, module:m.modNum, step:s.step});
+  }
+  for(const [num,pg] of Object.entries(MODULE_INTRO_PAGE)){
+    const m=modules.find(x=>String(x.modNum)===num); if(m) pts.push({page:pg, url:m.slug+'.html', label:m.modZh+' · 模块导言', nl:m.modNl, module:m.modNum, step:''});
+  }
+  pts.sort((a,b)=>a.page-b.page);
+  // ranges: elke pagina tot de volgende start
+  for(let i=0;i<pts.length;i++){ pts[i].from=pts[i].page; pts[i].to=(i+1<pts.length?pts[i+1].page-1:TOTAL_PAGES); }
+  return pts;
+}
+function renderBookIndex(pmap, modules){
+  const rows = pmap.map(e=>{
+    const range = e.from===e.to?('p.'+e.from):('p.'+e.from+'–'+e.to);
+    return `<tr id="p${e.from}">
+      <td class="pcol"><span class="pill">${range}</span></td>
+      <td>${e.step?`步骤 ${esc(e.step)} · `:''}<a href="${e.url}">${esc(e.label)}</a>${e.nl?`<div class="nl nl-only">${esc(e.nl)}</div>`:''}</td>
+      <td class="mcol">模块 ${e.module}</td>
+    </tr>`;
+  }).join('\n');
+  return head('按书页查找 · '+SITE.titleZh,'')
+    + header('',modules)
+    + `<main><div class="container">
+        <div class="crumbs"><a href="index.html">首页</a> › 按书页查找</div>
+        <h1>按书页查找 <span class="nl-only" style="color:var(--muted);font-size:1rem">· Zoek op boekpagina</span></h1>
+        <div class="note">在原书里翻到某一页？输入页码，直接跳到网站上对应的讲解。<br>
+        <span class="nl-only">Sla het boek open op een pagina en spring naar de bijbehorende uitleg op de site.</span></div>
+        <div class="pagefind">
+          <label>书页码 / boekpagina (1–${TOTAL_PAGES}): <input id="pageq" type="number" min="1" max="${TOTAL_PAGES}" placeholder="bv. 5"></label>
+          <button id="pagego">跳转 / ga</button>
+          <span id="pagemsg" class="pagemsg"></span>
+        </div>
+        <table class="pagetable">
+          <thead><tr><th>书页 / boek</th><th>onderwerp · 内容</th><th>模块</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div></main>`
+    + footer();
+}
+
 // ---------- search index + client ----------
 function buildSearch(modules){
   const idx=[];
@@ -197,24 +264,39 @@ function buildSearch(modules){
 }
 const SEARCH_JS = `
 (function(){
-  var q=document.getElementById('q'), box=document.getElementById('results'); if(!q) return;
-  var data=null;
-  function load(cb){ if(data) return cb(); fetch('search.json').then(r=>r.json()).then(d=>{data=d;cb();}).catch(()=>{}); }
-  function render(list){
-    if(!list.length){ box.style.display='none'; return; }
-    box.innerHTML = list.slice(0,12).map(function(x){
-      return '<a class="card" style="display:block;margin:8px 0" href="'+x.u+'"><strong>'+x.t+'</strong><br><span style="color:#5b6b7b;font-size:.85rem">'+x.m+' · '+x.body.slice(0,90)+'…</span></a>';
-    }).join('');
-    box.style.display='block';
-  }
-  q.addEventListener('input',function(){
-    var v=q.value.trim().toLowerCase(); if(v.length<1){box.style.display='none';return;}
-    load(function(){
-      var res=data.filter(function(x){return (x.t+' '+x.body).toLowerCase().indexOf(v)>=0;});
-      render(res);
+  var data=null, pmap=null;
+  function loadSearch(cb){ if(data) return cb(); fetch('search.json').then(r=>r.json()).then(d=>{data=d;cb();}).catch(()=>{}); }
+  function loadPmap(cb){ if(pmap) return cb(pmap); fetch('pagemap.json').then(r=>r.json()).then(d=>{pmap=d;cb(pmap);}).catch(()=>cb(null)); }
+  function findPage(n){ if(!pmap) return null; for(var i=0;i<pmap.length;i++){ if(n>=pmap[i].from && n<=pmap[i].to) return pmap[i]; } return null; }
+
+  // Header zoekbalk (tekst + paginanummer)
+  var q=document.getElementById('q'), box=document.getElementById('results');
+  if(q){
+    function render(html){ box.innerHTML=html; box.style.display=html?'block':'none'; }
+    q.addEventListener('input',function(){
+      var v=q.value.trim(); if(v.length<1){render('');return;}
+      if(/^[0-9]{1,3}$/.test(v)){
+        loadPmap(function(){ var e=findPage(parseInt(v,10));
+          if(e){ render('<a class="card" style="display:block;margin:8px 0" href="'+e.url+'"><strong>📖 书第 '+v+' 页 → '+e.label+'</strong><br><span style="color:#5b6b7b;font-size:.85rem">模块'+e.module+' · p.'+e.from+(e.from!==e.to?('–'+e.to):'')+'</span></a>'); }
+          else render('<div class="card" style="margin:8px 0;color:#5b6b7b">页码超出范围 / pagina buiten bereik</div>');
+        }); return;
+      }
+      loadSearch(function(){
+        var lv=v.toLowerCase();
+        var res=data.filter(function(x){return (x.t+' '+x.body).toLowerCase().indexOf(lv)>=0;});
+        render(res.slice(0,12).map(function(x){
+          return '<a class="card" style="display:block;margin:8px 0" href="'+x.u+'"><strong>'+x.t+'</strong><br><span style="color:#5b6b7b;font-size:.85rem">'+x.m+' · '+x.body.slice(0,90)+'…</span></a>';
+        }).join(''));
+      });
     });
-  });
-  document.addEventListener('click',function(e){ if(!box.contains(e.target)&&e.target!==q) box.style.display='none'; });
+    document.addEventListener('click',function(e){ if(box && !box.contains(e.target)&&e.target!==q) box.style.display='none'; });
+  }
+
+  // boek-index: paginazoeker
+  var pq=document.getElementById('pageq'), go=document.getElementById('pagego'), msg=document.getElementById('pagemsg');
+  function jump(){ var n=parseInt(pq.value,10); if(!n){return;} loadPmap(function(){ var e=findPage(n);
+    if(e){ msg.textContent=''; window.location.href=e.url; } else { msg.textContent='页码超出范围 / buiten bereik (1–264)'; } }); }
+  if(go){ go.addEventListener('click',jump); pq.addEventListener('keydown',function(e){ if(e.key==='Enter') jump(); }); }
 })();
 `;
 
@@ -224,9 +306,18 @@ function main(){
   const files = fs.readdirSync(CONTENT).filter(f=>/\.md$/i.test(f)).sort();
   let modules = files.map(f=>parseModule(path.join(CONTENT,f)));
   modules.sort((a,b)=>Number(a.modNum)-Number(b.modNum));
+  // assign stable ids + boek-paginanummers per onderdeel
+  for(const m of modules) for(const s of m.scripts){
+    s.id = 's'+(s.step||slug(s.zh));
+    s.page = pageForScript(s.step, s.zh);
+  }
+  // paginamap boek -> website
+  const pmap = buildPageMap(modules);
   // pages
   fs.writeFileSync(path.join(DIST,'index.html'), renderIndex(modules));
   for(const m of modules) fs.writeFileSync(path.join(DIST,m.slug+'.html'), renderModule(m,modules));
+  fs.writeFileSync(path.join(DIST,'boek-index.html'), renderBookIndex(pmap, modules));
+  fs.writeFileSync(path.join(DIST,'pagemap.json'), JSON.stringify(pmap));
   // assets
   fs.copyFileSync(path.join(ASSETS_SRC,'style.css'), path.join(DIST,'assets','style.css'));
   fs.writeFileSync(path.join(DIST,'assets','search.js'), SEARCH_JS);

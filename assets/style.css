@@ -92,3 +92,25 @@ footer.site{border-top:1px solid var(--line);background:var(--card);padding:26px
 .crumbs{margin:0 0 14px;font-size:.9rem;color:var(--muted)}
 .pill{display:inline-block;background:var(--accent);color:var(--brand-dark);border-radius:999px;padding:2px 10px;font-size:.8rem;font-weight:600}
 mark{background:#fff3b0;padding:0 2px;border-radius:3px}
+
+/* boek-paginakoppeling */
+.script-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.bookpage{flex:0 0 auto;background:#fff7e6;border:1px solid #ffe0a6;color:#8a5a00;
+  border-radius:999px;padding:3px 10px;font-size:.8rem;font-weight:600;white-space:nowrap;text-decoration:none}
+.bookpage:hover{background:#ffeccc;text-decoration:none}
+.tocpage{color:#8a5a00;font-weight:700;font-size:.8em;margin-right:2px}
+.pagefind{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);
+  padding:16px 18px;margin:16px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pagefind input{width:120px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:1rem}
+.pagefind button{background:var(--brand);color:#fff;border:0;border-radius:8px;padding:9px 16px;font-size:.95rem;cursor:pointer}
+.pagefind button:hover{background:var(--brand-dark)}
+.pagemsg{color:var(--warn);font-size:.9rem}
+.pagetable{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.pagetable th,.pagetable td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.pagetable th{background:var(--accent);color:var(--brand-dark);font-size:.85rem}
+.pagetable tr:last-child td{border-bottom:0}
+.pagetable tr:target{background:#fff7e6}
+.pagetable .pcol{white-space:nowrap}
+.pagetable .mcol{color:var(--muted);white-space:nowrap;font-size:.88rem}
+.pagetable .nl{color:var(--muted);font-size:.85rem}
