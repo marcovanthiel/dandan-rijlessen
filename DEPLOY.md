@@ -1,7 +1,7 @@
-# Deploy — Dandan's rijlessen → artnijmegen.nl
+# Deploy: Dandan's rijlessen → dandandrive.nl
 
-Statische, zero-dependency site (build met Node). **LIVE op https://artnijmegen.nl**
-(+ www). Opgezet volgens de standaard van alle marcovanthiel-sites:
+Statische, zero-dependency site (build met Node). **LIVE op https://dandandrive.nl** (+ www);
+artnijmegen.nl verwijst door (301) sinds de verhuizing van 9-7-2026. Opgezet volgens de standaard van alle marcovanthiel-sites:
 **Cloudflare Workers Static Assets + GitHub Actions auto-deploy.**
 
 ## Bron van waarheid
@@ -27,8 +27,10 @@ Handmatig deployen (nood): `npm run deploy` (build + `wrangler deploy`, Node 22)
   **CSP** (alles self-hosted; `style-src 'unsafe-inline'` voor inline
   style-attributen; `script-src 'self'`). `wranglerVersion` in de deploy-action
   is gepind op `4.107.0` zodat `_headers` op Workers-assets wordt toegepast.
-- **Custom domain**: `artnijmegen.nl` + `www` zijn via de Cloudflare-API aan de
-  worker `dandan-rijlessen` gekoppeld (niet via `routes` in wrangler.toml).
+- **Custom domains**: `dandandrive.nl` + `www` (en `artnijmegen.nl` + `www` voor
+  de redirect) zijn via de Cloudflare-API aan de worker `dandan-rijlessen`
+  gekoppeld (niet via `routes` in wrangler.toml; token met account-brede
+  Workers-domeinrechten staat in dandanshop/.mailconfig.env).
   Module-URL's normaliseren via `auto-trailing-slash` (`/module-1.html` → `/module-1`).
 - **Dependabot** (wekelijks, 5 dagen cooldown) + **auto-merge** (alleen
   patch/dev-minor; majors → review). GitHub-Actions zijn op commit-SHA gepind.

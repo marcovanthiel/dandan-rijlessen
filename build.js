@@ -66,8 +66,8 @@ const SITE = {
   titleZh: "丹丹的驾驶课",
   tagNl: "De Nederlandse praktijkopleiding, uitgelegd voor Chinese leerlingen.",
   tagZh: "为中国学员讲解荷兰驾照路考的实操课程。",
-  domain: "artnijmegen.nl",
-  baseUrl: "https://artnijmegen.nl",
+  domain: "dandandrive.nl",
+  baseUrl: "https://dandandrive.nl",
 };
 
 // ---------- boek-paginanummers (startpagina per onderdeel) ----------
