@@ -1,66 +1,40 @@
-# Deploy — Dandan's rijlessen (Cloudflare Pages)
+# Deploy — Dandan's rijlessen → artnijmegen.nl
 
-Statische site (geen framework, geen dependencies). Build met Node, deploy naar
-Cloudflare Pages, domein **artnijmegen.nl**.
+Statische, zero-dependency site (build met Node). **LIVE op https://artnijmegen.nl**
+(+ www). Opgezet volgens de standaard van alle marcovanthiel-sites:
+**Cloudflare Workers Static Assets + GitHub Actions auto-deploy.**
 
-> Let op: dit volgt de gangbare Cloudflare Pages-opzet. Als jullie standaard afwijkt
-> (bv. deploy via Git-integratie i.p.v. wrangler, of een vast project/account-id),
-> stem dit dan af op `kunstwebsite/Deployment.md` in de OneDrive-root.
+## Bron van waarheid
+- Repo: **`marcovanthiel/dandan-rijlessen`** (lokaal `~/Projects/dandan-rijlessen`).
+- Inhoud wijzigen: `content/*.md` (per module, NL+ZH). Layout: `assets/style.css`;
+  generator: `build.js`.
+- `git fetch && git pull` bij sessie-start (multi-machine).
 
-## 1. Bouwen
+## Deployen = pushen
 ```bash
-cd "Website/dandan-rijlessen"
-node build.js          # of: npm run build
+# inhoud aanpassen in content/*.md, dan:
+git add -A && git commit -m "…" && git push
 ```
-De site wordt gegenereerd in `dist/` uit de bronbestanden in `content/*.md`.
-Inhoud wijzigen? Pas de markdown in `content/` aan en bouw opnieuw.
+Push naar `main` → GitHub Action **Deploy to Cloudflare Workers** draait
+`node build.js` (→ `dist/`) en `wrangler deploy`. Live in ~20 s.
 
-## 2. Lokaal bekijken
-```bash
-npm run preview        # start http://localhost:8080
-```
+Lokaal bekijken: `npm run preview` (http://localhost:8080).
+Handmatig deployen (nood): `npm run deploy` (build + `wrangler deploy`, Node 22).
 
-## 3. Deployen naar Cloudflare Pages
-Vereist een ingelogde `wrangler` (Cloudflare-account met toegang tot artnijmegen.nl).
-
-```bash
-npx wrangler pages deploy dist --project-name=dandan-rijlessen
-# eerste keer maakt wrangler het Pages-project aan (kies production branch = main)
-```
-
-Of via npm:
-```bash
-npm run deploy
-```
-
-## 4. Domein koppelen (eenmalig, in Cloudflare dashboard)
-- Pages-project **dandan-rijlessen** → *Custom domains*.
-- Kies de gewenste route op **artnijmegen.nl**:
-  - subdomein, bv. `rijlessen.artnijmegen.nl`, **of**
-  - een pad op de hoofdsite (via een redirect/route rule).
-- DNS staat al bij Cloudflare, dus de CNAME wordt automatisch voorgesteld.
-
-> De site gebruikt uitsluitend **relatieve paden**, dus werkt zowel op een eigen
-> (sub)domein als onder een subpad.
-
-## 5. Git-deploy (alternatief, indien dat jullie standaard is)
-Push deze map naar de repo die aan het Pages-project hangt met:
-- Build command: `node build.js`
-- Build output directory: `dist`
-- (geen install-stap nodig; geen dependencies)
-
-## Structuur
-```
-dandan-rijlessen/
-├─ content/         # bronteksten per module (markdown, NL+ZH) — enige plek om inhoud te wijzigen
-├─ assets/style.css # opmaak
-├─ build.js         # generator (zero-dependency Node)
-├─ dist/            # gegenereerde site (deploy-doel)
-├─ wrangler.toml    # Cloudflare Pages config
-└─ package.json
-```
+## Architectuur / inrichting
+- **`wrangler.toml`**: `[assets] directory = "./dist"` (Workers Static Assets).
+- **`dist/_headers`** (door `build.js` gegenereerd): security-headers + strikte
+  **CSP** (alles self-hosted; `style-src 'unsafe-inline'` voor inline
+  style-attributen; `script-src 'self'`). `wranglerVersion` in de deploy-action
+  is gepind op `4.107.0` zodat `_headers` op Workers-assets wordt toegepast.
+- **Custom domain**: `artnijmegen.nl` + `www` zijn via de Cloudflare-API aan de
+  worker `dandan-rijlessen` gekoppeld (niet via `routes` in wrangler.toml).
+  Module-URL's normaliseren via `auto-trailing-slash` (`/module-1.html` → `/module-1`).
+- **Dependabot** (wekelijks, 5 dagen cooldown) + **auto-merge** (alleen
+  patch/dev-minor; majors → review). GitHub-Actions zijn op commit-SHA gepind.
+- **Secrets** op de repo: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
+  (account `04865fcd4034789d3970c1b51950227c`).
 
 ## Auteursrecht
-De teksten zijn **origineel lesmateriaal** over publieke verkeersregels en rijtechniek.
-Er staan **geen scans, foto's of illustraties uit het bronboek** in de site. Voeg alleen
-eigen/rechtenvrije beelden toe.
+Originele lesteksten over publieke verkeersregels/rijtechniek. **Geen** scans,
+foto's of illustraties uit het bronboek. Voeg alleen eigen/rechtenvrij beeld toe.
