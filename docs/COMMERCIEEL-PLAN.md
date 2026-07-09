@@ -9,23 +9,26 @@
 
 ## 1. Gevraagde besluiten
 
-1. **Merknaam en domein.** Het huidige domein (artnijmegen.nl) past niet bij een
-   commercieel product. Besluit: nieuwe merknaam + domein registreren
-   (suggesties in §9), artnijmegen.nl blijft als redirect bestaan.
-2. **Prijsmodel.** Voorstel: periode-passen (eenmalige betaling, geen automatische
-   verlenging): bv. 3 maanden, 6 maanden en "tot en met je examendatum".
-   Prijspunten nader te bepalen (indicatie §10).
-3. **Betaalprovider.** Voorstel: **Stripe** (ondersteunt WeChat Pay, Alipay,
-   iDEAL en kaarten voor NL-ondernemingen). Kanttekening: WeChat Pay/Alipay
-   werken alleen voor éénmalige betalingen, niet voor automatisch verlengende
-   abonnementen; het periode-passen-model ondervangt dat. Alternatief is Mollie
-   (bekend van dandanshop) maar die mist WeChat Pay.
-4. **Eerste doeltalen.** Chinees staat; welke talen volgen eerst (op aanvraag
-   van klanten)? Kandidaten: Arabisch, Turks, Pools, Oekraïens, Spaans,
-   Portugees, Hindi, Vietnamees, Koreaans, Japans, Thai.
-5. **Juridische basis.** Verkoop loopt via de bestaande onderneming (zelfde als
-   dandanshop): algemene voorwaarden, privacyverklaring, btw op digitale
-   diensten en afstand van herroepingsrecht bij directe levering regelen.
+1. **Merknaam en domein: voorstel "Dandan Drive" (dandandrive.nl).**
+   Voorgesteld 9-7-2026: persoonlijk merk rond Dandan (werkt op TikTok en in
+   alle talen; sluit aan op de bestaande merkfamilie met dandanshop), "Drive"
+   is internationaal begrijpelijk. dandandrive.nl is vrij (RDAP-check
+   9-7-2026); .com is bezet, acceptabel omdat de doelgroep in Nederland woont.
+   Registratie na akkoord Marco; artnijmegen.nl wordt redirect.
+2. **Prijsmodel: BESLOTEN 9-7-2026** (voorstel Claude, akkoord Marco):
+   periode-passen zonder automatische verlenging, met voor de doelgroep
+   gelukkige prijspunten: **3 maanden €38, 6 maanden €58, 12 maanden €88**.
+   Gratis account = ~2% preview. Kortingscodes per campagne.
+3. **Betaalprovider: BESLOTEN 9-7-2026 = Stripe** (WeChat Pay, Alipay, iDEAL,
+   kaarten; WeChat Pay/Alipay alleen éénmalig, past bij periode-passen).
+   Actie Marco: Stripe-account aanmaken en WeChat Pay-activatie aanvragen.
+4. **Doeltalen: BESLOTEN 9-7-2026**: Chinees eerst (staat); nieuwe talen
+   activeren op klantvraag uit de kandidatenlijst (Arabisch, Turks, Pools,
+   Oekraïens, Spaans, Portugees, Hindi, Vietnamees, Koreaans, Japans, Thai);
+   de vertaalpijplijn (§7) maakt dat configuratie in plaats van bouwwerk.
+5. **Juridische basis (open).** Verkoop loopt via de bestaande onderneming
+   (zelfde als dandanshop): algemene voorwaarden, privacyverklaring, btw op
+   digitale diensten en afstand van herroepingsrecht bij directe levering.
 
 ## 2. Doel en uitgangspunten
 
