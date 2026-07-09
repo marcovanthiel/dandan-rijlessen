@@ -9,6 +9,28 @@ const ROOT = __dirname;
 const CONTENT = path.join(ROOT, 'content');
 const DIST = path.join(ROOT, 'dist');
 const ASSETS_SRC = path.join(ROOT, 'assets');
+const IMG = path.join(ROOT, 'img');
+const PHOTO_EXT = ['png','jpg','jpeg','webp'];
+function photoSuffix(s){
+  if(s.step) return 's'+s.step;
+  if(/学习方法|leermodel/i.test(s.zh)) return 'leermodel';
+  if(/路考|examen/i.test(s.zh)) return 'examen';
+  if(/辅助|ADAS/i.test(s.zh)) return 'adas';
+  if(/巩固|练习|oefening/i.test(s.zh)) return 'oefening';
+  return null;
+}
+function findPhoto(m,s){
+  const suf = photoSuffix(s); if(!suf) return null;
+  for(const e of PHOTO_EXT){ const f=`${m.slug}_${suf}.${e}`; if(fs.existsSync(path.join(IMG,f))) return 'img/'+f; }
+  return null;
+}
+function asciiSectionId(zh, n){
+  if(/学习方法|leermodel/i.test(zh)) return 'leermodel';
+  if(/路考|examen/i.test(zh)) return 'examen';
+  if(/辅助|ADAS/i.test(zh)) return 'adas';
+  if(/巩固|练习|oefening/i.test(zh)) return 'oefening';
+  return 'sec'+n;
+}
 
 const SITE = {
   titleNl: "Dandan's rijlessen",
@@ -16,6 +38,7 @@ const SITE = {
   tagNl: "De Nederlandse praktijkopleiding, uitgelegd voor Chinese leerlingen.",
   tagZh: "为中国学员讲解荷兰驾照路考的实操课程。",
   domain: "artnijmegen.nl",
+  baseUrl: "https://artnijmegen.nl",
 };
 
 // ---------- boek-paginanummers (startpagina per onderdeel) ----------
@@ -121,14 +144,30 @@ const FAVICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"
 <text x="32" y="35" text-anchor="middle" dominant-baseline="central" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif" font-size="42" font-weight="700" fill="#ffffff">丹</text>
 </svg>`;
 
-function head(title, rel){
+function head(title, rel, opts){
+  opts = opts||{};
+  const desc = opts.desc || (SITE.tagZh+' '+SITE.tagNl);
+  const canon = SITE.baseUrl + '/' + (opts.path!=null ? opts.path : '');
+  const ogimg = SITE.baseUrl + '/og.png';
   return `<!doctype html><html lang="zh"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
-<meta name="description" content="${esc(SITE.tagZh)}">
+<meta name="description" content="${esc(desc)}">
 <link rel="icon" type="image/svg+xml" href="${rel}favicon.svg">
 <link rel="apple-touch-icon" href="${rel}favicon.svg">
 <meta name="theme-color" content="#14488f">
+<link rel="canonical" href="${canon}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="${esc(SITE.titleNl)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url" content="${canon}">
+<meta property="og:image" content="${ogimg}">
+<meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc)}">
+<meta name="twitter:image" content="${ogimg}">
 <link rel="stylesheet" href="${rel}assets/style.css">
 </head><body data-nl="on">`;
 }
@@ -168,7 +207,7 @@ function renderIndex(modules){
     <div class="nl nl-only">${esc(m.modNl)}</div>
     <div class="count">${m.scripts.length} 个步骤 / onderdelen</div>
   </a>`).join('');
-  return head(SITE.titleNl+' · '+SITE.titleZh,'')
+  return head(SITE.titleNl+' · '+SITE.titleZh,'',{path:'',desc:SITE.tagZh+' '+SITE.tagNl})
     + header('',modules)
     + `<section class="hero"><div class="container">
         <div class="pill">荷兰驾照 · rijbewijs B</div>
@@ -195,21 +234,26 @@ function renderModule(m, modules){
     const zhTitle = s.zh;
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
     const fig = G.figFor(s.step, s.zh);
+    const photo = findPhoto(m, s);
+    const cleanTitle = zhTitle.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,'');
+    const figHtml = photo
+      ? `<figure class="fig photo"><img src="${photo}" alt="${esc(cleanTitle)}${s.nl?' · '+esc(s.nl):''}" loading="lazy"></figure>`
+      : (fig?`<figure class="fig">${fig}</figure>`:'');
     return `<article class="script" id="${s.id}" data-page="${s.page||''}">
       <div class="script-top">
         <div class="script-title">
           <span class="script-icon">${G.iconFor(s.step, s.zh)}</span>
-          <h2>${s.step?`<span class="step">步骤 ${esc(s.step)}</span> · `:''}${esc(zhTitle.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''))}</h2>
+          <h2>${s.step?`<span class="step">步骤 ${esc(s.step)}</span> · `:''}${esc(cleanTitle)}</h2>
         </div>
         ${pageBadge}
       </div>
       ${s.nl?`<div class="nl-title nl-only">${esc(s.nl)}</div>`:''}
       ${bodyToHtml(s.body)}
-      ${fig?`<figure class="fig">${fig}</figure>`:''}
+      ${figHtml}
     </article>`;
   }).join('\n');
   const introHtml = m.intro.length?`<div class="note">${bodyToHtml(m.intro)}</div>`:'';
-  return head(m.modZh+' · '+SITE.titleZh,'')
+  return head(m.modZh+' · '+SITE.titleZh,'',{path:m.slug,desc:m.modZh+' · '+m.modNl+' — '+SITE.tagZh})
     + header('',modules)
     + `<main><div class="container">
         <div class="crumbs"><a href="index.html">首页</a> › 模块${m.modNum}</div>
@@ -253,7 +297,7 @@ function renderBookIndex(pmap, modules){
       <td class="mcol">模块 ${e.module}</td>
     </tr>`;
   }).join('\n');
-  return head('按书页查找 · '+SITE.titleZh,'')
+  return head('按书页查找 · '+SITE.titleZh,'',{path:'boek-index',desc:'按书页查找 · zoek op boekpagina — '+SITE.tagZh})
     + header('',modules)
     + `<main><div class="container">
         <div class="crumbs"><a href="index.html">首页</a> › 按书页查找</div>
@@ -328,11 +372,11 @@ function main(){
   const files = fs.readdirSync(CONTENT).filter(f=>/\.md$/i.test(f)).sort();
   let modules = files.map(f=>parseModule(path.join(CONTENT,f)));
   modules.sort((a,b)=>Number(a.modNum)-Number(b.modNum));
-  // assign stable ids + boek-paginanummers per onderdeel
-  for(const m of modules) for(const s of m.scripts){
-    s.id = 's'+(s.step||slug(s.zh));
+  // assign stable ASCII ids + boek-paginanummers per onderdeel
+  for(const m of modules){ let sec=0; for(const s of m.scripts){
+    s.id = s.step ? 's'+s.step : asciiSectionId(s.zh, ++sec);
     s.page = pageForScript(s.step, s.zh);
-  }
+  }}
   // paginamap boek -> website
   const pmap = buildPageMap(modules);
   // pages
@@ -342,9 +386,17 @@ function main(){
   fs.writeFileSync(path.join(DIST,'pagemap.json'), JSON.stringify(pmap));
   // assets
   fs.copyFileSync(path.join(ASSETS_SRC,'style.css'), path.join(DIST,'assets','style.css'));
+  // foto's meenemen (indien aanwezig)
+  let nPhoto=0;
+  if(fs.existsSync(IMG)){
+    const dimg=path.join(DIST,'img'); fs.mkdirSync(dimg,{recursive:true});
+    for(const f of fs.readdirSync(IMG)){ if(/\.(png|jpe?g|webp)$/i.test(f)){ fs.copyFileSync(path.join(IMG,f), path.join(dimg,f)); nPhoto++; } }
+  }
   fs.writeFileSync(path.join(DIST,'assets','search.js'), SEARCH_JS);
   fs.writeFileSync(path.join(DIST,'search.json'), JSON.stringify(buildSearch(modules)));
   fs.writeFileSync(path.join(DIST,'favicon.svg'), FAVICON_SVG);
+  // social-preview (og.png) meenemen indien aanwezig in de projectroot
+  if(fs.existsSync(path.join(ROOT,'og.png'))) fs.copyFileSync(path.join(ROOT,'og.png'), path.join(DIST,'og.png'));
   // Security-headers + caching (Cloudflare Workers Static Assets / _headers).
   // Strikte CSP: alle scripts/styles/fonts self-hosted; inline style-attributen
   // vereisen style-src 'unsafe-inline'. Geen externe bronnen.

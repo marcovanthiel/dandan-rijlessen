@@ -125,6 +125,8 @@ mark{background:#fff3b0;padding:0 2px;border-radius:3px}
 .card-ico{width:44px;height:44px;border-radius:11px;background:var(--accent);color:var(--brand-dark);display:grid;place-items:center;margin-bottom:6px}
 .card-ico .i{width:26px;height:26px}
 figure.fig{margin:18px auto 6px;padding:18px;max-width:520px;background:linear-gradient(180deg,#fbfdff,#eef5ff);border:1px solid #dbe6f5;border-radius:16px;text-align:center;box-shadow:inset 0 1px 0 #fff}
+figure.fig.photo{padding:0;overflow:hidden;background:none;border:1px solid var(--line)}
+figure.fig.photo img{display:block;width:100%;height:auto;border-radius:15px}
 .figsvg{max-width:100%;height:auto;stroke-linecap:round;stroke-linejoin:round}
 .figsvg text{font-family:inherit;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round}
 .figsvg .zhlbl{font-size:15px;font-weight:700;fill:var(--brand-dark)}

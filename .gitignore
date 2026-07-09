@@ -2,3 +2,8 @@ node_modules/
 .DS_Store
 .wrangler/
 dist/
+# Foto-bronnen (2-3MB): worden lokaal door generate-photos.mjs gemaakt en
+# vervolgens naar geoptimaliseerde .webp geconverteerd. Alleen de webp committen.
+img/*.png
+img/*.jpg
+img/*.jpeg
