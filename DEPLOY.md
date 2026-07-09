@@ -66,3 +66,14 @@ foto's of illustraties uit het bronboek. Voeg alleen eigen/rechtenvrij beeld toe
 - **Lokaal ontwikkelen**: `wrangler d1 execute dandandrive --local --file=schema.sql`,
   dan `npx wrangler dev`; zonder RESEND_API_KEY toont het loginscherm de code
   (DEV-modus), zodat de hele stroom lokaal te testen is.
+
+## Meertalige chrome + taalvoorkeur (sinds 9-7-2026)
+- `i18n.js` = berichtencatalogus (zh/nl/en) voor alle site-chrome; lestekst
+  staat per lestaal in `content/<taal>/` (nu alleen `zh`). Pariteitscheck:
+  `node --input-type=module -e "import('./i18n.js').then(m=>{const r=m.pariteit();console.log(r.length?r:'ok');})"`
+- Taalvolgorde: accountvoorkeur > `dd_lang`-cookie > standaard (anoniem nl,
+  ingelogd zh). `?taal=xx` op elke GET zet cookie + accountvoorkeur.
+- Nieuwe UI-taal = blok in i18n.js (pariteit!) + TALEN-lijst; nieuwe LEStaal =
+  map `content/<taal>/` met vertaalde md's (structuur identiek aan zh) →
+  build pakt 'm automatisch op; gebruikers in die taal krijgen dan de
+  vertaalde les i.p.v. de zh-fallback met melding.
