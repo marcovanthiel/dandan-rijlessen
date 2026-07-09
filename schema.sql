@@ -40,3 +40,4 @@ CREATE TABLE IF NOT EXISTS events (
   PRIMARY KEY (day, type, path, ref)
 );
 INSERT OR IGNORE INTO users (email, lang, is_admin) VALUES ('marco@marcovanthiel.nl', 'zh', 1);
+INSERT OR IGNORE INTO users (email, lang, is_admin) VALUES ('dandan@dandanvanthiel.nl', 'zh', 1);
