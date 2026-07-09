@@ -1,15 +1,15 @@
 ---
-titel: Module 1 — proefbewerking Chinees lesmateriaal (NL–ZH)
+titel: Module 1: proefbewerking Chinees lesmateriaal (NL-ZH)
 aard: ORIGINEEL lesmateriaal voor Chinese leerlingen, o.b.v. publieke feiten (verkeersregels/techniek)
 opzet: Nederlandse kop + originele Chinese lestekst; terminologie volgt het glossarium
 status: PROEF ter afstemming van toon, niveau en terminologie
 ---
 
-# 模块一：车辆操控 · Module 1 — Voertuigbeheersing
+# 模块一：车辆操控 · Module 1: Voertuigbeheersing
 
 > 提示 / Toelichting: onderstaande Chinese tekst is **nieuw geschreven lesmateriaal** voor
 > Chinese kandidaten van het Nederlandse praktijkexamen, gebaseerd op algemeen geldende
-> verkeersregels en rijtechniek — geen vertaling van het bronboek. Toon: helder, direct,
+> verkeersregels en rijtechniek, geen vertaling van het bronboek. Toon: helder, direct,
 > voor volwassen leerlingen.
 
 ## 学习方法 · Het leermodel
@@ -71,7 +71,7 @@ status: PROEF ter afstemming van toon, niveau en terminologie
 
 ### 步骤 10 · 观察扫视 (Scan)
 安全驾驶的基础。向前看得远（约 200 米），视线不要盯死一点（余光会漏掉信息，容易疲劳时更明显），
-每 5–8 秒扫一次后视镜，也要看近处。辅助系统（盲点提示、自适应巡航）只是帮助，
+每 5-8 秒扫一次后视镜，也要看近处。辅助系统（盲点提示、自适应巡航）只是帮助，
 安全观察始终是你自己的责任。
 
 ### 步骤 11 · 转向 (Sturen)
@@ -103,7 +103,7 @@ status: PROEF ter afstemming van toon, niveau en terminologie
 再平稳松开离合，左脚回到离合左侧。行进中换挡时结合点没那么关键。电动车没有离合。
 
 ### 步骤 17 · 换挡 (Schakelen)
-及时换挡让发动机保持在最佳转速区（省油、少磨损）。约 2000–2500 转升挡；转速确实偏低才降挡。
+及时换挡让发动机保持在最佳转速区（省油、少磨损）。约 2000-2500 转升挡；转速确实偏低才降挡。
 流程：右手轻放挡杆 → 踩离合 → 挂到目标挡 → 松离合、双手回方向盘。不要过早降挡再猛松离合
 （会突然减速且没有刹车灯提示，很危险）。自动挡/电动车无需手动换挡。
 
@@ -120,4 +120,4 @@ status: PROEF ter afstemming van toon, niveau en terminologie
 
 ---
 *这是模块一的样稿。确认语气与用词后，我会按同样方式处理模块二至五。*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2–5 zo.*
+*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

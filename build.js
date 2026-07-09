@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Dandan's rijlessen — zero-dependency static site generator.
+/* Dandan's rijlessen: zero-dependency static site generator.
    Reads content/*.md (original bilingual lesson material) and writes to dist/. */
 const fs = require('fs');
 const path = require('path');
@@ -23,6 +23,35 @@ function findPhoto(m,s){
   const suf = photoSuffix(s); if(!suf) return null;
   for(const e of PHOTO_EXT){ const f=`${m.slug}_${suf}.${e}`; if(fs.existsSync(path.join(IMG,f))) return 'img/'+f; }
   return null;
+}
+
+// Afmetingen van png/jpg/webp lezen (zero-dependency) zodat <img> width/height
+// krijgt en de pagina niet verspringt tijdens het laden (CLS).
+const IMG_DIM_CACHE = {};
+function imgSize(rel){
+  if(rel in IMG_DIM_CACHE) return IMG_DIM_CACHE[rel];
+  let dim = null;
+  try{
+    const b = fs.readFileSync(path.join(ROOT, rel));
+    if(b.length>24 && b.toString('ascii',0,4)==='RIFF' && b.toString('ascii',8,12)==='WEBP'){
+      const fmt = b.toString('ascii',12,16);
+      if(fmt==='VP8X'){ dim = { w: 1+(b[24]|b[25]<<8|b[26]<<16), h: 1+(b[27]|b[28]<<8|b[29]<<16) }; }
+      else if(fmt==='VP8 '){ dim = { w: b.readUInt16LE(26)&0x3fff, h: b.readUInt16LE(28)&0x3fff }; }
+      else if(fmt==='VP8L'){ const n=b.readUInt32LE(21); dim = { w: 1+(n&0x3fff), h: 1+((n>>14)&0x3fff) }; }
+    } else if(b.length>24 && b.readUInt32BE(0)===0x89504e47){
+      dim = { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+    } else if(b.length>4 && b[0]===0xff && b[1]===0xd8){
+      let o=2;
+      while(o<b.length-9){
+        if(b[o]!==0xff){ o++; continue; }
+        const m=b[o+1];
+        if(m>=0xc0 && m<=0xcf && m!==0xc4 && m!==0xc8 && m!==0xcc){ dim = { w: b.readUInt16BE(o+7), h: b.readUInt16BE(o+5) }; break; }
+        o += 2 + b.readUInt16BE(o+2);
+      }
+    }
+  }catch(e){ /* geen afmetingen = attribuut weglaten */ }
+  IMG_DIM_CACHE[rel] = dim;
+  return dim;
 }
 function asciiSectionId(zh, n){
   if(/学习方法|leermodel/i.test(zh)) return 'leermodel';
@@ -54,7 +83,7 @@ const PAGE_BY_STEP = {
 const MODULE_INTRO_PAGE = { '2':95, '3':162, '4':206 };
 function pageForScript(step, zh){
   if(step && PAGE_BY_STEP[step]!=null) return PAGE_BY_STEP[step];
-  if(/学习方法|Het leermodel/.test(zh)) return 1;     // voorwoord/leermodel (p.1–30; taakprocessen p.5)
+  if(/学习方法|Het leermodel/.test(zh)) return 1;     // voorwoord/leermodel (p.1-30; taakprocessen p.5)
   if(/路考|rijexamen/i.test(zh)) return 225;
   if(/辅助|安全系统|ADAS/i.test(zh)) return 227;
   if(/巩固|练习|oefening/i.test(zh)) return 233;
@@ -87,7 +116,7 @@ function bodyToHtml(lines){
 }
 
 // ---------- parse one module markdown ----------
-function splitTitle(h){ // "步骤 1 · 车外检查 (Controle buiten de auto)" or "模块一 · Module 1 — X"
+function splitTitle(h){ // "步骤 1 · 车外检查 (Controle buiten de auto)" or "模块一 · Module 1: X"
   let nl=''; let zh=h.trim();
   const paren = zh.match(/\(([^()]+)\)\s*$/);
   if(paren){ nl=paren[1].trim(); zh=zh.replace(/\s*\([^()]+\)\s*$/,'').trim(); }
@@ -127,7 +156,7 @@ function parseModule(file){
   }
   pushBlock();
   if(fnameNum) modNum=fnameNum; // filename is authoritative
-  if(/Slotdeel/i.test(modNl) || /结业/.test(modZh)){ modZh='结业部分'; modNl='Slotdeel — examen · ADAS · oefeningen'; }
+  if(/Slotdeel/i.test(modNl) || /结业/.test(modZh)){ modZh='结业部分'; modNl='Slotdeel: examen · ADAS · oefeningen'; }
   // drop empty divider blocks (no body text)
   const scripts = blocks.filter(b=>b.body.join('').trim().length>0);
   return {modZh,modNl,modNum,intro,scripts,slug:'module-'+(modNum||blocks.length)};
@@ -135,7 +164,7 @@ function parseModule(file){
 
 // ---------- templates ----------
 // favicon: afgeronde tegel met merkverloop en het witte merk-teken 丹 (zelfde als het logo).
-// Origineel, self-hosted SVG — schaalbaar en scherp; valt binnen de CSP (img-src 'self').
+// Origineel, self-hosted SVG, schaalbaar en scherp; valt binnen de CSP (img-src 'self').
 const FAVICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
 <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
 <stop offset="0" stop-color="#14488f"/><stop offset="1" stop-color="#1f6feb"/>
@@ -169,14 +198,15 @@ function head(title, rel, opts){
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image" content="${ogimg}">
 <link rel="stylesheet" href="${rel}assets/style.css">
-</head><body data-nl="on">`;
+</head><body data-nl="on">
+<a class="skip-link" href="#inhoud">跳到内容<span lang="nl"> / naar de inhoud</span></a>`;
 }
 function header(rel, modules){
   const nav = modules.map(m=>`<a href="${rel}${m.slug}.html">模块${m.modNum}</a>`).join('');
   return `<header class="site"><div class="container">
   <a class="brand" href="${rel}index.html" style="color:#fff">
     <span class="logo">丹</span>
-    <span>${esc(SITE.titleNl)}<small>${esc(SITE.titleZh)} · 驾照路考</small></span>
+    <span><span lang="nl">${esc(SITE.titleNl)}</span><small>${esc(SITE.titleZh)} · 驾照路考</small></span>
   </a>
   <nav>
     <a href="${rel}index.html">首页 Home</a>
@@ -191,7 +221,7 @@ function header(rel, modules){
 function footer(){
   return `<footer class="site"><div class="container">
   <strong>${esc(SITE.titleNl)} · ${esc(SITE.titleZh)}</strong><br>
-  Origineel lesmateriaal over de Nederlandse praktijkopleiding (RIS-methode) voor Chinese leerlingen.
+  <span lang="nl">Origineel lesmateriaal over de Nederlandse praktijkopleiding (RIS-methode) voor Chinese leerlingen.</span>
   原创学习材料 · ${esc(SITE.domain)}
   </div></footer>
   <script src="assets/search.js" defer></script>
@@ -204,7 +234,7 @@ function renderIndex(modules){
     <div class="card-ico">${G.moduleIcon(m.modNum)}</div>
     <span class="mnum">${m.modNum}</span>
     <h3>${esc(m.modZh)}</h3>
-    <div class="nl nl-only">${esc(m.modNl)}</div>
+    <div class="nl nl-only" lang="nl">${esc(m.modNl)}</div>
     <div class="count">${m.scripts.length} 个步骤 / onderdelen</div>
   </a>`).join('');
   return head(SITE.titleNl+' · '+SITE.titleZh,'',{path:'',desc:SITE.tagZh+' '+SITE.tagNl})
@@ -212,14 +242,14 @@ function renderIndex(modules){
     + `<section class="hero"><div class="container">
         <div class="pill">荷兰驾照 · rijbewijs B</div>
         <h1><span class="zh">${esc(SITE.titleZh)}</span></h1>
-        <h1 style="font-size:1.3rem;color:var(--muted);font-weight:600">${esc(SITE.titleNl)}</h1>
+        <p class="hero-sub" lang="nl" style="font-size:1.3rem;color:var(--muted);font-weight:600;margin:0">${esc(SITE.titleNl)}</p>
         <p>${esc(SITE.tagZh)}</p>
-        <p class="nl-only" style="font-size:.95rem">${esc(SITE.tagNl)}</p>
+        <p class="nl-only" lang="nl" style="font-size:.95rem">${esc(SITE.tagNl)}</p>
       </div></section>`
-    + `<main><div class="container">
+    + `<main id="inhoud"><div class="container">
         <div class="modbanner">${G.moduleBanner(0)}</div>
         <div class="note">五个模块按照"分步"方法循序渐进：从车辆操控到复杂路况，再到考试。每个步骤都有要点说明。<br>
-        <span class="nl-only">Vijf modules, stap voor stap — van voertuigbeheersing tot het examen.</span></div>
+        <span class="nl-only" lang="nl">Vijf modules, stap voor stap: van voertuigbeheersing tot het examen.</span></div>
         <div class="grid">${cards}</div>
       </div></main>`
     + footer();
@@ -236,8 +266,9 @@ function renderModule(m, modules){
     const fig = G.figFor(s.step, s.zh);
     const photo = findPhoto(m, s);
     const cleanTitle = zhTitle.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,'');
+    const dim = photo ? imgSize(photo) : null;
     const figHtml = photo
-      ? `<figure class="fig photo"><img src="${photo}" alt="${esc(cleanTitle)}${s.nl?' · '+esc(s.nl):''}" loading="lazy"></figure>`
+      ? `<figure class="fig photo"><img src="${photo}" alt="${esc(cleanTitle)}${s.nl?' · '+esc(s.nl):''}"${dim?` width="${dim.w}" height="${dim.h}"`:''} loading="lazy"></figure>`
       : (fig?`<figure class="fig">${fig}</figure>`:'');
     return `<article class="script" id="${s.id}" data-page="${s.page||''}">
       <div class="script-top">
@@ -247,21 +278,21 @@ function renderModule(m, modules){
         </div>
         ${pageBadge}
       </div>
-      ${s.nl?`<div class="nl-title nl-only">${esc(s.nl)}</div>`:''}
+      ${s.nl?`<div class="nl-title nl-only" lang="nl">${esc(s.nl)}</div>`:''}
       ${bodyToHtml(s.body)}
       ${figHtml}
     </article>`;
   }).join('\n');
   const introHtml = m.intro.length?`<div class="note">${bodyToHtml(m.intro)}</div>`:'';
-  return head(m.modZh+' · '+SITE.titleZh,'',{path:m.slug,desc:m.modZh+' · '+m.modNl+' — '+SITE.tagZh})
+  return head(m.modZh+' · '+SITE.titleZh,'',{path:m.slug,desc:m.modZh+' · '+m.modNl+' · '+SITE.tagZh})
     + header('',modules)
-    + `<main><div class="container">
+    + `<main id="inhoud"><div class="container">
         <div class="crumbs"><a href="index.html">首页</a> › 模块${m.modNum}</div>
         <div class="modbanner">${G.moduleBanner(m.modNum)}</div>
         <div class="module-head">
           <div class="kicker">模块 ${m.modNum} / Module ${m.modNum}</div>
           <h1>${esc(m.modZh)}</h1>
-          <div class="nl nl-only" style="color:var(--muted)">${esc(m.modNl)}</div>
+          <div class="nl nl-only" lang="nl" style="color:var(--muted)">${esc(m.modNl)}</div>
         </div>
         ${introHtml}
         <div class="layout">
@@ -290,22 +321,22 @@ function buildPageMap(modules){
 }
 function renderBookIndex(pmap, modules){
   const rows = pmap.map(e=>{
-    const range = e.from===e.to?('p.'+e.from):('p.'+e.from+'–'+e.to);
+    const range = e.from===e.to?('p.'+e.from):('p.'+e.from+'-'+e.to);
     return `<tr id="p${e.from}">
       <td class="pcol"><span class="pill">${range}</span></td>
-      <td>${e.step?`步骤 ${esc(e.step)} · `:''}<a href="${e.url}">${esc(e.label)}</a>${e.nl?`<div class="nl nl-only">${esc(e.nl)}</div>`:''}</td>
+      <td>${e.step?`步骤 ${esc(e.step)} · `:''}<a href="${e.url}">${esc(e.label)}</a>${e.nl?`<div class="nl nl-only" lang="nl">${esc(e.nl)}</div>`:''}</td>
       <td class="mcol">模块 ${e.module}</td>
     </tr>`;
   }).join('\n');
-  return head('按书页查找 · '+SITE.titleZh,'',{path:'boek-index',desc:'按书页查找 · zoek op boekpagina — '+SITE.tagZh})
+  return head('按书页查找 · '+SITE.titleZh,'',{path:'boek-index',desc:'按书页查找 · zoek op boekpagina · '+SITE.tagZh})
     + header('',modules)
-    + `<main><div class="container">
+    + `<main id="inhoud"><div class="container">
         <div class="crumbs"><a href="index.html">首页</a> › 按书页查找</div>
-        <h1>按书页查找 <span class="nl-only" style="color:var(--muted);font-size:1rem">· Zoek op boekpagina</span></h1>
+        <h1>按书页查找 <span class="nl-only" lang="nl" style="color:var(--muted);font-size:1rem">· Zoek op boekpagina</span></h1>
         <div class="note">在原书里翻到某一页？输入页码，直接跳到网站上对应的讲解。<br>
-        <span class="nl-only">Sla het boek open op een pagina en spring naar de bijbehorende uitleg op de site.</span></div>
+        <span class="nl-only" lang="nl">Sla het boek open op een pagina en spring naar de bijbehorende uitleg op de site.</span></div>
         <div class="pagefind">
-          <label>书页码 / boekpagina (1–${TOTAL_PAGES}): <input id="pageq" type="number" min="1" max="${TOTAL_PAGES}" placeholder="bv. 5"></label>
+          <label>书页码 / boekpagina (1-${TOTAL_PAGES}): <input id="pageq" type="number" min="1" max="${TOTAL_PAGES}" placeholder="bv. 5"></label>
           <button id="pagego">跳转 / ga</button>
           <span id="pagemsg" class="pagemsg"></span>
         </div>
@@ -343,7 +374,7 @@ const SEARCH_JS = `
       var v=q.value.trim(); if(v.length<1){render('');return;}
       if(/^[0-9]{1,3}$/.test(v)){
         loadPmap(function(){ var e=findPage(parseInt(v,10));
-          if(e){ render('<a class="card" style="display:block;margin:8px 0" href="'+e.url+'"><strong>📖 书第 '+v+' 页 → '+e.label+'</strong><br><span style="color:#5b6b7b;font-size:.85rem">模块'+e.module+' · p.'+e.from+(e.from!==e.to?('–'+e.to):'')+'</span></a>'); }
+          if(e){ render('<a class="card" style="display:block;margin:8px 0" href="'+e.url+'"><strong>📖 书第 '+v+' 页 → '+e.label+'</strong><br><span style="color:#5b6b7b;font-size:.85rem">模块'+e.module+' · p.'+e.from+(e.from!==e.to?('-'+e.to):'')+'</span></a>'); }
           else render('<div class="card" style="margin:8px 0;color:#5b6b7b">页码超出范围 / pagina buiten bereik</div>');
         }); return;
       }
@@ -361,7 +392,7 @@ const SEARCH_JS = `
   // boek-index: paginazoeker
   var pq=document.getElementById('pageq'), go=document.getElementById('pagego'), msg=document.getElementById('pagemsg');
   function jump(){ var n=parseInt(pq.value,10); if(!n){return;} loadPmap(function(){ var e=findPage(n);
-    if(e){ msg.textContent=''; window.location.href=e.url; } else { msg.textContent='页码超出范围 / buiten bereik (1–264)'; } }); }
+    if(e){ msg.textContent=''; window.location.href=e.url; } else { msg.textContent='页码超出范围 / buiten bereik (1-264)'; } }); }
   if(go){ go.addEventListener('click',jump); pq.addEventListener('keydown',function(e){ if(e.key==='Enter') jump(); }); }
 })();
 `;

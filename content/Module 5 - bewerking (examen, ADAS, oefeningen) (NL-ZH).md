@@ -1,5 +1,5 @@
 ---
-titel: Slotdeel — Chinees lesmateriaal (NL–ZH)
+titel: Slotdeel: Chinees lesmateriaal (NL-ZH)
 aard: ORIGINEEL lesmateriaal voor Chinese leerlingen, o.b.v. publieke verkeersregels/techniek
 opzet: Nederlandse kop + originele Chinese lestekst; terminologie volgt het glossarium
 ---
@@ -30,13 +30,13 @@ CBR 路考在模块四之后进行。考官通常会指定路线，但你也必�
 10. **后方横向来车预警**——倒车出库时提示。
 
 ## C. 巩固练习 · Controleoefeningen
-教练用来检验你是否真正掌握并能自动化运用每个步骤的额外练习，按步骤（1–40）排列，另有一组 **ADAS 练习**。
+教练用来检验你是否真正掌握并能自动化运用每个步骤的额外练习，按步骤（1-40）排列，另有一组 **ADAS 练习**。
 练习类型举例：
 - **检查类（步骤 1/2）**：制造干扰（暖风开满、遮挡车窗、放松散物）让你发现。
 - **观察（步骤 10）**：说出何时看到信箱/红绿灯/某色车/停车位。
 - **停车/起步（步骤 15/19）**：每个路口都停、或看到黄色实线尽快停。
 - **跟车距离（步骤 20）**：目测"100 米"外的物体再实际步测；用/不用巡航。
-- **特殊操作（步骤 26–29）**：用非 1 挡或倒挡做坡道起步；在安静和繁忙街道左右弯倒车。
+- **特殊操作（步骤 26-29）**：用非 1 挡或倒挡做坡道起步；在安静和繁忙街道左右弯倒车。
 - **汇入/驶出（步骤 33/34）**：长时间沿高速行驶，利用遇到的所有匝道。
 - **ADAS 练习**：在封闭场地触发紧急制动；设定 ACC 并说明表现；倒车雷达；把标志识别与自己的判断对比。
 

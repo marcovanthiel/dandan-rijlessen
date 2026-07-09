@@ -137,3 +137,27 @@ figure.fig.photo img{display:block;width:100%;height:auto;border-radius:15px}
 .figsvg .signtxt{font-size:15px;font-weight:800;fill:var(--brand-dark)}
 .figsvg .whitetag{font-size:12px;font-weight:700;fill:#fff;stroke:none}
 @media(max-width:520px){.script-icon{width:34px;height:34px}.script-icon .i{width:18px;height:18px}}
+
+/* ---- toegankelijkheid: skip-link, zichtbare focus, reduced motion ---- */
+.skip-link{position:absolute;left:-9999px;top:8px;z-index:2000;background:var(--brand-dark,#14488f);color:#fff;padding:8px 14px;border-radius:8px}
+.skip-link:focus{left:8px}
+:focus-visible{outline:2px solid var(--brand,#1f6feb);outline-offset:2px}
+header.site :focus-visible{outline-color:#fff}
+.searchbox:focus-within{outline:2px solid #fff;outline-offset:2px;border-radius:9px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto!important}
+}
+
+/* ---- print: lesmateriaal als schoon document ---- */
+@media print{
+  header.site nav,.searchbox,#results,.skip-link,.modbanner,.crumbs{display:none!important}
+  header.site,footer.site{background:none!important;color:#000!important}
+  header.site a,footer.site{color:#000!important}
+  body{background:#fff;color:#000}
+  .script{page-break-inside:avoid;border:none;box-shadow:none}
+  .toc{display:none}
+  .layout{display:block}
+  a{text-decoration:none;color:#000}
+  .fig.photo img{max-width:80%}
+}

@@ -1,10 +1,10 @@
 ---
-titel: Module 2 — Chinees lesmateriaal (NL–ZH)
+titel: Module 2: Chinees lesmateriaal (NL-ZH)
 aard: ORIGINEEL lesmateriaal voor Chinese leerlingen, o.b.v. publieke verkeersregels/techniek
 opzet: Nederlandse kop + originele Chinese lestekst; terminologie volgt het glossarium
 ---
 
-# 模块二：简单交通情境 · Module 2 — Eenvoudige verkeerssituaties
+# 模块二：简单交通情境 · Module 2: Eenvoudige verkeerssituaties
 
 > 本模块把模块一学到的操作用到简单的交通情境中，并开始练习"预测、评估、决定"。
 > 建议先取得理论合格证再开始。结束时进行第二次测试。

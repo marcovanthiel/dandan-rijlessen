@@ -1,10 +1,10 @@
 ---
-titel: Module 4 — Chinees lesmateriaal (NL–ZH)
+titel: Module 4: Chinees lesmateriaal (NL-ZH)
 aard: ORIGINEEL lesmateriaal voor Chinese leerlingen, o.b.v. publieke verkeersregels/techniek
 opzet: Nederlandse kop + originele Chinese lestekst; terminologie volgt het glossarium
 ---
 
-# 模块四：负责任的驾驶行为 · Module 4 — Verantwoord (rij)gedrag
+# 模块四：负责任的驾驶行为 · Module 4: Verantwoord (rij)gedrag
 
 > 把学过的所有步骤灵活地用在自主行驶的路线中，重点在态度与心态：防御性、文明、负责任地驾驶。
 > 本模块之后即准备参加 CBR 路考；考官期待你能自己化解情况，即使出点小差错。
@@ -25,7 +25,7 @@ opzet: Nederlandse kop + originele Chinese lestekst; terminologie volgt het glos
 新手在紧急情况下很难控制车 → 首要是**避免**陷入其中（这大部分掌握在你自己手里）。
 
 ### 步骤 43 · 节能驾驶 (Milieuverantwoord rijden)
-"新式驾驶"（HNR）原则：尽快升挡、油门快而果断、用尽量高的挡位滑行。省油（5–10%）：
+"新式驾驶"（HNR）原则：尽快升挡、油门快而果断、用尽量高的挡位滑行。省油（5-10%）：
 每月查胎压（冷车时），不用多余的车顶架/车顶箱（可增油耗约 30%），减重、减小风阻。
 自动挡：用油门深浅影响换挡时机。电动车：减小风阻/滚阻、用省电配件、别无谓急加速、善用能量回收。
 

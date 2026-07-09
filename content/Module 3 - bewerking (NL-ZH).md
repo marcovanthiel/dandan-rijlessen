@@ -1,10 +1,10 @@
 ---
-titel: Module 3 — Chinees lesmateriaal (NL–ZH)
+titel: Module 3: Chinees lesmateriaal (NL-ZH)
 aard: ORIGINEEL lesmateriaal voor Chinese leerlingen, o.b.v. publieke verkeersregels/techniek
 opzet: Nederlandse kop + originele Chinese lestekst; terminologie volgt het glossarium
 ---
 
-# 模块三：复杂交通情境 · Module 3 — Complexe verkeerssituaties
+# 模块三：复杂交通情境 · Module 3: Complexe verkeerssituaties
 
 > 学会快速判断复杂情境、预测他人行为并调整自己的操作。交通规则、车辆操控与果断决策在此结合。
 > 模块三后的测试是"中期测试"（由考官进行）；特殊操作做得好可获得相应考试项目的免考。
