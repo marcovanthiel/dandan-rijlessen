@@ -1,0 +1,10 @@
+# Cloudflare Workers Static Assets — Dandan's rijlessen (artnijmegen.nl)
+# Statische site; build-output in ./dist (via `node build.js`). Zelfde opzet als
+# onze andere sites. Custom domain (artnijmegen.nl + www) wordt via de
+# Cloudflare-API aan de worker gekoppeld (niet via routes hier, dat vereist
+# extra zone-permissie op de CI-token).
+name = "dandan-rijlessen"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "./dist"

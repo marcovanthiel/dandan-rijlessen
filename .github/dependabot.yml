@@ -1,0 +1,20 @@
+# Dependabot — wekelijks (maandagochtend), met 5 dagen cooldown (supply-chain).
+# Deze site heeft geen npm-runtime-dependencies; alleen de GitHub-Actions worden
+# bijgehouden (SHA-gepind; Dependabot bumpt de SHA + versie-comment).
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '06:00'
+      timezone: 'Europe/Amsterdam'
+    cooldown:
+      default-days: 5
+    open-pull-requests-limit: 3
+    labels:
+      - 'dependencies'
+      - 'ci'
+    commit-message:
+      prefix: 'deps(ci)'
