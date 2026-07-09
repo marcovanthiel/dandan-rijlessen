@@ -77,3 +77,35 @@ foto's of illustraties uit het bronboek. Voeg alleen eigen/rechtenvrij beeld toe
   map `content/<taal>/` met vertaalde md's (structuur identiek aan zh) →
   build pakt 'm automatisch op; gebruikers in die taal krijgen dan de
   vertaalde les i.p.v. de zh-fallback met melding.
+
+## Fase 3/4/5/6/9: volledig platform (sinds 9-7-2026, autonome bouwronde)
+- **Theoriemodule B**: 11 hoofdstukken in `content/zh/Theorie *.md` (zelfde
+  formaat als praktijk; bestandsnaam "Theorie N" bepaalt sectie+slug).
+  Vragenbank: `content/vragen/*.json` (85 origineel; velden nl/zh, type
+  kennis|inzicht|gevaar). Simulator volgt het vernieuwde CBR-examen
+  (50 vragen, 44 goed, 30 min; bron cbr.nl, gecheckt 9-7-2026) — parameters
+  in `features.js` (EXAMEN). Onderwerp→hoofdstuk-koppeling: OND_HOOFDSTUK.
+- **Voortgang/leerpad**: tabel progress (part_key `p:slug:id`/`t:slug:id`),
+  afvinkknoppen per onderdeel, ring op /leren, examendatum op /account.
+- **Begrippentrainer**: `content/lexicon.json` (40 termen × 12 talen; dit is
+  óók het terminologielexicon voor de vertaalpijplijn). NL-audio via
+  SpeechSynthesis (client, geen externe bronnen).
+- **Commerce-voorbereiding**: /prijzen → /bestellen → orders-tabel →
+  /betalen/:id (wacht op provider). Vouchers: admin maakt codes (campagne,
+  max_uses), inwisselen op /prijzen of /betalen → pas. WeChat Pay:
+  webhook-stub op POST /webhook/wechat (501) + provider-veld in orders;
+  activering zodra de Chinese entiteit er is. Referral: ref_code per account,
+  ?ref= zet cookie, referred_by bij signup. Boek: /boek redirect (env
+  BOEK_URL overschrijft; affiliate-ID invullen = var zetten).
+- **Reviews**: tabel reviews, alléén door admin ingevoerde echte verhalen
+  (zichtbaar-vlag); landing toont ze pas als ze bestaan.
+- **Beveiliging fase 4 v1**: /img/* alleen met sessie; max 3 gelijktijdige
+  sessies per account; best-effort gedragsrem (240 gated views/uur per
+  isolate). Zwaardere varianten (D1-teller, signed URLs) = later.
+- **i18n**: 12 talen in i18n.js (gegenereerd; pariteit verplicht). UI-taal ≠
+  lestaal: lestekst valt terug op zh met melding. RTL voor ar.
+- **PWA**: manifest + sw.js (alleen schil-cache, bewust geen lescontent).
+  SEO: sitemap.xml + hreflang op de landing + robots.
+- **E-mail**: info@dandandrive.nl → doorsturen naar marco@ via Cloudflare
+  Email Routing (MX/SPF handmatig via DNS-API gezet; enable-endpoint viel
+  buiten de token-permissies maar regels + MX werken, testmail delivered).

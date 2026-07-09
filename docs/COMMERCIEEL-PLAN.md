@@ -96,9 +96,9 @@ bron, CI-deploy.
 | 0. Fundament | Besluiten §1 genomen; domein geregistreerd; juridische teksten | Marco |
 | 1. Platform | **LIVE 9-7-2026**: Worker + D1, e-mailcode-login, passen, server-side content met 2%-preview, NL/EN-landing, admin, cookieloze statistiek, kopieer-remming v1 | klaar |
 | 2. Betalen | Checkout via provider uit besluit 3 (WeChat Pay/Alipay native); periode-passen; webhook + mails; belasting/facturen | Fase 1 |
-| 3. Theoriemodule | Eigen theoriecontent B + oefenvragen-engine (quizzen, proefexamens met tijdslimiet, voortgang, foutenanalyse) | Fase 1 |
-| 4. Kopieer-remming | Maatregelenpakket §6 volledig actief | Fase 1 |
-| 5. Marketing | SEO/hreflang per taal, OG/TikTok-assets, UTM + conversiemeting, leadmagneet, kortings-/campagnecodes, drip-mails | Fase 2 |
+| 3. Theoriemodule | **LIVE 9-7-2026**: 11 hoofdstukken + 85 vragen + simulator (50v/30min/norm 44) + foutenanalyse + voortgang/leerpad | klaar (vragenbank uitbreiden = doorlopend) |
+| 4. Kopieer-remming | **v1 LIVE 9-7-2026**: beelden achter login, sessielimiet (3), gedragsrem; nog te doen: forensische watermerk-verfijning, signed image-URLs | grotendeels |
+| 5. Marketing | **Basis LIVE 9-7-2026**: hreflang/sitemap, campagnevouchers, referral, UTM-meting, deelbare scores, partnerpagina; nog te doen: drip-mails, per-taal OG-beelden | grotendeels |
 | 6. Talen op aanvraag | **Fundament LIVE 9-7-2026** (chrome zh/nl/en + taalvoorkeur + content-per-taal-structuur); nog te doen: vertaalpijplijn met terminologielexicon per nieuwe klanttaal | deels klaar |
 
 Fasen 2, 3 en 4 kunnen deels parallel; elke fase eindigt live en geverifieerd
