@@ -5,7 +5,9 @@ artnijmegen.nl verwijst door (301) sinds de verhuizing van 9-7-2026. Opgezet vol
 **Cloudflare Workers Static Assets + GitHub Actions auto-deploy.**
 
 ## Bron van waarheid
-- Repo: **`marcovanthiel/dandan-rijlessen`** (lokaal `~/Projects/dandan-rijlessen`).
+- Repo: **`marcovanthiel/dandan-rijlessen`** (lokale map heet sinds 9-7-2026
+  **`dandandrive`**: `~/Developer/dandandrive` op de MacBook, `~/Projects/dandandrive`
+  op de Mac mini).
 - Inhoud wijzigen: `content/*.md` (per module, NL+ZH). Layout: `assets/style.css`;
   generator: `build.js`.
 - `git fetch && git pull` bij sessie-start (multi-machine).
