@@ -1,0 +1,427 @@
+{
+  "wetgeving-1": {
+    "v": "Bisikletli, sürücülere (bestuurders) dahil midir?",
+    "opts": ["Evet", "Hayır"],
+    "uitleg": "Araç süren herkes sürücüdür, bisikletliler de dahil."
+  },
+  "wetgeving-2": {
+    "v": "Yalnızca B ehliyetiyle sürebileceğiniz azami toplam kütle (toegestane maximummassa) nedir?",
+    "opts": ["2500 kg", "3500 kg", "4250 kg"],
+    "uitleg": "B ehliyeti azami 3500 kg toplam kütleye kadar geçerlidir."
+  },
+  "wetgeving-3": {
+    "v": "Çoğu acemi sürücü için daha katı olan 0,2 promil alkol sınırı ne kadar süre geçerlidir?",
+    "opts": ["2 yıl", "5 yıl", "10 yıl"],
+    "uitleg": "Acemilik düzenlemesi 5 yıl sürer (21 yaşından önce başlayan için 7 yıl)."
+  },
+  "wetgeving-4": {
+    "v": "Elinde bisiklet iten kişi kurallara göre nedir:",
+    "opts": ["sürücü", "yaya", "bisikletli"],
+    "uitleg": "Elinde bisiklet götüren kişi yayadır."
+  },
+  "wetgeving-5": {
+    "v": "1000 kg römorkla sürmek istiyorsunuz; aracınızın azami toplam kütlesi (toegestane maximummassa) 2400 kg. Bu, B ehliyetiyle mümkün mü?",
+    "opts": ["Evet", "Hayır"],
+    "uitleg": "Toplam 3400 kg ve bu, B için 3500 kg sınırının içinde kalır."
+  },
+  "wetgeving-6": {
+    "v": "Her otomobil için yasal olarak zorunlu olan sigorta hangisidir?",
+    "opts": ["kasko (allrisk)", "mali sorumluluk (WA)", "koltuk sigortası (inzittenden)"],
+    "uitleg": "WA sigortası başkalarına verilen zararı karşılar ve zorunludur."
+  },
+  "voorrang-1": {
+    "v": "Eşdeğer kavşakta sağdan bir bisikletli yaklaşıyor. Kim önce geçer?",
+    "opts": ["sen", "bisikletli"],
+    "uitleg": "Sağdan gelen sürücüler önce geçer, bisikletliler de dahil."
+  },
+  "voorrang-2": {
+    "v": "Köpekbalığı dişlerine (haaientanden) yaklaşıyorsunuz. Kimin için durmalı veya beklemelisiniz?",
+    "opts": ["yalnızca otomobiller", "kesişen yoldaki tüm sürücüler", "yayalar da dahil"],
+    "uitleg": "Köpekbalığı dişleri: sürücülere yol verin, yayalara değil."
+  },
+  "voorrang-3": {
+    "v": "Dur levhasında (B7) ne yapmalısınız?",
+    "opts": ["yavaşlayıp yol boşsa devam etmek", "yol boş görünse bile tamamen durmak"],
+    "uitleg": "B7'de her zaman tamamen durun."
+  },
+  "voorrang-4": {
+    "v": "Sağa dönüyorsunuz. Yanınızdaki bisiklet yolunda bir bisikletli düz gidiyor. Kim önce geçer?",
+    "opts": ["sen", "bisikletli"],
+    "uitleg": "Aynı yolda düz giden trafik, dönen trafikten önce geçer."
+  },
+  "voorrang-5": {
+    "v": "Kaplamasız bir yolda (onverharde weg) gidiyorsunuz ve levhasız kaplamalı bir yolu kesiyorsunuz. Kimin önceliği var?",
+    "opts": ["sen", "kaplamalı yoldaki trafik"],
+    "uitleg": "Kaplamasız yoldan, kaplamalı yoldaki tüm trafiğe yol verirsiniz."
+  },
+  "voorrang-6": {
+    "v": "Eşdeğer kavşakta soldan bir tramvay yaklaşıyor. Kim önce geçer?",
+    "opts": ["sen", "tramvay"],
+    "uitleg": "Eşdeğer kavşaklarda tramvay her zaman önce geçer."
+  },
+  "voorrang-7": {
+    "v": "Geri geri bir park yerinden çıkıyorsunuz. Aracınızın arkasından bir yaya geçiyor. Ne geçerlidir?",
+    "opts": ["yaya beklemeli", "herkese yol verirsin"],
+    "uitleg": "Özel manevralarda (geri gitme, kalkış) diğer tüm trafiğe yol verirsiniz."
+  },
+  "voorrang-8": {
+    "v": "Meskun mahalde bir toplu taşıma otobüsü duraktan kalkmak istiyor ve sinyal veriyor. Ne yaparsınız?",
+    "opts": ["devam etmek, sen önce geçersin", "otobüse kalkma fırsatı vermek"],
+    "uitleg": "Meskun mahalde kalkan otobüse yer verirsiniz."
+  },
+  "voorrang-9": {
+    "v": "Sireni ve mavi çakarı olan bir ambulans trafik sıkışıklığında arkadan yaklaşıyor. Ne yaparsınız?",
+    "opts": ["olduğun yerde kalmak", "sakince yer açmak, gerekirse tehlike oluşturmadan emniyet şeridine geçmek"],
+    "uitleg": "Öncelikli araçların güvenli ve öngörülebilir şekilde geçmesini sağlayın."
+  },
+  "voorrang-10": {
+    "v": "Askeri bir konvoyun (militaire colonne) arasından geçebilir misiniz?",
+    "opts": ["Evet", "Hayır"],
+    "uitleg": "Bir konvoyun arasından geçemezsiniz."
+  },
+  "borden-1": {
+    "v": "Kırmızı kenarlı ve beyaz zeminli yuvarlak bir levha (C1) ne anlama gelir?",
+    "opts": ["tek yön", "her iki yönde kapalı", "park yasağı"],
+    "uitleg": "C1 yolu her iki yönde tüm trafiğe kapatır."
+  },
+  "borden-2": {
+    "v": "Düz yönü gösteren beyaz oklu mavi yuvarlak levha (D4) şu anlama gelir:",
+    "opts": ["düz gitmeye izin var", "zorunlu düz git", "öncelikli yol"],
+    "uitleg": "Mavi yuvarlak levhalar zorunluluktur: zorunlu yön."
+  },
+  "borden-3": {
+    "v": "Siyah çapraz çizgili sarı levha (B2) şu anlama gelir:",
+    "opts": ["öncelikli yol sonu", "öncelikli yol başı", "meskun mahal sonu"],
+    "uitleg": "B2 öncelikli yolu sonlandırır; sonrasında normal kurallar geçerlidir."
+  },
+  "borden-4": {
+    "v": "F5 levhasında (kırmızı beyaz, kırmızı ok size dönük) şu geçerlidir:",
+    "opts": ["sen önce geçersin", "karşıdan gelen trafik önce geçer"],
+    "uitleg": "Kırmızı ok, beklemesi gereken tarafı gösterir."
+  },
+  "borden-5": {
+    "v": "Bir yasak levhasının altındaki 'uitgezonderd fietsers' ek levhası ne anlama gelir?",
+    "opts": ["yasak bisikletliler için daha da katıdır", "yasak bisikletliler için geçerli değildir"],
+    "uitleg": "'Uitgezonderd' belirtilen grubu yasaktan muaf tutar."
+  },
+  "borden-6": {
+    "v": "Bordür taşındaki sarı devamlı çizgi şu anlama gelir:",
+    "opts": ["park etme yasağı", "kısa durma yasağı", "yükleme boşaltmaya izin var"],
+    "uitleg": "Sarı devamlı çizgi: kısa durma yasak, dolayısıyla park etme de yasak."
+  },
+  "borden-7": {
+    "v": "Bir 30 bölgesine giriyorsunuz. Bu bölge nerede biter?",
+    "opts": ["bir sonraki kavşakta", "bölge sonu levhasında", "500 metre sonra"],
+    "uitleg": "Bölge levhaları, ilgili bölge sonu levhasına kadar geçerlidir."
+  },
+  "borden-8": {
+    "v": "Bir konut bölgesinde (woonerf, G5) azami hızınız:",
+    "opts": ["15 km/saat (yürüme hızı)", "30 km/saat", "50 km/saat"],
+    "uitleg": "Konut bölgesinde yürüme hızında gidersiniz; yayalar tüm genişliği kullanabilir."
+  },
+  "borden-9": {
+    "v": "Yol yüzeyindeki levhasız köpekbalığı dişleri şu anlama gelir:",
+    "opts": ["tavsiye hızı", "yol verme", "yaya geçidi"],
+    "uitleg": "Köpekbalığı dişleri B6 levhasıyla aynı anlama gelir."
+  },
+  "borden-10": {
+    "v": "Şeridinizin yanındaki blok çizgi (kesik geniş çizgiler) çoğunlukla neyi işaretler:",
+    "opts": ["park şeridi", "bisiklet veya otobüs şeridi", "emniyet şeridi"],
+    "uitleg": "Blok çizgi çoğunlukla bisiklet/otobüs şeritlerini taşıt yolundan ayırır."
+  },
+  "lichten-1": {
+    "v": "Dur çizgisine çok yakınken ışık sarıya dönüyor ve sert fren tehlikeli. Ne yaparsınız?",
+    "opts": ["yine de durmak", "devam etmek"],
+    "uitleg": "Sarı = dur, ancak güvenle durmak artık mümkün değilse devam edin."
+  },
+  "lichten-2": {
+    "v": "Bir kavşaktaki yanıp sönen sarı ışık ne anlama gelir?",
+    "opts": ["levha ve genel kurallara göre öncelik düzeni", "her zaman durmak", "kavşak kapalı"],
+    "uitleg": "Yanıp sönen sarı: daha dikkatli olun ve levha ile temel kurallara uyun."
+  },
+  "lichten-3": {
+    "v": "Şeridinizin üzerindeki kırmızı çarpılar şu anlama gelir:",
+    "opts": ["şeridi terk etmek zorunlu, şerit kapalı", "azami hız", "yalnızca kamyon trafiği için"],
+    "uitleg": "Kırmızı çarpı şeridi kapatır; hemen terk edin."
+  },
+  "lichten-4": {
+    "v": "Bir hemzemin geçitte (overweg) beyaz ışık yanıp sönüyor. Bu ne anlama gelir?",
+    "opts": ["tren yaklaşıyor", "geçitten geçebilirsiniz", "cihaz arızalı"],
+    "uitleg": "Yanıp sönen beyaz ışık: geçit boş, geçmeye izin var."
+  },
+  "lichten-5": {
+    "v": "Bir trafik görevlisi, yeşil trafik ışığından farklı bir işaret veriyor. Neye uyarsınız?",
+    "opts": ["trafik ışığı", "trafik görevlisi"],
+    "uitleg": "İşaretler trafik ışıklarının ve levhaların üzerindedir."
+  },
+  "lichten-6": {
+    "v": "Yolun üzerindeki 'negenoog' (dokuz gözlü) ışık kimin için geçerlidir:",
+    "opts": ["tüm sürücüler", "otobüsler ve tramvaylar", "bisikletliler"],
+    "uitleg": "Negenoog yalnızca otobüs ve tramvay trafiğini yönetir."
+  },
+  "snelheid-1": {
+    "v": "Gündüz (06:00-19:00) otoyolda standart hız sınırı nedir?",
+    "opts": ["100 km/saat", "120 km/saat", "130 km/saat"],
+    "uitleg": "Gündüz 100 geçerlidir; akşam ve gece çoğu zaman 130 (levhalar önceliklidir)."
+  },
+  "snelheid-2": {
+    "v": "Meskun mahalde (bölge levhası olmadan) standart hız sınırı:",
+    "opts": ["30 km/saat", "50 km/saat", "70 km/saat"],
+    "uitleg": "Meskun mahalde 50 geçerlidir, levhalar aksini söylemedikçe."
+  },
+  "snelheid-3": {
+    "v": "Kuru havada güvenli takip mesafesi için pratik kural:",
+    "opts": ["1 saniye", "2 saniye", "5 saniye"],
+    "uitleg": "En az 2 saniye; yağmurda veya karanlıkta daha fazla."
+  },
+  "snelheid-4": {
+    "v": "Hızınız 50'den 100 km/saate iki katına çıkıyor. Fren mesafeniz (remweg) yaklaşık:",
+    "opts": ["2 kat uzar", "4 kat uzar", "aynı kalır"],
+    "uitleg": "Fren mesafesi hızın karesiyle büyür."
+  },
+  "snelheid-5": {
+    "v": "Kuru bir haftanın ardından yağmur yeni başlıyor. Yol yüzeyi o an:",
+    "opts": ["hemen iyi tutar", "kir ve yağ yüzünden ekstra kaygandır", "yalnızca donda kaygandır"],
+    "uitleg": "İlk yağmur, kirli bir yolu buz gibi kaygan yapar."
+  },
+  "snelheid-6": {
+    "v": "Şiddetli yağmurda direksiyonunuz aniden hafifliyor (aquaplaning). Ne yaparsınız?",
+    "opts": ["sert fren yapmak", "gazı bırakıp direksiyonu düz tutmak", "güçlü şekilde ters direksiyon kırmak"],
+    "uitleg": "Aquaplaning'de: gazı bırak, fren yapma, rotayı koru."
+  },
+  "snelheid-7": {
+    "v": "Tepki süresi yaklaşık 1 saniyedir. 100 km/saatte fren yapmadan önce kaç metre gidersiniz?",
+    "opts": ["yaklaşık 14 m", "yaklaşık 28 m", "yaklaşık 56 m"],
+    "uitleg": "100 km/saat yaklaşık 28 m/s'dir: bir saniyelik tepki = 28 metre."
+  },
+  "snelheid-8": {
+    "v": "Arkanızda çok yakın takip eden bir araç (bumperklever) var. Akıllıca olan:",
+    "opts": ["uyarmak için fren yapmak", "önünüzde ekstra mesafe oluşturmak", "daha hızlı gitmek"],
+    "uitleg": "Önünüzdeki fazla boşluk, arkanızda kaybolan alanı telafi eder."
+  },
+  "inhalen-1": {
+    "v": "İlke olarak hangi taraftan sollarsınız?",
+    "opts": ["sol", "sağ"],
+    "uitleg": "Sollama soldan yapılır; sağdan yalnızca istisnai durumlarda."
+  },
+  "inhalen-2": {
+    "v": "Önünüzdeki araç sola dönmek için sola geçmiş durumda. Sağından geçebilir misiniz?",
+    "opts": ["Evet", "Hayır"],
+    "uitleg": "Sola geçmiş trafiği sağdan sollayabilirsiniz."
+  },
+  "inhalen-3": {
+    "v": "Bir yaya geçidinin hemen öncesinde sollama yapabilir misiniz?",
+    "opts": ["Evet", "Hayır"],
+    "uitleg": "Yaya geçidinin hemen öncesinde sollama yasaktır: geçen yayaları göremezsiniz."
+  },
+  "inhalen-4": {
+    "v": "Bir dönel kavşaktan çıkarken sinyal verirsiniz:",
+    "opts": ["sola", "sağa", "gerek yok"],
+    "uitleg": "Dönel kavşaktan çıkma = sağa sinyal vermek."
+  },
+  "inhalen-5": {
+    "v": "Şerit daralmasında fermuar yöntemini (ritsen) kullanırsınız. Nerede katılırsınız?",
+    "opts": ["mümkün olduğunca erken", "ancak daralmanın kendisinde"],
+    "uitleg": "Fermuar: sona kadar gidin ve sırayla katılın."
+  },
+  "inhalen-6": {
+    "v": "Meskun mahalde bir bisikletliyi solluyorsunuz. En az ne kadar yanal mesafe bırakırsınız?",
+    "opts": ["yaklaşık 0,3 m", "yaklaşık 1 m", "2,5 m"],
+    "uitleg": "Pratik kural: meskun mahalde 1 metre, dışında 1,5 metre."
+  },
+  "parkeren-1": {
+    "v": "Bir yaya geçidinin kaç metre yakınında kısa durma (stilstaan) yasaktır?",
+    "opts": ["5 m", "10 m", "15 m"],
+    "uitleg": "Yaya geçidinin önündeki 5 metrede kısa durma yasaktır."
+  },
+  "parkeren-2": {
+    "v": "Kısa durma (stilstaan) ile park etme (parkeren) arasındaki fark: yükleme boşaltma şunun kapsamındadır:",
+    "opts": ["park etme", "kısa durma"],
+    "uitleg": "Yük alıp verdiğiniz veya yolcu indirip bindirdiğiniz sürece bu kısa durmadır."
+  },
+  "parkeren-3": {
+    "v": "Mavi bölgede (blauwe zone) şununla park edersiniz:",
+    "opts": ["park saati (parkeerschijf)", "dörtlü flaşör", "her zaman özel izin"],
+    "uitleg": "Mavi bölge: varış saatli park saati, azami süre içinde."
+  },
+  "parkeren-4": {
+    "v": "Kapınızı taşıt yolu tarafından açıyorsunuz. En güvenli yöntem:",
+    "opts": ["hızlı açmak", "uzak elle açıp omzunuzun üzerinden bakmak", "önce korna çalmak"],
+    "uitleg": "'Dutch reach' sizi bisikletlilere bakmaya zorlar."
+  },
+  "parkeren-5": {
+    "v": "Otoyolda arıza: yardımı nerede beklersiniz?",
+    "opts": ["araçta", "bariyerin arkasında", "emniyet şeridinde aracın yanında"],
+    "uitleg": "Bariyerin arkası, tek güvenli bekleme yeridir."
+  },
+  "parkeren-6": {
+    "v": "Meskun mahal dışında üçgen reflektörünüzü aracın arkasında yaklaşık kaç metreye koyarsınız?",
+    "opts": ["10 m", "30 m", "100 m"],
+    "uitleg": "Yaklaşık 30 metre (otoyollarda yaklaşık 100 m)."
+  },
+  "kwetsbaar-1": {
+    "v": "Park etmiş araçların arasından bir top yola doğru yuvarlanıyor. Ne beklersiniz?",
+    "opts": ["özel bir şey yok", "peşinden gelen bir çocuk", "bir köpek"],
+    "uitleg": "Top = çocuk: hızı kes ve frene hazır ol."
+  },
+  "kwetsbaar-2": {
+    "v": "Bir speed-pedelec (sarı plaka) şurada gitmelidir:",
+    "opts": ["bisiklet yolunda", "moped kurallarına göre taşıt yolunda", "kaldırımda"],
+    "uitleg": "Speed-pedelec, moped (bromfiets) kurallarına tabidir."
+  },
+  "kwetsbaar-3": {
+    "v": "Önünüzdeki bir kamyon sağa dönmek istiyor ve önce sola savruluyor. Ne yaparsınız?",
+    "opts": ["hızla sağından geçmek", "yer vermek ve yanında durmamak", "korna çalmak"],
+    "uitleg": "Kamyonlar geniş dönüş (wijde bocht) yapar; sağ yanı kör noktadır."
+  },
+  "kwetsbaar-4": {
+    "v": "Saat 08:25'te bir ilkokulun yanında şöyle sürersiniz:",
+    "opts": ["normal hız sınırında", "belirgin şekilde daha yavaş ve frene hazır", "yalnızca yaya geçidinde yavaş"],
+    "uitleg": "Giriş çıkış saatlerinde okul çevresi düşük hız gerektirir."
+  },
+  "kwetsbaar-5": {
+    "v": "Bir engelli akülü aracı (scootmobiel) şurada gidebilir:",
+    "opts": ["yalnızca kaldırımda", "kaldırım, bisiklet yolu ve taşıt yolunda", "yalnızca bisiklet yolunda"],
+    "uitleg": "Scootmobiel'ler üçünde de gidebilir; her yerde onları hesaba katın."
+  },
+  "kwetsbaar-6": {
+    "v": "Yaşlı bir bisikletli binerken hafifçe sallanıyor. Siz:",
+    "opts": ["hemen dar bir mesafeyle sollarsınız", "bekleyip geniş bir mesafeyle geçersiniz", "zil veya korna çalarsınız"],
+    "uitleg": "Dengesiz bisikletlilere ekstra alan ve sabır gösterin."
+  },
+  "mens-1": {
+    "v": "Deneyimli bir sürücü için yasal alkol sınırı:",
+    "opts": ["0,2 promil", "0,5 promil", "0,8 promil"],
+    "uitleg": "0,5 promil; acemiler 0,2."
+  },
+  "mens-2": {
+    "v": "Alkol aldıktan sonra kahve, temiz hava veya kısa bir yürüyüş:",
+    "opts": ["atılımı hızlandırır", "promil değerini değiştirmez", "promil değerini yarıya indirir"],
+    "uitleg": "Alkolü yalnızca zaman parçalar (saatte yaklaşık 1 kadeh)."
+  },
+  "mens-3": {
+    "v": "Sarı uyarı etiketli ilaçlar:",
+    "opts": ["her zaman yasaktır", "sürüş yetisini etkileyebilir; prospektüsü okuyun", "yalnızca kamyon şoförleri için geçerlidir"],
+    "uitleg": "Sarı etiket = sürüş için tehlikeli olabilir; eczacıya danışın."
+  },
+  "mens-4": {
+    "v": "Esnediğinizi ve şeridi düzgün tutamadığınızı fark ediyorsunuz. Tek etkili önlem:",
+    "opts": ["müziği açmak", "camı açmak", "durup kısa süre uyumak"],
+    "uitleg": "Yorgunluğa karşı yalnızca uyku işe yarar."
+  },
+  "mens-5": {
+    "v": "Bisiklette elde telefonla konuşmak:",
+    "opts": ["serbesttir", "yasaktır"],
+    "uitleg": "Telefon yasağı tüm sürücüler için geçerlidir, bisikletliler de dahil."
+  },
+  "mens-6": {
+    "v": "100 km/saatte telefonunuza iki saniye bakmak, yaklaşık kaç metre kör sürmek demektir:",
+    "opts": ["6 metre", "28 metre", "56 metre"],
+    "uitleg": "Saniyede 2 x 28 metre, yarım futbol sahasından fazladır."
+  },
+  "voertuig-1": {
+    "v": "Otomobil lastiklerinin yasal asgari diş derinliği:",
+    "opts": ["1,0 mm", "1,6 mm", "2,4 mm"],
+    "uitleg": "En az 1,6 mm; daha erken değiştirmek daha güvenlidir."
+  },
+  "voertuig-2": {
+    "v": "Arka sis farı yalnızca görüş şunun altındayken kullanılabilir:",
+    "opts": ["50 m", "100 m", "200 m"],
+    "uitleg": "Arka sis farı: görüş 50 m altında; ön sis farları 200 m altında (veya kar)."
+  },
+  "voertuig-3": {
+    "v": "Uyarlanabilir hız sabitleyici (ACC):",
+    "opts": ["duran engeller için her zaman durur", "mesafe korur ama sınırları vardır; sorumluluk sizde kalır", "elleri serbest bırakır"],
+    "uitleg": "ADAS yardımcı olur; sorumluluk tümüyle sürücüde kalır."
+  },
+  "voertuig-4": {
+    "v": "Tasarruflu sürüş, diğerlerinin yanı sıra şu demektir:",
+    "opts": ["yüksek devirde geç vites büyütmek", "yaklaşık 2000-2500 devirde erken vites büyütmek", "her zaman ikinci viteste gitmek"],
+    "uitleg": "Het Nieuwe Rijden: erken vites büyüt, tahmin et, boşta kay."
+  },
+  "voertuig-5": {
+    "v": "Çok düşük lastik basıncı şuna yol açar:",
+    "opts": ["daha kısa fren mesafesi", "daha yüksek yakıt tüketimi ve daha kötü yol tutuşu", "virajlarda daha iyi tutuş"],
+    "uitleg": "İnik lastikler daha çok yakar ve daha kötü yönlenir."
+  },
+  "voertuig-6": {
+    "v": "Yalnızca maddi hasarlı ve kusur konusunda anlaşmazlık olan bir çarpışmadan sonra:",
+    "opts": ["araçları hemen kaldırmak", "durumu belgelemek (fotoğraf, kaza tutanağı) ve sonra yolu açmak", "polis her zaman zorunludur"],
+    "uitleg": "Fotoğraflarla ve Avrupa kaza tutanağıyla (Europees schadeformulier) belgeleyin."
+  },
+  "gevaar-1": {
+    "v": "Meskun mahalde 50 gidiyorsunuz. Park etmiş araçların arasından bir top yola yuvarlanıyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Top neredeyse her zaman bir çocuk demektir: hemen fren yap."
+  },
+  "gevaar-2": {
+    "v": "Bir otobüsün durduğu bir otobüs durağına yaklaşıyorsunuz; çevresinde kimseyi görmüyorsunuz.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Otobüsün arkasında karşıya geçenler gizlenmiş olabilir: gazı bırak, frene hazır ol."
+  },
+  "gevaar-3": {
+    "v": "Otoyolda önünüzdeki trafik geniş bir mesafede düzgün akıyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Tehlike işareti yok: burada doğru cevap hiçbir şey yapmamaktır."
+  },
+  "gevaar-4": {
+    "v": "Bir konut mahallesinde bir araç, geri vites lambaları yanar hâlde bir çıkış yolunda (uitrit) duruyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Doğrudan çatışma tehdidi var: araç geri geri yola çıkabilir."
+  },
+  "gevaar-5": {
+    "v": "Önünüzde bir bisikletli var; sağdaki bir yan sokaktan, yol vermek zorunda olan bir araç yavaşça yaklaşıyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Henüz akut bir çatışma yok ama belirsiz: gazı bırakarak hızı azalt."
+  },
+  "gevaar-6": {
+    "v": "Yağmurda, ileride trafik sıkışıklığında fren ışıklarının yandığını görüyorsunuz.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Yağmurda sıradaki fren ışıkları: dalgayı karşılamak için şimdi kendiniz fren yapın."
+  },
+  "gevaar-7": {
+    "v": "Bir yaya, bir yaya geçidinin yanında durmuş telefonuna bakıyor, geçme belirtisi yok.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Yaya geçidi ve öngörülemez yaya: gazı bırak ve gözle."
+  },
+  "gevaar-8": {
+    "v": "Meskun mahal dışında öncelikli bir yolda gidiyorsunuz; çok ilerinizde bir traktör yola çıkıyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Mesafe büyük: boşluğu korumak için gazı bırakmak yeter."
+  },
+  "gevaar-9": {
+    "v": "Sağınızda bir kamyon var; birlikte bir daralmaya yaklaşıyorsunuz.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Alan yok oluyor: yavaşla ve kamyonun arkasına gir."
+  },
+  "gevaar-10": {
+    "v": "Karanlıkta, meskun mahal dışında biri ışığı olmadan sizin şeridinizde yürüyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Yolunuzda akut tehlike: hızı güçlü şekilde azalt."
+  },
+  "gevaar-11": {
+    "v": "Aynanızda hızla yaklaşıp sollamak isteyen bir motosiklet görüyorsunuz; önünüzdeki yol boş.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Motosikletin güvenle geçebilmesi için rota ve hızı koru."
+  },
+  "gevaar-12": {
+    "v": "Önünüzdeki bir araç, karşıya geçen bir kedi için aniden fren yapıyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Hemen fren yap; sebebin o an önemi yok."
+  },
+  "gevaar-13": {
+    "v": "Soldaki park etmiş bir aracın ön tekerlekleri yola dönük ve sürücü içinde oturuyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Kalkış tehdidi var ama henüz başlamadı: gazı bırak, frene hazır ol."
+  },
+  "gevaar-14": {
+    "v": "Okul bölgesi, saat 08:30, her iki taraftaki kaldırımda çocuklar var.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Henüz kimse taşıt yolunda değil: hızı azalt ve geniş bak."
+  },
+  "gevaar-15": {
+    "v": "Önünüzdeki dönel kavşakta bir bisikletli karşıya geçip geçmeyeceği konusunda belirgin biçimde tereddüt ediyor.",
+    "opts": ["Fren yap", "Gazı bırak", "Hiçbir şey yapma"],
+    "uitleg": "Yolunuzda tereddüt eden bisikletli: fren yap ve göz teması kur."
+  }
+}

@@ -1,0 +1,427 @@
+{
+  "wetgeving-1": {
+    "v": "Czy rowerzysta należy do kierujących (bestuurders)?",
+    "opts": ["Tak", "Nie"],
+    "uitleg": "Każdy, kto prowadzi pojazd, jest kierującym (bestuurder), także rowerzysta."
+  },
+  "wetgeving-2": {
+    "v": "Jaka jest maksymalna dopuszczalna masa pojazdu, który możesz prowadzić z samym prawem jazdy B?",
+    "opts": ["2500 kg", "3500 kg", "4250 kg"],
+    "uitleg": "Prawo jazdy B obowiązuje do dopuszczalnej masy całkowitej 3500 kg włącznie."
+  },
+  "wetgeving-3": {
+    "v": "Jak długo dla większości początkujących kierowców obowiązuje surowszy limit alkoholu 0,2 promila?",
+    "opts": ["2 lata", "5 lat", "10 lat"],
+    "uitleg": "Okres początkujący trwa 5 lat (7 lat dla osób, które zaczynają przed 21. rokiem życia)."
+  },
+  "wetgeving-4": {
+    "v": "Osoba prowadząca rower obok siebie jest według przepisów:",
+    "opts": ["kierującym", "pieszym", "rowerzystą"],
+    "uitleg": "Kto prowadzi rower obok siebie, jest pieszym."
+  },
+  "wetgeving-5": {
+    "v": "Chcesz jechać z przyczepą o masie 1000 kg; twój samochód ma dopuszczalną masę całkowitą 2400 kg. Czy wolno to z prawem jazdy B?",
+    "opts": ["Tak", "Nie"],
+    "uitleg": "Razem 3400 kg, co mieści się w granicy 3500 kg dla kategorii B."
+  },
+  "wetgeving-6": {
+    "v": "Które ubezpieczenie jest ustawowo obowiązkowe dla każdego samochodu?",
+    "opts": ["allrisk (pełne)", "WA (OC)", "ubezpieczenie pasażerów"],
+    "uitleg": "Ubezpieczenie WA (OC) pokrywa szkody wyrządzone innym i jest obowiązkowe."
+  },
+  "voorrang-1": {
+    "v": "Na skrzyżowaniu równorzędnym z prawej strony zbliża się rowerzysta. Kto ma pierwszeństwo?",
+    "opts": ["ty", "rowerzysta"],
+    "uitleg": "Kierujący z prawej strony mają pierwszeństwo, także rowerzyści."
+  },
+  "voorrang-2": {
+    "v": "Zbliżasz się do zębów rekina. Komu musisz ustąpić lub na kogo zaczekać?",
+    "opts": ["tylko samochodom", "wszystkim kierującym na drodze poprzecznej", "także pieszym"],
+    "uitleg": "Zęby rekina: ustępujesz pierwszeństwa kierującym, nie pieszym."
+  },
+  "voorrang-3": {
+    "v": "Co musisz zrobić przy znaku stop (B7)?",
+    "opts": ["zwolnić i jechać dalej, gdy jest wolno", "całkowicie się zatrzymać, nawet gdy wydaje się wolno"],
+    "uitleg": "Przy B7 zawsze trzeba się całkowicie zatrzymać."
+  },
+  "voorrang-4": {
+    "v": "Skręcasz w prawo. Rowerzysta na drodze dla rowerów obok ciebie jedzie prosto. Kto ma pierwszeństwo?",
+    "opts": ["ty", "rowerzysta"],
+    "uitleg": "Ruch jadący prosto po tej samej drodze ma pierwszeństwo przed skręcającym."
+  },
+  "voorrang-5": {
+    "v": "Jedziesz drogą nieutwardzoną i przecinasz drogę utwardzoną bez znaków. Kto ma pierwszeństwo?",
+    "opts": ["ty", "ruch na drodze utwardzonej"],
+    "uitleg": "Z drogi nieutwardzonej ustępujesz pierwszeństwa całemu ruchowi na drodze utwardzonej."
+  },
+  "voorrang-6": {
+    "v": "Na skrzyżowaniu równorzędnym z lewej strony zbliża się tramwaj. Kto ma pierwszeństwo?",
+    "opts": ["ty", "tramwaj"],
+    "uitleg": "Na skrzyżowaniach równorzędnych tramwaj ma zawsze pierwszeństwo."
+  },
+  "voorrang-7": {
+    "v": "Wyjeżdżasz tyłem z miejsca parkingowego. Za twoim samochodem przechodzi pieszy. Co obowiązuje?",
+    "opts": ["pieszy musi zaczekać", "ty ustępujesz pierwszeństwa wszystkim"],
+    "uitleg": "Przy manewrach szczególnych (cofanie, ruszanie) przepuszczasz cały pozostały ruch."
+  },
+  "voorrang-8": {
+    "v": "W obszarze zabudowanym autobus liniowy chce odjechać z przystanku i włącza kierunkowskaz. Co robisz?",
+    "opts": ["jedziesz dalej, masz pierwszeństwo", "dajesz autobusowi możliwość odjechania"],
+    "uitleg": "W obszarze zabudowanym dajesz miejsce odjeżdżającemu autobusowi liniowemu."
+  },
+  "voorrang-9": {
+    "v": "Karetka z sygnałem dźwiękowym i niebieskim światłem błyskowym zbliża się z tyłu w korku. Co robisz?",
+    "opts": ["stoisz w miejscu", "spokojnie robisz miejsce, w razie potrzeby bezpiecznie zjeżdżasz na pas awaryjny"],
+    "uitleg": "Pojazdy uprzywilejowane przepuszczasz bezpiecznie i w przewidywalny sposób."
+  },
+  "voorrang-10": {
+    "v": "Czy wolno przecinać kolumnę wojskową?",
+    "opts": ["Tak", "Nie"],
+    "uitleg": "Kolumny nie wolno przecinać."
+  },
+  "borden-1": {
+    "v": "Co oznacza okrągły znak z czerwoną obwódką i białym polem (C1)?",
+    "opts": ["ruch jednokierunkowy", "zamknięty w obu kierunkach", "zakaz postoju"],
+    "uitleg": "C1 zamyka drogę w obu kierunkach dla całego ruchu."
+  },
+  "borden-2": {
+    "v": "Niebieski okrągły znak z białą strzałką prosto (D4) oznacza:",
+    "opts": ["jazda prosto dozwolona", "nakaz jazdy prosto", "droga z pierwszeństwem"],
+    "uitleg": "Niebieskie okrągłe znaki to nakazy: nakazany kierunek jazdy."
+  },
+  "borden-3": {
+    "v": "Żółty znak z czarnym ukośnym paskiem (B2) oznacza:",
+    "opts": ["koniec drogi z pierwszeństwem", "początek drogi z pierwszeństwem", "koniec obszaru zabudowanego"],
+    "uitleg": "B2 kończy drogę z pierwszeństwem; dalej obowiązują zwykłe zasady."
+  },
+  "borden-4": {
+    "v": "Przy znaku F5 (czerwono-biały, czerwona strzałka skierowana ku tobie) obowiązuje:",
+    "opts": ["ty masz pierwszeństwo", "pierwszeństwo ma ruch z naprzeciwka"],
+    "uitleg": "Czerwona strzałka wskazuje stronę, która musi zaczekać."
+  },
+  "borden-5": {
+    "v": "Co oznacza tabliczka „uitgezonderd fietsers” pod znakiem zakazu?",
+    "opts": ["zakaz jest szczególnie surowy dla rowerzystów", "zakaz nie dotyczy rowerzystów"],
+    "uitleg": "„Uitgezonderd” wyłącza wymienioną grupę spod zakazu."
+  },
+  "borden-6": {
+    "v": "Żółta linia ciągła na krawężniku oznacza:",
+    "opts": ["zakaz postoju", "zakaz zatrzymywania (a więc i postoju)", "dozwolony załadunek i rozładunek"],
+    "uitleg": "Żółta linia ciągła: zakaz zatrzymywania, a więc także postoju."
+  },
+  "borden-7": {
+    "v": "Wjeżdżasz do strefy 30. Gdzie kończy się ta strefa?",
+    "opts": ["na najbliższym skrzyżowaniu", "przy znaku końca strefy", "po 500 metrach"],
+    "uitleg": "Znaki strefowe obowiązują do odpowiadającego im znaku końca strefy."
+  },
+  "borden-8": {
+    "v": "W strefie zamieszkania (woonerf, G5) możesz jechać najwyżej:",
+    "opts": ["15 km/h (prędkość pieszego)", "30 km/h", "50 km/h"],
+    "uitleg": "W strefie zamieszkania jedziesz z prędkością pieszego; piesi mogą korzystać z całej szerokości."
+  },
+  "borden-9": {
+    "v": "Zęby rekina na nawierzchni bez znaku oznaczają:",
+    "opts": ["prędkość zalecana", "ustąpienie pierwszeństwa", "przejście dla pieszych"],
+    "uitleg": "Zęby rekina mają to samo znaczenie co znak B6."
+  },
+  "borden-10": {
+    "v": "Linia blokowa (przerywane szerokie kreski) obok twojego pasa często wyznacza:",
+    "opts": ["pas postojowy", "pas dla rowerów lub autobusów", "pas awaryjny"],
+    "uitleg": "Linia blokowa często oddziela pas dla rowerów lub autobusów od jezdni."
+  },
+  "lichten-1": {
+    "v": "Sygnalizacja zmienia się na żółte, gdy jesteś tuż przed linią zatrzymania, a ostre hamowanie byłoby niebezpieczne. Co robisz?",
+    "opts": ["mimo to się zatrzymujesz", "jedziesz dalej"],
+    "uitleg": "Żółte oznacza zatrzymanie, chyba że nie da się już tego zrobić bezpiecznie."
+  },
+  "lichten-2": {
+    "v": "Co oznacza migające żółte światło przy skrzyżowaniu?",
+    "opts": ["pierwszeństwo według znaków i zasad", "zawsze zatrzymanie", "skrzyżowanie zamknięte"],
+    "uitleg": "Migające żółte: bądź szczególnie czujny i stosuj się do znaków i zasad podstawowych."
+  },
+  "lichten-3": {
+    "v": "Czerwone krzyże nad twoim pasem oznaczają:",
+    "opts": ["nakaz opuszczenia pasa, pas zamknięty", "prędkość maksymalna", "tylko dla ciężarówek"],
+    "uitleg": "Czerwony krzyż zamyka pas; opuść go natychmiast."
+  },
+  "lichten-4": {
+    "v": "Na przejeździe kolejowym miga białe światło. Co to oznacza?",
+    "opts": ["nadjeżdża pociąg", "możesz przejechać przez przejazd", "awaria urządzenia"],
+    "uitleg": "Migające białe światło: przejazd wolny, można przejechać."
+  },
+  "lichten-5": {
+    "v": "Kierujący ruchem daje inny znak niż zielone światło. Czego się słuchasz?",
+    "opts": ["sygnalizacji świetlnej", "kierującego ruchem"],
+    "uitleg": "Polecenia mają pierwszeństwo przed sygnalizacją i znakami."
+  },
+  "lichten-6": {
+    "v": "Sygnalizator „negenoog” nad drogą dotyczy:",
+    "opts": ["wszystkich kierujących", "autobusów i tramwajów", "rowerzystów"],
+    "uitleg": "Negenoog steruje tylko ruchem autobusów i tramwajów."
+  },
+  "snelheid-1": {
+    "v": "Jaki jest w dzień (06:00-19:00) standardowy limit na autostradzie?",
+    "opts": ["100 km/h", "120 km/h", "130 km/h"],
+    "uitleg": "W dzień obowiązuje 100; wieczorem i w nocy często 130 (znaki mają pierwszeństwo)."
+  },
+  "snelheid-2": {
+    "v": "Standardowy limit w obszarze zabudowanym (bez znaków strefowych):",
+    "opts": ["30 km/h", "50 km/h", "70 km/h"],
+    "uitleg": "W obszarze zabudowanym obowiązuje 50, chyba że znaki stanowią inaczej."
+  },
+  "snelheid-3": {
+    "v": "Zasada praktyczna bezpiecznego odstępu przy suchej pogodzie:",
+    "opts": ["1 sekunda", "2 sekundy", "5 sekund"],
+    "uitleg": "Co najmniej 2 sekundy; przy deszczu lub w ciemności więcej."
+  },
+  "snelheid-4": {
+    "v": "Twoja prędkość podwaja się z 50 do 100 km/h. Droga hamowania staje się około:",
+    "opts": ["2 razy dłuższa", "4 razy dłuższa", "taka sama"],
+    "uitleg": "Droga hamowania rośnie z kwadratem prędkości."
+  },
+  "snelheid-5": {
+    "v": "Właśnie zaczyna padać po suchym tygodniu. Nawierzchnia jest wtedy:",
+    "opts": ["od razu dobrze przyczepna", "szczególnie śliska od brudu i oleju", "śliska tylko przy mrozie"],
+    "uitleg": "Pierwszy deszcz sprawia, że brudna droga staje się bardzo śliska."
+  },
+  "snelheid-6": {
+    "v": "Kierownica nagle robi się lekka podczas ulewy (aquaplaning). Co robisz?",
+    "opts": ["mocno hamujesz", "puszczasz gaz i trzymasz kierownicę prosto", "mocno kontrujesz kierownicą"],
+    "uitleg": "Przy aquaplaningu: puść gaz, nie hamuj, utrzymaj tor jazdy."
+  },
+  "snelheid-7": {
+    "v": "Czas reakcji to około 1 sekundy. Ile metrów przejeżdżasz przy 100 km/h, zanim zahamujesz?",
+    "opts": ["około 14 m", "około 28 m", "około 56 m"],
+    "uitleg": "100 km/h to około 28 m/s: jedna sekunda reakcji to 28 metrów."
+  },
+  "snelheid-8": {
+    "v": "Za tobą jedzie ktoś na zderzaku. Rozsądnie jest:",
+    "opts": ["hamować, aby ostrzec", "zwiększyć odstęp z przodu", "jechać szybciej"],
+    "uitleg": "Więcej miejsca przed tobą rekompensuje utracony zapas z tyłu."
+  },
+  "inhalen-1": {
+    "v": "Z której strony zasadniczo wyprzedzasz?",
+    "opts": ["z lewej", "z prawej"],
+    "uitleg": "Wyprzedzasz z lewej; z prawej tylko w przypadkach wyjątkowych."
+  },
+  "inhalen-2": {
+    "v": "Samochód przed tobą zjechał do lewej, aby skręcić. Czy możesz go minąć z prawej?",
+    "opts": ["Tak", "Nie"],
+    "uitleg": "Pojazd ustawiony do lewej możesz wyprzedzić z prawej strony."
+  },
+  "inhalen-3": {
+    "v": "Czy wolno wyprzedzać tuż przed przejściem dla pieszych?",
+    "opts": ["Tak", "Nie"],
+    "uitleg": "Wyprzedzanie tuż przed przejściem jest zakazane: brak widoczności na przechodzących."
+  },
+  "inhalen-4": {
+    "v": "Przy zjeżdżaniu z ronda włączasz kierunkowskaz:",
+    "opts": ["w lewo", "w prawo", "niepotrzebny"],
+    "uitleg": "Zjazd z ronda oznacza włączenie prawego kierunkowskazu."
+  },
+  "inhalen-5": {
+    "v": "Przy zwężeniu pasa stosujesz metodę suwaka. Gdzie się włączasz?",
+    "opts": ["jak najwcześniej", "dopiero przy samym zwężeniu"],
+    "uitleg": "Jazda na suwak: jedź do końca i włączaj się na przemian."
+  },
+  "inhalen-6": {
+    "v": "Wyprzedzasz rowerzystę w obszarze zabudowanym. Ile minimalnego odstępu bocznego zachowujesz?",
+    "opts": ["około 0,3 m", "około 1 m", "2,5 m"],
+    "uitleg": "Zasada praktyczna: 1 metr w obszarze zabudowanym, 1,5 metra poza nim."
+  },
+  "parkeren-1": {
+    "v": "W jakiej odległości od przejścia dla pieszych nie wolno się zatrzymywać?",
+    "opts": ["5 m", "10 m", "15 m"],
+    "uitleg": "W odległości do 5 metrów przed przejściem obowiązuje zakaz zatrzymywania."
+  },
+  "parkeren-2": {
+    "v": "Różnica między zatrzymaniem a postojem: załadunek i rozładunek zalicza się do:",
+    "opts": ["postoju", "zatrzymania"],
+    "uitleg": "Dopóki ładujesz, rozładowujesz lub pozwalasz wsiadać i wysiadać, jest to zatrzymanie."
+  },
+  "parkeren-3": {
+    "v": "W strefie niebieskiej parkujesz z:",
+    "opts": ["tarczą parkingową", "światłami awaryjnymi", "zawsze zezwoleniem"],
+    "uitleg": "Strefa niebieska: tarcza parkingowa z godziną przyjazdu, w granicach maksymalnego czasu."
+  },
+  "parkeren-4": {
+    "v": "Otwierasz drzwi od strony jezdni. Najbezpieczniejsza metoda to:",
+    "opts": ["szybko otworzyć", "otworzyć dalszą ręką i spojrzeć przez ramię", "najpierw zatrąbić"],
+    "uitleg": "„Holenderski sposób” zmusza cię do spojrzenia na rowerzystów."
+  },
+  "parkeren-5": {
+    "v": "Awaria na autostradzie: gdzie czekasz na pomoc?",
+    "opts": ["w samochodzie", "za barierą ochronną", "obok samochodu na pasie awaryjnym"],
+    "uitleg": "Za barierą ochronną to jedyne bezpieczne miejsce oczekiwania."
+  },
+  "parkeren-6": {
+    "v": "W jakiej odległości poza obszarem zabudowanym ustawiasz trójkąt ostrzegawczy?",
+    "opts": ["10 m", "30 m", "100 m"],
+    "uitleg": "Około 30 metrów (na autostradach około 100 m)."
+  },
+  "kwetsbaar-1": {
+    "v": "Piłka wytacza się na ulicę spomiędzy zaparkowanych samochodów. Czego się spodziewasz?",
+    "opts": ["niczego szczególnego", "dziecka, które wybiegnie za nią", "psa"],
+    "uitleg": "Piłka to dziecko: zredukuj prędkość i bądź gotów do hamowania."
+  },
+  "kwetsbaar-2": {
+    "v": "Speed-pedelec (żółta tabliczka) powinien jechać:",
+    "opts": ["po drodze dla rowerów", "po jezdni według zasad dla motorowerów", "po chodniku"],
+    "uitleg": "Speed-pedelec podlega zasadom dla motorowerów (bromfiets)."
+  },
+  "kwetsbaar-3": {
+    "v": "Ciężarówka przed tobą chce skręcić w prawo i najpierw wychyla się w lewo. Co robisz?",
+    "opts": ["szybko przejeżdżasz z prawej", "dajesz miejsce i nie zatrzymujesz się obok niej", "trąbisz"],
+    "uitleg": "Ciężarówki jadą szerokim łukiem; z prawej obok nich jest martwe pole."
+  },
+  "kwetsbaar-4": {
+    "v": "Przy szkole podstawowej o godzinie 8:25 jedziesz:",
+    "opts": ["ze zwykłym limitem", "wyraźnie wolniej i gotów do hamowania", "wolniej tylko przy przejściach"],
+    "uitleg": "Okolica szkoły w godzinach przywożenia i odbierania dzieci wymaga niskiej prędkości."
+  },
+  "kwetsbaar-5": {
+    "v": "Wózek inwalidzki elektryczny (scootmobiel) może jechać po:",
+    "opts": ["tylko po chodniku", "po chodniku, drodze dla rowerów i jezdni", "tylko po drodze dla rowerów"],
+    "uitleg": "Wózki elektryczne mogą jechać po wszystkich trzech; wszędzie na nie uważaj."
+  },
+  "kwetsbaar-6": {
+    "v": "Starszy rowerzysta lekko się chwieje przy wsiadaniu. Ty:",
+    "opts": ["od razu wyprzedzasz blisko", "czekasz i mijasz z dużym odstępem", "dzwonisz lub trąbisz"],
+    "uitleg": "Przy niestabilnych rowerzystach zachowaj dodatkowy odstęp i cierpliwość."
+  },
+  "mens-1": {
+    "v": "Ustawowy limit alkoholu dla doświadczonego kierowcy wynosi:",
+    "opts": ["0,2 promila", "0,5 promila", "0,8 promila"],
+    "uitleg": "0,5 promila; początkujący 0,2."
+  },
+  "mens-2": {
+    "v": "Kawa, świeże powietrze lub krótki spacer po spożyciu alkoholu:",
+    "opts": ["przyspieszają rozkład", "nie zmieniają poziomu alkoholu", "zmniejszają poziom o połowę"],
+    "uitleg": "Tylko czas rozkłada alkohol (około 1 porcja na godzinę)."
+  },
+  "mens-3": {
+    "v": "Leki z żółtą naklejką ostrzegawczą:",
+    "opts": ["są zawsze zakazane", "mogą wpływać na zdolność prowadzenia; przeczytaj ulotkę", "dotyczą tylko kierowców ciężarówek"],
+    "uitleg": "Żółta naklejka oznacza możliwe zagrożenie dla jazdy; skonsultuj się z apteką."
+  },
+  "mens-4": {
+    "v": "Zauważasz, że ziewasz i nie trzymasz się dokładnie pasa. Jedyny skuteczny środek to:",
+    "opts": ["głośniejsza muzyka", "otwarte okno", "zatrzymać się i krótko się przespać"],
+    "uitleg": "Tylko sen pomaga na zmęczenie."
+  },
+  "mens-5": {
+    "v": "Rozmowa przez telefon trzymany w ręku na rowerze jest:",
+    "opts": ["dozwolona", "zakazana"],
+    "uitleg": "Zakaz używania telefonu dotyczy wszystkich kierujących, także rowerzystów."
+  },
+  "mens-6": {
+    "v": "Dwie sekundy patrzenia na telefon przy 100 km/h to jazda na ślepo przez około:",
+    "opts": ["6 metrów", "28 metrów", "56 metrów"],
+    "uitleg": "2 razy 28 metrów na sekundę to ponad połowa boiska piłkarskiego."
+  },
+  "voertuig-1": {
+    "v": "Ustawowa minimalna głębokość bieżnika opon samochodowych to:",
+    "opts": ["1,0 mm", "1,6 mm", "2,4 mm"],
+    "uitleg": "Co najmniej 1,6 mm; wcześniejsza wymiana jest bezpieczniejsza."
+  },
+  "voertuig-2": {
+    "v": "Tylne światło przeciwmgłowe wolno włączyć tylko przy widoczności poniżej:",
+    "opts": ["50 m", "100 m", "200 m"],
+    "uitleg": "Tylne światło przeciwmgłowe: widoczność poniżej 50 m; przednie poniżej 200 m (lub śnieg)."
+  },
+  "voertuig-3": {
+    "v": "Aktywny tempomat (ACC):",
+    "opts": ["zawsze zatrzyma się przed nieruchomą przeszkodą", "utrzymuje odstęp, ale ma ograniczenia; ty pozostajesz odpowiedzialny", "zwalnia ręce"],
+    "uitleg": "ADAS wspomaga; kierowca pozostaje w pełni odpowiedzialny."
+  },
+  "voertuig-4": {
+    "v": "Oszczędna jazda oznacza między innymi:",
+    "opts": ["późną zmianę biegu przy wysokich obrotach", "wczesną zmianę biegu przy około 2000-2500 obrotach", "ciągłą jazdę na drugim biegu"],
+    "uitleg": "Nowy styl jazdy: wczesna zmiana biegu, przewidywanie, toczenie się."
+  },
+  "voertuig-5": {
+    "v": "Zbyt niskie ciśnienie w oponach powoduje:",
+    "opts": ["krótszą drogę hamowania", "wyższe zużycie i gorsze prowadzenie", "lepszą przyczepność na zakrętach"],
+    "uitleg": "Miękkie opony zużywają więcej paliwa i gorzej się prowadzą."
+  },
+  "voertuig-6": {
+    "v": "Po stłuczce z samą szkodą blacharską i sporem o winę:",
+    "opts": ["od razu przestawić pojazdy", "udokumentować sytuację (zdjęcia, formularz szkody) i potem zwolnić drogę", "policja jest zawsze obowiązkowa"],
+    "uitleg": "Udokumentuj zdjęciami i europejskim formularzem zgłoszenia szkody."
+  },
+  "gevaar-1": {
+    "v": "Jedziesz 50 w obszarze zabudowanym. Spomiędzy zaparkowanych samochodów wytacza się na jezdnię piłka.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Piłka niemal zawsze oznacza dziecko: hamuj natychmiast."
+  },
+  "gevaar-2": {
+    "v": "Zbliżasz się do przystanku, na którym stoi autobus; nie widzisz wokół niego nikogo.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Za autobusem mogą kryć się przechodzący: puść gaz, bądź gotów do hamowania."
+  },
+  "gevaar-3": {
+    "v": "Na autostradzie ruch przed tobą jedzie równomiernie w dużej odległości.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Brak sygnału zagrożenia: nic nie robić to tutaj właściwa odpowiedź."
+  },
+  "gevaar-4": {
+    "v": "W dzielnicy mieszkalnej samochód stoi w wyjeździe z posesji z zapalonymi światłami cofania.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Grozi bezpośredni konflikt: samochód może wycofać na jezdnię."
+  },
+  "gevaar-5": {
+    "v": "Przed tobą jedzie rowerzysta; z bocznej ulicy po prawej wolno zbliża się samochód, który ma ustąpić.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Nie ma jeszcze ostrego konfliktu, ale jest niepewność: zredukuj prędkość, puszczając gaz."
+  },
+  "gevaar-6": {
+    "v": "W deszczu widzisz dalej w korku zapalające się światła stopu.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Światła stopu w korku podczas deszczu: hamuj już teraz, aby zamortyzować falę."
+  },
+  "gevaar-7": {
+    "v": "Pieszy stoi przy przejściu i patrzy w telefon, bez oznak przechodzenia.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Przejście plus nieprzewidywalny pieszy: puść gaz i obserwuj."
+  },
+  "gevaar-8": {
+    "v": "Jedziesz drogą z pierwszeństwem poza obszarem zabudowanym; daleko przed tobą traktor wjeżdża na drogę.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Odległość jest duża: puszczenie gazu wystarczy, aby zachować zapas."
+  },
+  "gevaar-9": {
+    "v": "Po twojej prawej jedzie ciężarówka; razem zbliżacie się do zwężenia.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Miejsce się kończy: zahamuj i włącz się za ciężarówką."
+  },
+  "gevaar-10": {
+    "v": "Po ciemku poza obszarem zabudowanym ktoś bez oświetlenia idzie po twojej połowie jezdni.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Ostre zagrożenie na twoim torze: zdecydowanie zredukuj prędkość."
+  },
+  "gevaar-11": {
+    "v": "W lusterku widzisz motocykl, który szybko się zbliża i chce wyprzedzić; droga przed tobą jest wolna.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Utrzymaj tor i prędkość, aby motocykl mógł bezpiecznie przejechać."
+  },
+  "gevaar-12": {
+    "v": "Przed tobą samochód nagle hamuje przed przebiegającym kotem.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Hamuj natychmiast; przyczyna w tej chwili nie ma znaczenia."
+  },
+  "gevaar-13": {
+    "v": "Zaparkowany po lewej samochód ma przednie koła skręcone w stronę jezdni, a kierowca siedzi w środku.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Grozi ruszenie, ale jeszcze się nie zaczęło: puść gaz, bądź gotów do hamowania."
+  },
+  "gevaar-14": {
+    "v": "Strefa szkolna, godzina 8:30, dzieci na chodniku po obu stronach.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Na jezdni jeszcze nikogo nie ma: zredukuj prędkość i patrz szeroko."
+  },
+  "gevaar-15": {
+    "v": "Na rondzie przed tobą rowerzysta wyraźnie waha się, czy przejechać.",
+    "opts": ["Hamować", "Puścić gaz", "Nic"],
+    "uitleg": "Wahający się rowerzysta na twoim torze: hamuj i szukaj kontaktu wzrokowego."
+  }
+}

@@ -160,7 +160,7 @@ function parseModule(file){
   }
   pushBlock();
   if(fnameNum) modNum=fnameNum; // filename is authoritative
-  if(/Slotdeel/i.test(modNl) || /结业/.test(modZh)){ modZh='结业部分'; modNl='Slotdeel: examen · ADAS · oefeningen'; }
+  if(/Slotdeel/i.test(modNl) || /Slotdeel/i.test(modZh) || /结业/.test(modZh)){ if(/结业|Slotdeel/.test(modZh)===false || /结业/.test(modZh)) modZh = /结业/.test(modZh)?'结业部分':modZh; if(/结业/.test(modZh)) modNl='Slotdeel: examen · ADAS · oefeningen'; }
   // drop empty divider blocks (no body text)
   const scripts = blocks.filter(b=>b.body.join('').trim().length>0);
   return {modZh,modNl,modNum,intro,scripts,sectie,slug:(sectie==='theorie'?'theorie-':'module-')+(modNum||blocks.length)};
@@ -264,7 +264,7 @@ function articleHtml(m, s){
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
     const fig = G.figFor(s.step, s.zh);
     const photo = findPhoto(m, s);
-    const cleanTitle = zhTitle.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*·?\s*/i,'');
+    const cleanTitle = zhTitle.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*[:·]?\s*/i,'');
     const dim = photo ? imgSize(photo) : null;
     const figHtml = photo
       ? `<figure class="fig photo"><img src="${photo}" alt="${esc(cleanTitle)}${s.nl?' · '+esc(s.nl):''}"${dim?` width="${dim.w}" height="${dim.h}"`:''} loading="lazy"></figure>`
@@ -429,7 +429,7 @@ function writeWorkerContent(perTaal){
     banner: G.moduleBanner(m.modNum),
     parts: m.scripts.map(s=>({
       id: s.id, step: s.step||'', zh: s.zh, nl: s.nl||'', page: s.page||null,
-      label: (s.step?((STAPWOORD[taal]||'Stap')+' '+s.step+' · '):'')+ s.zh.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*·?\s*/i,''),
+      label: (s.step?((STAPWOORD[taal]||'Stap')+' '+s.step+' · '):'')+ s.zh.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*[:·]?\s*/i,''),
       html: articleHtml(m, s),
       preview: String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1')
     }))
