@@ -13,10 +13,11 @@ const IMG = path.join(ROOT, 'img');
 const PHOTO_EXT = ['png','jpg','jpeg','webp'];
 function photoSuffix(s){
   if(s.step) return 's'+s.step;
-  if(/学习方法|leermodel/i.test(s.zh)) return 'leermodel';
-  if(/路考|examen/i.test(s.zh)) return 'examen';
-  if(/辅助|ADAS/i.test(s.zh)) return 'adas';
-  if(/巩固|练习|oefening/i.test(s.zh)) return 'oefening';
+  const k = (s.zh||'') + ' ' + (s.nl||'');
+  if(/学习方法|leermodel/i.test(k)) return 'leermodel';
+  if(/路考|rijexamen|examen/i.test(k)) return 'examen';
+  if(/辅助|ADAS/i.test(k)) return 'adas';
+  if(/巩固|练习|oefening/i.test(k)) return 'oefening';
   return null;
 }
 function findPhoto(m,s){
@@ -53,14 +54,15 @@ function imgSize(rel){
   IMG_DIM_CACHE[rel] = dim;
   return dim;
 }
-function asciiSectionId(zh, n){
-  if(/学习方法|leermodel/i.test(zh)) return 'leermodel';
-  if(/路考|examen/i.test(zh)) return 'examen';
-  if(/辅助|ADAS/i.test(zh)) return 'adas';
-  if(/巩固|练习|oefening/i.test(zh)) return 'oefening';
+function asciiSectionId(k, n){
+  if(/学习方法|leermodel/i.test(k)) return 'leermodel';
+  if(/路考|rijexamen|examen/i.test(k)) return 'examen';
+  if(/辅助|ADAS/i.test(k)) return 'adas';
+  if(/巩固|练习|oefening/i.test(k)) return 'oefening';
   return 'sec'+n;
 }
 
+const STAPWOORD = { zh:'步骤', nl:'Stap', en:'Step', tr:'Adım', ar:'الخطوة', pl:'Krok', uk:'Крок', ru:'Шаг', es:'Paso', pt:'Passo', hi:'चरण', vi:'Bước' };
 const SITE = {
   titleNl: "Dandan's rijlessen",
   titleZh: "丹丹的驾驶课",
@@ -146,7 +148,7 @@ function parseModule(file){
       // heading -> new block, unless it's an empty divider like "## X · De scripts" with no body
       const t=splitTitle(l.replace(/^#{2,3}\s+/,''));
       pushBlock();
-      const step=(t.zh.match(/步骤\s*(\d+[ab]?)/)||[])[1] || (t.nl.match(/^[A-Z]\.\s/)?t.nl.trim().charAt(0):'');
+      const step=((t.zh+' '+t.nl).match(/(?:步骤|Stap)\s*(\d+[ab]?)/i)||[])[1] || (t.nl.match(/^[A-Z]\.\s/)?t.nl.trim().charAt(0):'');
       cur={zh:t.zh,nl:t.nl,step:step||'',body:[]};
       continue;
     }
@@ -262,7 +264,7 @@ function articleHtml(m, s){
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
     const fig = G.figFor(s.step, s.zh);
     const photo = findPhoto(m, s);
-    const cleanTitle = zhTitle.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,'');
+    const cleanTitle = zhTitle.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*·?\s*/i,'');
     const dim = photo ? imgSize(photo) : null;
     const figHtml = photo
       ? `<figure class="fig photo"><img src="${photo}" alt="${esc(cleanTitle)}${s.nl?' · '+esc(s.nl):''}"${dim?` width="${dim.w}" height="${dim.h}"`:''} loading="lazy"></figure>`
@@ -408,6 +410,14 @@ function writeWorkerContent(perTaal){
   const vdir = path.join(ROOT, 'content', 'vragen');
   if(fs.existsSync(vdir)) for(const f of fs.readdirSync(vdir)) if(/\.json$/.test(f))
     vragen.push(...JSON.parse(fs.readFileSync(path.join(vdir,f),'utf8')));
+  const vtdir = path.join(ROOT, 'content', 'vragen-vertalingen');
+  if(fs.existsSync(vtdir)) for(const f of fs.readdirSync(vtdir)){
+    const mt = f.match(/^([a-z]{2})\.json$/); if(!mt) continue;
+    const taal = mt[1];
+    const vert = JSON.parse(fs.readFileSync(path.join(vtdir,f),'utf8'));
+    for(const v of vragen){ const w = vert[v.id]; if(!w) continue;
+      v[taal] = w.v; v['opts_'+taal] = w.opts; v['uitleg_'+taal] = w.uitleg; }
+  }
   const lexicon = fs.existsSync(path.join(ROOT,'content','lexicon.json'))
     ? JSON.parse(fs.readFileSync(path.join(ROOT,'content','lexicon.json'),'utf8')) : [];
   const inhoud = {};
@@ -419,7 +429,7 @@ function writeWorkerContent(perTaal){
     banner: G.moduleBanner(m.modNum),
     parts: m.scripts.map(s=>({
       id: s.id, step: s.step||'', zh: s.zh, nl: s.nl||'', page: s.page||null,
-      label: (s.step?('步骤 '+s.step+' · '):'')+ s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,''),
+      label: (s.step?((STAPWOORD[taal]||'Stap')+' '+s.step+' · '):'')+ s.zh.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*·?\s*/i,''),
       html: articleHtml(m, s),
       preview: String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1')
     }))
@@ -451,8 +461,8 @@ function main(){
     const mods = files.map(f=>parseModule(path.join(dir,f)));
     mods.sort((a,b)=>Number(a.modNum)-Number(b.modNum));
     for(const m of mods){ let sec=0; for(const s of m.scripts){
-      s.id = s.step ? 's'+s.step : asciiSectionId(s.zh, ++sec);
-      s.page = m.sectie==='praktijk' ? pageForScript(s.step, s.zh) : null;   // boekpagina's = praktijkboek
+      s.id = s.step ? 's'+s.step : asciiSectionId((s.zh||'')+' '+(s.nl||''), ++sec);
+      s.page = m.sectie==='praktijk' ? pageForScript(s.step, (s.zh||'')+' '+(s.nl||'')) : null;   // boekpagina's = praktijkboek
     }}
     perTaal[taal] = { modules: mods, pmap: buildPageMap(mods.filter(m=>m.sectie==='praktijk')) };
     if(taal==='zh' || !modules){ modules = mods; pmap = perTaal[taal].pmap; }

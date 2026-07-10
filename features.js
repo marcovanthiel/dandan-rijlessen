@@ -17,9 +17,10 @@ export const OND_HOOFDSTUK = {
 };
 export const EXAMEN = { vragen: 50, norm: 44, minuten: 30 }; // vernieuwd CBR-examen sinds 7-4-2025
 
-const vraagTekst = (v, L) => (L === 'zh' && v.zh ? v.zh : v.nl);
-const optTekst = (v, i, L) => (L === 'zh' && v.opts_zh ? v.opts_zh[i] : v.opts_nl[i]);
-const uitleg = (v, L) => (L === 'zh' && v.uitleg_zh ? v.uitleg_zh : v.uitleg_nl);
+const STAPW = { zh:'步骤', nl:'Stap', en:'Step', tr:'Adım', ar:'الخطوة', pl:'Krok', uk:'Крок', ru:'Шаг', es:'Paso', pt:'Passo', hi:'चरण', vi:'Bước' };
+const vraagVert = (v, L) => (L !== 'nl' && v[L]) ? v[L] : null;
+const optTekst = (v, i, L) => (v['opts_' + L] ? v['opts_' + L][i] + ' (' + v.opts_nl[i] + ')' : v.opts_nl[i]);
+const uitleg = (v, L) => v['uitleg_' + L] || v.uitleg_nl;
 
 // ---------- leren-overzicht: twee secties + voortgang + leerpad ----------
 export function lerenBody(L, user, pas, inhoud, klaarPct, examDate, banner) {
@@ -78,11 +79,12 @@ export function vraagBody(L, attempt, n, feedback) {
   const antwoorden = JSON.parse(attempt.antwoorden || '{}');
   const examen = attempt.mode === 'examen';
   const deadline = examen ? new Date(new Date(attempt.started_at.replace(' ', 'T') + 'Z').getTime() + EXAMEN.minuten * 60000).toISOString() : '';
+  const vertOpts = v['opts_' + L];
   const opts = v.opts_nl.map((_, i) => {
     let cls = 'antwoord';
     if (feedback) { if (i === v.juist) cls += ' goed'; else if (String(antwoorden[v.id]) === String(i)) cls += ' fout'; }
     return `<label class="${cls}"><input type="radio" name="antwoord" value="${i}" required ${feedback ? 'disabled' : ''} ${String(antwoorden[v.id]) === String(i) ? 'checked' : ''}>
-      <span>${esc(v.opts_nl[i])}${L === 'zh' && v.opts_zh ? ` <small lang="zh">${esc(v.opts_zh[i])}</small>` : ''}</span></label>`;
+      <span>${esc(v.opts_nl[i])}${vertOpts && L !== 'nl' ? ` <small lang="${L}">${esc(vertOpts[i])}</small>` : ''}</span></label>`;
   }).join('');
   const fb = feedback ? `<div class="note ${String(antwoorden[v.id]) === String(v.juist) ? 'ok' : 'fout'}">
       <strong>${esc(String(antwoorden[v.id]) === String(v.juist) ? t(L, 'quiz.goed') : t(L, 'quiz.fout'))}</strong> ${esc(uitleg(v, L))}
@@ -94,7 +96,7 @@ export function vraagBody(L, attempt, n, feedback) {
   <div class="voortgangsbalk" aria-hidden="true"><span style="width:${Math.round(((n - 1) / ids.length) * 100)}%"></span></div>
   <div class="vraagkaart les-wrap">
     <h1 class="vraagtekst" lang="nl">${esc(v.nl)}</h1>
-    ${L === 'zh' && v.zh ? `<p class="vraagvert" lang="zh">${esc(v.zh)}</p>` : ''}
+    ${vraagVert(v, L) ? `<p class="vraagvert" lang="${L}">${esc(vraagVert(v, L))}</p>` : ''}
     ${feedback ? fb : `<form method="post" action="/oefenexamen/a/${attempt.id}/v/${n}" id="vraagform">
       <div class="antwoorden">${opts}</div>
       <button class="cta">${esc(n < ids.length ? t(L, 'quiz.volgende') : t(L, 'quiz.inleveren'))} →</button>
