@@ -100,7 +100,7 @@ bron, CI-deploy.
 | 3. Theoriemodule | **LIVE 9-7-2026**: 11 hoofdstukken + 85 vragen + simulator (50v/30min/norm 44) + foutenanalyse + voortgang/leerpad | klaar (vragenbank uitbreiden = doorlopend) |
 | 4. Kopieer-remming | **v1 LIVE 9-7-2026**: beelden achter login, sessielimiet (3), gedragsrem; nog te doen: forensische watermerk-verfijning, signed image-URLs | grotendeels |
 | 5. Marketing | **Basis LIVE 9-7-2026**: hreflang/sitemap, campagnevouchers, referral, UTM-meting, deelbare scores, partnerpagina; nog te doen: drip-mails, per-taal OG-beelden | grotendeels |
-| 6. Talen op aanvraag | **Fundament LIVE 9-7-2026** (chrome zh/nl/en + taalvoorkeur + content-per-taal-structuur); nog te doen: vertaalpijplijn met terminologielexicon per nieuwe klanttaal | deels klaar |
+| 6. Talen | **VOLLEDIG LIVE 10-7-2026**: 11 lestalen (zh, nl, tr, ar, pl, uk, ru, es, pt, hi, vi) met volledige lestekst en vraagvertalingen; chrome in 12 talen; native review per taal volgt in de live omgeving | klaar |
 
 Fasen 2, 3 en 4 kunnen deels parallel; elke fase eindigt live en geverifieerd
 volgens de kwaliteitsstandaard.

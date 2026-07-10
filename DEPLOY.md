@@ -109,3 +109,12 @@ foto's of illustraties uit het bronboek. Voeg alleen eigen/rechtenvrij beeld toe
 - **E-mail**: info@dandandrive.nl → doorsturen naar marco@ via Cloudflare
   Email Routing (MX/SPF handmatig via DNS-API gezet; enable-endpoint viel
   buiten de token-permissies maar regels + MX werken, testmail delivered).
+
+## Lestalen (stand 10-7-2026)
+Alle 11 lestalen volledig live: zh (origineel), nl, tr, ar, pl, uk, ru, es,
+pt, hi, vi. Elke taal: 16 modules (107 delen, 52 foto-delen) in
+content/<taal>/ + 85 vraagvertalingen in content/vragen-vertalingen/<taal>.json.
+Vertaald door Opus-agents met lexicon-terminologie; native review per taal
+inplannen vóór actieve campagnes (afspraak: review in de live omgeving).
+Valideren: ./valideer-taal.sh <taal>. Nieuwe taal = zelfde twee plekken vullen;
+de build weigert onvolledige talen (veiligheidsklep).
