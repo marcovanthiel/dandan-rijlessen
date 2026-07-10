@@ -1,0 +1,427 @@
+{
+  "wetgeving-1": {
+    "v": "Người đi xe đạp có được tính là người lái (bestuurder) không?",
+    "opts": ["Có", "Không"],
+    "uitleg": "Bất kỳ ai điều khiển một phương tiện đều là người lái, kể cả người đi xe đạp."
+  },
+  "wetgeving-2": {
+    "v": "Với riêng giấy phép lái xe B, khối lượng tối đa cho phép mà bạn được lái là bao nhiêu?",
+    "opts": ["2500 kg", "3500 kg", "4250 kg"],
+    "uitleg": "Giấy phép B có hiệu lực đến khối lượng tối đa cho phép 3500 kg."
+  },
+  "wetgeving-3": {
+    "v": "Với hầu hết người mới lái, giới hạn cồn nghiêm hơn 0,2 phần nghìn áp dụng trong bao lâu?",
+    "opts": ["2 năm", "5 năm", "10 năm"],
+    "uitleg": "Chế độ người mới lái kéo dài 5 năm (7 năm với người bắt đầu trước 21 tuổi)."
+  },
+  "wetgeving-4": {
+    "v": "Theo quy tắc, người dắt xe đạp đi bộ được xem là:",
+    "opts": ["người lái", "người đi bộ", "người đi xe đạp"],
+    "uitleg": "Người dắt xe đạp bằng tay là người đi bộ."
+  },
+  "wetgeving-5": {
+    "v": "Bạn muốn kéo một rơ moóc 1000 kg; xe của bạn có khối lượng tối đa cho phép 2400 kg. Với giấy phép B có được không?",
+    "opts": ["Có", "Không"],
+    "uitleg": "Tổng cộng 3400 kg, vẫn nằm trong giới hạn 3500 kg của giấy phép B."
+  },
+  "wetgeving-6": {
+    "v": "Loại bảo hiểm nào bắt buộc theo luật cho mỗi chiếc xe?",
+    "opts": ["bảo hiểm toàn diện", "trách nhiệm dân sự (WA)", "bảo hiểm người ngồi trên xe"],
+    "uitleg": "Bảo hiểm trách nhiệm dân sự (WA) chi trả thiệt hại gây ra cho người khác và là bắt buộc."
+  },
+  "voorrang-1": {
+    "v": "Tại một giao lộ đồng cấp, một người đi xe đạp đến từ bên phải. Ai được đi trước?",
+    "opts": ["bạn", "người đi xe đạp"],
+    "uitleg": "Người lái đến từ bên phải được đi trước, kể cả người đi xe đạp."
+  },
+  "voorrang-2": {
+    "v": "Bạn đến gần vạch răng cá mập (haaientanden). Bạn phải dừng hoặc chờ nhường ai?",
+    "opts": ["chỉ ô tô", "mọi người lái trên đường cắt ngang", "cả người đi bộ"],
+    "uitleg": "Răng cá mập: nhường đường cho người lái, không phải cho người đi bộ."
+  },
+  "voorrang-3": {
+    "v": "Bạn phải làm gì khi gặp biển dừng (B7)?",
+    "opts": ["giảm tốc rồi đi tiếp nếu đường trống", "dừng hẳn, kể cả khi trông có vẻ trống"],
+    "uitleg": "Với biển B7 luôn phải dừng hẳn lại."
+  },
+  "voorrang-4": {
+    "v": "Bạn rẽ phải. Một người đi xe đạp trên làn xe đạp bên cạnh bạn đi thẳng. Ai được đi trước?",
+    "opts": ["bạn", "người đi xe đạp"],
+    "uitleg": "Xe đi thẳng trên cùng con đường được ưu tiên hơn xe rẽ."
+  },
+  "voorrang-5": {
+    "v": "Bạn đi trên đường chưa trải nhựa (onverharde weg) và cắt qua một đường đã trải nhựa không có biển báo. Ai có quyền ưu tiên?",
+    "opts": ["bạn", "xe trên đường đã trải nhựa"],
+    "uitleg": "Từ đường chưa trải nhựa, bạn nhường đường cho mọi xe trên đường đã trải nhựa."
+  },
+  "voorrang-6": {
+    "v": "Một tàu điện (tram) đến từ bên trái tại một giao lộ đồng cấp. Ai được đi trước?",
+    "opts": ["bạn", "tàu điện"],
+    "uitleg": "Tại giao lộ đồng cấp, tàu điện luôn được đi trước."
+  },
+  "voorrang-7": {
+    "v": "Bạn lùi xe ra khỏi ô đỗ. Một người đi bộ đi qua phía sau xe bạn. Quy tắc nào áp dụng?",
+    "opts": ["người đi bộ phải chờ", "bạn nhường đường cho mọi người"],
+    "uitleg": "Khi thực hiện thao tác đặc biệt (lùi xe, khởi hành), bạn nhường mọi xe khác đi trước."
+  },
+  "voorrang-8": {
+    "v": "Trong khu dân cư, một xe buýt tuyến muốn rời bến và bật xi nhan. Bạn làm gì?",
+    "opts": ["đi tiếp, bạn được ưu tiên", "tạo điều kiện cho xe buýt rời bến"],
+    "uitleg": "Trong khu dân cư, bạn nhường chỗ cho xe buýt tuyến đang rời bến."
+  },
+  "voorrang-9": {
+    "v": "Một xe cứu thương hú còi và đèn xanh nhấp nháy đến từ phía sau trong dòng xe kẹt. Bạn làm gì?",
+    "opts": ["đứng yên", "bình tĩnh nhường chỗ, nếu cần thì tránh sang làn khẩn cấp một cách an toàn"],
+    "uitleg": "Bạn để xe ưu tiên vượt qua một cách an toàn và dễ đoán."
+  },
+  "voorrang-10": {
+    "v": "Bạn có được cắt ngang một đoàn xe quân sự không?",
+    "opts": ["Có", "Không"],
+    "uitleg": "Bạn không được cắt ngang một đoàn xe."
+  },
+  "borden-1": {
+    "v": "Biển tròn viền đỏ nền trắng (C1) có nghĩa là gì?",
+    "opts": ["đường một chiều", "cấm đi theo cả hai chiều", "cấm đỗ xe"],
+    "uitleg": "C1 cấm mọi xe đi theo cả hai chiều."
+  },
+  "borden-2": {
+    "v": "Biển tròn xanh với mũi tên trắng đi thẳng (D4) có nghĩa là:",
+    "opts": ["được phép đi thẳng", "bắt buộc đi thẳng", "đường ưu tiên"],
+    "uitleg": "Biển tròn xanh là biển bắt buộc: hướng bắt buộc."
+  },
+  "borden-3": {
+    "v": "Biển vàng có gạch chéo đen (B2) có nghĩa là:",
+    "opts": ["hết đường ưu tiên", "bắt đầu đường ưu tiên", "hết khu dân cư"],
+    "uitleg": "B2 kết thúc đường ưu tiên; sau đó áp dụng các quy tắc thông thường."
+  },
+  "borden-4": {
+    "v": "Với biển F5 (đỏ trắng, mũi tên đỏ hướng về phía bạn) thì:",
+    "opts": ["bạn được đi trước", "xe ngược chiều được đi trước"],
+    "uitleg": "Mũi tên đỏ chỉ ra bên phải chờ nhường."
+  },
+  "borden-5": {
+    "v": "Biển phụ 'uitgezonderd fietsers' bên dưới một biển cấm có nghĩa là gì?",
+    "opts": ["lệnh cấm càng nghiêm hơn với người đi xe đạp", "lệnh cấm không áp dụng cho người đi xe đạp"],
+    "uitleg": "'Uitgezonderd' loại nhóm được nêu ra khỏi phạm vi lệnh cấm."
+  },
+  "borden-6": {
+    "v": "Vạch liền màu vàng trên mép vỉa hè có nghĩa là:",
+    "opts": ["cấm đỗ xe", "cấm dừng xe", "được phép bốc dỡ hàng"],
+    "uitleg": "Vạch liền màu vàng: cấm dừng xe, do đó cũng cấm đỗ xe."
+  },
+  "borden-7": {
+    "v": "Bạn đi vào một khu vực 30 (zone 30). Khu vực đó kết thúc ở đâu?",
+    "opts": ["tại giao lộ tiếp theo", "tại biển hết khu vực", "sau 500 mét"],
+    "uitleg": "Biển khu vực có hiệu lực đến biển hết khu vực tương ứng."
+  },
+  "borden-8": {
+    "v": "Trong khu dân cư đi bộ (woonerf, G5), bạn được đi tối đa:",
+    "opts": ["15 km/h (tốc độ đi bộ)", "30 km/h", "50 km/h"],
+    "uitleg": "Trong khu woonerf bạn đi với tốc độ đi bộ; người đi bộ được dùng toàn bộ chiều rộng đường."
+  },
+  "borden-9": {
+    "v": "Vạch răng cá mập (haaientanden) trên mặt đường mà không có biển báo có nghĩa là:",
+    "opts": ["tốc độ khuyến nghị", "nhường đường", "chỗ sang đường"],
+    "uitleg": "Răng cá mập có cùng ý nghĩa với biển B6."
+  },
+  "borden-10": {
+    "v": "Vạch khối (blok, các vạch rộng đứt quãng) bên cạnh làn của bạn thường đánh dấu:",
+    "opts": ["làn đỗ xe", "làn xe đạp hoặc làn xe buýt", "làn khẩn cấp"],
+    "uitleg": "Vạch khối thường ngăn làn xe đạp hoặc làn xe buýt với lòng đường."
+  },
+  "lichten-1": {
+    "v": "Đèn tín hiệu chuyển vàng khi bạn đang ở ngay trước vạch dừng và phanh gấp thì nguy hiểm. Bạn làm gì?",
+    "opts": ["vẫn dừng lại", "đi tiếp"],
+    "uitleg": "Vàng = dừng, trừ khi không còn dừng an toàn được nữa."
+  },
+  "lichten-2": {
+    "v": "Đèn vàng nhấp nháy tại một giao lộ có nghĩa là gì?",
+    "opts": ["quyền ưu tiên theo biển báo và quy tắc", "luôn phải dừng", "giao lộ bị đóng"],
+    "uitleg": "Vàng nhấp nháy: hãy cảnh giác hơn và tuân theo biển báo cùng các quy tắc cơ bản."
+  },
+  "lichten-3": {
+    "v": "Dấu chữ thập đỏ phía trên làn của bạn có nghĩa là:",
+    "opts": ["bắt buộc rời làn, làn đã đóng", "tốc độ tối đa", "chỉ dành cho xe tải"],
+    "uitleg": "Dấu chữ thập đỏ đóng làn; hãy rời làn ngay."
+  },
+  "lichten-4": {
+    "v": "Tại một đường ngang (overweg), đèn trắng nhấp nháy. Điều đó có nghĩa là gì?",
+    "opts": ["tàu hỏa đang đến", "bạn được qua đường ngang", "thiết bị hỏng"],
+    "uitleg": "Đèn trắng nhấp nháy: đường ngang thông thoáng, được phép qua."
+  },
+  "lichten-5": {
+    "v": "Một người điều khiển giao thông (verkeersregelaar) ra hiệu khác với đèn xanh. Bạn tuân theo cái nào?",
+    "opts": ["đèn tín hiệu", "người điều khiển giao thông"],
+    "uitleg": "Hiệu lệnh của người điều khiển cao hơn đèn tín hiệu và biển báo."
+  },
+  "lichten-6": {
+    "v": "Đèn 'negenoog' (chín mắt) phía trên đường áp dụng cho:",
+    "opts": ["mọi người lái", "xe buýt và tàu điện", "người đi xe đạp"],
+    "uitleg": "Đèn negenoog chỉ điều khiển xe buýt và tàu điện."
+  },
+  "snelheid-1": {
+    "v": "Ban ngày (06:00-19:00), giới hạn tiêu chuẩn trên đường cao tốc (autosnelweg) là bao nhiêu?",
+    "opts": ["100 km/h", "120 km/h", "130 km/h"],
+    "uitleg": "Ban ngày là 100; buổi tối và ban đêm thường là 130 (biển báo được ưu tiên)."
+  },
+  "snelheid-2": {
+    "v": "Giới hạn tiêu chuẩn trong khu dân cư (không có biển khu vực):",
+    "opts": ["30 km/h", "50 km/h", "70 km/h"],
+    "uitleg": "Trong khu dân cư là 50, trừ khi biển báo ghi khác."
+  },
+  "snelheid-3": {
+    "v": "Quy tắc kinh nghiệm cho khoảng cách an toàn khi trời khô ráo:",
+    "opts": ["1 giây", "2 giây", "5 giây"],
+    "uitleg": "Tối thiểu 2 giây; khi mưa hoặc trời tối thì nhiều hơn."
+  },
+  "snelheid-4": {
+    "v": "Tốc độ của bạn tăng gấp đôi từ 50 lên 100 km/h. Quãng đường phanh của bạn trở thành khoảng:",
+    "opts": ["dài gấp 2 lần", "dài gấp 4 lần", "không đổi"],
+    "uitleg": "Quãng đường phanh tăng theo bình phương của tốc độ."
+  },
+  "snelheid-5": {
+    "v": "Trời vừa bắt đầu mưa sau một tuần khô ráo. Khi đó mặt đường:",
+    "opts": ["bám đường tốt ngay", "càng trơn hơn do bụi bẩn và dầu", "chỉ trơn khi có băng giá"],
+    "uitleg": "Cơn mưa đầu tiên khiến mặt đường bẩn trơn như đổ mỡ."
+  },
+  "snelheid-6": {
+    "v": "Vô lăng đột nhiên nhẹ bẫng khi mưa lớn (aquaplaning, trượt nước). Bạn làm gì?",
+    "opts": ["phanh gấp", "nhả ga và giữ thẳng vô lăng", "đánh lái ngược mạnh"],
+    "uitleg": "Khi trượt nước: nhả ga, không phanh, giữ nguyên hướng đi."
+  },
+  "snelheid-7": {
+    "v": "Thời gian phản xạ khoảng 1 giây. Ở 100 km/h, bạn đi được bao nhiêu mét trước khi phanh?",
+    "opts": ["khoảng 14 m", "khoảng 28 m", "khoảng 56 m"],
+    "uitleg": "100 km/h xấp xỉ 28 m mỗi giây: một giây phản xạ = 28 mét."
+  },
+  "snelheid-8": {
+    "v": "Phía sau bạn có một xe bám đuôi (bumperklever). Cách khôn ngoan là:",
+    "opts": ["phanh để cảnh báo", "nới thêm khoảng cách với xe phía trước", "chạy nhanh hơn"],
+    "uitleg": "Thêm khoảng trống phía trước bù cho khoảng trống đã mất phía sau."
+  },
+  "inhalen-1": {
+    "v": "Về nguyên tắc, bạn vượt xe ở bên nào?",
+    "opts": ["bên trái", "bên phải"],
+    "uitleg": "Vượt xe thực hiện ở bên trái; bên phải chỉ trong các trường hợp ngoại lệ."
+  },
+  "inhalen-2": {
+    "v": "Xe phía trước đã dạt sang trái để rẽ. Bạn có được vượt bên phải không?",
+    "opts": ["Có", "Không"],
+    "uitleg": "Xe đã dạt sang trái để rẽ thì bạn được vượt bên phải."
+  },
+  "inhalen-3": {
+    "v": "Bạn có được vượt xe ngay trước vạch sang đường cho người đi bộ không?",
+    "opts": ["Có", "Không"],
+    "uitleg": "Cấm vượt ngay trước vạch sang đường: không nhìn thấy người đang sang đường."
+  },
+  "inhalen-4": {
+    "v": "Khi rời khỏi vòng xuyến, bạn bật xi nhan:",
+    "opts": ["sang trái", "sang phải", "không cần"],
+    "uitleg": "Rời vòng xuyến = bật xi nhan phải."
+  },
+  "inhalen-5": {
+    "v": "Khi làn đường bị thu hẹp, bạn dùng cách nhập làn kiểu khoá kéo (ritsen). Bạn nhập làn ở đâu?",
+    "opts": ["càng sớm càng tốt", "chỉ ngay tại điểm thu hẹp"],
+    "uitleg": "Khoá kéo: đi tới tận điểm cuối rồi nhập làn xen kẽ luân phiên."
+  },
+  "inhalen-6": {
+    "v": "Bạn vượt một người đi xe đạp trong khu dân cư. Bạn giữ khoảng cách ngang tối thiểu bao nhiêu?",
+    "opts": ["khoảng 0,3 m", "khoảng 1 m", "2,5 m"],
+    "uitleg": "Quy tắc kinh nghiệm: 1 mét trong khu dân cư, 1,5 mét ngoài khu dân cư."
+  },
+  "parkeren-1": {
+    "v": "Trong phạm vi bao nhiêu mét tính từ vạch sang đường, bạn không được dừng xe?",
+    "opts": ["5 m", "10 m", "15 m"],
+    "uitleg": "Trong 5 mét trước vạch sang đường, cấm dừng xe."
+  },
+  "parkeren-2": {
+    "v": "Khác biệt giữa dừng xe và đỗ xe: bốc dỡ hàng thuộc về:",
+    "opts": ["đỗ xe", "dừng xe"],
+    "uitleg": "Trong lúc bạn bốc dỡ hàng hoặc cho người lên xuống thì đó là dừng xe."
+  },
+  "parkeren-3": {
+    "v": "Trong khu vực xanh (blauwe zone), bạn đỗ xe với:",
+    "opts": ["đĩa ghi giờ đỗ (parkeerschijf)", "đèn cảnh báo", "luôn cần giấy phép miễn trừ"],
+    "uitleg": "Khu vực xanh: đĩa ghi giờ đỗ với thời điểm đến, trong thời hạn tối đa."
+  },
+  "parkeren-4": {
+    "v": "Bạn mở cửa xe phía lòng đường. Cách an toàn nhất là:",
+    "opts": ["mở nhanh", "mở bằng tay xa cửa và ngoái nhìn qua vai", "bấm còi trước"],
+    "uitleg": "Cách mở cửa kiểu Hà Lan (dutch reach) buộc bạn phải nhìn về phía người đi xe đạp."
+  },
+  "parkeren-5": {
+    "v": "Hỏng xe trên đường cao tốc: bạn chờ trợ giúp ở đâu?",
+    "opts": ["trong xe", "phía sau hộ lan", "cạnh xe trên làn khẩn cấp"],
+    "uitleg": "Phía sau hộ lan là chỗ chờ an toàn duy nhất."
+  },
+  "parkeren-6": {
+    "v": "Ngoài khu dân cư, bạn đặt tam giác cảnh báo cách xe bao nhiêu mét?",
+    "opts": ["10 m", "30 m", "100 m"],
+    "uitleg": "Khoảng 30 mét (trên đường cao tốc khoảng 100 m)."
+  },
+  "kwetsbaar-1": {
+    "v": "Một quả bóng lăn ra đường từ giữa các xe đang đỗ. Bạn dự đoán điều gì?",
+    "opts": ["không có gì đặc biệt", "một đứa trẻ chạy theo sau", "một con chó"],
+    "uitleg": "Bóng = trẻ em: giảm tốc và sẵn sàng phanh."
+  },
+  "kwetsbaar-2": {
+    "v": "Xe đạp điện tốc độ cao (speed-pedelec, biển vàng) phải đi trên:",
+    "opts": ["làn xe đạp", "lòng đường theo quy tắc xe máy điện (bromfiets)", "vỉa hè"],
+    "uitleg": "Speed-pedelec chịu sự điều chỉnh của quy tắc dành cho bromfiets."
+  },
+  "kwetsbaar-3": {
+    "v": "Một xe tải phía trước muốn rẽ phải nhưng đầu tiên lại đánh lái sang trái. Bạn làm gì?",
+    "opts": ["nhanh chóng vượt bên phải", "nhường chỗ và không đứng cạnh xe tải", "bấm còi"],
+    "uitleg": "Xe tải rẽ vòng rộng (wijde bocht); bên phải cạnh xe là điểm mù."
+  },
+  "kwetsbaar-4": {
+    "v": "Gần một trường tiểu học vào lúc 8:25, bạn lái:",
+    "opts": ["theo giới hạn bình thường", "chậm hơn rõ rệt và sẵn sàng phanh", "chỉ chậm lại ở vạch sang đường"],
+    "uitleg": "Khu vực trường học vào giờ đưa đón đòi hỏi tốc độ thấp."
+  },
+  "kwetsbaar-5": {
+    "v": "Xe lăn điện (scootmobiel) được đi trên:",
+    "opts": ["chỉ vỉa hè", "vỉa hè, làn xe đạp và lòng đường", "chỉ làn xe đạp"],
+    "uitleg": "Xe lăn điện được đi cả ba nơi; hãy luôn để ý đến họ ở mọi chỗ."
+  },
+  "kwetsbaar-6": {
+    "v": "Một người đi xe đạp lớn tuổi hơi loạng choạng khi lên xe. Bạn:",
+    "opts": ["vượt sát ngay lập tức", "chờ và vượt với khoảng cách rộng", "bấm chuông hoặc bấm còi"],
+    "uitleg": "Thêm khoảng trống và kiên nhẫn với người đi xe đạp không vững."
+  },
+  "mens-1": {
+    "v": "Giới hạn cồn theo luật đối với người lái đã có kinh nghiệm là:",
+    "opts": ["0,2 phần nghìn", "0,5 phần nghìn", "0,8 phần nghìn"],
+    "uitleg": "0,5 phần nghìn; người mới lái là 0,2."
+  },
+  "mens-2": {
+    "v": "Cà phê, không khí trong lành hay đi bộ ngắn sau khi uống rượu bia:",
+    "opts": ["đẩy nhanh việc đào thải", "không thay đổi nồng độ cồn", "giảm một nửa nồng độ cồn"],
+    "uitleg": "Chỉ có thời gian mới đào thải được cồn (khoảng 1 ly mỗi giờ)."
+  },
+  "mens-3": {
+    "v": "Thuốc có nhãn cảnh báo màu vàng:",
+    "opts": ["luôn bị cấm khi lái xe", "có thể ảnh hưởng khả năng lái; hãy đọc tờ hướng dẫn", "chỉ áp dụng cho tài xế xe tải"],
+    "uitleg": "Nhãn vàng = có thể nguy hiểm khi lái; hãy hỏi ý kiến nhà thuốc."
+  },
+  "mens-4": {
+    "v": "Bạn nhận thấy mình ngáp và không giữ làn chắc chắn. Biện pháp hiệu quả duy nhất là:",
+    "opts": ["vặn nhạc to hơn", "mở cửa sổ", "dừng lại và ngủ một lát"],
+    "uitleg": "Chỉ có giấc ngủ mới chống được mệt mỏi."
+  },
+  "mens-5": {
+    "v": "Cầm điện thoại nghe gọi khi đi xe đạp là:",
+    "opts": ["được phép", "bị cấm"],
+    "uitleg": "Lệnh cấm dùng điện thoại áp dụng cho mọi người lái, kể cả người đi xe đạp."
+  },
+  "mens-6": {
+    "v": "Nhìn điện thoại hai giây ở 100 km/h nghĩa là lái mù khoảng:",
+    "opts": ["6 mét", "28 mét", "56 mét"],
+    "uitleg": "2 nhân 28 mét mỗi giây là hơn nửa sân bóng đá."
+  },
+  "voertuig-1": {
+    "v": "Độ sâu gai lốp tối thiểu theo luật của lốp ô tô là:",
+    "opts": ["1,0 mm", "1,6 mm", "2,4 mm"],
+    "uitleg": "Tối thiểu 1,6 mm; thay sớm hơn thì an toàn hơn."
+  },
+  "voertuig-2": {
+    "v": "Đèn sương mù sau chỉ được bật khi tầm nhìn dưới:",
+    "opts": ["50 m", "100 m", "200 m"],
+    "uitleg": "Đèn sương mù sau: tầm nhìn dưới 50 m; đèn sương mù trước dưới 200 m (hoặc khi có tuyết)."
+  },
+  "voertuig-3": {
+    "v": "Ga hành trình thích ứng (ACC):",
+    "opts": ["luôn dừng trước chướng ngại vật đứng yên", "giữ khoảng cách nhưng có giới hạn; bạn vẫn chịu trách nhiệm", "cho phép rời tay khỏi vô lăng"],
+    "uitleg": "Hệ thống hỗ trợ lái chỉ trợ giúp; người lái vẫn hoàn toàn chịu trách nhiệm."
+  },
+  "voertuig-4": {
+    "v": "Lái xe tiết kiệm nhiên liệu, trong số những điều khác, có nghĩa là:",
+    "opts": ["chuyển số muộn ở vòng tua cao", "chuyển số sớm khoảng 2000-2500 vòng tua", "luôn chạy ở số hai"],
+    "uitleg": "Cách lái mới (Het Nieuwe Rijden): chuyển số sớm, dự đoán trước, để xe trôi."
+  },
+  "voertuig-5": {
+    "v": "Áp suất lốp quá thấp gây ra:",
+    "opts": ["quãng đường phanh ngắn hơn", "tốn nhiên liệu hơn và bám đường kém hơn", "bám đường tốt hơn khi vào cua"],
+    "uitleg": "Lốp non hơi tốn nhiên liệu hơn và lái kém hơn."
+  },
+  "voertuig-6": {
+    "v": "Sau một va chạm chỉ hư hỏng thân vỏ và có tranh cãi về ai có lỗi:",
+    "opts": ["di chuyển xe ngay lập tức", "ghi lại hiện trường (chụp ảnh, biên bản tai nạn) rồi mới giải phóng lòng đường", "luôn bắt buộc phải gọi cảnh sát"],
+    "uitleg": "Hãy ghi lại bằng ảnh chụp và biên bản tai nạn châu Âu (Europees schadeformulier)."
+  },
+  "gevaar-1": {
+    "v": "Bạn chạy 50 trong khu dân cư. Một quả bóng lăn ra đường từ giữa các xe đang đỗ.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Quả bóng gần như luôn báo hiệu có trẻ em: phanh ngay."
+  },
+  "gevaar-2": {
+    "v": "Bạn đến gần một bến xe buýt có xe buýt đang đỗ; bạn không thấy ai xung quanh.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Phía sau xe buýt có thể có người sang đường bị che khuất: nhả ga, sẵn sàng phanh."
+  },
+  "gevaar-3": {
+    "v": "Trên đường cao tốc, dòng xe phía trước bạn đi đều đặn với khoảng cách rộng.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Không có dấu hiệu nguy hiểm: không làm gì là đáp án đúng ở đây."
+  },
+  "gevaar-4": {
+    "v": "Trong khu dân cư, một chiếc xe đứng ở lối ra (uitrit) với đèn lùi đang sáng.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Nguy cơ xung đột trực tiếp: chiếc xe có thể lùi ra đường."
+  },
+  "gevaar-5": {
+    "v": "Phía trước bạn có một người đi xe đạp; từ một con đường nhánh bên phải, một chiếc xe phải nhường đường đang chậm rãi tiến đến.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Chưa có xung đột gấp nhưng chưa chắc chắn: giảm tốc bằng cách nhả ga."
+  },
+  "gevaar-6": {
+    "v": "Trời mưa, bạn thấy đèn phanh bật sáng phía xa trong dòng xe kẹt.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Đèn phanh trong dòng xe kẹt khi trời mưa: hãy phanh ngay để hứng đợt sóng dồn."
+  },
+  "gevaar-7": {
+    "v": "Một người đi bộ đứng cạnh vạch sang đường và nhìn điện thoại, không có ý định sang đường.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Vạch sang đường cùng người đi bộ khó đoán: nhả ga và quan sát."
+  },
+  "gevaar-8": {
+    "v": "Bạn đi trên một đường ưu tiên ngoài khu dân cư; phía trước xa, một máy kéo đi ra đường.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Khoảng cách còn xa: nhả ga là đủ để giữ khoảng trống."
+  },
+  "gevaar-9": {
+    "v": "Bên phải bạn có một xe tải; cả hai cùng tiến đến một chỗ thu hẹp.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Khoảng trống sắp mất: phanh lại và nhập vào phía sau xe tải."
+  },
+  "gevaar-10": {
+    "v": "Trong bóng tối ngoài khu dân cư, có người không đèn đi trên nửa phần đường của bạn.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Nguy hiểm gấp ngay trên đường đi của bạn: giảm tốc mạnh."
+  },
+  "gevaar-11": {
+    "v": "Bạn thấy trong gương một xe mô tô đang lao tới nhanh và muốn vượt; đường phía trước bạn thông thoáng.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Giữ nguyên hướng và tốc độ để xe mô tô vượt qua an toàn."
+  },
+  "gevaar-12": {
+    "v": "Phía trước bạn, một chiếc xe đột ngột phanh vì một con mèo băng qua đường.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Phanh ngay; lý do lúc đó không quan trọng."
+  },
+  "gevaar-13": {
+    "v": "Một chiếc xe đỗ bên trái đã đánh bánh trước hướng ra đường và người lái đang ngồi trong xe.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Có nguy cơ xe sắp khởi hành nhưng chưa bắt đầu: nhả ga, sẵn sàng phanh."
+  },
+  "gevaar-14": {
+    "v": "Khu vực trường học, 8:30, trẻ em trên vỉa hè cả hai bên.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Chưa có ai trên lòng đường: giảm tốc và quan sát rộng."
+  },
+  "gevaar-15": {
+    "v": "Trên vòng xuyến phía trước, một người đi xe đạp lộ rõ vẻ do dự không biết có sang đường hay không.",
+    "opts": ["Phanh", "Nhả ga", "Không làm gì"],
+    "uitleg": "Người đi xe đạp do dự ngay trên đường đi của bạn: phanh và tìm giao tiếp bằng mắt."
+  }
+}
