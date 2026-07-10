@@ -10,3 +10,28 @@
   });
   wrap.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 })();
+
+// Scrollspy: markeer in de cursusnavigatie het onderdeel dat nu in beeld is.
+(function () {
+  var links = document.querySelectorAll('.coursenav .cn-parts a[data-spy]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('data-spy')] = a; });
+  var arts = document.querySelectorAll('.les-wrap article[id]');
+  if (!arts.length) return;
+  var zichtbaar = {};
+  var cur = null;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { zichtbaar[e.target.id] = e.isIntersecting; });
+    var eerste = null;
+    for (var i = 0; i < arts.length; i++) { if (zichtbaar[arts[i].id]) { eerste = arts[i].id; break; } }
+    if (eerste && map[eerste] && cur !== eerste) {
+      if (cur && map[cur]) map[cur].classList.remove('spy-now');
+      map[eerste].classList.add('spy-now');
+      map[eerste].setAttribute('aria-current', 'true');
+      if (cur && map[cur]) map[cur].removeAttribute('aria-current');
+      cur = eerste;
+    }
+  }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+  arts.forEach(function (el) { obs.observe(el); });
+})();

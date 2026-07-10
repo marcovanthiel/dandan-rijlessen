@@ -169,21 +169,51 @@ const lockCard = (L, p) => `<article class="script lock" id="${p.id}">
   ${p.nl ? `<div class="nl-title nl-only" lang="nl">${esc(p.nl)}</div>` : ''}
   <p class="locktekst">${esc(t(L, 'lock.tekst'))} <a href="/account">${esc(t(L, 'lock.bekijk'))}</a></p>
 </article>`;
+// Cursusnavigatie: linker menubalk met beide secties (praktijk/theorie),
+// alle modules, de actieve module gemarkeerd, en onder de actieve module de
+// onderdelen (met voortgang-vinkjes; de scrollspy in les.js licht de huidige op).
+function courseNav(L, current, mods, doneSet, vol) {
+  const lesT = lesTaalVoor(L);
+  const pkey = (mm, p) => `${mm.sectie[0]}:${mm.slug}:${p.id}`;
+  const secties = ['praktijk', 'theorie'].map((sec) => {
+    const lijst = mods.filter((mm) => mm.sectie === sec);
+    if (!lijst.length) return '';
+    const items = lijst.map((mm) => {
+      const actief = current && mm.slug === current.slug;
+      const totaal = mm.parts.length;
+      const af = mm.parts.filter((p) => doneSet.has(pkey(mm, p))).length;
+      const compleet = totaal > 0 && af === totaal;
+      const prog = compleet ? '<span class="cn-check">✓</span>' : (af > 0 ? `<span class="cn-count">${af}/${totaal}</span>` : '');
+      const sub = actief
+        ? `<ul class="cn-parts">` + mm.parts.map((p) => {
+            const done = doneSet.has(pkey(mm, p));
+            const lock = !(vol || p.preview);
+            return `<li><a href="#${p.id}" data-spy="${p.id}">${done ? '<span class="tick">✓</span> ' : ''}<span class="cn-plabel">${esc(p.label)}</span>${lock ? ' <span class="cn-lock" aria-label="vergrendeld">🔒</span>' : ''}</a></li>`;
+          }).join('') + `</ul>`
+        : '';
+      return `<li class="cn-mod${actief ? ' active' : ''}${compleet ? ' done' : ''}"><a href="/${mm.slug}"${actief ? ' aria-current="page"' : ''}><span class="cn-num">${esc(mm.num)}</span><span class="cn-title" lang="${lesT}">${esc(mm.zh)}</span>${prog}</a>${sub}</li>`;
+    }).join('');
+    const secActief = current && current.sectie === sec;
+    return `<div class="cn-sec${secActief ? ' active' : ''}"><div class="cn-sec-kop"><span class="cn-sec-ico" aria-hidden="true">${sec === 'theorie' ? '📘' : '🚗'}</span>${esc(t(L, 'sectie.' + sec))}</div><ul class="cn-mods">${items}</ul></div>`;
+  }).join('');
+  const nu = current ? `${esc(t(L, 'sectie.' + current.sectie))} · ${esc(t(L, 'module.kicker', { n: current.num }))}` : esc(t(L, 'module.crumb'));
+  return `<details class="cn-box" open><summary class="cn-summary"><span class="cn-here">${esc(t(L, 'module.crumb'))}:</span> ${nu}</summary><nav class="coursenav" aria-label="${esc(t(L, 'module.crumb'))}">${secties}</nav></details>`;
+}
 function moduleBody(L, m, vol, user, doneSet) {
   const lesT = lesTaalVoor(L);
   const key = (p) => `${m.sectie[0]}:${m.slug}:${p.id}`;
   const afvink = (p) => `<form method="post" action="/voortgang" class="afvink"><input type="hidden" name="key" value="${key(p)}"><input type="hidden" name="terug" value="/${m.slug}#${p.id}">
     <button class="${doneSet.has(key(p)) ? 'is-af' : ''}">${doneSet.has(key(p)) ? '✓ ' + esc(t(L, 'pad.af')) : esc(t(L, 'pad.markeer'))}</button></form>`;
-  const toc = m.parts.map((p) => `<li><a href="#${p.id}">${doneSet.has(key(p)) ? '<span class="tick">✓</span> ' : ''}${p.page ? `<span class="tocpage">p.${p.page}</span> ` : ''}${esc(p.label)}${vol || p.preview ? '' : ' 🔒'}</a></li>`).join('');
+  const nav = courseNav(L, m, CONTENT[lesT].modules, doneSet, vol);
   const delen = m.parts.map((p) => (vol || p.preview ? p.html + afvink(p) : lockCard(L, p))).join('\n');
   const taalnote = L !== lesT ? `<div class="note">${esc(t(L, 'module.lestaal'))}</div>` : '';
-  return `<div class="crumbs"><a href="/leren">${esc(t(L, 'module.crumb'))}</a> › ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
+  return `<div class="crumbs"><a href="/leren">${esc(t(L, 'module.crumb'))}</a> › ${esc(t(L, 'sectie.' + m.sectie))} › ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
   <div class="modbanner">${m.banner}</div>
-  <div class="module-head"><div class="kicker">${esc(t(L, 'module.kicker', { n: m.num }))}</div>
+  <div class="module-head"><div class="kicker">${esc(t(L, 'sectie.' + m.sectie))} · ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
   <h1 lang="${lesT}">${esc(m.zh)}</h1><div class="nl nl-only" lang="nl" style="color:var(--muted)">${esc(m.nl)}</div></div>
   ${taalnote}${vol ? '' : `<div class="note">${esc(t(L, 'module.previewnote'))}</div>`}
   ${m.introHtml ? `<div lang="${lesT}">${m.introHtml}</div>` : ''}
-  <div class="layout"><aside class="toc"><ul>${toc}</ul></aside><div class="les-wrap" lang="${lesT}">${watermerk(user)}${delen}</div></div>`;
+  <div class="layout"><aside class="toc">${nav}</aside><div class="les-wrap" lang="${lesT}">${watermerk(user)}${delen}</div></div>`;
 }
 function boekIndexBody(L, pmap) {
   const rows = pmap.map((e) => `<tr id="p${e.from}"><td class="pcol"><span class="pill">${e.from === e.to ? 'p.' + e.from : 'p.' + e.from + '-' + e.to}</span></td>
