@@ -452,7 +452,7 @@ function writeWorkerContent(perTaal){
 // ---------- run ----------
 function main(){
   fs.mkdirSync(path.join(DIST,'assets'),{recursive:true});
-  const talen = fs.readdirSync(CONTENT).filter(d=>fs.statSync(path.join(CONTENT,d)).isDirectory()).sort();
+  const talen = fs.readdirSync(CONTENT).filter(d=>/^[a-z]{2}$/.test(d) && fs.statSync(path.join(CONTENT,d)).isDirectory()).sort();  // alleen taalcodes; vragen(-vertalingen) zijn geen talen
   const perTaal = {};
   let modules = null, pmap = null;   // zh blijft leidend voor totalen/log
   for(const taal of talen){
