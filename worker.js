@@ -48,14 +48,21 @@ function shell(L, title, body, o = {}) {
 </body></html>`;
 }
 function siteHeader(L, user, mods) {
-  const nav = `<a href="/leren">${esc(t(L, 'leren.kop'))}</a><a href="/oefenexamen">${esc(t(L, 'nav.examen'))}</a><a href="/begrippen">${esc(t(L, 'nav.begrippen'))}</a>`;
+  // Ingelogd: opgeruimde, gecategoriseerde navigatie — dashboard + de twee
+  // leercategorieën (praktijk/theorie) + examen + boek. Dezelfde indeling als
+  // de linker cursusbalk en het dashboard.
+  const nav = `<a href="/leren">${esc(t(L, 'leren.kop'))}</a>`
+    + `<a href="/leren#praktijk">🚗 ${esc(t(L, 'nav.praktijk'))}</a>`
+    + `<a href="/leren#theorie">📘 ${esc(t(L, 'nav.theorie'))}</a>`
+    + `<a href="/oefenexamen">🎓 ${esc(t(L, 'nav.examen'))}</a>`
+    + `<a href="/boek-index">${esc(t(L, 'nav.boek'))}</a>`;
   const rechts = user
     ? `<a href="/account">👤 ${esc(user.email.split('@')[0])}</a>${user.is_admin ? '<a href="/admin">beheer</a>' : ''}`
     : `<a href="/login">${esc(t(L, 'nav.login'))}</a>`;
   return `<header class="site"><div class="container">
   <a class="brand" href="/" style="color:#fff"><span class="logo">丹</span>
     <span><span lang="nl">Dandan Drive</span><small>${esc(SITE.titleZh)} · 驾照路考</small></span></a>
-  <nav><a href="/">${esc(t(L, 'nav.home'))}</a>${user ? nav + `<a href="/boek-index">${esc(t(L, 'nav.boek'))}</a>` : `<a href="/prijzen">${esc(t(L, 'landing.prijskop'))}</a>`}${rechts}
+  <nav>${user ? nav : `<a href="/">${esc(t(L, 'nav.home'))}</a><a href="/prijzen">${esc(t(L, 'landing.prijskop'))}</a>`}${rechts}
   ${user ? `<label class="searchbox">🔍<input id="q" type="search" placeholder="${esc(t(L, 'nav.zoek'))}" autocomplete="off" aria-label="${esc(t(L, 'nav.zoek'))}"></label>` : ''}</nav>
   </div><div id="results" class="container" style="display:none"></div></header>`;
 }
@@ -355,8 +362,19 @@ export default {
         return { ...m, pct: keys.length ? Math.round((d / keys.length) * 100) : 0 };
       });
       const klaarPct = totaal ? Math.round((af / totaal) * 100) : 0;
+      const vol = !!pas || !!user.is_admin;
+      let vervolg = null;
+      for (const m of modsMetPct) {
+        for (const p of m.parts) {
+          const k = `${m.sectie[0]}:${m.slug}:${p.id}`;
+          if ((vol || p.preview) && !done.has(k)) { vervolg = { slug: m.slug, num: m.num, sectie: m.sectie, mtitel: m.zh, pid: p.id, plabel: p.label }; break; }
+        }
+        if (vervolg) break;
+      }
       recordEvent(env, ctx, 'view', '/leren', '');
-      return page(L, t(L, 'leren.kop') + ' · Dandan Drive', F.lerenBody(L, user, pas, { ...inhoud, modules: modsMetPct }, klaarPct, user.exam_date, HOME_BANNER), { user, noindex: true, path: '/leren' });
+      const dash = F.lerenBody(L, user, pas, { ...inhoud, modules: modsMetPct }, klaarPct, user.exam_date, HOME_BANNER, vervolg);
+      const inner = `<div class="layout"><aside class="toc">${courseNav(L, null, modsMetPct, done, vol)}</aside><div class="dash">${dash}</div></div>`;
+      return page(L, t(L, 'leren.kop') + ' · Dandan Drive', inner, { user, noindex: true, path: '/leren' });
     }
     if (pad === '/voortgang' && request.method === 'POST') {
       const f = await request.formData();

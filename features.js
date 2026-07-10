@@ -23,14 +23,9 @@ const optTekst = (v, i, L) => (v['opts_' + L] ? v['opts_' + L][i] + ' (' + v.opt
 const uitleg = (v, L) => v['uitleg_' + L] || v.uitleg_nl;
 
 // ---------- leren-overzicht: twee secties + voortgang + leerpad ----------
-export function lerenBody(L, user, pas, inhoud, klaarPct, examDate, banner) {
+export function lerenBody(L, user, pas, inhoud, klaarPct, examDate, banner, vervolg) {
   const vol = !!pas || !!user.is_admin;
-  const kaart = (m) => `<a class="card modkaart" href="/${m.slug}"><span class="mnum">${m.num}</span>
-    <h3 lang="${LESTALEN.includes(L) ? L : 'zh'}">${esc(m.zh)}</h3><div class="nl nl-only" lang="nl">${esc(m.nl)}</div>
-    <div class="count">${esc(t(L, 'leren.onderdelen', { n: m.parts.length }))}${vol ? '' : m.parts.some((p) => p.preview) ? ' · ' + esc(t(L, 'leren.preview')) : ' · 🔒'}</div>
-    <div class="balkje" aria-hidden="true"><span style="width:${m.pct}%"></span></div></a>`;
-  const praktijk = inhoud.modules.filter((m) => m.sectie === 'praktijk');
-  const theorie = inhoud.modules.filter((m) => m.sectie === 'theorie');
+  const lesL = LESTALEN.includes(L) ? L : 'zh';
   const status = pas
     ? `<div class="note ok">${esc(t(L, 'leren.pas', { tot: String(pas.ends_at).slice(0, 10) }))}</div>`
     : user.is_admin ? ''
@@ -41,11 +36,39 @@ export function lerenBody(L, user, pas, inhoud, klaarPct, examDate, banner) {
        · <a href="/oefenexamen">${esc(t(L, 'nav.examen'))}</a></div></div>`
     : `<div class="leerpad"><div class="ring" style="--p:${klaarPct}"><span>${klaarPct}%</span></div>
        <div>${esc(t(L, 'pad.geen'))} <a href="/account">${esc(t(L, 'pad.instellen'))}</a></div></div>`;
-  return `<div class="modbanner">${banner}</div>${status}${schema}
-  <div class="sectiekop"><h2>${esc(t(L, 'sectie.theorie'))}</h2><a class="cta klein" href="/oefenexamen">${esc(t(L, 'quiz.start'))} →</a></div>
-  <div class="grid">${theorie.map(kaart).join('')}</div>
-  <div class="sectiekop"><h2>${esc(t(L, 'sectie.praktijk'))}</h2><a class="cta klein" href="/begrippen">${esc(t(L, 'nav.begrippen'))} →</a></div>
-  <div class="grid">${praktijk.map(kaart).join('')}</div>
+  // "Ga verder waar je was": eerstvolgende toegankelijke, nog niet afgevinkte onderdeel.
+  const verder = vervolg
+    ? `<a class="vervolgkaart" href="/${vervolg.slug}#${vervolg.pid}">
+       <span class="vk-pijl" aria-hidden="true">▶</span>
+       <span class="vk-tekst"><small>${esc(t(L, klaarPct > 0 ? 'pad.opweg' : 'quiz.start'))}</small>
+       <strong lang="${lesL}">${esc(vervolg.mtitel)}</strong>
+       <span class="vk-deel">${vervolg.sectie === 'theorie' ? '📘' : '🚗'} ${esc(t(L, 'module.kicker', { n: vervolg.num }))} · ${esc(vervolg.plabel)}</span></span>
+       <span class="vk-ga" aria-hidden="true">→</span></a>`
+    : '';
+  // Samenvattingskaart per sectie (geen wall of modules meer; die staan links).
+  const secKaart = (sec, ico) => {
+    const ms = inhoud.modules.filter((m) => m.sectie === sec);
+    if (!ms.length) return '';
+    let tp = 0, dp = 0, modAf = 0;
+    ms.forEach((m) => { const n = m.parts.length; tp += n; dp += Math.round((m.pct / 100) * n); if (m.pct >= 100) modAf++; });
+    const pct = tp ? Math.round((dp / tp) * 100) : 0;
+    const doel = '/' + (ms.find((m) => m.pct < 100) || ms[0]).slug;
+    return `<section class="sectiekaart" id="${sec}">
+      <div class="sk-kop"><span class="sk-ico" aria-hidden="true">${ico}</span><h2>${esc(t(L, 'sectie.' + sec))}</h2><span class="sk-pct">${pct}%</span></div>
+      <div class="balkje" aria-hidden="true"><span style="width:${pct}%"></span></div>
+      <div class="sk-meta">✓ ${modAf}/${ms.length} · ${esc(sec === 'theorie' ? t(L, 'nav.theorie') : t(L, 'nav.praktijk'))}</div>
+      <a class="cta klein" href="${doel}">${esc(t(L, klaarPct > 0 ? 'lock.bekijk' : 'quiz.start'))} →</a>
+    </section>`;
+  };
+  return `<div class="modbanner">${banner}</div>
+  <div class="dash-head"><h1>${esc(t(L, 'leren.kop'))}</h1></div>
+  ${status}${schema}${verder}
+  <div class="sectiekaarten">${secKaart('praktijk', '🚗')}${secKaart('theorie', '📘')}</div>
+  <div class="dash-tools">
+    <a class="tool" href="/oefenexamen"><span aria-hidden="true">🎓</span>${esc(t(L, 'nav.examen'))}</a>
+    <a class="tool" href="/begrippen"><span aria-hidden="true">🗂️</span>${esc(t(L, 'nav.begrippen'))}</a>
+    <a class="tool" href="/boek-index"><span aria-hidden="true">📖</span>${esc(t(L, 'nav.boek'))}</a>
+  </div>
   <div class="note boektip">📖 ${esc(t(L, 'boektip'))} <a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a></div>`;
 }
 

@@ -111,6 +111,29 @@ a.card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(20,40,80,.12
   .cn-here{font-weight:800;color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.04em}
 }
 
+/* Dashboard (/leren) */
+.dash-head h1{margin:0 0 4px}
+.vervolgkaart{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--brand-dark),var(--brand));color:#fff;border-radius:16px;padding:15px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.vervolgkaart:hover{text-decoration:none;transform:translateY(-1px)}
+.vk-pijl{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-size:1rem}
+.vk-tekst{flex:1 1 auto;display:flex;flex-direction:column;gap:1px;min-width:0}
+.vk-tekst small{opacity:.85;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.vk-tekst strong{font-size:1.05rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vk-deel{opacity:.9;font-size:.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vk-ga{flex:0 0 auto;font-size:1.3rem;opacity:.9}
+.sectiekaarten{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.sectiekaart{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.sk-kop{display:flex;align-items:center;gap:10px}
+.sk-kop h2{margin:0;font-size:1.05rem;flex:1 1 auto}
+.sk-ico{font-size:1.4rem;line-height:1}
+.sk-pct{font-weight:800;color:var(--brand-dark);font-variant-numeric:tabular-nums}
+.sk-meta{color:var(--muted);font-size:.85rem;margin:8px 0 12px}
+.dash-tools{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.tool{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;color:var(--ink);font-weight:600;box-shadow:var(--shadow)}
+.tool:hover{text-decoration:none;border-color:var(--brand);color:var(--brand-dark)}
+.tool span{font-size:1.15rem}
+@media(max-width:600px){.sectiekaarten{grid-template-columns:1fr}}
+
 /* lang toggle */
 .langtoggle{display:flex;border:1px solid rgba(255,255,255,.4);border-radius:9px;overflow:hidden}
 .langtoggle button{background:transparent;color:#fff;border:0;padding:6px 10px;cursor:pointer;font-size:.85rem}
