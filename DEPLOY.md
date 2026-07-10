@@ -116,5 +116,6 @@ pt, hi, vi. Elke taal: 16 modules (107 delen, 52 foto-delen) in
 content/<taal>/ + 85 vraagvertalingen in content/vragen-vertalingen/<taal>.json.
 Vertaald door Opus-agents met lexicon-terminologie; native review per taal
 inplannen vóór actieve campagnes (afspraak: review in de live omgeving).
-Valideren: ./valideer-taal.sh <taal>. Nieuwe taal = zelfde twee plekken vullen;
+Valideren: ./valideer-taal.sh <taal>. Nieuwe taal of contentwijziging =
+volg het draaiboek in **docs/VERTAALPROCEDURE.md** (incl. promptsjabloon);
 de build weigert onvolledige talen (veiligheidsklep).
