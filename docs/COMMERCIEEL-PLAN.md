@@ -53,9 +53,10 @@
   volledige toegang na betaling.
 - De site is een **aanvulling op het boek**: het boek wordt aangeraden (met
   duidelijke verwijzing en boekpagina-badges), niet verplicht.
-- Talen: lescontent in de taal van de klant; **niet** NL/EN als lestaal (daar
-  is het boek voor en het examen is in NL/EN). De **frontpagina/marketing wel
-  in NL en EN**, plus alle doeltalen.
+- Talen: lescontent in de taal van de klant. GEWIJZIGD 10-7-2026 (besluit
+  Marco): **Nederlands is wél een volwaardige lestaal** (naast de
+  doeltalen); Engels vooralsnog niet. De frontpagina/marketing blijft in
+  NL en EN plus alle doeltalen.
 - Taal kiezen kan vóór het inloggen (eerste pagina); ingelogde klanten krijgen
   altijd hun taalvoorkeur.
 - Auteursrecht blijft hard: originele teksten en eigen beeld, nooit
