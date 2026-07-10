@@ -1,0 +1,427 @@
+{
+  "wetgeving-1": {
+    "v": "Um ciclista conta-se entre os condutores (bestuurders)?",
+    "opts": ["Sim", "Não"],
+    "uitleg": "Todo aquele que conduz um veículo é condutor, incluindo os ciclistas."
+  },
+  "wetgeving-2": {
+    "v": "Qual é a massa máxima autorizada que podes conduzir só com a carta B?",
+    "opts": ["2500 kg", "3500 kg", "4250 kg"],
+    "uitleg": "A carta B é válida até 3500 kg de massa máxima autorizada."
+  },
+  "wetgeving-3": {
+    "v": "Durante quanto tempo se aplica à maioria dos condutores principiantes o limite mais rigoroso de álcool de 0,2 por mil?",
+    "opts": ["2 anos", "5 anos", "10 anos"],
+    "uitleg": "O período de principiante dura 5 anos (7 anos para quem começa antes dos 21)."
+  },
+  "wetgeving-4": {
+    "v": "Quem empurra uma bicicleta à mão é, segundo as regras, um:",
+    "opts": ["condutor", "peão", "ciclista"],
+    "uitleg": "Quem leva uma bicicleta à mão é peão."
+  },
+  "wetgeving-5": {
+    "v": "Queres conduzir com um reboque de 1000 kg; o teu carro tem uma massa máxima autorizada de 2400 kg. Pode ser com a carta B?",
+    "opts": ["Sim", "Não"],
+    "uitleg": "Somam 3400 kg, o que fica dentro do limite de 3500 kg da carta B."
+  },
+  "wetgeving-6": {
+    "v": "Que seguro é obrigatório por lei para cada carro?",
+    "opts": ["contra todos os riscos", "responsabilidade civil (WA)", "de ocupantes"],
+    "uitleg": "O seguro de responsabilidade civil (WA) cobre os danos a terceiros e é obrigatório."
+  },
+  "voorrang-1": {
+    "v": "Num cruzamento equivalente aproxima-se pela direita um ciclista. Quem passa primeiro?",
+    "opts": ["tu", "o ciclista"],
+    "uitleg": "Os condutores que vêm da direita passam primeiro, incluindo os ciclistas."
+  },
+  "voorrang-2": {
+    "v": "Aproximas-te de dentes de tubarão (haaientanden). A quem tens de parar ou dar passagem?",
+    "opts": ["só aos carros", "a todos os condutores da estrada que cruzas", "também aos peões"],
+    "uitleg": "Dentes de tubarão: dá prioridade aos condutores, não aos peões."
+  },
+  "voorrang-3": {
+    "v": "O que tens de fazer perante um sinal de STOP (B7)?",
+    "opts": ["abrandar e seguir se estiver livre", "parar por completo, mesmo que pareça livre"],
+    "uitleg": "Perante o B7 imobiliza sempre o carro por completo."
+  },
+  "voorrang-4": {
+    "v": "Vais virar à direita. Um ciclista na ciclovia ao teu lado segue em frente. Quem passa primeiro?",
+    "opts": ["tu", "o ciclista"],
+    "uitleg": "O trânsito que segue em frente na mesma estrada passa antes de quem vira."
+  },
+  "voorrang-5": {
+    "v": "Circulas numa estrada de terra e cruzas uma estrada alcatroada sem sinais. Quem tem prioridade?",
+    "opts": ["tu", "o trânsito da estrada alcatroada"],
+    "uitleg": "Vindo de uma estrada de terra, dás prioridade a todo o trânsito da estrada alcatroada."
+  },
+  "voorrang-6": {
+    "v": "Um elétrico aproxima-se pela esquerda num cruzamento equivalente. Quem passa primeiro?",
+    "opts": ["tu", "o elétrico"],
+    "uitleg": "Nos cruzamentos equivalentes o elétrico passa sempre primeiro."
+  },
+  "voorrang-7": {
+    "v": "Sais de um lugar de estacionamento em marcha-atrás. Um peão passa por detrás do teu carro. O que se aplica?",
+    "opts": ["o peão tem de esperar", "dás prioridade a toda a gente"],
+    "uitleg": "Nas manobras especiais (marcha-atrás, arrancar) deixas passar todo o restante trânsito."
+  },
+  "voorrang-8": {
+    "v": "Dentro da localidade, um autocarro quer sair da paragem e liga o pisca. O que fazes?",
+    "opts": ["seguir, tu passas primeiro", "dar ao autocarro a oportunidade de sair"],
+    "uitleg": "Dentro da localidade dás espaço ao autocarro que sai da paragem."
+  },
+  "voorrang-9": {
+    "v": "Uma ambulância com sirene e luz azul giratória aproxima-se por trás na fila. O que fazes?",
+    "opts": ["ficar parado", "abrir espaço com calma, desviando-te se preciso pela berma de emergência sem perigo"],
+    "uitleg": "Deixas passar os veículos prioritários de forma segura e previsível."
+  },
+  "voorrang-10": {
+    "v": "Podes cortar uma coluna militar?",
+    "opts": ["Sim", "Não"],
+    "uitleg": "Não podes cortar uma coluna."
+  },
+  "borden-1": {
+    "v": "O que significa um sinal redondo com bordo vermelho e fundo branco (C1)?",
+    "opts": ["sentido único", "fechado nos dois sentidos", "proibido estacionar"],
+    "uitleg": "O C1 fecha a estrada nos dois sentidos a todo o trânsito."
+  },
+  "borden-2": {
+    "v": "Um sinal azul redondo com seta branca em frente (D4) significa:",
+    "opts": ["em frente permitido", "obrigatório seguir em frente", "estrada com prioridade"],
+    "uitleg": "Os sinais azuis redondos são de obrigação: sentido obrigatório."
+  },
+  "borden-3": {
+    "v": "Um sinal amarelo com barra diagonal preta (B2) significa:",
+    "opts": ["fim de estrada com prioridade", "início de estrada com prioridade", "fim da localidade"],
+    "uitleg": "O B2 termina a estrada com prioridade; a seguir aplicam-se as regras normais."
+  },
+  "borden-4": {
+    "v": "Perante o sinal F5 (vermelho e branco, seta vermelha apontada para ti) aplica-se:",
+    "opts": ["tu passas primeiro", "o trânsito em sentido contrário passa primeiro"],
+    "uitleg": "A seta vermelha aponta para o lado que tem de esperar."
+  },
+  "borden-5": {
+    "v": "O que significa um painel adicional 'uitgezonderd fietsers' por baixo de um sinal de proibição?",
+    "opts": ["a proibição é ainda mais rigorosa para os ciclistas", "a proibição não se aplica aos ciclistas"],
+    "uitleg": "'Uitgezonderd' exclui da proibição o grupo indicado."
+  },
+  "borden-6": {
+    "v": "Uma linha contínua amarela no lancil do passeio significa:",
+    "opts": ["proibido estacionar", "proibido parar", "permitido carregar e descarregar"],
+    "uitleg": "Linha contínua amarela: proibido parar, e portanto também estacionar."
+  },
+  "borden-7": {
+    "v": "Entras numa zona 30. Onde termina essa zona?",
+    "opts": ["no cruzamento seguinte", "no sinal de fim de zona", "ao fim de 500 metros"],
+    "uitleg": "Os sinais de zona aplicam-se até ao respetivo sinal de fim de zona."
+  },
+  "borden-8": {
+    "v": "Numa zona residencial (woonerf, G5) podes ir no máximo a:",
+    "opts": ["15 km/h (à velocidade de passo)", "30 km/h", "50 km/h"],
+    "uitleg": "No woonerf conduzes à velocidade de passo; os peões podem usar toda a largura."
+  },
+  "borden-9": {
+    "v": "Dentes de tubarão no pavimento sem sinal significam:",
+    "opts": ["velocidade aconselhada", "dar prioridade", "passadeira"],
+    "uitleg": "Os dentes de tubarão têm o mesmo significado que o sinal B6."
+  },
+  "borden-10": {
+    "v": "Uma marcação em blocos (linhas largas descontínuas) ao lado da tua via marca muitas vezes:",
+    "opts": ["faixa de estacionamento", "ciclovia ou via de autocarro", "berma de emergência"],
+    "uitleg": "A marcação em blocos separa muitas vezes as ciclovias/vias de autocarro da faixa de rodagem."
+  },
+  "lichten-1": {
+    "v": "O semáforo passa a amarelo quando estás mesmo antes da linha de paragem e travar com força é perigoso. O que fazes?",
+    "opts": ["parar mesmo assim", "seguir"],
+    "uitleg": "Amarelo = parar, salvo se já não for possível em segurança."
+  },
+  "lichten-2": {
+    "v": "O que significa uma luz amarela intermitente num cruzamento?",
+    "opts": ["a prioridade regula-se por sinais e regras", "parar sempre", "cruzamento fechado"],
+    "uitleg": "Amarelo intermitente: redobra a atenção e segue os sinais e as regras básicas."
+  },
+  "lichten-3": {
+    "v": "Cruzes vermelhas por cima da tua via significam:",
+    "opts": ["obrigatório abandonar a via, via fechada", "velocidade máxima", "só para camiões"],
+    "uitleg": "Uma cruz vermelha fecha a via; abandona-a de imediato."
+  },
+  "lichten-4": {
+    "v": "Numa passagem de nível pisca uma luz branca. O que significa?",
+    "opts": ["aproxima-se um comboio", "podes passar a passagem de nível", "instalação avariada"],
+    "uitleg": "Luz branca intermitente: passagem de nível livre, permitido passar."
+  },
+  "lichten-5": {
+    "v": "Um agente regulador de trânsito faz um sinal diferente do semáforo verde. A quem obedeces?",
+    "opts": ["ao semáforo", "ao agente regulador de trânsito"],
+    "uitleg": "As indicações prevalecem sobre os semáforos e os sinais."
+  },
+  "lichten-6": {
+    "v": "A luz de 'nove olhos' (negenoog) por cima da estrada aplica-se a:",
+    "opts": ["todos os condutores", "autocarros e elétricos", "ciclistas"],
+    "uitleg": "O negenoog regula apenas o trânsito de autocarros e elétricos."
+  },
+  "snelheid-1": {
+    "v": "Qual é, de dia (06:00-19:00), o limite padrão na autoestrada?",
+    "opts": ["100 km/h", "120 km/h", "130 km/h"],
+    "uitleg": "De dia aplica-se 100; à noite muitas vezes 130 (os sinais prevalecem)."
+  },
+  "snelheid-2": {
+    "v": "Limite padrão dentro da localidade (sem sinais de zona):",
+    "opts": ["30 km/h", "50 km/h", "70 km/h"],
+    "uitleg": "Dentro da localidade aplica-se 50, salvo se os sinais disserem o contrário."
+  },
+  "snelheid-3": {
+    "v": "Regra prática de distância de seguimento segura com tempo seco:",
+    "opts": ["1 segundo", "2 segundos", "5 segundos"],
+    "uitleg": "No mínimo 2 segundos; com chuva ou escuridão, mais."
+  },
+  "snelheid-4": {
+    "v": "A tua velocidade duplica de 50 para 100 km/h. A tua distância de travagem passa a ser cerca de:",
+    "opts": ["2 vezes maior", "4 vezes maior", "igual"],
+    "uitleg": "A distância de travagem cresce com o quadrado da velocidade."
+  },
+  "snelheid-5": {
+    "v": "Começa mesmo agora a chover depois de uma semana seca. O pavimento fica então:",
+    "opts": ["logo com bom agarre", "precisamente mais escorregadio pela sujidade e pelo óleo", "só escorregadio com gelo"],
+    "uitleg": "A primeira chuva deixa uma estrada suja muito escorregadia."
+  },
+  "snelheid-6": {
+    "v": "O volante fica de repente leve com chuva forte (aquaplaning). O que fazes?",
+    "opts": ["travar com força", "largar o acelerador e manter o volante direito", "contravolantear com força"],
+    "uitleg": "Com aquaplaning: larga o acelerador, não traves e mantém o rumo."
+  },
+  "snelheid-7": {
+    "v": "O tempo de reação é de cerca de 1 segundo. Quantos metros percorres a 100 km/h antes de travar?",
+    "opts": ["cerca de 14 m", "cerca de 28 m", "cerca de 56 m"],
+    "uitleg": "100 km/h são cerca de 28 m/s: um segundo de reação = 28 metros."
+  },
+  "snelheid-8": {
+    "v": "Atrás de ti vem alguém colado ao teu carro (bumperklever). O sensato é:",
+    "opts": ["travar para avisar", "aumentar a distância à frente", "andar mais depressa"],
+    "uitleg": "Mais espaço à tua frente compensa o espaço perdido atrás de ti."
+  },
+  "inhalen-1": {
+    "v": "Por que lado ultrapassas, em princípio?",
+    "opts": ["esquerda", "direita"],
+    "uitleg": "Ultrapassa-se pela esquerda; pela direita só nos casos de exceção."
+  },
+  "inhalen-2": {
+    "v": "O carro à tua frente está encostado à esquerda para virar. Podes passar pela direita?",
+    "opts": ["Sim", "Não"],
+    "uitleg": "O trânsito encostado à esquerda podes ultrapassá-lo pela direita."
+  },
+  "inhalen-3": {
+    "v": "Podes ultrapassar mesmo antes de uma passadeira?",
+    "opts": ["Sim", "Não"],
+    "uitleg": "Ultrapassar mesmo antes de uma passadeira é proibido: falta visibilidade sobre quem atravessa."
+  },
+  "inhalen-4": {
+    "v": "Ao sair de uma rotunda ligas o pisca:",
+    "opts": ["para a esquerda", "para a direita", "não é preciso"],
+    "uitleg": "Sair da rotunda = ligar o pisca direito."
+  },
+  "inhalen-5": {
+    "v": "Num estreitamento de via usas o método do fecho. Onde te incorporas?",
+    "opts": ["o mais cedo possível", "só no próprio estreitamento"],
+    "uitleg": "Fecho: circula até ao fim e incorpora-te de forma alternada."
+  },
+  "inhalen-6": {
+    "v": "Ultrapassas um ciclista dentro da localidade. Que espaço lateral deixas no mínimo?",
+    "opts": ["cerca de 0,3 m", "cerca de 1 m", "2,5 m"],
+    "uitleg": "Regra prática: 1 metro dentro da localidade, 1,5 metros fora."
+  },
+  "parkeren-1": {
+    "v": "A que distância de uma passadeira não podes parar?",
+    "opts": ["5 m", "10 m", "15 m"],
+    "uitleg": "A menos de 5 metros antes de uma passadeira é proibido parar."
+  },
+  "parkeren-2": {
+    "v": "A diferença entre parar e estacionar: carregar e descarregar conta como:",
+    "opts": ["estacionar", "parar"],
+    "uitleg": "Enquanto carregas/descarregas ou deixas entrar e sair, é paragem."
+  },
+  "parkeren-3": {
+    "v": "Numa zona azul estacionas com:",
+    "opts": ["disco de estacionamento", "quatro piscas", "sempre uma autorização"],
+    "uitleg": "Zona azul: disco de estacionamento com a hora de chegada, dentro do tempo máximo."
+  },
+  "parkeren-4": {
+    "v": "Abres a porta do lado da faixa de rodagem. O método mais seguro é:",
+    "opts": ["abrir depressa", "abrir com a mão mais afastada e olhar por cima do ombro", "buzinar primeiro"],
+    "uitleg": "O método neerlandês de abertura obriga-te a olhar para os ciclistas."
+  },
+  "parkeren-5": {
+    "v": "Avaria na autoestrada: onde esperas pela ajuda?",
+    "opts": ["no carro", "para lá do rail de proteção", "ao lado do carro na berma de emergência"],
+    "uitleg": "Para lá do rail de proteção é o único sítio seguro para esperar."
+  },
+  "parkeren-6": {
+    "v": "A quantos metros colocas o triângulo de pré-sinalização fora da localidade?",
+    "opts": ["10 m", "30 m", "100 m"],
+    "uitleg": "Cerca de 30 metros (nas autoestradas cerca de 100 m)."
+  },
+  "kwetsbaar-1": {
+    "v": "Uma bola rola para a rua por entre os carros estacionados. O que esperas?",
+    "opts": ["nada de especial", "uma criança que vem atrás", "um cão"],
+    "uitleg": "Bola = criança: tira velocidade e fica pronto a travar."
+  },
+  "kwetsbaar-2": {
+    "v": "Uma speed-pedelec (matrícula amarela) deve circular:",
+    "opts": ["na ciclovia", "na faixa de rodagem, segundo as regras do ciclomotor", "no passeio"],
+    "uitleg": "A speed-pedelec rege-se pelas regras do bromfiets."
+  },
+  "kwetsbaar-3": {
+    "v": "Um camião à tua frente quer virar à direita e abre primeiro para a esquerda. O que fazes?",
+    "opts": ["passar depressa pela direita", "dar-lhe espaço e não ficar ao seu lado", "buzinar"],
+    "uitleg": "Os camiões fazem uma curva aberta; à sua direita fica o ângulo morto."
+  },
+  "kwetsbaar-4": {
+    "v": "Junto a uma escola primária às 8:25 conduzes:",
+    "opts": ["ao limite normal", "claramente mais devagar e pronto a travar", "só mais devagar nas passadeiras"],
+    "uitleg": "A zona escolar nas horas de entrada e saída exige velocidade baixa."
+  },
+  "kwetsbaar-5": {
+    "v": "Um scootmobiel pode circular:",
+    "opts": ["só no passeio", "no passeio, na ciclovia e na faixa de rodagem", "só na ciclovia"],
+    "uitleg": "Os scootmobielen podem ir pelos três; conta com eles em todo o lado."
+  },
+  "kwetsbaar-6": {
+    "v": "Um ciclista idoso oscila ligeiramente ao subir para a bicicleta. Tu:",
+    "opts": ["ultrapassa-lo logo bem rente", "esperas e ultrapassas com folga", "tocas a campainha/buzinas"],
+    "uitleg": "Mais espaço e paciência com os ciclistas instáveis."
+  },
+  "mens-1": {
+    "v": "O limite legal de álcool para um condutor experiente é:",
+    "opts": ["0,2 por mil", "0,5 por mil", "0,8 por mil"],
+    "uitleg": "0,5 por mil; os principiantes 0,2."
+  },
+  "mens-2": {
+    "v": "O café, o ar fresco ou um passeio curto depois de beber álcool:",
+    "opts": ["aceleram a eliminação", "não mudam nada na taxa de álcool", "reduzem a taxa para metade"],
+    "uitleg": "Só o tempo elimina o álcool (cerca de 1 copo por hora)."
+  },
+  "mens-3": {
+    "v": "Os medicamentos com autocolante amarelo de aviso:",
+    "opts": ["são sempre proibidos", "podem afetar a aptidão para conduzir; lê o folheto", "só se aplicam aos condutores de camião"],
+    "uitleg": "Autocolante amarelo = possível perigo ao conduzir; fala com a farmácia."
+  },
+  "mens-4": {
+    "v": "Reparas que bocejas e que não mantens bem a via. A única medida eficaz é:",
+    "opts": ["pôr a música mais alta", "abrir a janela", "parar e dormir um pouco"],
+    "uitleg": "Só o sono ajuda contra o cansaço."
+  },
+  "mens-5": {
+    "v": "Falar ao telemóvel na mão a andar de bicicleta é:",
+    "opts": ["permitido", "proibido"],
+    "uitleg": "A proibição do telemóvel aplica-se a todos os condutores, incluindo os ciclistas."
+  },
+  "mens-6": {
+    "v": "Olhar dois segundos para o telemóvel a 100 km/h significa conduzir às cegas cerca de:",
+    "opts": ["6 metros", "28 metros", "56 metros"],
+    "uitleg": "2 vezes 28 metros por segundo é mais de meio campo de futebol."
+  },
+  "voertuig-1": {
+    "v": "A profundidade legal mínima do piso dos pneus de automóvel é:",
+    "opts": ["1,0 mm", "1,6 mm", "2,4 mm"],
+    "uitleg": "No mínimo 1,6 mm; trocar mais cedo é mais seguro."
+  },
+  "voertuig-2": {
+    "v": "O farolim de nevoeiro traseiro só pode usar-se com visibilidade inferior a:",
+    "opts": ["50 m", "100 m", "200 m"],
+    "uitleg": "Farolim de nevoeiro traseiro: visibilidade inferior a 50 m; faróis de nevoeiro dianteiros inferior a 200 m (ou neve)."
+  },
+  "voertuig-3": {
+    "v": "O controlo de velocidade adaptativo (ACC):",
+    "opts": ["para sempre perante obstáculos parados", "mantém a distância mas tem limitações; tu continuas responsável", "liberta as mãos"],
+    "uitleg": "Os ADAS ajudam; o condutor continua totalmente responsável."
+  },
+  "voertuig-4": {
+    "v": "Conduzir de forma económica significa, entre outras coisas:",
+    "opts": ["subir de mudança tarde, a altas rotações", "subir de mudança cedo, por volta das 2000-2500 rotações", "andar sempre em segunda"],
+    "uitleg": "A nova condução: subir de mudança cedo, antecipar e deixar rolar."
+  },
+  "voertuig-5": {
+    "v": "Uma pressão dos pneus demasiado baixa provoca:",
+    "opts": ["distância de travagem mais curta", "mais consumo e pior estabilidade", "melhor agarre nas curvas"],
+    "uitleg": "Os pneus com pouca pressão consomem mais e guiam pior."
+  },
+  "voertuig-6": {
+    "v": "Depois de um embate só com danos na chapa e discussão sobre a culpa:",
+    "opts": ["mudar logo os veículos de sítio", "registar a situação (fotos, declaração de acidente) e depois libertar a via", "a polícia é sempre obrigatória"],
+    "uitleg": "Deixa registado com fotos e a declaração amigável europeia."
+  },
+  "gevaar-1": {
+    "v": "Conduzes a 50 dentro da localidade. Por entre os carros estacionados rola uma bola para a estrada.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Uma bola significa quase sempre uma criança: trava de imediato."
+  },
+  "gevaar-2": {
+    "v": "Aproximas-te de uma paragem onde está um autocarro parado; não vês ninguém em redor.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Atrás do autocarro pode esconder-se quem atravessa: larga o acelerador e fica pronto a travar."
+  },
+  "gevaar-3": {
+    "v": "Na autoestrada o trânsito à tua frente segue a boa distância e de forma uniforme.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Sem sinal de perigo: aqui não fazer nada é a resposta certa."
+  },
+  "gevaar-4": {
+    "v": "Num bairro residencial está um carro numa saída de garagem com as luzes de marcha-atrás acesas.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Ameaça um conflito direto: o carro pode sair de marcha-atrás para a estrada."
+  },
+  "gevaar-5": {
+    "v": "À tua frente vai um ciclista; de uma rua lateral à direita aproxima-se devagar um carro que tem de esperar.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Ainda não há conflito agudo, mas é incerto: tira velocidade largando o acelerador."
+  },
+  "gevaar-6": {
+    "v": "À chuva vês mais à frente acenderem-se luzes de travão na fila.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Luzes de travão na fila à chuva: trava já para absorver a onda."
+  },
+  "gevaar-7": {
+    "v": "Um peão está junto a uma passadeira a olhar para o telemóvel, sem fazer menção de atravessar.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Passadeira + peão imprevisível: larga o acelerador e observa."
+  },
+  "gevaar-8": {
+    "v": "Conduzes numa estrada com prioridade fora da localidade; muito à tua frente um trator entra na estrada.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "A distância é grande: largar o acelerador chega para manter a margem."
+  },
+  "gevaar-9": {
+    "v": "À tua direita vai um camião; aproximam-se juntos de um estreitamento.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "O espaço desaparece: abranda e entra atrás do camião."
+  },
+  "gevaar-10": {
+    "v": "No escuro, fora da localidade, alguém caminha sem iluminação na tua metade da faixa.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Perigo agudo no teu caminho: reduz a velocidade com força."
+  },
+  "gevaar-11": {
+    "v": "Vês no espelho uma mota que se aproxima depressa e quer ultrapassar; a estrada à tua frente está livre.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Mantém o rumo e a velocidade para que a mota possa passar em segurança."
+  },
+  "gevaar-12": {
+    "v": "À tua frente um carro trava de repente por causa de um gato que atravessa.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Trava de imediato; o motivo, nesse momento, não importa."
+  },
+  "gevaar-13": {
+    "v": "Um carro estacionado à esquerda tem as rodas dianteiras viradas para a estrada e o condutor está lá dentro.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Ameaça arrancar, mas ainda não começou: larga o acelerador e fica pronto a travar."
+  },
+  "gevaar-14": {
+    "v": "Zona escolar, 8:30, crianças no passeio dos dois lados.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Ainda ninguém na faixa de rodagem: tira velocidade e olha em largo."
+  },
+  "gevaar-15": {
+    "v": "Na rotunda à tua frente um ciclista hesita de forma visível se vai atravessar.",
+    "opts": ["Travar", "Largar o acelerador", "Nada"],
+    "uitleg": "Ciclista hesitante no teu caminho: trava e procura o contacto visual."
+  }
+}
