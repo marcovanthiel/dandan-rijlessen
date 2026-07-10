@@ -467,6 +467,15 @@ function main(){
     perTaal[taal] = { modules: mods, pmap: buildPageMap(mods.filter(m=>m.sectie==='praktijk')) };
     if(taal==='zh' || !modules){ modules = mods; pmap = perTaal[taal].pmap; }
   }
+  // Veiligheidsklep: een taal die (nog) niet compleet is bouwt niet mee;
+  // zo kan een lopende vertaalronde nooit een halve taal live zetten.
+  const referentie = (perTaal.zh || Object.values(perTaal)[0]).modules.length;
+  for(const taal of Object.keys(perTaal)){
+    if(perTaal[taal].modules.length < referentie){
+      console.warn('taal '+taal+' onvolledig ('+perTaal[taal].modules.length+'/'+referentie+' modules): overgeslagen');
+      delete perTaal[taal];
+    }
+  }
   // Sinds fase 1 (commercieel plan) schrijft de build GEEN lespagina's of
   // zoekindexen meer naar dist: alle content wordt door de worker per
   // ingelogde gebruiker gerenderd (paywall). De content gaat als gegenereerde
