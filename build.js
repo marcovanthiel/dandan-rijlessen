@@ -259,7 +259,8 @@ function renderIndex(modules){
     + footer();
 }
 
-function articleHtml(m, s){
+function articleHtml(m, s, taal){
+    const stapw = STAPWOORD[taal] || STAPWOORD.zh;
     const zhTitle = s.zh;
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
     const fig = G.figFor(s.step, s.zh);
@@ -273,7 +274,7 @@ function articleHtml(m, s){
       <div class="script-top">
         <div class="script-title">
           <span class="script-icon">${G.iconFor(s.step, s.zh)}</span>
-          <h2>${s.step?`<span class="step">步骤 ${esc(s.step)}</span> · `:''}${esc(cleanTitle)}</h2>
+          <h2>${s.step?`<span class="step">${stapw} ${esc(s.step)}</span> · `:''}${esc(cleanTitle)}</h2>
         </div>
         ${pageBadge}
       </div>
@@ -288,7 +289,7 @@ function renderModule(m, modules){
     const label = (s.step?('步骤 '+s.step+' · '):'')+ s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,'');
     return `<li><a href="#${s.id}">${s.page?`<span class="tocpage">p.${s.page}</span> `:''}${esc(label)}</a></li>`;
   }).join('');
-  const cards = m.scripts.map(s=>articleHtml(m,s)).join('\n');
+  const cards = m.scripts.map(s=>articleHtml(m,s,'zh')).join('\n');
   const introHtml = m.intro.length?`<div class="note">${bodyToHtml(m.intro)}</div>`:'';
   return head(m.modZh+' · '+SITE.titleZh,'',{path:m.slug,desc:m.modZh+' · '+m.modNl+' · '+SITE.tagZh})
     + header('',modules)
@@ -430,7 +431,7 @@ function writeWorkerContent(perTaal){
     parts: m.scripts.map(s=>({
       id: s.id, step: s.step||'', zh: s.zh, nl: s.nl||'', page: s.page||null,
       label: (s.step?((STAPWOORD[taal]||'Stap')+' '+s.step+' · '):'')+ s.zh.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*[:·]?\s*/i,''),
-      html: articleHtml(m, s),
+      html: articleHtml(m, s, taal),
       preview: String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1')
     }))
       })),
