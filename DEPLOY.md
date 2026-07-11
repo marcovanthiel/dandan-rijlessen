@@ -119,3 +119,23 @@ inplannen vóór actieve campagnes (afspraak: review in de live omgeving).
 Valideren: ./valideer-taal.sh <taal>. Nieuwe taal of contentwijziging =
 volg het draaiboek in **docs/VERTAALPROCEDURE.md** (incl. promptsjabloon);
 de build weigert onvolledige talen (veiligheidsklep).
+
+## Integratie lessite-nachtopdracht (11-7-2026)
+Het materiaal uit de statische lessite-nachtopdracht (OneDrive Website/dandan-rijlessen,
+live op dandan-rijlessen.pages.dev) is in het platform geïntegreerd:
+- **Verrijking per rijstap** in alle 11 lestalen: "veelgemaakte fouten" + "examentip"
+  (+ examendag-checklist in module 5). Labels per taal staan vast in `build.js`
+  (LABEL_FOUT/LABEL_TIP); de build rendert er chips van (p-fout/p-tip). Vertaald
+  via Opus-subagents en gevalideerd tegen zh (zelfde aantallen per module).
+- **Nieuwe sectie `info`** (bestandsprefix "Info N - …"): "Zo haal je je rijbewijs
+  in Nederland" (185-dagenregel, omwisselen/30%-regeling, gezondheidsverklaring,
+  talen/tolken, tarieven 2026, rijschoolkeuze, tijdpad; bronnen CBR/RDW/Rijksoverheid,
+  gecheckt 10-7-2026). Alle delen hebben preview=true: gratis leesbaar na login
+  (instap/funnel). Route /info-N; eigen sectie in cursusbalk en dashboard (🧭,
+  i18n-key sectie.info); taalbewust 185-dagen-diagram in graphics.js (TL_LABELS).
+- **Lexicon**: 40 → 155 begrippen (glossarium geïntegreerd, 11 doeltalen);
+  begrippenkaarten tonen bij lestaal zh ook pinyin.
+- Validatie: `valideer-taal.sh` verwacht nu **17** bestanden per taal; de
+  veiligheidsklep in build.js laat een taal zonder Info-bestand niet meebouwen.
+- De statische site op dandan-rijlessen.pages.dev staat hier los van; besluit over
+  uitzetten/doorverwijzen ligt bij Marco.

@@ -8,4 +8,4 @@ met Nederlandse referentie-koppen. Doorzoekbaar, responsive, zonder dependencies
 - **Deployen:** zie `DEPLOY.md` (Workers Static Assets, domein dandandrive.nl).
 - **Commercieel plan:** zie `docs/COMMERCIEEL-PLAN.md` (accounts, betaald model, theoriemodule, meertaligheid).
 
-5 modules · 46 rijstappen (scripts) + examen/ADAS/oefeningen.
+5 praktijkmodules (46 rijstappen) + 11 theoriehoofdstukken + examensimulator + infosectie "rijbewijs halen" (gratis) + begrippenlijst (155 termen, pinyin) · 11 lestalen. Per rijstap veelgemaakte fouten en examentips.
