@@ -169,6 +169,7 @@ export function begrippenBody(L) {
   const kaarten = LEXICON.map((x, i) => `<button class="flashcard" data-nl="${esc(x.nl)}" aria-expanded="false" aria-label="${esc(x.nl)}">
     <span class="fc-nl" lang="nl">${esc(x.nl)}</span>
     <span class="fc-vert" lang="${doel}">${esc(x.vert[doel] || x.vert.en || '')}</span>
+    ${doel === 'zh' && x.pinyin ? `<span class="fc-pinyin">${esc(x.pinyin)}</span>` : ''}
     <span class="fc-audio" aria-hidden="true">🔊</span></button>`).join('');
   return `<h1>${esc(t(L, 'nav.begrippen'))}</h1>
   <div class="note">${esc(t(L, 'begrippen.uitleg'))}</div>

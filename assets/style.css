@@ -366,3 +366,7 @@ header.site :focus-visible,.hero :focus-visible{outline-color:var(--dd-geel)}
 .p-tip{background:#fdeeea;border:1px solid #f3c1b5}
 .p-tip>strong:first-child{color:#c0392b}
 [dir="rtl"] .p-fout,[dir="rtl"] .p-tip{text-align:right}
+
+/* pinyin-hulp op begrippenkaarten (alleen bij lestaal zh, na omdraaien) */
+.fc-pinyin{display:none;color:#5b6b7b;font-size:.8rem;font-style:italic}
+.flashcard.is-om .fc-pinyin{display:block}

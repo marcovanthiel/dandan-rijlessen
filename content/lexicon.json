@@ -1,642 +1,2596 @@
 [
-{
-"nl": "voorrang",
-"vert": {
-"zh": "优先通行权",
-"en": "right of way",
-"tr": "geçiş önceliği",
-"ar": "أولوية المرور",
-"pl": "pierwszeństwo",
-"uk": "перевага в русі",
-"ru": "преимущество",
-"es": "prioridad de paso",
-"pt": "prioridade de passagem",
-"hi": "मार्ग का अधिकार",
-"vi": "quyền ưu tiên"
-}
-},
-{
-"nl": "voorrang verlenen",
-"vert": {
-"zh": "让行",
-"en": "give way",
-"tr": "yol vermek",
-"ar": "إفساح الطريق",
-"pl": "ustąpić pierwszeństwa",
-"uk": "поступитися дорогою",
-"ru": "уступить дорогу",
-"es": "ceder el paso",
-"pt": "dar prioridade",
-"hi": "रास्ता देना",
-"vi": "nhường đường"
-}
-},
-{
-"nl": "haaientanden",
-"vert": {
-"zh": "鲨鱼齿(让行标线)",
-"en": "shark's teeth (yield markings)",
-"tr": "köpekbalığı dişleri (yol ver çizgisi)",
-"ar": "أسنان القرش (علامة أفسح الطريق)",
-"pl": "zęby rekina (linia ustąpienia)",
-"uk": "зуби акули (розмітка поступись)",
-"ru": "зубья акулы (разметка уступи)",
-"es": "dientes de tiburón (ceda el paso)",
-"pt": "dentes de tubarão (cedência)",
-"hi": "शार्क-दांत (रास्ता दें चिह्न)",
-"vi": "răng cá mập (vạch nhường đường)"
-}
-},
-{
-"nl": "uitrit",
-"vert": {
-"zh": "出入口",
-"en": "exit / driveway",
-"tr": "çıkış yolu",
-"ar": "مخرج خاص",
-"pl": "wyjazd z posesji",
-"uk": "виїзд",
-"ru": "выезд",
-"es": "salida de finca",
-"pt": "saída de garagem",
-"hi": "निकास मार्ग",
-"vi": "lối ra"
-}
-},
-{
-"nl": "gelijkwaardig kruispunt",
-"vert": {
-"zh": "同等路口",
-"en": "uncontrolled junction",
-"tr": "eşdeğer kavşak",
-"ar": "تقاطع متكافئ",
-"pl": "skrzyżowanie równorzędne",
-"uk": "рівнозначне перехрестя",
-"ru": "равнозначный перекрёсток",
-"es": "cruce sin prioridad",
-"pt": "cruzamento equivalente",
-"hi": "समान चौराहा",
-"vi": "giao lộ đồng cấp"
-}
-},
-{
-"nl": "bebouwde kom",
-"vert": {
-"zh": "建成区",
-"en": "built-up area",
-"tr": "meskun mahal",
-"ar": "منطقة عمرانية",
-"pl": "obszar zabudowany",
-"uk": "населений пункт",
-"ru": "населённый пункт",
-"es": "zona urbana",
-"pt": "zona urbana",
-"hi": "आबादी क्षेत्र",
-"vi": "khu dân cư"
-}
-},
-{
-"nl": "remweg",
-"vert": {
-"zh": "制动距离",
-"en": "braking distance",
-"tr": "fren mesafesi",
-"ar": "مسافة الكبح",
-"pl": "droga hamowania",
-"uk": "гальмівний шлях",
-"ru": "тормозной путь",
-"es": "distancia de frenado",
-"pt": "distância de travagem",
-"hi": "ब्रेक दूरी",
-"vi": "quãng đường phanh"
-}
-},
-{
-"nl": "reactietijd",
-"vert": {
-"zh": "反应时间",
-"en": "reaction time",
-"tr": "tepki süresi",
-"ar": "زمن رد الفعل",
-"pl": "czas reakcji",
-"uk": "час реакції",
-"ru": "время реакции",
-"es": "tiempo de reacción",
-"pt": "tempo de reação",
-"hi": "प्रतिक्रिया समय",
-"vi": "thời gian phản xạ"
-}
-},
-{
-"nl": "volgafstand",
-"vert": {
-"zh": "跟车距离",
-"en": "following distance",
-"tr": "takip mesafesi",
-"ar": "مسافة التتابع",
-"pl": "odstęp od poprzedzającego",
-"uk": "дистанція",
-"ru": "дистанция",
-"es": "distancia de seguimiento",
-"pt": "distância de seguimento",
-"hi": "अनुसरण दूरी",
-"vi": "khoảng cách an toàn"
-}
-},
-{
-"nl": "inhalen",
-"vert": {
-"zh": "超车",
-"en": "overtaking",
-"tr": "sollamak",
-"ar": "التجاوز",
-"pl": "wyprzedzanie",
-"uk": "обгін",
-"ru": "обгон",
-"es": "adelantar",
-"pt": "ultrapassar",
-"hi": "ओवरटेक करना",
-"vi": "vượt xe"
-}
-},
-{
-"nl": "rotonde",
-"vert": {
-"zh": "环岛",
-"en": "roundabout",
-"tr": "dönel kavşak",
-"ar": "دوار",
-"pl": "rondo",
-"uk": "кільцева розв'язка",
-"ru": "круговое движение",
-"es": "rotonda",
-"pt": "rotunda",
-"hi": "गोल चक्कर",
-"vi": "vòng xuyến"
-}
-},
-{
-"nl": "ritsen",
-"vert": {
-"zh": "拉链式并道",
-"en": "zipper merging",
-"tr": "fermuar yöntemi",
-"ar": "الدمج بالتناوب",
-"pl": "jazda na suwak",
-"uk": "злиття по черзі",
-"ru": "приём молнии",
-"es": "incorporación en cremallera",
-"pt": "fusão em fecho",
-"hi": "ज़िपर विलय",
-"vi": "nhập làn kiểu khoá kéo"
-}
-},
-{
-"nl": "parkeren",
-"vert": {
-"zh": "泊车",
-"en": "parking",
-"tr": "park etmek",
-"ar": "ركن السيارة",
-"pl": "parkowanie",
-"uk": "паркування",
-"ru": "парковка",
-"es": "aparcar",
-"pt": "estacionar",
-"hi": "पार्किंग",
-"vi": "đỗ xe"
-}
-},
-{
-"nl": "stilstaan",
-"vert": {
-"zh": "停站(短暂停车)",
-"en": "stopping (briefly)",
-"tr": "kısa durma",
-"ar": "التوقف القصير",
-"pl": "zatrzymanie",
-"uk": "зупинка",
-"ru": "остановка",
-"es": "detenerse",
-"pt": "paragem",
-"hi": "रुकना",
-"vi": "dừng xe"
-}
-},
-{
-"nl": "vluchtstrook",
-"vert": {
-"zh": "紧急停车带",
-"en": "hard shoulder",
-"tr": "emniyet şeridi",
-"ar": "كتف الطوارئ",
-"pl": "pas awaryjny",
-"uk": "аварійна смуга",
-"ru": "аварийная полоса",
-"es": "arcén",
-"pt": "berma",
-"hi": "आपात लेन",
-"vi": "làn khẩn cấp"
-}
-},
-{
-"nl": "spitsstrook",
-"vert": {
-"zh": "高峰车道",
-"en": "rush-hour lane",
-"tr": "yoğun saat şeridi",
-"ar": "حارة الذروة",
-"pl": "pas szczytowy",
-"uk": "смуга годин пік",
-"ru": "полоса часа пик",
-"es": "carril de hora punta",
-"pt": "faixa de ponta",
-"hi": "व्यस्त-समय लेन",
-"vi": "làn giờ cao điểm"
-}
-},
-{
-"nl": "verkeersregelaar",
-"vert": {
-"zh": "交通指挥员",
-"en": "traffic controller",
-"tr": "trafik görevlisi",
-"ar": "منظم المرور",
-"pl": "kierujący ruchem",
-"uk": "регулювальник",
-"ru": "регулировщик",
-"es": "agente de tráfico",
-"pt": "agente de trânsito",
-"hi": "यातायात नियंत्रक",
-"vi": "người điều khiển giao thông"
-}
-},
-{
-"nl": "voorrangsvoertuig",
-"vert": {
-"zh": "优先车辆(警笛+蓝灯)",
-"en": "emergency vehicle (siren + blue light)",
-"tr": "öncelikli araç",
-"ar": "مركبة أولوية",
-"pl": "pojazd uprzywilejowany",
-"uk": "спецавтомобіль",
-"ru": "спецтранспорт",
-"es": "vehículo prioritario",
-"pt": "veículo prioritário",
-"hi": "प्राथमिकता वाहन",
-"vi": "xe ưu tiên"
-}
-},
-{
-"nl": "overweg",
-"vert": {
-"zh": "铁路道口",
-"en": "level crossing",
-"tr": "hemzemin geçit",
-"ar": "معبر سكة حديد",
-"pl": "przejazd kolejowy",
-"uk": "залізничний переїзд",
-"ru": "ж/д переезд",
-"es": "paso a nivel",
-"pt": "passagem de nível",
-"hi": "रेल क्रॉसिंग",
-"vi": "đường ngang"
-}
-},
-{
-"nl": "woonerf",
-"vert": {
-"zh": "住宅区(步速区)",
-"en": "home zone (walking pace)",
-"tr": "konut bölgesi",
-"ar": "منطقة سكنية هادئة",
-"pl": "strefa zamieszkania",
-"uk": "житлова зона",
-"ru": "жилая зона",
-"es": "zona residencial",
-"pt": "zona residencial",
-"hi": "आवासीय क्षेत्र",
-"vi": "khu dân cư đi bộ"
-}
-},
-{
-"nl": "dode hoek",
-"vert": {
-"zh": "盲区",
-"en": "blind spot",
-"tr": "kör nokta",
-"ar": "النقطة العمياء",
-"pl": "martwe pole",
-"uk": "сліпа зона",
-"ru": "слепая зона",
-"es": "ángulo muerto",
-"pt": "ângulo morto",
-"hi": "अंध क्षेत्र",
-"vi": "điểm mù"
-}
-},
-{
-"nl": "gevaarherkenning",
-"vert": {
-"zh": "危险识别",
-"en": "hazard perception",
-"tr": "tehlike algısı",
-"ar": "إدراك الخطر",
-"pl": "rozpoznawanie zagrożeń",
-"uk": "розпізнавання небезпек",
-"ru": "распознавание опасности",
-"es": "percepción de riesgos",
-"pt": "perceção de perigos",
-"hi": "खतरा पहचान",
-"vi": "nhận diện nguy hiểm"
-}
-},
-{
-"nl": "gas loslaten",
-"vert": {
-"zh": "松油门",
-"en": "release the accelerator",
-"tr": "gazı bırakmak",
-"ar": "رفع القدم عن دواسة الوقود",
-"pl": "puścić gaz",
-"uk": "відпустити газ",
-"ru": "отпустить газ",
-"es": "soltar el acelerador",
-"pt": "largar o acelerador",
-"hi": "एक्सेलेरेटर छोड़ना",
-"vi": "nhả ga"
-}
-},
-{
-"nl": "remmen",
-"vert": {
-"zh": "制动",
-"en": "braking",
-"tr": "fren yapmak",
-"ar": "الكبح",
-"pl": "hamowanie",
-"uk": "гальмувати",
-"ru": "тормозить",
-"es": "frenar",
-"pt": "travar",
-"hi": "ब्रेक लगाना",
-"vi": "phanh"
-}
-},
-{
-"nl": "verkeersbord",
-"vert": {
-"zh": "交通标志",
-"en": "traffic sign",
-"tr": "trafik levhası",
-"ar": "إشارة مرور",
-"pl": "znak drogowy",
-"uk": "дорожній знак",
-"ru": "дорожный знак",
-"es": "señal de tráfico",
-"pt": "sinal de trânsito",
-"hi": "यातायात संकेत",
-"vi": "biển báo giao thông"
-}
-},
-{
-"nl": "verplichte rijrichting",
-"vert": {
-"zh": "必须行驶方向",
-"en": "mandatory direction",
-"tr": "zorunlu yön",
-"ar": "اتجاه إلزامي",
-"pl": "nakazany kierunek",
-"uk": "обов'язковий напрям",
-"ru": "обязательное направление",
-"es": "sentido obligatorio",
-"pt": "sentido obrigatório",
-"hi": "अनिवार्य दिशा",
-"vi": "hướng bắt buộc"
-}
-},
-{
-"nl": "eenrichtingsverkeer",
-"vert": {
-"zh": "单行道",
-"en": "one-way traffic",
-"tr": "tek yön",
-"ar": "اتجاه واحد",
-"pl": "ruch jednokierunkowy",
-"uk": "односторонній рух",
-"ru": "одностороннее движение",
-"es": "sentido único",
-"pt": "sentido único",
-"hi": "एकतरफ़ा यातायात",
-"vi": "đường một chiều"
-}
-},
-{
-"nl": "maximumsnelheid",
-"vert": {
-"zh": "最高限速",
-"en": "speed limit",
-"tr": "azami hız",
-"ar": "الحد الأقصى للسرعة",
-"pl": "prędkość maksymalna",
-"uk": "обмеження швидкості",
-"ru": "ограничение скорости",
-"es": "velocidad máxima",
-"pt": "velocidade máxima",
-"hi": "गति सीमा",
-"vi": "tốc độ tối đa"
-}
-},
-{
-"nl": "doorgetrokken streep",
-"vert": {
-"zh": "连续实线",
-"en": "solid line",
-"tr": "devamlı çizgi",
-"ar": "خط متصل",
-"pl": "linia ciągła",
-"uk": "суцільна лінія",
-"ru": "сплошная линия",
-"es": "línea continua",
-"pt": "linha contínua",
-"hi": "ठोस रेखा",
-"vi": "vạch liền"
-}
-},
-{
-"nl": "verkeerslicht",
-"vert": {
-"zh": "信号灯",
-"en": "traffic light",
-"tr": "trafik ışığı",
-"ar": "إشارة ضوئية",
-"pl": "sygnalizacja świetlna",
-"uk": "світлофор",
-"ru": "светофор",
-"es": "semáforo",
-"pt": "semáforo",
-"hi": "ट्रैफ़िक लाइट",
-"vi": "đèn tín hiệu"
-}
-},
-{
-"nl": "voetgangersoversteekplaats",
-"vert": {
-"zh": "人行横道(斑马线)",
-"en": "pedestrian crossing",
-"tr": "yaya geçidi",
-"ar": "ممر مشاة",
-"pl": "przejście dla pieszych",
-"uk": "пішохідний перехід",
-"ru": "пешеходный переход",
-"es": "paso de peatones",
-"pt": "passadeira",
-"hi": "पैदल पार पथ",
-"vi": "vạch sang đường"
-}
-},
-{
-"nl": "aanhanger",
-"vert": {
-"zh": "挂车",
-"en": "trailer",
-"tr": "römork",
-"ar": "مقطورة",
-"pl": "przyczepa",
-"uk": "причіп",
-"ru": "прицеп",
-"es": "remolque",
-"pt": "reboque",
-"hi": "ट्रेलर",
-"vi": "rơ moóc"
-}
-},
-{
-"nl": "bumperkleven",
-"vert": {
-"zh": "跟车过近",
-"en": "tailgating",
-"tr": "çok yakın takip",
-"ar": "الالتصاق بالمركبة",
-"pl": "jazda na zderzaku",
-"uk": "їзда впритул",
-"ru": "езда впритык",
-"es": "conducir pegado",
-"pt": "colar-se ao carro",
-"hi": "बहुत पास चलना",
-"vi": "bám đuôi xe"
-}
-},
-{
-"nl": "slipgevaar",
-"vert": {
-"zh": "打滑危险",
-"en": "risk of skidding",
-"tr": "kayma tehlikesi",
-"ar": "خطر الانزلاق",
-"pl": "ryzyko poślizgu",
-"uk": "небезпека заносу",
-"ru": "опасность заноса",
-"es": "riesgo de derrape",
-"pt": "risco de derrapagem",
-"hi": "फिसलन का खतरा",
-"vi": "nguy cơ trượt"
-}
-},
-{
-"nl": "spiegels en schouderblik",
-"vert": {
-"zh": "后视镜与回头观察",
-"en": "mirrors and shoulder check",
-"tr": "ayna ve omuz kontrolü",
-"ar": "المرايا ونظرة الكتف",
-"pl": "lusterka i spojrzenie przez ramię",
-"uk": "дзеркала і погляд через плече",
-"ru": "зеркала и взгляд через плечо",
-"es": "espejos y mirada al hombro",
-"pt": "espelhos e olhar por cima do ombro",
-"hi": "दर्पण व कंधे से देखना",
-"vi": "gương và ngoái nhìn"
-}
-},
-{
-"nl": "rijbewijs",
-"vert": {
-"zh": "驾照",
-"en": "driving licence",
-"tr": "ehliyet",
-"ar": "رخصة قيادة",
-"pl": "prawo jazdy",
-"uk": "посвідчення водія",
-"ru": "водительские права",
-"es": "permiso de conducir",
-"pt": "carta de condução",
-"hi": "ड्राइविंग लाइसेंस",
-"vi": "giấy phép lái xe"
-}
-},
-{
-"nl": "theorie-examen",
-"vert": {
-"zh": "理论考试",
-"en": "theory exam",
-"tr": "teori sınavı",
-"ar": "امتحان نظري",
-"pl": "egzamin teoretyczny",
-"uk": "теоретичний іспит",
-"ru": "теоретический экзамен",
-"es": "examen teórico",
-"pt": "exame teórico",
-"hi": "थ्योरी परीक्षा",
-"vi": "thi lý thuyết"
-}
-},
-{
-"nl": "praktijkexamen",
-"vert": {
-"zh": "路考",
-"en": "practical exam",
-"tr": "direksiyon sınavı",
-"ar": "امتحان عملي",
-"pl": "egzamin praktyczny",
-"uk": "практичний іспит",
-"ru": "практический экзамен",
-"es": "examen práctico",
-"pt": "exame prático",
-"hi": "प्रैक्टिकल परीक्षा",
-"vi": "thi thực hành"
-}
-},
-{
-"nl": "verkeersdeelnemer",
-"vert": {
-"zh": "交通参与者",
-"en": "road user",
-"tr": "trafik katılımcısı",
-"ar": "مستخدم الطريق",
-"pl": "uczestnik ruchu",
-"uk": "учасник руху",
-"ru": "участник движения",
-"es": "usuario de la vía",
-"pt": "utente da via",
-"hi": "सड़क उपयोगकर्ता",
-"vi": "người tham gia giao thông"
-}
-},
-{
-"nl": "rijhulpsysteem (ADAS)",
-"vert": {
-"zh": "驾驶辅助系统",
-"en": "driver assistance system",
-"tr": "sürüş destek sistemi",
-"ar": "نظام مساعدة السائق",
-"pl": "system wspomagania kierowcy",
-"uk": "система допомоги водію",
-"ru": "система помощи водителю",
-"es": "sistema de asistencia",
-"pt": "sistema de apoio à condução",
-"hi": "चालक सहायता प्रणाली",
-"vi": "hệ thống hỗ trợ lái"
-}
-}
+ {
+  "nl": "voorrang",
+  "vert": {
+   "zh": "优先通行权",
+   "en": "right of way",
+   "tr": "geçiş önceliği",
+   "ar": "أولوية المرور",
+   "pl": "pierwszeństwo",
+   "uk": "перевага в русі",
+   "ru": "преимущество",
+   "es": "prioridad de paso",
+   "pt": "prioridade de passagem",
+   "hi": "मार्ग का अधिकार",
+   "vi": "quyền ưu tiên"
+  }
+ },
+ {
+  "nl": "voorrang verlenen",
+  "vert": {
+   "zh": "让行",
+   "en": "give way",
+   "tr": "yol vermek",
+   "ar": "إفساح الطريق",
+   "pl": "ustąpić pierwszeństwa",
+   "uk": "поступитися дорогою",
+   "ru": "уступить дорогу",
+   "es": "ceder el paso",
+   "pt": "dar prioridade",
+   "hi": "रास्ता देना",
+   "vi": "nhường đường"
+  }
+ },
+ {
+  "nl": "haaientanden",
+  "vert": {
+   "zh": "鲨鱼齿(让行标线)",
+   "en": "shark's teeth (yield markings)",
+   "tr": "köpekbalığı dişleri (yol ver çizgisi)",
+   "ar": "أسنان القرش (علامة أفسح الطريق)",
+   "pl": "zęby rekina (linia ustąpienia)",
+   "uk": "зуби акули (розмітка поступись)",
+   "ru": "зубья акулы (разметка уступи)",
+   "es": "dientes de tiburón (ceda el paso)",
+   "pt": "dentes de tubarão (cedência)",
+   "hi": "शार्क-दांत (रास्ता दें चिह्न)",
+   "vi": "răng cá mập (vạch nhường đường)"
+  }
+ },
+ {
+  "nl": "uitrit",
+  "vert": {
+   "zh": "出入口",
+   "en": "exit / driveway",
+   "tr": "çıkış yolu",
+   "ar": "مخرج خاص",
+   "pl": "wyjazd z posesji",
+   "uk": "виїзд",
+   "ru": "выезд",
+   "es": "salida de finca",
+   "pt": "saída de garagem",
+   "hi": "निकास मार्ग",
+   "vi": "lối ra"
+  }
+ },
+ {
+  "nl": "gelijkwaardig kruispunt",
+  "vert": {
+   "zh": "同等路口",
+   "en": "uncontrolled junction",
+   "tr": "eşdeğer kavşak",
+   "ar": "تقاطع متكافئ",
+   "pl": "skrzyżowanie równorzędne",
+   "uk": "рівнозначне перехрестя",
+   "ru": "равнозначный перекрёсток",
+   "es": "cruce sin prioridad",
+   "pt": "cruzamento equivalente",
+   "hi": "समान चौराहा",
+   "vi": "giao lộ đồng cấp"
+  }
+ },
+ {
+  "nl": "bebouwde kom",
+  "vert": {
+   "zh": "建成区",
+   "en": "built-up area",
+   "tr": "meskun mahal",
+   "ar": "منطقة عمرانية",
+   "pl": "obszar zabudowany",
+   "uk": "населений пункт",
+   "ru": "населённый пункт",
+   "es": "zona urbana",
+   "pt": "zona urbana",
+   "hi": "आबादी क्षेत्र",
+   "vi": "khu dân cư"
+  }
+ },
+ {
+  "nl": "remweg",
+  "vert": {
+   "zh": "制动距离",
+   "en": "braking distance",
+   "tr": "fren mesafesi",
+   "ar": "مسافة الكبح",
+   "pl": "droga hamowania",
+   "uk": "гальмівний шлях",
+   "ru": "тормозной путь",
+   "es": "distancia de frenado",
+   "pt": "distância de travagem",
+   "hi": "ब्रेक दूरी",
+   "vi": "quãng đường phanh"
+  }
+ },
+ {
+  "nl": "reactietijd",
+  "vert": {
+   "zh": "反应时间",
+   "en": "reaction time",
+   "tr": "tepki süresi",
+   "ar": "زمن رد الفعل",
+   "pl": "czas reakcji",
+   "uk": "час реакції",
+   "ru": "время реакции",
+   "es": "tiempo de reacción",
+   "pt": "tempo de reação",
+   "hi": "प्रतिक्रिया समय",
+   "vi": "thời gian phản xạ"
+  }
+ },
+ {
+  "nl": "volgafstand",
+  "vert": {
+   "zh": "跟车距离",
+   "en": "following distance",
+   "tr": "takip mesafesi",
+   "ar": "مسافة التتابع",
+   "pl": "odstęp od poprzedzającego",
+   "uk": "дистанція",
+   "ru": "дистанция",
+   "es": "distancia de seguimiento",
+   "pt": "distância de seguimento",
+   "hi": "अनुसरण दूरी",
+   "vi": "khoảng cách an toàn"
+  }
+ },
+ {
+  "nl": "inhalen",
+  "vert": {
+   "zh": "超车",
+   "en": "overtaking",
+   "tr": "sollamak",
+   "ar": "التجاوز",
+   "pl": "wyprzedzanie",
+   "uk": "обгін",
+   "ru": "обгон",
+   "es": "adelantar",
+   "pt": "ultrapassar",
+   "hi": "ओवरटेक करना",
+   "vi": "vượt xe"
+  }
+ },
+ {
+  "nl": "rotonde",
+  "vert": {
+   "zh": "环岛",
+   "en": "roundabout",
+   "tr": "dönel kavşak",
+   "ar": "دوار",
+   "pl": "rondo",
+   "uk": "кільцева розв'язка",
+   "ru": "круговое движение",
+   "es": "rotonda",
+   "pt": "rotunda",
+   "hi": "गोल चक्कर",
+   "vi": "vòng xuyến"
+  }
+ },
+ {
+  "nl": "ritsen",
+  "vert": {
+   "zh": "拉链式并道",
+   "en": "zipper merging",
+   "tr": "fermuar yöntemi",
+   "ar": "الدمج بالتناوب",
+   "pl": "jazda na suwak",
+   "uk": "злиття по черзі",
+   "ru": "приём молнии",
+   "es": "incorporación en cremallera",
+   "pt": "fusão em fecho",
+   "hi": "ज़िपर विलय",
+   "vi": "nhập làn kiểu khoá kéo"
+  }
+ },
+ {
+  "nl": "parkeren",
+  "vert": {
+   "zh": "泊车",
+   "en": "parking",
+   "tr": "park etmek",
+   "ar": "ركن السيارة",
+   "pl": "parkowanie",
+   "uk": "паркування",
+   "ru": "парковка",
+   "es": "aparcar",
+   "pt": "estacionar",
+   "hi": "पार्किंग",
+   "vi": "đỗ xe"
+  }
+ },
+ {
+  "nl": "stilstaan",
+  "vert": {
+   "zh": "停站(短暂停车)",
+   "en": "stopping (briefly)",
+   "tr": "kısa durma",
+   "ar": "التوقف القصير",
+   "pl": "zatrzymanie",
+   "uk": "зупинка",
+   "ru": "остановка",
+   "es": "detenerse",
+   "pt": "paragem",
+   "hi": "रुकना",
+   "vi": "dừng xe"
+  }
+ },
+ {
+  "nl": "vluchtstrook",
+  "vert": {
+   "zh": "紧急停车带",
+   "en": "hard shoulder",
+   "tr": "emniyet şeridi",
+   "ar": "كتف الطوارئ",
+   "pl": "pas awaryjny",
+   "uk": "аварійна смуга",
+   "ru": "аварийная полоса",
+   "es": "arcén",
+   "pt": "berma",
+   "hi": "आपात लेन",
+   "vi": "làn khẩn cấp"
+  }
+ },
+ {
+  "nl": "spitsstrook",
+  "vert": {
+   "zh": "高峰车道",
+   "en": "rush-hour lane",
+   "tr": "yoğun saat şeridi",
+   "ar": "حارة الذروة",
+   "pl": "pas szczytowy",
+   "uk": "смуга годин пік",
+   "ru": "полоса часа пик",
+   "es": "carril de hora punta",
+   "pt": "faixa de ponta",
+   "hi": "व्यस्त-समय लेन",
+   "vi": "làn giờ cao điểm"
+  }
+ },
+ {
+  "nl": "verkeersregelaar",
+  "vert": {
+   "zh": "交通指挥员",
+   "en": "traffic controller",
+   "tr": "trafik görevlisi",
+   "ar": "منظم المرور",
+   "pl": "kierujący ruchem",
+   "uk": "регулювальник",
+   "ru": "регулировщик",
+   "es": "agente de tráfico",
+   "pt": "agente de trânsito",
+   "hi": "यातायात नियंत्रक",
+   "vi": "người điều khiển giao thông"
+  }
+ },
+ {
+  "nl": "voorrangsvoertuig",
+  "vert": {
+   "zh": "优先车辆(警笛+蓝灯)",
+   "en": "emergency vehicle (siren + blue light)",
+   "tr": "öncelikli araç",
+   "ar": "مركبة أولوية",
+   "pl": "pojazd uprzywilejowany",
+   "uk": "спецавтомобіль",
+   "ru": "спецтранспорт",
+   "es": "vehículo prioritario",
+   "pt": "veículo prioritário",
+   "hi": "प्राथमिकता वाहन",
+   "vi": "xe ưu tiên"
+  }
+ },
+ {
+  "nl": "overweg",
+  "vert": {
+   "zh": "铁路道口",
+   "en": "level crossing",
+   "tr": "hemzemin geçit",
+   "ar": "معبر سكة حديد",
+   "pl": "przejazd kolejowy",
+   "uk": "залізничний переїзд",
+   "ru": "ж/д переезд",
+   "es": "paso a nivel",
+   "pt": "passagem de nível",
+   "hi": "रेल क्रॉसिंग",
+   "vi": "đường ngang"
+  }
+ },
+ {
+  "nl": "woonerf",
+  "vert": {
+   "zh": "住宅区(步速区)",
+   "en": "home zone (walking pace)",
+   "tr": "konut bölgesi",
+   "ar": "منطقة سكنية هادئة",
+   "pl": "strefa zamieszkania",
+   "uk": "житлова зона",
+   "ru": "жилая зона",
+   "es": "zona residencial",
+   "pt": "zona residencial",
+   "hi": "आवासीय क्षेत्र",
+   "vi": "khu dân cư đi bộ"
+  }
+ },
+ {
+  "nl": "dode hoek",
+  "vert": {
+   "zh": "盲区",
+   "en": "blind spot",
+   "tr": "kör nokta",
+   "ar": "النقطة العمياء",
+   "pl": "martwe pole",
+   "uk": "сліпа зона",
+   "ru": "слепая зона",
+   "es": "ángulo muerto",
+   "pt": "ângulo morto",
+   "hi": "अंध क्षेत्र",
+   "vi": "điểm mù"
+  }
+ },
+ {
+  "nl": "gevaarherkenning",
+  "vert": {
+   "zh": "危险识别",
+   "en": "hazard perception",
+   "tr": "tehlike algısı",
+   "ar": "إدراك الخطر",
+   "pl": "rozpoznawanie zagrożeń",
+   "uk": "розпізнавання небезпек",
+   "ru": "распознавание опасности",
+   "es": "percepción de riesgos",
+   "pt": "perceção de perigos",
+   "hi": "खतरा पहचान",
+   "vi": "nhận diện nguy hiểm"
+  }
+ },
+ {
+  "nl": "gas loslaten",
+  "vert": {
+   "zh": "松油门",
+   "en": "release the accelerator",
+   "tr": "gazı bırakmak",
+   "ar": "رفع القدم عن دواسة الوقود",
+   "pl": "puścić gaz",
+   "uk": "відпустити газ",
+   "ru": "отпустить газ",
+   "es": "soltar el acelerador",
+   "pt": "largar o acelerador",
+   "hi": "एक्सेलेरेटर छोड़ना",
+   "vi": "nhả ga"
+  }
+ },
+ {
+  "nl": "remmen",
+  "vert": {
+   "zh": "制动",
+   "en": "braking",
+   "tr": "fren yapmak",
+   "ar": "الكبح",
+   "pl": "hamowanie",
+   "uk": "гальмувати",
+   "ru": "тормозить",
+   "es": "frenar",
+   "pt": "travar",
+   "hi": "ब्रेक लगाना",
+   "vi": "phanh"
+  }
+ },
+ {
+  "nl": "verkeersbord",
+  "vert": {
+   "zh": "交通标志",
+   "en": "traffic sign",
+   "tr": "trafik levhası",
+   "ar": "إشارة مرور",
+   "pl": "znak drogowy",
+   "uk": "дорожній знак",
+   "ru": "дорожный знак",
+   "es": "señal de tráfico",
+   "pt": "sinal de trânsito",
+   "hi": "यातायात संकेत",
+   "vi": "biển báo giao thông"
+  }
+ },
+ {
+  "nl": "verplichte rijrichting",
+  "vert": {
+   "zh": "必须行驶方向",
+   "en": "mandatory direction",
+   "tr": "zorunlu yön",
+   "ar": "اتجاه إلزامي",
+   "pl": "nakazany kierunek",
+   "uk": "обов'язковий напрям",
+   "ru": "обязательное направление",
+   "es": "sentido obligatorio",
+   "pt": "sentido obrigatório",
+   "hi": "अनिवार्य दिशा",
+   "vi": "hướng bắt buộc"
+  }
+ },
+ {
+  "nl": "eenrichtingsverkeer",
+  "vert": {
+   "zh": "单行道",
+   "en": "one-way traffic",
+   "tr": "tek yön",
+   "ar": "اتجاه واحد",
+   "pl": "ruch jednokierunkowy",
+   "uk": "односторонній рух",
+   "ru": "одностороннее движение",
+   "es": "sentido único",
+   "pt": "sentido único",
+   "hi": "एकतरफ़ा यातायात",
+   "vi": "đường một chiều"
+  }
+ },
+ {
+  "nl": "maximumsnelheid",
+  "vert": {
+   "zh": "最高限速",
+   "en": "speed limit",
+   "tr": "azami hız",
+   "ar": "الحد الأقصى للسرعة",
+   "pl": "prędkość maksymalna",
+   "uk": "обмеження швидкості",
+   "ru": "ограничение скорости",
+   "es": "velocidad máxima",
+   "pt": "velocidade máxima",
+   "hi": "गति सीमा",
+   "vi": "tốc độ tối đa"
+  }
+ },
+ {
+  "nl": "doorgetrokken streep",
+  "vert": {
+   "zh": "连续实线",
+   "en": "solid line",
+   "tr": "devamlı çizgi",
+   "ar": "خط متصل",
+   "pl": "linia ciągła",
+   "uk": "суцільна лінія",
+   "ru": "сплошная линия",
+   "es": "línea continua",
+   "pt": "linha contínua",
+   "hi": "ठोस रेखा",
+   "vi": "vạch liền"
+  }
+ },
+ {
+  "nl": "verkeerslicht",
+  "vert": {
+   "zh": "信号灯",
+   "en": "traffic light",
+   "tr": "trafik ışığı",
+   "ar": "إشارة ضوئية",
+   "pl": "sygnalizacja świetlna",
+   "uk": "світлофор",
+   "ru": "светофор",
+   "es": "semáforo",
+   "pt": "semáforo",
+   "hi": "ट्रैफ़िक लाइट",
+   "vi": "đèn tín hiệu"
+  }
+ },
+ {
+  "nl": "voetgangersoversteekplaats",
+  "vert": {
+   "zh": "人行横道(斑马线)",
+   "en": "pedestrian crossing",
+   "tr": "yaya geçidi",
+   "ar": "ممر مشاة",
+   "pl": "przejście dla pieszych",
+   "uk": "пішохідний перехід",
+   "ru": "пешеходный переход",
+   "es": "paso de peatones",
+   "pt": "passadeira",
+   "hi": "पैदल पार पथ",
+   "vi": "vạch sang đường"
+  }
+ },
+ {
+  "nl": "aanhanger",
+  "vert": {
+   "zh": "挂车",
+   "en": "trailer",
+   "tr": "römork",
+   "ar": "مقطورة",
+   "pl": "przyczepa",
+   "uk": "причіп",
+   "ru": "прицеп",
+   "es": "remolque",
+   "pt": "reboque",
+   "hi": "ट्रेलर",
+   "vi": "rơ moóc"
+  }
+ },
+ {
+  "nl": "bumperkleven",
+  "vert": {
+   "zh": "跟车过近",
+   "en": "tailgating",
+   "tr": "çok yakın takip",
+   "ar": "الالتصاق بالمركبة",
+   "pl": "jazda na zderzaku",
+   "uk": "їзда впритул",
+   "ru": "езда впритык",
+   "es": "conducir pegado",
+   "pt": "colar-se ao carro",
+   "hi": "बहुत पास चलना",
+   "vi": "bám đuôi xe"
+  }
+ },
+ {
+  "nl": "slipgevaar",
+  "vert": {
+   "zh": "打滑危险",
+   "en": "risk of skidding",
+   "tr": "kayma tehlikesi",
+   "ar": "خطر الانزلاق",
+   "pl": "ryzyko poślizgu",
+   "uk": "небезпека заносу",
+   "ru": "опасность заноса",
+   "es": "riesgo de derrape",
+   "pt": "risco de derrapagem",
+   "hi": "फिसलन का खतरा",
+   "vi": "nguy cơ trượt"
+  }
+ },
+ {
+  "nl": "spiegels en schouderblik",
+  "vert": {
+   "zh": "后视镜与回头观察",
+   "en": "mirrors and shoulder check",
+   "tr": "ayna ve omuz kontrolü",
+   "ar": "المرايا ونظرة الكتف",
+   "pl": "lusterka i spojrzenie przez ramię",
+   "uk": "дзеркала і погляд через плече",
+   "ru": "зеркала и взгляд через плечо",
+   "es": "espejos y mirada al hombro",
+   "pt": "espelhos e olhar por cima do ombro",
+   "hi": "दर्पण व कंधे से देखना",
+   "vi": "gương và ngoái nhìn"
+  }
+ },
+ {
+  "nl": "rijbewijs",
+  "vert": {
+   "zh": "驾照",
+   "en": "driving licence",
+   "tr": "ehliyet",
+   "ar": "رخصة قيادة",
+   "pl": "prawo jazdy",
+   "uk": "посвідчення водія",
+   "ru": "водительские права",
+   "es": "permiso de conducir",
+   "pt": "carta de condução",
+   "hi": "ड्राइविंग लाइसेंस",
+   "vi": "giấy phép lái xe"
+  }
+ },
+ {
+  "nl": "theorie-examen",
+  "vert": {
+   "zh": "理论考试",
+   "en": "theory exam",
+   "tr": "teori sınavı",
+   "ar": "امتحان نظري",
+   "pl": "egzamin teoretyczny",
+   "uk": "теоретичний іспит",
+   "ru": "теоретический экзамен",
+   "es": "examen teórico",
+   "pt": "exame teórico",
+   "hi": "थ्योरी परीक्षा",
+   "vi": "thi lý thuyết"
+  }
+ },
+ {
+  "nl": "praktijkexamen",
+  "vert": {
+   "zh": "路考",
+   "en": "practical exam",
+   "tr": "direksiyon sınavı",
+   "ar": "امتحان عملي",
+   "pl": "egzamin praktyczny",
+   "uk": "практичний іспит",
+   "ru": "практический экзамен",
+   "es": "examen práctico",
+   "pt": "exame prático",
+   "hi": "प्रैक्टिकल परीक्षा",
+   "vi": "thi thực hành"
+  }
+ },
+ {
+  "nl": "verkeersdeelnemer",
+  "vert": {
+   "zh": "交通参与者",
+   "en": "road user",
+   "tr": "trafik katılımcısı",
+   "ar": "مستخدم الطريق",
+   "pl": "uczestnik ruchu",
+   "uk": "учасник руху",
+   "ru": "участник движения",
+   "es": "usuario de la vía",
+   "pt": "utente da via",
+   "hi": "सड़क उपयोगकर्ता",
+   "vi": "người tham gia giao thông"
+  }
+ },
+ {
+  "nl": "rijhulpsysteem (ADAS)",
+  "vert": {
+   "zh": "驾驶辅助系统",
+   "en": "driver assistance system",
+   "tr": "sürüş destek sistemi",
+   "ar": "نظام مساعدة السائق",
+   "pl": "system wspomagania kierowcy",
+   "uk": "система допомоги водію",
+   "ru": "система помощи водителю",
+   "es": "sistema de asistencia",
+   "pt": "sistema de apoio à condução",
+   "hi": "चालक सहायता प्रणाली",
+   "vi": "hệ thống hỗ trợ lái"
+  }
+ },
+ {
+  "nl": "Rijopleiding In Stappen (RIS)",
+  "vert": {
+   "zh": "分步驾驶培训",
+   "en": "step-by-step driving training (RIS)",
+   "tr": "adım adım sürücü eğitimi (RIS)",
+   "ar": "التدريب على القيادة بالخطوات (RIS)",
+   "pl": "stopniowe szkolenie na prawo jazdy (RIS)",
+   "uk": "поетапне навчання водінню (RIS)",
+   "ru": "поэтапное обучение вождению (RIS)",
+   "es": "formación de conducción por etapas (RIS)",
+   "pt": "formação de condução por etapas (RIS)",
+   "hi": "चरणबद्ध ड्राइविंग प्रशिक्षण (RIS)",
+   "vi": "đào tạo lái xe theo từng bước (RIS)"
+  },
+  "pinyin": "fēnbù jiàshǐ péixùn"
+ },
+ {
+  "nl": "rijbewijs B",
+  "vert": {
+   "zh": "B类驾照",
+   "en": "category B driving licence",
+   "tr": "B sınıfı sürücü belgesi",
+   "ar": "رخصة قيادة فئة B",
+   "pl": "prawo jazdy kategorii B",
+   "uk": "посвідчення водія категорії B",
+   "ru": "водительские права категории B",
+   "es": "permiso de conducir de categoría B",
+   "pt": "carta de condução de categoria B",
+   "hi": "श्रेणी B ड्राइविंग लाइसेंस",
+   "vi": "giấy phép lái xe hạng B"
+  },
+  "pinyin": "B lèi jiàzhào"
+ },
+ {
+  "nl": "module",
+  "vert": {
+   "zh": "模块",
+   "en": "module",
+   "tr": "modül",
+   "ar": "وحدة",
+   "pl": "moduł",
+   "uk": "модуль",
+   "ru": "модуль",
+   "es": "módulo",
+   "pt": "módulo",
+   "hi": "मॉड्यूल",
+   "vi": "học phần"
+  },
+  "pinyin": "mókuài"
+ },
+ {
+  "nl": "script (handelingsscript)",
+  "vert": {
+   "zh": "操作步骤 / 脚本",
+   "en": "action script",
+   "tr": "eylem senaryosu",
+   "ar": "نص إجرائي",
+   "pl": "skrypt czynności",
+   "uk": "сценарій дій",
+   "ru": "сценарий действий",
+   "es": "guion de acciones",
+   "pt": "guião de ações",
+   "hi": "क्रिया स्क्रिप्ट",
+   "vi": "kịch bản thao tác"
+  },
+  "pinyin": "cāozuò bùzhòu / jiǎoběn"
+ },
+ {
+  "nl": "taakproces",
+  "vert": {
+   "zh": "任务过程",
+   "en": "task process",
+   "tr": "görev süreci",
+   "ar": "عملية المهمة",
+   "pl": "proces zadania",
+   "uk": "процес виконання завдання",
+   "ru": "процесс выполнения задачи",
+   "es": "proceso de la tarea",
+   "pt": "processo da tarefa",
+   "hi": "कार्य प्रक्रिया",
+   "vi": "quy trình thực hiện nhiệm vụ"
+  },
+  "pinyin": "rènwù guòchéng"
+ },
+ {
+  "nl": "waarnemen",
+  "vert": {
+   "zh": "观察",
+   "en": "observe",
+   "tr": "gözlemlemek",
+   "ar": "الملاحظة",
+   "pl": "obserwować",
+   "uk": "спостерігати",
+   "ru": "наблюдать",
+   "es": "observar",
+   "pt": "observar",
+   "hi": "निरीक्षण करना",
+   "vi": "quan sát"
+  },
+  "pinyin": "guānchá"
+ },
+ {
+  "nl": "voorspellen (anticiperen)",
+  "vert": {
+   "zh": "预测 (预判)",
+   "en": "predict (anticipate)",
+   "tr": "tahmin etmek (öngörmek)",
+   "ar": "التوقع (الاستباق)",
+   "pl": "przewidywać (antycypować)",
+   "uk": "передбачати (антиципувати)",
+   "ru": "предвидеть (предугадывать)",
+   "es": "prever (anticipar)",
+   "pt": "prever (antecipar)",
+   "hi": "पूर्वानुमान करना (पहले से भाँपना)",
+   "vi": "dự đoán (phán đoán trước)"
+  },
+  "pinyin": "yùcè (yùpàn)"
+ },
+ {
+  "nl": "evalueren",
+  "vert": {
+   "zh": "评估",
+   "en": "evaluate",
+   "tr": "değerlendirmek",
+   "ar": "التقييم",
+   "pl": "oceniać",
+   "uk": "оцінювати",
+   "ru": "оценивать",
+   "es": "evaluar",
+   "pt": "avaliar",
+   "hi": "मूल्यांकन करना",
+   "vi": "đánh giá"
+  },
+  "pinyin": "pínggū"
+ },
+ {
+  "nl": "beslissen",
+  "vert": {
+   "zh": "决定",
+   "en": "decide",
+   "tr": "karar vermek",
+   "ar": "اتخاذ القرار",
+   "pl": "decydować",
+   "uk": "вирішувати",
+   "ru": "принимать решение",
+   "es": "decidir",
+   "pt": "decidir",
+   "hi": "निर्णय लेना",
+   "vi": "quyết định"
+  },
+  "pinyin": "juédìng"
+ },
+ {
+  "nl": "handelen",
+  "vert": {
+   "zh": "执行",
+   "en": "act",
+   "tr": "harekete geçmek",
+   "ar": "التصرف",
+   "pl": "działać",
+   "uk": "діяти",
+   "ru": "действовать",
+   "es": "actuar",
+   "pt": "agir",
+   "hi": "कार्य करना",
+   "vi": "hành động"
+  },
+  "pinyin": "zhíxíng"
+ },
+ {
+  "nl": "instructeur",
+  "vert": {
+   "zh": "教练",
+   "en": "instructor",
+   "tr": "eğitmen",
+   "ar": "مدرب",
+   "pl": "instruktor",
+   "uk": "інструктор",
+   "ru": "инструктор",
+   "es": "instructor",
+   "pt": "instrutor",
+   "hi": "प्रशिक्षक",
+   "vi": "giáo viên hướng dẫn"
+  },
+  "pinyin": "jiàoliàn"
+ },
+ {
+  "nl": "leerling / kandidaat",
+  "vert": {
+   "zh": "学员 / 考生",
+   "en": "student / candidate",
+   "tr": "öğrenci / aday",
+   "ar": "متعلم / مرشح",
+   "pl": "kursant / kandydat",
+   "uk": "учень / кандидат",
+   "ru": "ученик / кандидат",
+   "es": "alumno / candidato",
+   "pt": "aluno / candidato",
+   "hi": "छात्र / अभ्यर्थी",
+   "vi": "học viên / thí sinh"
+  },
+  "pinyin": "xuéyuán / kǎoshēng"
+ },
+ {
+  "nl": "toets / deeltoets",
+  "vert": {
+   "zh": "阶段测试",
+   "en": "test / partial test",
+   "tr": "sınav / ara sınav",
+   "ar": "اختبار / اختبار جزئي",
+   "pl": "egzamin / egzamin cząstkowy",
+   "uk": "тест / проміжний тест",
+   "ru": "тест / промежуточный тест",
+   "es": "prueba / prueba parcial",
+   "pt": "teste / teste parcial",
+   "hi": "परीक्षा / आंशिक परीक्षा",
+   "vi": "bài kiểm tra / bài kiểm tra từng phần"
+  },
+  "pinyin": "jiēduàn cèshì"
+ },
+ {
+  "nl": "zelfreflectie",
+  "vert": {
+   "zh": "自我评估",
+   "en": "self-reflection",
+   "tr": "öz değerlendirme",
+   "ar": "التأمل الذاتي",
+   "pl": "autorefleksja",
+   "uk": "саморефлексія",
+   "ru": "саморефлексия",
+   "es": "autorreflexión",
+   "pt": "autorreflexão",
+   "hi": "आत्म-चिंतन",
+   "vi": "tự phản ánh"
+  },
+  "pinyin": "zìwǒ pínggū"
+ },
+ {
+  "nl": "huiswerk(opdracht)",
+  "vert": {
+   "zh": "课前预习",
+   "en": "homework (assignment)",
+   "tr": "ev ödevi",
+   "ar": "واجب منزلي",
+   "pl": "praca domowa",
+   "uk": "домашнє завдання",
+   "ru": "домашнее задание",
+   "es": "tarea",
+   "pt": "trabalho de casa",
+   "hi": "गृहकार्य",
+   "vi": "bài tập về nhà"
+  },
+  "pinyin": "kèqián yùxí"
+ },
+ {
+  "nl": "koppeling(spedaal)",
+  "vert": {
+   "zh": "离合器(踏板)",
+   "en": "clutch (pedal)",
+   "tr": "debriyaj (pedalı)",
+   "ar": "دواسة القابض (الكلتش)",
+   "pl": "sprzęgło (pedał)",
+   "uk": "педаль зчеплення",
+   "ru": "педаль сцепления",
+   "es": "embrague (pedal)",
+   "pt": "embraiagem (pedal)",
+   "hi": "क्लच (पैडल)",
+   "vi": "bàn đạp côn (ly hợp)"
+  },
+  "pinyin": "líhéqì (tàbǎn)"
+ },
+ {
+  "nl": "rempedaal",
+  "vert": {
+   "zh": "刹车踏板",
+   "en": "brake pedal",
+   "tr": "fren pedalı",
+   "ar": "دواسة الفرامل",
+   "pl": "pedał hamulca",
+   "uk": "педаль гальма",
+   "ru": "педаль тормоза",
+   "es": "pedal de freno",
+   "pt": "pedal do travão",
+   "hi": "ब्रेक पैडल",
+   "vi": "bàn đạp phanh"
+  },
+  "pinyin": "shāchē tàbǎn"
+ },
+ {
+  "nl": "gaspedaal",
+  "vert": {
+   "zh": "油门踏板",
+   "en": "accelerator pedal",
+   "tr": "gaz pedalı",
+   "ar": "دواسة الوقود",
+   "pl": "pedał gazu",
+   "uk": "педаль газу",
+   "ru": "педаль газа",
+   "es": "pedal del acelerador",
+   "pt": "pedal do acelerador",
+   "hi": "एक्सेलेरेटर पैडल",
+   "vi": "bàn đạp ga"
+  },
+  "pinyin": "yóumén tàbǎn"
+ },
+ {
+  "nl": "versnelling(spook)",
+  "vert": {
+   "zh": "挡位(排挡杆)",
+   "en": "gear (gear stick)",
+   "tr": "vites (vites kolu)",
+   "ar": "التروس (عصا نقل الحركة)",
+   "pl": "bieg (dźwignia zmiany biegów)",
+   "uk": "передача (важіль перемикання)",
+   "ru": "передача (рычаг переключения)",
+   "es": "marcha (palanca de cambios)",
+   "pt": "mudança (alavanca de velocidades)",
+   "hi": "गियर (गियर लीवर)",
+   "vi": "số (cần số)"
+  },
+  "pinyin": "dǎngwèi (páidǎnggān)"
+ },
+ {
+  "nl": "versnellingsbak",
+  "vert": {
+   "zh": "变速箱",
+   "en": "gearbox",
+   "tr": "vites kutusu",
+   "ar": "علبة التروس",
+   "pl": "skrzynia biegów",
+   "uk": "коробка передач",
+   "ru": "коробка передач",
+   "es": "caja de cambios",
+   "pt": "caixa de velocidades",
+   "hi": "गियरबॉक्स",
+   "vi": "hộp số"
+  },
+  "pinyin": "biànsùxiāng"
+ },
+ {
+  "nl": "automaat",
+  "vert": {
+   "zh": "自动挡",
+   "en": "automatic transmission",
+   "tr": "otomatik vites",
+   "ar": "ناقل حركة أوتوماتيكي",
+   "pl": "automatyczna skrzynia biegów",
+   "uk": "автоматична коробка передач",
+   "ru": "автоматическая коробка передач",
+   "es": "cambio automático",
+   "pt": "caixa automática",
+   "hi": "स्वचालित गियर",
+   "vi": "số tự động"
+  },
+  "pinyin": "zìdòngdǎng"
+ },
+ {
+  "nl": "handrem / parkeerrem",
+  "vert": {
+   "zh": "手刹 / 驻车制动",
+   "en": "handbrake / parking brake",
+   "tr": "el freni / park freni",
+   "ar": "فرملة اليد / فرملة الانتظار",
+   "pl": "hamulec ręczny / postojowy",
+   "uk": "ручне гальмо / стоянкове гальмо",
+   "ru": "ручной тормоз / стояночный тормоз",
+   "es": "freno de mano / freno de estacionamiento",
+   "pt": "travão de mão / travão de estacionamento",
+   "hi": "हैंडब्रेक / पार्किंग ब्रेक",
+   "vi": "phanh tay / phanh đỗ xe"
+  },
+  "pinyin": "shǒushā / zhùchē zhìdòng"
+ },
+ {
+  "nl": "stuur",
+  "vert": {
+   "zh": "方向盘",
+   "en": "steering wheel",
+   "tr": "direksiyon",
+   "ar": "عجلة القيادة",
+   "pl": "kierownica",
+   "uk": "кермо",
+   "ru": "руль",
+   "es": "volante",
+   "pt": "volante",
+   "hi": "स्टीयरिंग व्हील",
+   "vi": "vô lăng"
+  },
+  "pinyin": "fāngxiàngpán"
+ },
+ {
+  "nl": "binnenspiegel",
+  "vert": {
+   "zh": "车内后视镜",
+   "en": "interior rear-view mirror",
+   "tr": "iç dikiz aynası",
+   "ar": "مرآة الرؤية الداخلية",
+   "pl": "lusterko wsteczne wewnętrzne",
+   "uk": "салонне дзеркало заднього виду",
+   "ru": "салонное зеркало заднего вида",
+   "es": "espejo retrovisor interior",
+   "pt": "espelho retrovisor interior",
+   "hi": "भीतरी रियर-व्यू मिरर",
+   "vi": "gương chiếu hậu trong xe"
+  },
+  "pinyin": "chēnèi hòushìjìng"
+ },
+ {
+  "nl": "buitenspiegel",
+  "vert": {
+   "zh": "外后视镜",
+   "en": "side mirror",
+   "tr": "dış dikiz aynası",
+   "ar": "المرآة الجانبية",
+   "pl": "lusterko boczne",
+   "uk": "бічне дзеркало",
+   "ru": "боковое зеркало",
+   "es": "espejo retrovisor exterior",
+   "pt": "espelho retrovisor exterior",
+   "hi": "बाहरी साइड मिरर",
+   "vi": "gương chiếu hậu ngoài"
+  },
+  "pinyin": "wài hòushìjìng"
+ },
+ {
+  "nl": "toerenteller",
+  "vert": {
+   "zh": "转速表",
+   "en": "rev counter",
+   "tr": "devir sayacı (takometre)",
+   "ar": "عداد دوران المحرك",
+   "pl": "obrotomierz",
+   "uk": "тахометр",
+   "ru": "тахометр",
+   "es": "cuentarrevoluciones",
+   "pt": "conta-rotações",
+   "hi": "टैकोमीटर",
+   "vi": "đồng hồ vòng tua máy"
+  },
+  "pinyin": "zhuǎnsùbiǎo"
+ },
+ {
+  "nl": "bandenspanning",
+  "vert": {
+   "zh": "胎压",
+   "en": "tyre pressure",
+   "tr": "lastik basıncı",
+   "ar": "ضغط الإطارات",
+   "pl": "ciśnienie w oponach",
+   "uk": "тиск у шинах",
+   "ru": "давление в шинах",
+   "es": "presión de los neumáticos",
+   "pt": "pressão dos pneus",
+   "hi": "टायर दबाव",
+   "vi": "áp suất lốp"
+  },
+  "pinyin": "tāiyā"
+ },
+ {
+  "nl": "profieldiepte",
+  "vert": {
+   "zh": "胎纹深度",
+   "en": "tread depth",
+   "tr": "diş derinliği",
+   "ar": "عمق مداس الإطار",
+   "pl": "głębokość bieżnika",
+   "uk": "глибина протектора",
+   "ru": "глубина протектора",
+   "es": "profundidad del dibujo del neumático",
+   "pt": "profundidade do piso do pneu",
+   "hi": "ट्रेड गहराई",
+   "vi": "độ sâu gai lốp"
+  },
+  "pinyin": "tāiwén shēndù"
+ },
+ {
+  "nl": "motorkap",
+  "vert": {
+   "zh": "发动机盖",
+   "en": "bonnet",
+   "tr": "motor kaputu",
+   "ar": "غطاء المحرك",
+   "pl": "maska silnika",
+   "uk": "капот",
+   "ru": "капот",
+   "es": "capó",
+   "pt": "capô",
+   "hi": "बोनट",
+   "vi": "nắp ca-pô"
+  },
+  "pinyin": "fādòngjī gài"
+ },
+ {
+  "nl": "APK-keuring",
+  "vert": {
+   "zh": "车辆年检 (APK)",
+   "en": "periodic vehicle inspection (APK)",
+   "tr": "periyodik araç muayenesi (APK)",
+   "ar": "الفحص الفني الدوري (APK)",
+   "pl": "okresowe badanie techniczne (APK)",
+   "uk": "періодичний технічний огляд (APK)",
+   "ru": "периодический техосмотр (APK)",
+   "es": "inspección técnica del vehículo (APK)",
+   "pt": "inspeção periódica do veículo (APK)",
+   "hi": "आवधिक वाहन निरीक्षण (APK)",
+   "vi": "kiểm định xe định kỳ (APK)"
+  },
+  "pinyin": "chēliàng niánjiǎn"
+ },
+ {
+  "nl": "gordel",
+  "vert": {
+   "zh": "安全带",
+   "en": "seatbelt",
+   "tr": "emniyet kemeri",
+   "ar": "حزام الأمان",
+   "pl": "pas bezpieczeństwa",
+   "uk": "ремінь безпеки",
+   "ru": "ремень безопасности",
+   "es": "cinturón de seguridad",
+   "pt": "cinto de segurança",
+   "hi": "सीट बेल्ट",
+   "vi": "dây an toàn"
+  },
+  "pinyin": "ānquándài"
+ },
+ {
+  "nl": "hoofdsteun",
+  "vert": {
+   "zh": "头枕",
+   "en": "headrest",
+   "tr": "koltuk başlığı",
+   "ar": "مسند الرأس",
+   "pl": "zagłówek",
+   "uk": "підголівник",
+   "ru": "подголовник",
+   "es": "reposacabezas",
+   "pt": "apoio de cabeça",
+   "hi": "हेडरेस्ट",
+   "vi": "tựa đầu"
+  },
+  "pinyin": "tóuzhěn"
+ },
+ {
+  "nl": "airbag",
+  "vert": {
+   "zh": "安全气囊",
+   "en": "airbag",
+   "tr": "hava yastığı",
+   "ar": "الوسادة الهوائية",
+   "pl": "poduszka powietrzna",
+   "uk": "подушка безпеки",
+   "ru": "подушка безопасности",
+   "es": "airbag",
+   "pt": "airbag",
+   "hi": "एयरबैग",
+   "vi": "túi khí"
+  },
+  "pinyin": "ānquán qìnáng"
+ },
+ {
+  "nl": "controlelampje",
+  "vert": {
+   "zh": "仪表警示灯",
+   "en": "warning light",
+   "tr": "uyarı ışığı",
+   "ar": "مصباح التحذير",
+   "pl": "lampka kontrolna",
+   "uk": "контрольна лампа",
+   "ru": "контрольная лампа",
+   "es": "testigo luminoso",
+   "pt": "luz de aviso",
+   "hi": "चेतावनी लाइट",
+   "vi": "đèn báo"
+  },
+  "pinyin": "yíbiǎo jǐngshìdēng"
+ },
+ {
+  "nl": "controle buiten/in de auto",
+  "vert": {
+   "zh": "车外/车内检查",
+   "en": "check outside/inside the car",
+   "tr": "araç dışı/içi kontrol",
+   "ar": "الفحص خارج/داخل السيارة",
+   "pl": "kontrola na zewnątrz/wewnątrz auta",
+   "uk": "перевірка ззовні/всередині авто",
+   "ru": "проверка снаружи/внутри автомобиля",
+   "es": "comprobación exterior/interior del coche",
+   "pt": "verificação fora/dentro do carro",
+   "hi": "कार के बाहर/अंदर जाँच",
+   "vi": "kiểm tra bên ngoài/bên trong xe"
+  },
+  "pinyin": "chēwài/chēnèi jiǎnchá"
+ },
+ {
+  "nl": "instappen / uitstappen",
+  "vert": {
+   "zh": "上车 / 下车",
+   "en": "getting in / getting out",
+   "tr": "araca binme / inme",
+   "ar": "الركوب / النزول",
+   "pl": "wsiadanie / wysiadanie",
+   "uk": "посадка / висадка",
+   "ru": "посадка / высадка",
+   "es": "subir / bajar del coche",
+   "pt": "entrar / sair do carro",
+   "hi": "गाड़ी में चढ़ना / उतरना",
+   "vi": "lên xe / xuống xe"
+  },
+  "pinyin": "shàngchē / xiàchē"
+ },
+ {
+  "nl": "zithouding",
+  "vert": {
+   "zh": "坐姿",
+   "en": "seating position",
+   "tr": "oturuş pozisyonu",
+   "ar": "وضعية الجلوس",
+   "pl": "pozycja siedzenia",
+   "uk": "положення посадки",
+   "ru": "посадка за рулём",
+   "es": "posición de sentado",
+   "pt": "posição de sentado",
+   "hi": "बैठने की मुद्रा",
+   "vi": "tư thế ngồi"
+  },
+  "pinyin": "zuòzī"
+ },
+ {
+  "nl": "stuurhouding",
+  "vert": {
+   "zh": "握方向盘姿势",
+   "en": "steering position",
+   "tr": "direksiyon tutuş pozisyonu",
+   "ar": "وضعية الإمساك بالمقود",
+   "pl": "pozycja trzymania kierownicy",
+   "uk": "положення рук на кермі",
+   "ru": "положение рук на руле",
+   "es": "posición de las manos en el volante",
+   "pt": "posição das mãos no volante",
+   "hi": "स्टीयरिंग पकड़ की मुद्रा",
+   "vi": "tư thế cầm vô lăng"
+  },
+  "pinyin": "wò fāngxiàngpán zīshì"
+ },
+ {
+  "nl": "spiegels afstellen",
+  "vert": {
+   "zh": "调整后视镜",
+   "en": "adjusting mirrors",
+   "tr": "aynaları ayarlamak",
+   "ar": "ضبط المرايا",
+   "pl": "regulacja lusterek",
+   "uk": "регулювання дзеркал",
+   "ru": "регулировка зеркал",
+   "es": "ajustar los espejos",
+   "pt": "ajustar os espelhos",
+   "hi": "शीशे समायोजित करना",
+   "vi": "chỉnh gương"
+  },
+  "pinyin": "tiáozhěng hòushìjìng"
+ },
+ {
+  "nl": "starten en afzetten",
+  "vert": {
+   "zh": "启动与熄火",
+   "en": "starting and stopping the engine",
+   "tr": "motoru çalıştırma ve durdurma",
+   "ar": "تشغيل وإطفاء المحرك",
+   "pl": "uruchamianie i wyłączanie silnika",
+   "uk": "запуск і зупинка двигуна",
+   "ru": "запуск и остановка двигателя",
+   "es": "arrancar y apagar el motor",
+   "pt": "ligar e desligar o motor",
+   "hi": "इंजन चालू और बंद करना",
+   "vi": "khởi động và tắt máy"
+  },
+  "pinyin": "qǐdòng yǔ xīhuǒ"
+ },
+ {
+  "nl": "gas geven",
+  "vert": {
+   "zh": "加油门",
+   "en": "accelerating",
+   "tr": "gaz verme",
+   "ar": "الضغط على دواسة الوقود",
+   "pl": "dodawanie gazu",
+   "uk": "додавання газу",
+   "ru": "нажатие на газ",
+   "es": "acelerar",
+   "pt": "acelerar",
+   "hi": "गैस देना",
+   "vi": "nhấn ga"
+  },
+  "pinyin": "jiā yóumén"
+ },
+ {
+  "nl": "scannen (kijktechniek)",
+  "vert": {
+   "zh": "观察扫视",
+   "en": "scanning (looking technique)",
+   "tr": "tarama (bakış tekniği)",
+   "ar": "مسح النظر (تقنية النظر)",
+   "pl": "skanowanie wzrokiem (technika patrzenia)",
+   "uk": "сканування (техніка огляду)",
+   "ru": "сканирование (техника осмотра)",
+   "es": "escaneo visual (técnica de observación)",
+   "pt": "varredura visual (técnica de observação)",
+   "hi": "दृष्टि स्कैनिंग (देखने की तकनीक)",
+   "vi": "quan sát quét (kỹ thuật nhìn)"
+  },
+  "pinyin": "guānchá sǎoshì"
+ },
+ {
+  "nl": "sturen",
+  "vert": {
+   "zh": "转向",
+   "en": "steering",
+   "tr": "direksiyon kullanma",
+   "ar": "التوجيه",
+   "pl": "kierowanie",
+   "uk": "кермування",
+   "ru": "рулевое управление",
+   "es": "girar el volante",
+   "pt": "guiar (virar o volante)",
+   "hi": "स्टीयरिंग करना",
+   "vi": "đánh lái"
+  },
+  "pinyin": "zhuǎnxiàng"
+ },
+ {
+  "nl": "positie (op de weg)",
+  "vert": {
+   "zh": "车道位置",
+   "en": "road position (lane positioning)",
+   "tr": "yol üzerindeki konum (şerit konumu)",
+   "ar": "الموضع على الطريق (وضعية المسار)",
+   "pl": "pozycja na drodze (ustawienie w pasie)",
+   "uk": "положення на дорозі (позиція в смузі)",
+   "ru": "положение на дороге (позиция в полосе)",
+   "es": "posición en la vía (posición en el carril)",
+   "pt": "posição na via (posição na faixa)",
+   "hi": "सड़क पर स्थिति (लेन में स्थिति)",
+   "vi": "vị trí trên đường (vị trí làn)"
+  },
+  "pinyin": "chēdào wèizhì"
+ },
+ {
+  "nl": "ontkoppelen",
+  "vert": {
+   "zh": "踩离合(分离)",
+   "en": "declutching (pressing the clutch)",
+   "tr": "debriyaja basma",
+   "ar": "فصل القابض (الضغط على الدبرياج)",
+   "pl": "wyciskanie sprzęgła",
+   "uk": "вижимання зчеплення",
+   "ru": "выжим сцепления",
+   "es": "pisar el embrague (desembragar)",
+   "pt": "desembraiar (pisar a embraiagem)",
+   "hi": "क्लच दबाना",
+   "vi": "đạp côn (cắt côn)"
+  },
+  "pinyin": "cǎi líhé (fēnlí)"
+ },
+ {
+  "nl": "stoppen",
+  "vert": {
+   "zh": "停车",
+   "en": "stopping",
+   "tr": "durma",
+   "ar": "التوقف",
+   "pl": "zatrzymywanie",
+   "uk": "зупинка",
+   "ru": "остановка",
+   "es": "detenerse",
+   "pt": "parar",
+   "hi": "रुकना",
+   "vi": "dừng xe"
+  },
+  "pinyin": "tíngchē"
+ },
+ {
+  "nl": "koppelen (aanzetten)",
+  "vert": {
+   "zh": "接合离合起步",
+   "en": "engaging the clutch (moving off)",
+   "tr": "debriyajı bırakma (kalkış)",
+   "ar": "وصل القابض (الانطلاق)",
+   "pl": "puszczanie sprzęgła (ruszanie)",
+   "uk": "відпускання зчеплення (рушання)",
+   "ru": "включение сцепления (трогание)",
+   "es": "soltar el embrague (para arrancar)",
+   "pt": "largar a embraiagem (arrancar)",
+   "hi": "क्लच जोड़ना (गाड़ी चलाना)",
+   "vi": "nhả côn (khởi hành)"
+  },
+  "pinyin": "jiēhé líhé qǐbù"
+ },
+ {
+  "nl": "schakelen",
+  "vert": {
+   "zh": "换挡",
+   "en": "changing gears",
+   "tr": "vites değiştirme",
+   "ar": "تبديل التروس",
+   "pl": "zmiana biegów",
+   "uk": "перемикання передач",
+   "ru": "переключение передач",
+   "es": "cambiar de marcha",
+   "pt": "mudar de velocidade",
+   "hi": "गियर बदलना",
+   "vi": "chuyển số"
+  },
+  "pinyin": "huàndǎng"
+ },
+ {
+  "nl": "wegrijden",
+  "vert": {
+   "zh": "起步",
+   "en": "moving off",
+   "tr": "hareket etme (kalkış)",
+   "ar": "الانطلاق (بدء التحرك)",
+   "pl": "ruszanie",
+   "uk": "рушання з місця",
+   "ru": "трогание с места",
+   "es": "arrancar (ponerse en marcha)",
+   "pt": "arrancar (pôr-se em marcha)",
+   "hi": "गाड़ी चलाना शुरू करना",
+   "vi": "khởi hành"
+  },
+  "pinyin": "qǐbù"
+ },
+ {
+  "nl": "ruimtekussen",
+  "vert": {
+   "zh": "安全空间",
+   "en": "space cushion",
+   "tr": "güvenlik boşluğu (araç etrafındaki mesafe)",
+   "ar": "هامش الأمان (المسافة حول المركبة)",
+   "pl": "bufor bezpieczeństwa",
+   "uk": "безпечний простір навколо авто",
+   "ru": "буфер безопасности вокруг машины",
+   "es": "colchón de seguridad",
+   "pt": "almofada de segurança",
+   "hi": "सुरक्षा दूरी (चारों ओर खाली जगह)",
+   "vi": "khoảng đệm an toàn"
+  },
+  "pinyin": "ānquán kōngjiān"
+ },
+ {
+  "nl": "tegemoetkomen",
+  "vert": {
+   "zh": "会车",
+   "en": "oncoming traffic",
+   "tr": "karşıdan gelen trafik",
+   "ar": "المرور القادم من الاتجاه المعاكس",
+   "pl": "ruch z naprzeciwka",
+   "uk": "зустрічний рух",
+   "ru": "встречное движение",
+   "es": "tráfico en sentido contrario",
+   "pt": "trânsito em sentido contrário",
+   "hi": "सामने से आता यातायात",
+   "vi": "xe đi ngược chiều"
+  },
+  "pinyin": "huìchē"
+ },
+ {
+  "nl": "ingehaald worden",
+  "vert": {
+   "zh": "被超车",
+   "en": "being overtaken",
+   "tr": "sollanmak (geçilmek)",
+   "ar": "أن يتم تجاوزك",
+   "pl": "bycie wyprzedzanym",
+   "uk": "коли вас обганяють",
+   "ru": "когда вас обгоняют",
+   "es": "ser adelantado",
+   "pt": "ser ultrapassado",
+   "hi": "ओवरटेक किया जाना",
+   "vi": "bị vượt"
+  },
+  "pinyin": "bèi chāochē"
+ },
+ {
+  "nl": "voorbijgaan (stilstaand object)",
+  "vert": {
+   "zh": "绕行(静止物体)",
+   "en": "passing a stationary object",
+   "tr": "duran nesnenin yanından geçme",
+   "ar": "تجاوز جسم ثابت",
+   "pl": "omijanie nieruchomej przeszkody",
+   "uk": "об'їзд нерухомого об'єкта",
+   "ru": "объезд неподвижного объекта",
+   "es": "rebasar un objeto inmóvil",
+   "pt": "contornar um objeto parado",
+   "hi": "स्थिर वस्तु के बगल से गुजरना",
+   "vi": "đi qua vật cản đứng yên"
+  },
+  "pinyin": "ràoxíng"
+ },
+ {
+  "nl": "afslaan (links/rechts)",
+  "vert": {
+   "zh": "转弯(左/右转)",
+   "en": "turning (left/right)",
+   "tr": "dönüş yapma (sola/sağa)",
+   "ar": "الانعطاف (يسار/يمين)",
+   "pl": "skręcanie (w lewo/prawo)",
+   "uk": "поворот (ліворуч/праворуч)",
+   "ru": "поворот (налево/направо)",
+   "es": "girar (a la izquierda/derecha)",
+   "pt": "virar (à esquerda/direita)",
+   "hi": "मुड़ना (बाएँ/दाएँ)",
+   "vi": "rẽ (trái/phải)"
+  },
+  "pinyin": "zhuǎnwān (zuǒ/yòu zhuǎn)"
+ },
+ {
+  "nl": "voorsorteren",
+  "vert": {
+   "zh": "提前并入车道",
+   "en": "getting into lane (pre-selecting)",
+   "tr": "şeride önceden girme",
+   "ar": "الاصطفاف المسبق في المسار",
+   "pl": "wcześniejsze zajęcie pasa",
+   "uk": "завчасне перестроювання в смугу",
+   "ru": "заблаговременное перестроение в полосу",
+   "es": "preseleccionar el carril",
+   "pt": "pré-selecionar a faixa",
+   "hi": "पहले से सही लेन में आना",
+   "vi": "vào làn trước (chọn làn sớm)"
+  },
+  "pinyin": "tíqián bìngrù chēdào"
+ },
+ {
+  "nl": "hellingproef",
+  "vert": {
+   "zh": "坡道起步",
+   "en": "hill start",
+   "tr": "yokuşta kalkış",
+   "ar": "الانطلاق على منحدر",
+   "pl": "ruszanie pod górę",
+   "uk": "рушання на підйомі",
+   "ru": "трогание на подъёме",
+   "es": "arranque en pendiente",
+   "pt": "arranque em subida",
+   "hi": "चढ़ाई पर स्टार्ट",
+   "vi": "khởi hành trên dốc"
+  },
+  "pinyin": "pōdào qǐbù"
+ },
+ {
+  "nl": "achteruitrijden",
+  "vert": {
+   "zh": "倒车",
+   "en": "reversing",
+   "tr": "geri gitme",
+   "ar": "الرجوع للخلف",
+   "pl": "cofanie",
+   "uk": "рух заднім ходом",
+   "ru": "движение задним ходом",
+   "es": "marcha atrás",
+   "pt": "marcha-atrás",
+   "hi": "रिवर्स करना",
+   "vi": "lùi xe"
+  },
+  "pinyin": "dàochē"
+ },
+ {
+  "nl": "parkeren (in vak / file)",
+  "vert": {
+   "zh": "停车入位 / 路边停车",
+   "en": "parking (bay / parallel)",
+   "tr": "park etme (dik / paralel)",
+   "ar": "الركن (في مكان / بشكل موازٍ)",
+   "pl": "parkowanie (prostopadłe / równoległe)",
+   "uk": "паркування (у місце / паралельне)",
+   "ru": "парковка (в ячейку / параллельная)",
+   "es": "aparcar (en batería / en línea)",
+   "pt": "estacionar (em espaço / em linha)",
+   "hi": "पार्किंग (खाँचे में / समानांतर)",
+   "vi": "đỗ xe (vào ô / song song)"
+  },
+  "pinyin": "tíngchē rùwèi / lùbiān tíngchē"
+ },
+ {
+  "nl": "omkeren (halve draai / steken)",
+  "vert": {
+   "zh": "掉头(半圈 / 挪动)",
+   "en": "turning around (three-point turn)",
+   "tr": "geri dönüş (üç manevralı dönüş)",
+   "ar": "الالتفاف (الدوران على ثلاث مراحل)",
+   "pl": "zawracanie (manewr trzypunktowy)",
+   "uk": "розворот (у три прийоми)",
+   "ru": "разворот (в три приёма)",
+   "es": "cambio de sentido (maniobra en tres tiempos)",
+   "pt": "inversão de marcha (manobra em três tempos)",
+   "hi": "यू-टर्न (तीन चरणों में मोड़)",
+   "vi": "quay đầu xe (quay đầu ba điểm)"
+  },
+  "pinyin": "diàotóu"
+ },
+ {
+  "nl": "rijstrook wisselen",
+  "vert": {
+   "zh": "变道",
+   "en": "changing lanes",
+   "tr": "şerit değiştirme",
+   "ar": "تغيير المسار",
+   "pl": "zmiana pasa ruchu",
+   "uk": "зміна смуги руху",
+   "ru": "смена полосы движения",
+   "es": "cambiar de carril",
+   "pt": "mudar de faixa",
+   "hi": "लेन बदलना",
+   "vi": "chuyển làn"
+  },
+  "pinyin": "biàndào"
+ },
+ {
+  "nl": "invoegen / uitvoegen",
+  "vert": {
+   "zh": "汇入 / 驶出",
+   "en": "merging / exiting",
+   "tr": "trafiğe katılma / ayrılma",
+   "ar": "الاندماج / الخروج",
+   "pl": "włączanie się / zjazd",
+   "uk": "приєднання / з'їзд",
+   "ru": "въезд в поток / съезд",
+   "es": "incorporarse / salir",
+   "pt": "entrar / sair da via",
+   "hi": "यातायात में मिलना / बाहर निकलना",
+   "vi": "nhập làn / tách làn"
+  },
+  "pinyin": "huìrù / shǐchū"
+ },
+ {
+  "nl": "kruispunt",
+  "vert": {
+   "zh": "交叉路口",
+   "en": "intersection",
+   "tr": "kavşak",
+   "ar": "تقاطع",
+   "pl": "skrzyżowanie",
+   "uk": "перехрестя",
+   "ru": "перекрёсток",
+   "es": "cruce (intersección)",
+   "pt": "cruzamento (interseção)",
+   "hi": "चौराहा",
+   "vi": "giao lộ (ngã tư)"
+  },
+  "pinyin": "jiāochā lùkǒu"
+ },
+ {
+  "nl": "voorrangsweg",
+  "vert": {
+   "zh": "优先道路",
+   "en": "priority road",
+   "tr": "ana yol (öncelikli yol)",
+   "ar": "طريق ذو أولوية",
+   "pl": "droga z pierwszeństwem",
+   "uk": "головна дорога",
+   "ru": "главная дорога",
+   "es": "vía con prioridad",
+   "pt": "via com prioridade",
+   "hi": "प्राथमिकता वाली सड़क",
+   "vi": "đường ưu tiên"
+  },
+  "pinyin": "yōuxiān dàolù"
+ },
+ {
+  "nl": "erf (woonerf)",
+  "vert": {
+   "zh": "居住区/生活区道路",
+   "en": "residential zone (home zone)",
+   "tr": "yaşam alanı yolu (oturma bölgesi)",
+   "ar": "منطقة سكنية (شارع سكني هادئ)",
+   "pl": "strefa zamieszkania",
+   "uk": "житлова зона",
+   "ru": "жилая зона",
+   "es": "zona residencial",
+   "pt": "zona residencial",
+   "hi": "आवासीय क्षेत्र (होम ज़ोन)",
+   "vi": "khu dân cư (đường khu ở)"
+  },
+  "pinyin": "jūzhùqū dàolù"
+ },
+ {
+  "nl": "spoorwegovergang",
+  "vert": {
+   "zh": "铁路道口",
+   "en": "railway crossing",
+   "tr": "hemzemin geçit",
+   "ar": "مزلقان السكة الحديدية",
+   "pl": "przejazd kolejowy",
+   "uk": "залізничний переїзд",
+   "ru": "железнодорожный переезд",
+   "es": "paso a nivel",
+   "pt": "passagem de nível",
+   "hi": "रेलवे क्रॉसिंग",
+   "vi": "đường ngang xe lửa"
+  },
+  "pinyin": "tiělù dàokǒu"
+ },
+ {
+  "nl": "voetgangersoversteekplaats (VOP)",
+  "vert": {
+   "zh": "人行横道",
+   "en": "pedestrian crossing (VOP)",
+   "tr": "yaya geçidi (VOP)",
+   "ar": "ممر مشاة (VOP)",
+   "pl": "przejście dla pieszych (VOP)",
+   "uk": "пішохідний перехід (VOP)",
+   "ru": "пешеходный переход (VOP)",
+   "es": "paso de peatones (VOP)",
+   "pt": "passadeira (VOP)",
+   "hi": "पैदल यात्री क्रॉसिंग (VOP)",
+   "vi": "vạch qua đường cho người đi bộ (VOP)"
+  },
+  "pinyin": "rénxíng héngdào"
+ },
+ {
+  "nl": "tram-/bushalte",
+  "vert": {
+   "zh": "有轨电车/公交车站",
+   "en": "tram/bus stop",
+   "tr": "tramvay/otobüs durağı",
+   "ar": "محطة ترام/حافلة",
+   "pl": "przystanek tramwajowy/autobusowy",
+   "uk": "трамвайна/автобусна зупинка",
+   "ru": "трамвайная/автобусная остановка",
+   "es": "parada de tranvía/autobús",
+   "pt": "paragem de elétrico/autocarro",
+   "hi": "ट्राम/बस स्टॉप",
+   "vi": "điểm dừng tàu điện/xe buýt"
+  },
+  "pinyin": "yǒuguǐ diànchē / gōngjiāo chēzhàn"
+ },
+ {
+  "nl": "invoegstrook",
+  "vert": {
+   "zh": "加速车道",
+   "en": "acceleration lane",
+   "tr": "hızlanma şeridi",
+   "ar": "مسار التسارع",
+   "pl": "pas włączania (rozbiegowy)",
+   "uk": "смуга розгону",
+   "ru": "полоса разгона",
+   "es": "carril de aceleración",
+   "pt": "faixa de aceleração",
+   "hi": "त्वरण लेन",
+   "vi": "làn tăng tốc"
+  },
+  "pinyin": "jiāsù chēdào"
+ },
+ {
+  "nl": "uitrijstrook",
+  "vert": {
+   "zh": "减速车道",
+   "en": "deceleration lane",
+   "tr": "yavaşlama şeridi",
+   "ar": "مسار التباطؤ",
+   "pl": "pas wyłączania (do zjazdu)",
+   "uk": "смуга гальмування",
+   "ru": "полоса торможения",
+   "es": "carril de deceleración",
+   "pt": "faixa de desaceleração",
+   "hi": "मंदन लेन",
+   "vi": "làn giảm tốc"
+  },
+  "pinyin": "jiǎnsù chēdào"
+ },
+ {
+  "nl": "berm",
+  "vert": {
+   "zh": "路肩",
+   "en": "verge (roadside)",
+   "tr": "banket",
+   "ar": "كتف الطريق",
+   "pl": "pobocze",
+   "uk": "узбіччя",
+   "ru": "обочина",
+   "es": "arcén",
+   "pt": "berma",
+   "hi": "सड़क का किनारा",
+   "vi": "lề đường"
+  },
+  "pinyin": "lùjiān"
+ },
+ {
+  "nl": "suggestiestrook",
+  "vert": {
+   "zh": "建议车道(虚线)",
+   "en": "advisory lane (dashed lines)",
+   "tr": "tavsiye şeridi (kesik çizgili)",
+   "ar": "مسار إرشادي (خطوط متقطعة)",
+   "pl": "pas sugerowany (linia przerywana)",
+   "uk": "рекомендована смуга (пунктир)",
+   "ru": "рекомендательная полоса (пунктир)",
+   "es": "carril sugerido (línea discontinua)",
+   "pt": "faixa sugerida (linha tracejada)",
+   "hi": "सुझावित लेन (टूटी लाइन)",
+   "vi": "làn gợi ý (vạch đứt)"
+  },
+  "pinyin": "jiànyì chēdào"
+ },
+ {
+  "nl": "file",
+  "vert": {
+   "zh": "车队 / 堵车",
+   "en": "traffic jam",
+   "tr": "trafik sıkışıklığı",
+   "ar": "ازدحام مروري",
+   "pl": "korek",
+   "uk": "затор",
+   "ru": "пробка",
+   "es": "atasco",
+   "pt": "engarrafamento",
+   "hi": "ट्रैफ़िक जाम",
+   "vi": "kẹt xe"
+  },
+  "pinyin": "chēduì / dǔchē"
+ },
+ {
+  "nl": "stopstreep",
+  "vert": {
+   "zh": "停止线",
+   "en": "stop line",
+   "tr": "durma çizgisi",
+   "ar": "خط التوقف",
+   "pl": "linia zatrzymania",
+   "uk": "стоп-лінія",
+   "ru": "стоп-линия",
+   "es": "línea de detención",
+   "pt": "linha de paragem",
+   "hi": "स्टॉप लाइन",
+   "vi": "vạch dừng"
+  },
+  "pinyin": "tíngzhǐ xiàn"
+ },
+ {
+  "nl": "andreaskruis",
+  "vert": {
+   "zh": "铁路道口十字标",
+   "en": "St Andrew's cross (railway sign)",
+   "tr": "Andreas haçı (demiryolu işareti)",
+   "ar": "صليب القديس أندراوس (علامة مزلقان)",
+   "pl": "krzyż św. Andrzeja",
+   "uk": "хрест святого Андрія (знак переїзду)",
+   "ru": "андреевский крест (знак переезда)",
+   "es": "cruz de San Andrés",
+   "pt": "cruz de Santo André",
+   "hi": "सेंट एंड्रयू क्रॉस (रेलवे चिन्ह)",
+   "vi": "chữ thập Andrew (biển đường sắt)"
+  },
+  "pinyin": "tiělù dàokǒu shízìbiāo"
+ },
+ {
+  "nl": "bord B6 (voorrang verlenen)",
+  "vert": {
+   "zh": "B6 让行标志",
+   "en": "sign B6 (give way)",
+   "tr": "B6 tabelası (yol ver)",
+   "ar": "لافتة B6 (أعطِ الأولوية)",
+   "pl": "znak B6 (ustąp pierwszeństwa)",
+   "uk": "знак B6 (дай дорогу)",
+   "ru": "знак B6 (уступи дорогу)",
+   "es": "señal B6 (ceda el paso)",
+   "pt": "sinal B6 (ceda a passagem)",
+   "hi": "चिन्ह B6 (रास्ता दें)",
+   "vi": "biển B6 (nhường đường)"
+  },
+  "pinyin": "ràngxíng biāozhì"
+ },
+ {
+  "nl": "bord B7 (stop)",
+  "vert": {
+   "zh": "B7 停车让行",
+   "en": "sign B7 (stop)",
+   "tr": "B7 tabelası (dur)",
+   "ar": "لافتة B7 (قف)",
+   "pl": "znak B7 (stop)",
+   "uk": "знак B7 (стоп)",
+   "ru": "знак B7 (стоп)",
+   "es": "señal B7 (stop)",
+   "pt": "sinal B7 (paragem obrigatória)",
+   "hi": "चिन्ह B7 (रुकें)",
+   "vi": "biển B7 (dừng lại)"
+  },
+  "pinyin": "tíngchē ràngxíng"
+ },
+ {
+  "nl": "richting aangeven",
+  "vert": {
+   "zh": "打转向灯",
+   "en": "signalling (indicating)",
+   "tr": "sinyal verme (dönüş işareti)",
+   "ar": "الإشارة (استخدام الغماز)",
+   "pl": "sygnalizowanie (włączanie kierunkowskazu)",
+   "uk": "подавання сигналу (увімкнення поворотника)",
+   "ru": "подача сигнала (включение поворотника)",
+   "es": "señalizar (indicar dirección)",
+   "pt": "sinalizar (indicar direção)",
+   "hi": "दिशा संकेत देना",
+   "vi": "ra tín hiệu (bật xi-nhan)"
+  },
+  "pinyin": "dǎ zhuǎnxiàngdēng"
+ },
+ {
+  "nl": "richtingaanwijzer",
+  "vert": {
+   "zh": "转向灯",
+   "en": "turn indicator (blinker)",
+   "tr": "sinyal (dönüş lambası)",
+   "ar": "إشارة الانعطاف (الغماز)",
+   "pl": "kierunkowskaz",
+   "uk": "покажчик повороту",
+   "ru": "указатель поворота",
+   "es": "intermitente",
+   "pt": "pisca-pisca (indicador de direção)",
+   "hi": "टर्न इंडिकेटर",
+   "vi": "đèn xi-nhan"
+  },
+  "pinyin": "zhuǎnxiàngdēng"
+ },
+ {
+  "nl": "defensief rijden",
+  "vert": {
+   "zh": "防御性驾驶",
+   "en": "defensive driving",
+   "tr": "defansif sürüş",
+   "ar": "القيادة الدفاعية",
+   "pl": "jazda defensywna",
+   "uk": "захисне водіння",
+   "ru": "защитное вождение",
+   "es": "conducción defensiva",
+   "pt": "condução defensiva",
+   "hi": "रक्षात्मक ड्राइविंग",
+   "vi": "lái xe phòng thủ"
+  },
+  "pinyin": "fángyùxìng jiàshǐ"
+ },
+ {
+  "nl": "anticiperen",
+  "vert": {
+   "zh": "预判并提前应对",
+   "en": "anticipating",
+   "tr": "öngörme",
+   "ar": "الاستباق",
+   "pl": "przewidywanie",
+   "uk": "передбачення",
+   "ru": "предвидение ситуации",
+   "es": "anticipación",
+   "pt": "antecipação",
+   "hi": "पूर्वानुमान लगाना",
+   "vi": "dự đoán trước"
+  },
+  "pinyin": "yùpàn bìng tíqián yìngduì"
+ },
+ {
+  "nl": "aangepaste snelheid",
+  "vert": {
+   "zh": "适应车速",
+   "en": "adjusted speed",
+   "tr": "uygun hız",
+   "ar": "السرعة المناسبة",
+   "pl": "dostosowana prędkość",
+   "uk": "відповідна швидкість",
+   "ru": "адаптированная скорость",
+   "es": "velocidad adaptada",
+   "pt": "velocidade adaptada",
+   "hi": "अनुकूलित गति",
+   "vi": "tốc độ phù hợp"
+  },
+  "pinyin": "shìyìng chēsù"
+ },
+ {
+  "nl": "besluitvaardig",
+  "vert": {
+   "zh": "果断",
+   "en": "decisive",
+   "tr": "kararlı",
+   "ar": "حاسم",
+   "pl": "zdecydowany",
+   "uk": "рішучий",
+   "ru": "решительный",
+   "es": "decidido",
+   "pt": "decidido",
+   "hi": "निर्णायक",
+   "vi": "quyết đoán"
+  },
+  "pinyin": "guǒduàn"
+ },
+ {
+  "nl": "sociaal rijgedrag",
+  "vert": {
+   "zh": "文明礼让驾驶",
+   "en": "courteous driving",
+   "tr": "nezaketli sürüş",
+   "ar": "القيادة المتحضرة",
+   "pl": "kulturalna jazda",
+   "uk": "ввічливе водіння",
+   "ru": "вежливое вождение",
+   "es": "conducción cortés",
+   "pt": "condução cortês",
+   "hi": "शिष्ट ड्राइविंग",
+   "vi": "lái xe văn minh"
+  },
+  "pinyin": "wénmíng lǐràng jiàshǐ"
+ },
+ {
+  "nl": "noodstop",
+  "vert": {
+   "zh": "紧急刹车",
+   "en": "emergency stop",
+   "tr": "acil durma",
+   "ar": "التوقف الطارئ",
+   "pl": "awaryjne zatrzymanie",
+   "uk": "екстрена зупинка",
+   "ru": "экстренная остановка",
+   "es": "parada de emergencia",
+   "pt": "paragem de emergência",
+   "hi": "आपातकालीन ब्रेक",
+   "vi": "phanh khẩn cấp"
+  },
+  "pinyin": "jǐnjí shāchē"
+ },
+ {
+  "nl": "remseintje",
+  "vert": {
+   "zh": "点刹提示",
+   "en": "brake warning signal",
+   "tr": "fren uyarısı",
+   "ar": "تنبيه بالفرامل",
+   "pl": "sygnał hamowania",
+   "uk": "сигнал гальмування",
+   "ru": "предупреждающий сигнал торможения",
+   "es": "señal de frenado",
+   "pt": "sinal de travagem",
+   "hi": "ब्रेक चेतावनी संकेत",
+   "vi": "nháy phanh cảnh báo"
+  },
+  "pinyin": "diǎnshā tíshì"
+ },
+ {
+  "nl": "middelpuntvliedende kracht",
+  "vert": {
+   "zh": "离心力",
+   "en": "centrifugal force",
+   "tr": "merkezkaç kuvveti",
+   "ar": "القوة الطاردة المركزية",
+   "pl": "siła odśrodkowa",
+   "uk": "відцентрова сила",
+   "ru": "центробежная сила",
+   "es": "fuerza centrífuga",
+   "pt": "força centrífuga",
+   "hi": "अपकेंद्रीय बल",
+   "vi": "lực ly tâm"
+  },
+  "pinyin": "líxīnlì"
+ },
+ {
+  "nl": "verblinding",
+  "vert": {
+   "zh": "眩目",
+   "en": "glare",
+   "tr": "göz kamaşması",
+   "ar": "انبهار البصر",
+   "pl": "oślepienie",
+   "uk": "засліплення",
+   "ru": "ослепление",
+   "es": "deslumbramiento",
+   "pt": "encandeamento",
+   "hi": "चकाचौंध",
+   "vi": "chói mắt"
+  },
+  "pinyin": "xuànmù"
+ },
+ {
+  "nl": "vermoeidheid",
+  "vert": {
+   "zh": "疲劳",
+   "en": "fatigue",
+   "tr": "yorgunluk",
+   "ar": "الإرهاق",
+   "pl": "zmęczenie",
+   "uk": "втома",
+   "ru": "усталость",
+   "es": "fatiga",
+   "pt": "fadiga",
+   "hi": "थकान",
+   "vi": "mệt mỏi"
+  },
+  "pinyin": "píláo"
+ },
+ {
+  "nl": "rijden onder invloed",
+  "vert": {
+   "zh": "酒驾/药驾",
+   "en": "driving under the influence (DUI)",
+   "tr": "alkol veya uyuşturucu etkisinde sürüş",
+   "ar": "القيادة تحت تأثير الكحول أو المخدرات",
+   "pl": "jazda pod wpływem alkoholu lub środków",
+   "uk": "керування у стані сп'яніння",
+   "ru": "вождение в состоянии опьянения",
+   "es": "conducción bajo los efectos del alcohol o drogas",
+   "pt": "condução sob influência de álcool ou drogas",
+   "hi": "नशे में ड्राइविंग",
+   "vi": "lái xe khi say rượu hoặc dùng ma túy"
+  },
+  "pinyin": "jiǔjià / yàojià"
+ },
+ {
+  "nl": "ADAS (rijhulpsystemen)",
+  "vert": {
+   "zh": "高级驾驶辅助系统",
+   "en": "ADAS (advanced driver-assistance systems)",
+   "tr": "ADAS (sürüş destek sistemleri)",
+   "ar": "أنظمة مساعدة القيادة المتقدمة (ADAS)",
+   "pl": "ADAS (systemy wspomagania kierowcy)",
+   "uk": "ADAS (системи допомоги водієві)",
+   "ru": "ADAS (системы помощи водителю)",
+   "es": "ADAS (sistemas de asistencia a la conducción)",
+   "pt": "ADAS (sistemas de assistência à condução)",
+   "hi": "ADAS (उन्नत ड्राइवर सहायता प्रणालियाँ)",
+   "vi": "ADAS (hệ thống hỗ trợ lái xe)"
+  },
+  "pinyin": "gāojí jiàshǐ fǔzhù xìtǒng"
+ },
+ {
+  "nl": "autonome noodrem",
+  "vert": {
+   "zh": "自动紧急制动",
+   "en": "autonomous emergency braking (AEB)",
+   "tr": "otonom acil frenleme",
+   "ar": "الفرملة الطارئة التلقائية",
+   "pl": "automatyczne hamowanie awaryjne",
+   "uk": "автономне екстрене гальмування",
+   "ru": "автоматическое экстренное торможение",
+   "es": "frenado de emergencia autónomo",
+   "pt": "travagem de emergência autónoma",
+   "hi": "स्वचालित आपातकालीन ब्रेकिंग",
+   "vi": "phanh khẩn cấp tự động"
+  },
+  "pinyin": "zìdòng jǐnjí zhìdòng"
+ },
+ {
+  "nl": "dode-hoekassistent",
+  "vert": {
+   "zh": "盲点监测",
+   "en": "blind spot monitor",
+   "tr": "kör nokta uyarı sistemi",
+   "ar": "مراقبة النقطة العمياء",
+   "pl": "asystent martwego pola",
+   "uk": "асистент сліпих зон",
+   "ru": "система контроля слепых зон",
+   "es": "asistente de ángulo muerto",
+   "pt": "assistente de ângulo morto",
+   "hi": "ब्लाइंड स्पॉट असिस्ट",
+   "vi": "cảnh báo điểm mù"
+  },
+  "pinyin": "mángdiǎn jiāncè"
+ },
+ {
+  "nl": "rijstrookassistent",
+  "vert": {
+   "zh": "车道保持辅助",
+   "en": "lane keeping assist",
+   "tr": "şerit takip asistanı",
+   "ar": "مساعد الحفاظ على المسار",
+   "pl": "asystent utrzymania pasa ruchu",
+   "uk": "асистент утримання смуги руху",
+   "ru": "система удержания в полосе",
+   "es": "asistente de mantenimiento de carril",
+   "pt": "assistente de manutenção de faixa",
+   "hi": "लेन कीपिंग असिस्ट",
+   "vi": "hỗ trợ giữ làn đường"
+  },
+  "pinyin": "chēdào bǎochí fǔzhù"
+ },
+ {
+  "nl": "adaptieve cruise control (ACC)",
+  "vert": {
+   "zh": "自适应巡航",
+   "en": "adaptive cruise control (ACC)",
+   "tr": "adaptif hız sabitleyici (ACC)",
+   "ar": "مثبت السرعة التكيفي (ACC)",
+   "pl": "adaptacyjny tempomat (ACC)",
+   "uk": "адаптивний круїз-контроль (ACC)",
+   "ru": "адаптивный круиз-контроль (ACC)",
+   "es": "control de crucero adaptativo (ACC)",
+   "pt": "controlo de cruzeiro adaptativo (ACC)",
+   "hi": "अनुकूली क्रूज़ कंट्रोल (ACC)",
+   "vi": "ga tự động thích ứng (ACC)"
+  },
+  "pinyin": "zìshìyìng xúnháng"
+ },
+ {
+  "nl": "cruise control (CC)",
+  "vert": {
+   "zh": "定速巡航",
+   "en": "cruise control (CC)",
+   "tr": "hız sabitleyici (CC)",
+   "ar": "مثبت السرعة (CC)",
+   "pl": "tempomat (CC)",
+   "uk": "круїз-контроль (CC)",
+   "ru": "круиз-контроль (CC)",
+   "es": "control de crucero (CC)",
+   "pt": "controlo de cruzeiro (CC)",
+   "hi": "क्रूज़ कंट्रोल (CC)",
+   "vi": "ga tự động (CC)"
+  },
+  "pinyin": "dìngsù xúnháng"
+ },
+ {
+  "nl": "nachtzichtsysteem",
+  "vert": {
+   "zh": "夜视系统",
+   "en": "night vision system",
+   "tr": "gece görüş sistemi",
+   "ar": "نظام الرؤية الليلية",
+   "pl": "system widzenia nocnego",
+   "uk": "система нічного бачення",
+   "ru": "система ночного видения",
+   "es": "sistema de visión nocturna",
+   "pt": "sistema de visão noturna",
+   "hi": "नाइट विज़न प्रणाली",
+   "vi": "hệ thống nhìn ban đêm"
+  },
+  "pinyin": "yèshì xìtǒng"
+ },
+ {
+  "nl": "grootlichtassistent",
+  "vert": {
+   "zh": "远光灯辅助",
+   "en": "high beam assist",
+   "tr": "uzun far asistanı",
+   "ar": "مساعد الأضواء العالية",
+   "pl": "asystent świateł drogowych",
+   "uk": "асистент дальнього світла",
+   "ru": "ассистент дальнего света",
+   "es": "asistente de luces largas",
+   "pt": "assistente de máximos",
+   "hi": "हाई बीम असिस्ट",
+   "vi": "hỗ trợ đèn pha"
+  },
+  "pinyin": "yuǎnguāngdēng fǔzhù"
+ },
+ {
+  "nl": "parkeerhulp / parkeersensoren",
+  "vert": {
+   "zh": "泊车辅助 / 倒车雷达",
+   "en": "parking assist / parking sensors",
+   "tr": "park asistanı / park sensörleri",
+   "ar": "مساعد الركن / حساسات الركن",
+   "pl": "asystent parkowania / czujniki parkowania",
+   "uk": "асистент паркування / датчики паркування",
+   "ru": "система помощи при парковке / парктроник",
+   "es": "asistente de aparcamiento / sensores de aparcamiento",
+   "pt": "assistente de estacionamento / sensores de estacionamento",
+   "hi": "पार्किंग असिस्ट / पार्किंग सेंसर",
+   "vi": "hỗ trợ đỗ xe / cảm biến đỗ xe"
+  },
+  "pinyin": "bóchē fǔzhù / dàochē léidá"
+ },
+ {
+  "nl": "verkeersbordenherkenning",
+  "vert": {
+   "zh": "交通标志识别",
+   "en": "traffic sign recognition",
+   "tr": "trafik işareti tanıma",
+   "ar": "التعرف على إشارات المرور",
+   "pl": "rozpoznawanie znaków drogowych",
+   "uk": "розпізнавання дорожніх знаків",
+   "ru": "распознавание дорожных знаков",
+   "es": "reconocimiento de señales de tráfico",
+   "pt": "reconhecimento de sinais de trânsito",
+   "hi": "यातायात संकेत पहचान",
+   "vi": "nhận diện biển báo giao thông"
+  },
+  "pinyin": "jiāotōng biāozhì shíbié"
+ },
+ {
+  "nl": "CBR",
+  "vert": {
+   "zh": "CBR(荷兰考试机构)",
+   "en": "CBR (Dutch driving test authority)",
+   "tr": "CBR (Hollanda sınav kurumu)",
+   "ar": "CBR (هيئة اختبارات القيادة الهولندية)",
+   "pl": "CBR (holenderski urząd egzaminacyjny)",
+   "uk": "CBR (нідерландський екзаменаційний орган)",
+   "ru": "CBR (нидерландский экзаменационный орган)",
+   "es": "CBR (organismo neerlandés de exámenes de conducir)",
+   "pt": "CBR (organismo neerlandês de exames de condução)",
+   "hi": "CBR (डच ड्राइविंग परीक्षा प्राधिकरण)",
+   "vi": "CBR (cơ quan sát hạch lái xe Hà Lan)"
+  }
+ },
+ {
+  "nl": "theoriecertificaat",
+  "vert": {
+   "zh": "理论合格证",
+   "en": "theory certificate",
+   "tr": "teori sertifikası",
+   "ar": "شهادة النظري",
+   "pl": "certyfikat teorii",
+   "uk": "сертифікат теорії",
+   "ru": "сертификат по теории",
+   "es": "certificado de teórica",
+   "pt": "certificado de teórica",
+   "hi": "थ्योरी प्रमाणपत्र",
+   "vi": "chứng chỉ lý thuyết"
+  },
+  "pinyin": "lǐlùn hégézhèng"
+ },
+ {
+  "nl": "gezondheidsverklaring",
+  "vert": {
+   "zh": "健康声明",
+   "en": "health declaration",
+   "tr": "sağlık beyanı",
+   "ar": "الإقرار الصحي",
+   "pl": "oświadczenie o stanie zdrowia",
+   "uk": "декларація про стан здоров'я",
+   "ru": "декларация о состоянии здоровья",
+   "es": "declaración de salud",
+   "pt": "declaração de saúde",
+   "hi": "स्वास्थ्य घोषणा",
+   "vi": "khai báo sức khỏe"
+  },
+  "pinyin": "jiànkāng shēngmíng"
+ },
+ {
+  "nl": "tussentijdse toets",
+  "vert": {
+   "zh": "中期测试",
+   "en": "interim test",
+   "tr": "ara sınav",
+   "ar": "اختبار مرحلي",
+   "pl": "egzamin pośredni",
+   "uk": "проміжний тест",
+   "ru": "промежуточный тест",
+   "es": "examen intermedio",
+   "pt": "exame intermédio",
+   "hi": "मध्यवर्ती परीक्षण",
+   "vi": "bài kiểm tra giữa kỳ"
+  },
+  "pinyin": "zhōngqī cèshì"
+ },
+ {
+  "nl": "examinator",
+  "vert": {
+   "zh": "考官",
+   "en": "examiner",
+   "tr": "sınav görevlisi",
+   "ar": "الممتحن",
+   "pl": "egzaminator",
+   "uk": "екзаменатор",
+   "ru": "экзаменатор",
+   "es": "examinador",
+   "pt": "examinador",
+   "hi": "परीक्षक",
+   "vi": "giám khảo"
+  },
+  "pinyin": "kǎoguān"
+ },
+ {
+  "nl": "bijzondere verrichting",
+  "vert": {
+   "zh": "特殊操作项目",
+   "en": "special manoeuvre",
+   "tr": "özel manevra",
+   "ar": "مناورة خاصة",
+   "pl": "manewr specjalny",
+   "uk": "спеціальний маневр",
+   "ru": "специальный маневр",
+   "es": "maniobra especial",
+   "pt": "manobra especial",
+   "hi": "विशेष मैनुवर",
+   "vi": "bài thao tác đặc biệt"
+  },
+  "pinyin": "tèshū cāozuò xiàngmù"
+ },
+ {
+  "nl": "zelfstandig route rijden",
+  "vert": {
+   "zh": "独立按导航行驶",
+   "en": "independent driving",
+   "tr": "bağımsız sürüş",
+   "ar": "القيادة المستقلة",
+   "pl": "samodzielna jazda",
+   "uk": "самостійне водіння",
+   "ru": "самостоятельная езда по маршруту",
+   "es": "conducción independiente",
+   "pt": "condução independente",
+   "hi": "स्वतंत्र ड्राइविंग",
+   "vi": "tự lái theo lộ trình"
+  },
+  "pinyin": "dúlì àn dǎoháng xíngshǐ"
+ },
+ {
+  "nl": "navigatieopdracht",
+  "vert": {
+   "zh": "导航任务",
+   "en": "navigation instruction",
+   "tr": "navigasyon talimatı",
+   "ar": "تعليمات الملاحة",
+   "pl": "polecenie nawigacji",
+   "uk": "навігаційна вказівка",
+   "ru": "навигационное указание",
+   "es": "instrucción de navegación",
+   "pt": "instrução de navegação",
+   "hi": "नेविगेशन निर्देश",
+   "vi": "hướng dẫn dẫn đường"
+  },
+  "pinyin": "dǎoháng rènwù"
+ },
+ {
+  "nl": "benzine / diesel / LPG",
+  "vert": {
+   "zh": "汽油 / 柴油 / 液化石油气",
+   "en": "petrol / diesel / LPG",
+   "tr": "benzin / dizel / LPG",
+   "ar": "بنزين / ديزل / غاز البترول المسال (LPG)",
+   "pl": "benzyna / diesel / LPG",
+   "uk": "бензин / дизель / LPG",
+   "ru": "бензин / дизель / LPG",
+   "es": "gasolina / diésel / GLP",
+   "pt": "gasolina / gasóleo / GPL",
+   "hi": "पेट्रोल / डीज़ल / LPG",
+   "vi": "xăng / dầu diesel / LPG"
+  },
+  "pinyin": "qìyóu / cháiyóu / yèhuà shíyóuqì"
+ },
+ {
+  "nl": "hybride / plug-in hybride",
+  "vert": {
+   "zh": "混合动力 / 插电混动",
+   "en": "hybrid / plug-in hybrid",
+   "tr": "hibrit / plug-in hibrit",
+   "ar": "هجين / هجين قابل للشحن (plug-in)",
+   "pl": "hybryda / hybryda plug-in",
+   "uk": "гібрид / плагін-гібрид",
+   "ru": "гибрид / плагин-гибрид",
+   "es": "híbrido / híbrido enchufable",
+   "pt": "híbrido / híbrido plug-in",
+   "hi": "हाइब्रिड / प्लग-इन हाइब्रिड",
+   "vi": "xe lai (hybrid) / hybrid sạc điện"
+  },
+  "pinyin": "hùnhé dònglì / chādiàn hùndòng"
+ },
+ {
+  "nl": "(100%) elektrisch",
+  "vert": {
+   "zh": "纯电动",
+   "en": "fully electric",
+   "tr": "tam elektrikli",
+   "ar": "كهربائي بالكامل",
+   "pl": "w pełni elektryczny",
+   "uk": "повністю електричний",
+   "ru": "полностью электрический",
+   "es": "100% eléctrico",
+   "pt": "100% elétrico",
+   "hi": "पूर्णतः इलेक्ट्रिक",
+   "vi": "chạy điện hoàn toàn"
+  },
+  "pinyin": "chún diàndòng"
+ },
+ {
+  "nl": "waterstof / brandstofcel",
+  "vert": {
+   "zh": "氢能 / 燃料电池",
+   "en": "hydrogen / fuel cell",
+   "tr": "hidrojen / yakıt hücresi",
+   "ar": "هيدروجين / خلية وقود",
+   "pl": "wodór / ogniwo paliwowe",
+   "uk": "водень / паливний елемент",
+   "ru": "водород / топливный элемент",
+   "es": "hidrógeno / pila de combustible",
+   "pt": "hidrogénio / célula de combustível",
+   "hi": "हाइड्रोजन / फ्यूल सेल",
+   "vi": "hydro / pin nhiên liệu"
+  },
+  "pinyin": "qīngnéng / ránliào diànchí"
+ },
+ {
+  "nl": "regeneratief remmen",
+  "vert": {
+   "zh": "制动能量回收",
+   "en": "regenerative braking",
+   "tr": "rejeneratif frenleme",
+   "ar": "الفرملة التجديدية",
+   "pl": "hamowanie rekuperacyjne",
+   "uk": "рекуперативне гальмування",
+   "ru": "рекуперативное торможение",
+   "es": "frenado regenerativo",
+   "pt": "travagem regenerativa",
+   "hi": "रीजनरेटिव ब्रेकिंग",
+   "vi": "phanh tái sinh"
+  },
+  "pinyin": "zhìdòng néngliàng huíshōu"
+ },
+ {
+  "nl": "Het Nieuwe Rijden (HNR)",
+  "vert": {
+   "zh": "节能驾驶",
+   "en": "eco-driving (Het Nieuwe Rijden)",
+   "tr": "ekonomik sürüş (Het Nieuwe Rijden)",
+   "ar": "القيادة الاقتصادية (Het Nieuwe Rijden)",
+   "pl": "ekojazda (Het Nieuwe Rijden)",
+   "uk": "екологічне водіння (Het Nieuwe Rijden)",
+   "ru": "экономичное вождение (Het Nieuwe Rijden)",
+   "es": "conducción eficiente (Het Nieuwe Rijden)",
+   "pt": "condução ecológica (Het Nieuwe Rijden)",
+   "hi": "इको-ड्राइविंग (Het Nieuwe Rijden)",
+   "vi": "lái xe tiết kiệm nhiên liệu (Het Nieuwe Rijden)"
+  },
+  "pinyin": "jiénéng jiàshǐ"
+ },
+ {
+  "nl": "actieradius",
+  "vert": {
+   "zh": "续航里程",
+   "en": "driving range",
+   "tr": "menzil",
+   "ar": "مدى القيادة",
+   "pl": "zasięg",
+   "uk": "запас ходу",
+   "ru": "запас хода",
+   "es": "autonomía",
+   "pt": "autonomia",
+   "hi": "ड्राइविंग रेंज",
+   "vi": "tầm hoạt động"
+  },
+  "pinyin": "xùháng lǐchéng"
+ },
+ {
+  "nl": "laadpaal / snellader",
+  "vert": {
+   "zh": "充电桩 / 快充",
+   "en": "charging point / fast charger",
+   "tr": "şarj istasyonu / hızlı şarj",
+   "ar": "نقطة شحن / شاحن سريع",
+   "pl": "stacja ładowania / szybka ładowarka",
+   "uk": "зарядна станція / швидка зарядка",
+   "ru": "зарядная станция / быстрая зарядка",
+   "es": "punto de recarga / cargador rápido",
+   "pt": "ponto de carregamento / carregador rápido",
+   "hi": "चार्जिंग पॉइंट / फास्ट चार्जर",
+   "vi": "trạm sạc / sạc nhanh"
+  },
+  "pinyin": "chōngdiànzhuāng / kuàichōng"
+ }
 ]
