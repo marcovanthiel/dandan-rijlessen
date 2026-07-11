@@ -9,6 +9,15 @@ Het CBR-praktijkexamen volgt na module 4. De examinator wijst meestal de route a
 
 Het examen bevat een **bijzondere verrichting**, bijvoorbeeld het omkeren in een halve draai (stap 29a) of het omkeren door te steken (stap 29b). De examinator geeft aan welke je doet (en of dat vooruit of achteruit is), de plek kies je zelf; je bent zelf verantwoordelijk voor de voertuigbeheersing, vlotte uitvoering, het waarnemen van ander verkeer, het kiezen van een veilige plek en een zuinige uitvoering. De kern: voorkom dat je in een gevaarlijke situatie terechtkomt, gebruik daarvoor vooral stap 44 (defensief) en stap 45 (aangepast en besluitvaardig). Kijk altijd breed en ver vooruit (ver kijken, je blik wisselen, in de spiegels kijken, dichtbij en veraf afwisselen en ander verkeer in de gaten houden).
 
+**Examentip:** De examinator verwacht geen perfectie, maar veilig, zelfstandig en voorspelbaar rijgedrag. Rustig herstellen na een foutje zegt meer over rijvaardigheid dan een foutloze rit.
+
+Checklist voor de examendag (neem hem de avond ervoor door):
+- Slaap voldoende; stop een uur voor het examen met oefenvragen.
+- Neem mee: geldig identiteitsbewijs (paspoort of verblijfsdocument) en zo nodig bril of lenzen; je theorie-uitslag moet nog geldig zijn (het CBR controleert dit automatisch).
+- Gezondheidsverklaring goedgekeurd; de rijschool heeft auto en tijd bevestigd.
+- Wees een kwartier van tevoren aanwezig; neem na het instappen rustig de tijd voor stoel, spiegels en gordel (stap 5 tot en met 7).
+- Zenuwen? Adem rustig en beschouw het examen als een gewone les met een gast naast je.
+
 ## B. ADAS
 Moderne auto's krijgen steeds meer hulpsystemen; je moet weten hoe ze werken (lees de handleiding) en je blijft altijd zelf verantwoordelijk. De belangrijkste die worden behandeld:
 
@@ -23,6 +32,8 @@ Moderne auto's krijgen steeds meer hulpsystemen; je moet weten hoe ze werken (le
 9. **Verkeersbordherkenning**: herkent de maximumsnelheid en het inhaalverbod en toont die op het dashboard.
 10. **Waarschuwing voor kruisend verkeer achter je**: waarschuwt bij het achteruit een parkeervak uitrijden.
 
+**Examentip:** De hulpsystemen van de examenauto mag je gebruiken, maar de examinator moet zien dat jij waarneemt en beslist. Het systeem waarschuwde niet geldt nooit als excuus.
+
 ## C. Controleoefeningen
 Extra oefeningen waarmee de instructeur controleert of je elke stap echt beheerst en automatisch toepast, geordend per stap (1 tot en met 40), plus een set **ADAS-oefeningen**. Voorbeelden van soorten oefeningen:
 - **Controle (stap 1 en 2)**: er worden storingen aangebracht (de verwarming vol open, een afgedekt raam, losse voorwerpen) die jij moet ontdekken.
@@ -34,6 +45,8 @@ Extra oefeningen waarmee de instructeur controleert of je elke stap echt beheers
 - **ADAS-oefeningen**: op een afgesloten terrein de noodrem laten ingrijpen; de ACC instellen en het gedrag ervan beschrijven; parkeersensoren; de verkeersbordherkenning vergelijken met je eigen inschatting.
 
 Achter in het boek staan nog notitiepagina's en de achterflap (uitleg over de methode, uitgever Vekabest en contactgegevens).
+
+**Examentip:** Denk je een stap bijna te beheersen? Vraag de instructeur je te overhoren met de bijbehorende controleoefening. Zo ga je zonder blinde vlekken het examen in.
 
 ---
 *Hiermee is het volledige boek (module 1 tot en met 5, deel 1 tot en met 7) op dezelfde manier bewerkt.*

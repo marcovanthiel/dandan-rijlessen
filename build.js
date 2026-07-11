@@ -63,6 +63,13 @@ function asciiSectionId(k, n){
 }
 
 const STAPWOORD = { zh:'步骤', nl:'Stap', en:'Step', tr:'Adım', ar:'الخطوة', pl:'Krok', uk:'Крок', ru:'Шаг', es:'Paso', pt:'Passo', hi:'चरण', vi:'Bước' };
+// Vaste labels voor de verrijking per stap (veelgemaakte fouten + examentip).
+// Vertalers gebruiken EXACT deze labels (zie docs/VERTAALPROCEDURE.md); de
+// build herkent er de gekleurde chips aan (p-fout / p-tip).
+const LABEL_FOUT = { zh:'常见错误', nl:'Veelgemaakte fouten', en:'Common mistakes', tr:'Sık yapılan hatalar', ar:'أخطاء شائعة', pl:'Częste błędy', uk:'Поширені помилки', ru:'Частые ошибки', es:'Errores frecuentes', pt:'Erros frequentes', hi:'आम गलतियाँ', vi:'Lỗi thường gặp' };
+const LABEL_TIP  = { zh:'考试要点', nl:'Examentip', en:'Exam tip', tr:'Sınav ipucu', ar:'نصيحة الامتحان', pl:'Wskazówka egzaminacyjna', uk:'Порада до іспиту', ru:'Совет к экзамену', es:'Consejo para el examen', pt:'Dica de exame', hi:'परीक्षा सुझाव', vi:'Mẹo thi' };
+const RE_FOUT = new RegExp('^<strong>(?:'+Object.values(LABEL_FOUT).join('|')+')');
+const RE_TIP  = new RegExp('^<strong>(?:'+Object.values(LABEL_TIP).join('|')+'|考官关注)');
 const SITE = {
   titleNl: "Dandan's rijlessen",
   titleZh: "丹丹的驾驶课",
@@ -103,7 +110,13 @@ function inline(s){
 // convert a block of body lines to html (paragraphs + lists)
 function bodyToHtml(lines){
   const out=[]; let list=null; let para=[];
-  const flushPara=()=>{ if(para.length){ out.push('<p>'+inline(para.join(' '))+'</p>'); para=[]; } };
+  const flushPara=()=>{ if(para.length){
+    const html=inline(para.join(' '));
+    let cls='';
+    if(RE_FOUT.test(html)) cls=' class="p-fout"';
+    else if(RE_TIP.test(html)) cls=' class="p-tip"';
+    out.push('<p'+cls+'>'+html+'</p>'); para=[];
+  } };
   const flushList=()=>{ if(list){ out.push('<ul>'+list.map(li=>'<li>'+inline(li)+'</li>').join('')+'</ul>'); list=null; } };
   for(let raw of lines){
     const line=raw.replace(/\s+$/,'');

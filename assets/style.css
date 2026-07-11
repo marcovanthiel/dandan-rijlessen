@@ -358,3 +358,11 @@ header.site :focus-visible,.hero :focus-visible{outline-color:var(--dd-geel)}
 
 .hero p{color:#dce7f8}
 .hero .landtaal a{color:#fff}
+
+/* verrijking per stap: veelgemaakte fouten (amber) en examentip (rood accent) */
+.p-fout,.p-tip{border-radius:10px;padding:10px 14px;font-size:.95em;margin:.7em 0}
+.p-fout{background:#fff7e6;border:1px solid #ffe0a6}
+.p-fout>strong:first-child{color:#8a5a00}
+.p-tip{background:#fdeeea;border:1px solid #f3c1b5}
+.p-tip>strong:first-child{color:#c0392b}
+[dir="rtl"] .p-fout,[dir="rtl"] .p-tip{text-align:right}
