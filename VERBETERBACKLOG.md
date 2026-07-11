@@ -22,8 +22,9 @@ Bevindingen uit statische audit (landing-HTML + `assets/style.css` 372 regels + 
 - [ ] **P3** Waar een foto beter werkt dan SVG → placeholder + opdracht in FOTO-OPDRACHTEN.md.
 
 ### C · Nieuwe rijbewijsvarianten (AM, A, BE)
-- [~] **P1** Webonderzoek AM / A / BE (CBR/RDW/Rijksoverheid) — 3 subagents gestart 11:20.
-- [ ] **P1** Sectie-architectuur: varianten naast B in navigatie, sidebar, dashboard, sitemap, zoekfunctie. Aanname toegangsmodel A2 ([M]).
+- [x] **P1** Webonderzoek AM / A / BE (CBR/RDW/Rijksoverheid) — af; bronmateriaal in `docs/varianten/{AM-bromfiets,A-motor,BE-aanhanger}.md` met kg-grenzen, tarieven 2026, examenopzet, fouten/tips, bronnen, TE-VERIFIËREN-punten.
+- [ ] **P1** **Sectieregister centraliseren (blokkeert schone variant-uitrol).** De sectielijst `['praktijk','theorie','info']` is nu hardcoded op ~6 plekken: build.js (regel 144 sectie-detectie, 180 slug, 281 fig, 452 preview, 485 pmap), worker.js (185 courseNav, route-regex + gated-lijst), features.js (dashboard secKaart 66 + iconen), i18n `sectie.*`, sitemap. Eerst één centrale definitie (sectie → prefix, slug-prefix, icoon, i18n-key, preview-regel) maken; daarna schalen varianten zonder 6× te editen.
+- [ ] **P1** Sectie-architectuur varianten: naast B in navigatie, sidebar, dashboard, sitemap, zoekfunctie. Aanname toegangsmodel A2 ([M]). Model: elke variant = eigen sectie(s) (bijv. `am-theorie`, `am-praktijk` of één `am`-sectie), of overkoepelende "rijbewijs-kiezer". Beslissen in de bouw-loop; motiveren in AANNAMES.
 - [ ] **P1** AM-content bouwen (NL+ZH eerst), daarna BE, daarna A (volgorde A3).
 - [ ] **P2** Vertaling nieuwe content naar overige 9 lestalen (VERTAALPROCEDURE.md).
 - [ ] **P2** Eigen oefenvragenset per variant waar zinvol (AM-theorie).
