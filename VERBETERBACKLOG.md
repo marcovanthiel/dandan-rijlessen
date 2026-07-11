@@ -1,0 +1,38 @@
+# VERBETERBACKLOG — dandandrive.nl
+
+Status: `[ ]` open · `[~]` mee bezig · `[x]` gereed · `[M]` besluit Marco vereist.
+Prioriteit: **P1** hoogste leerling-/conversie-impact.
+
+## Loop 1 — audit 11-7-2026 (HEAD d17802e)
+Bevindingen uit statische audit (landing-HTML + `assets/style.css` 372 regels + worker.js/features.js). Visuele/360px-QA nog te doen door Marco (geen headless browser in deze omgeving).
+
+### A · Grafische layout (grootste prioriteit)
+- [x] **P1** Designsysteem vastleggen (DESIGN.md) — twee overlappende tokensets (`--brand*` + `--dd-*`) harmoniseren met aliassen.
+- [~] **P1** Dark mode via `prefers-color-scheme` (nu 0 regels; opdracht wil dit) — tokens omzetten, componenten erven.
+- [ ] **P1** Landing sterker maken: nu 1 hero + usps + 1 CTA + 1 beeld. Toevoegen: heldere waardepropositie, 3 duidelijke ingangen (theorie / simulator / praktijk), social proof/reviews prominenter, vertrouwenselementen (bronnen, gratis Info-sectie uitlichten).
+- [ ] **P1** Mobiele navigatie: header-nav is een platte flex die op smal scherm rommelig kan worden; hamburger/collapse < 720px met duimvriendelijke items ≥44px.
+- [ ] **P2** Homepage-hero met eigen SVG-illustratie (weg/auto/verkeer) i.p.v. tekst-only.
+- [ ] **P2** Consistente kaart-/spacing-schaal doorvoeren (4/8/12/16/24/32/48).
+- [ ] **P3** Micro-interacties (CSS-only): hover-lift, focus-ringen, subtiele transities (met reduced-motion-uitzondering).
+
+### B · Visualisatie lesstof
+- [ ] **P1** Inventarisatie per theoriehoofdstuk (1–11) + per simulator-onderwerp: waar dient een diagram het leerdoel (voorrang, borden, dode hoek, remweg, rotonde, inhalen). Vastleggen als sublijst hieronder.
+- [ ] **P2** Nieuwe eigen SVG-conceptdiagrammen in `graphics.js` per bruikbaar onderwerp, meertalige `title`/`aria-label`.
+- [ ] **P2** Zelftoetsvraag per theoriehoofdstuk (koppelen aan bestaande vragenbank/onderwerp).
+- [ ] **P3** Waar een foto beter werkt dan SVG → placeholder + opdracht in FOTO-OPDRACHTEN.md.
+
+### C · Nieuwe rijbewijsvarianten (AM, A, BE)
+- [~] **P1** Webonderzoek AM / A / BE (CBR/RDW/Rijksoverheid) — 3 subagents gestart 11:20.
+- [ ] **P1** Sectie-architectuur: varianten naast B in navigatie, sidebar, dashboard, sitemap, zoekfunctie. Aanname toegangsmodel A2 ([M]).
+- [ ] **P1** AM-content bouwen (NL+ZH eerst), daarna BE, daarna A (volgorde A3).
+- [ ] **P2** Vertaling nieuwe content naar overige 9 lestalen (VERTAALPROCEDURE.md).
+- [ ] **P2** Eigen oefenvragenset per variant waar zinvol (AM-theorie).
+- [M] **P2** Prijs/pas per variant of één pas voor alles (aanname A2 = één pas).
+
+### Techniek/kwaliteit
+- [ ] **P2** Geautomatiseerde linkcheck-script toevoegen (interne links/anchors).
+- [ ] **P3** Performance: controleren dat er geen render-blocking of ongebruikte CSS is; webp lazy (al gedaan voor lesfoto's).
+- [ ] **P3** `prefers-reduced-motion` audit over alle transities.
+
+## Onderwerpen-inventaris visualisatie (vullen in loop B)
+_(per theoriehoofdstuk: onderwerp → gewenst diagram → status)_
