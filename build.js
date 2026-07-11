@@ -141,8 +141,9 @@ function splitTitle(h){ // "步骤 1 · 车外检查 (Controle buiten de auto)" 
 }
 function parseModule(file){
   const base = path.basename(file);
-  const sectie = /^Theorie/i.test(base) ? 'theorie' : (/^Info/i.test(base) ? 'info' : 'praktijk');
-  const fnameNum = (base.match(/(?:Module|Theorie|Info)\s*(\d+)/i)||[])[1] || '';
+  const sectie = /^Theorie/i.test(base) ? 'theorie' : /^Info/i.test(base) ? 'info'
+    : /^AM\b/i.test(base) ? 'am' : /^Motor/i.test(base) ? 'motor' : /^Aanhanger/i.test(base) ? 'aanhanger' : 'praktijk';
+  const fnameNum = (base.match(/(?:Module|Theorie|Info|AM|Motor|Aanhanger)\s*(\d+)/i)||[])[1] || '';
   const raw = fs.readFileSync(file,'utf8').replace(/^---[\s\S]*?---\s*/,''); // strip frontmatter
   const lines = raw.split('\n');
   let modZh='',modNl='',modNum='',intro=[]; const blocks=[];
@@ -177,7 +178,8 @@ function parseModule(file){
   if(/Slotdeel/i.test(modNl) || /Slotdeel/i.test(modZh) || /结业/.test(modZh)){ if(/结业|Slotdeel/.test(modZh)===false || /结业/.test(modZh)) modZh = /结业/.test(modZh)?'结业部分':modZh; if(/结业/.test(modZh)) modNl='Slotdeel: examen · ADAS · oefeningen'; }
   // drop empty divider blocks (no body text)
   const scripts = blocks.filter(b=>b.body.join('').trim().length>0);
-  return {modZh,modNl,modNum,intro,scripts,sectie,slug:(sectie==='theorie'?'theorie-':(sectie==='info'?'info-':'module-'))+(modNum||blocks.length)};
+  const slugpre = {theorie:'theorie-',info:'info-',am:'am-',motor:'motor-',aanhanger:'aanhanger-'}[sectie] || 'module-';
+  return {modZh,modNl,modNum,intro,scripts,sectie,slug:slugpre+(modNum||blocks.length)};
 }
 
 // ---------- templates ----------
@@ -449,7 +451,7 @@ function writeWorkerContent(perTaal){
       html: articleHtml(m, s, taal),
       // preview = gratis leesbaar na login; de info-sectie (rijbewijsproces) is
       // bewust volledig gratis: praktische wegwijzer en instap voor nieuwe leden.
-      preview: m.sectie==='info' || (String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1'))
+      preview: m.sectie==='info' || (['am','motor','aanhanger'].includes(m.sectie) && s.id==='sec1') || (String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1'))
     }))
       })),
       pmap: d.pmap,
@@ -487,10 +489,15 @@ function main(){
   }
   // Veiligheidsklep: een taal die (nog) niet compleet is bouwt niet mee;
   // zo kan een lopende vertaalronde nooit een halve taal live zetten.
-  const referentie = (perTaal.zh || Object.values(perTaal)[0]).modules.length;
+  // Alleen de KERN (rijbewijs B: praktijk/theorie/info) telt voor compleetheid.
+  // Rijbewijs-varianten (am/motor/aanhanger) zijn optioneel en mogen per taal
+  // incrementeel worden toegevoegd zonder de taal te blokkeren.
+  const VARIANT_SECTIES = new Set(['am','motor','aanhanger']);
+  const kernAantal = (taal) => perTaal[taal].modules.filter(m => !VARIANT_SECTIES.has(m.sectie)).length;
+  const referentie = kernAantal(perTaal.zh ? 'zh' : Object.keys(perTaal)[0]);
   for(const taal of Object.keys(perTaal)){
-    if(perTaal[taal].modules.length < referentie){
-      console.warn('taal '+taal+' onvolledig ('+perTaal[taal].modules.length+'/'+referentie+' modules): overgeslagen');
+    if(kernAantal(taal) < referentie){
+      console.warn('taal '+taal+' onvolledig ('+kernAantal(taal)+'/'+referentie+' kern-modules): overgeslagen');
       delete perTaal[taal];
     }
   }

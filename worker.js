@@ -182,7 +182,7 @@ const lockCard = (L, p) => `<article class="script lock" id="${p.id}">
 function courseNav(L, current, mods, doneSet, vol) {
   const lesT = lesTaalVoor(L);
   const pkey = (mm, p) => `${mm.sectie[0]}:${mm.slug}:${p.id}`;
-  const secties = ['praktijk', 'theorie', 'info'].map((sec) => {
+  const secties = ['praktijk', 'theorie', 'info', 'am', 'motor', 'aanhanger'].map((sec) => {
     const lijst = mods.filter((mm) => mm.sectie === sec);
     if (!lijst.length) return '';
     const items = lijst.map((mm) => {
@@ -201,7 +201,7 @@ function courseNav(L, current, mods, doneSet, vol) {
       return `<li class="cn-mod${actief ? ' active' : ''}${compleet ? ' done' : ''}"><a href="/${mm.slug}"${actief ? ' aria-current="page"' : ''}><span class="cn-num">${esc(mm.num)}</span><span class="cn-title" lang="${lesT}">${esc(mm.zh)}</span>${prog}</a>${sub}</li>`;
     }).join('');
     const secActief = current && current.sectie === sec;
-    const ico = sec === 'theorie' ? '📘' : (sec === 'info' ? '🧭' : '🚗');
+    const ico = { theorie: '📘', info: '🧭', am: '🛵', motor: '🏍️', aanhanger: '🚚' }[sec] || '🚗';
     return `<div class="cn-sec${secActief ? ' active' : ''}"><div class="cn-sec-kop"><span class="cn-sec-ico" aria-hidden="true">${ico}</span>${esc(t(L, 'sectie.' + sec))}</div><ul class="cn-mods">${items}</ul></div>`;
   }).join('');
   const nu = current ? `${esc(t(L, 'sectie.' + current.sectie))} · ${esc(t(L, 'module.kicker', { n: current.num }))}` : esc(t(L, 'module.crumb'));
@@ -344,7 +344,7 @@ export default {
     }
 
     // vanaf hier: inloggen vereist (incl. lesbeelden: /img en /foto zijn niet meer publiek)
-    const gated = pad === '/leren' || pad === '/boek-index' || pad === '/account' || pad.startsWith('/account/') || pad === '/admin' || pad === '/search.json' || pad === '/pagemap.json' || /^\/(module|theorie|info)-\d+$/.test(pad) || pad === '/begrippen' || pad.startsWith('/oefenexamen') || pad === '/voortgang' || pad === '/bestellen' || pad.startsWith('/betalen') || pad === '/voucher' || pad.startsWith('/img/');
+    const gated = pad === '/leren' || pad === '/boek-index' || pad === '/account' || pad.startsWith('/account/') || pad === '/admin' || pad === '/search.json' || pad === '/pagemap.json' || /^\/(module|theorie|info|am|motor|aanhanger)-\d+$/.test(pad) || pad === '/begrippen' || pad.startsWith('/oefenexamen') || pad === '/voortgang' || pad === '/bestellen' || pad.startsWith('/betalen') || pad === '/voucher' || pad.startsWith('/img/');
     if (gated && !user) {
       recordEvent(env, ctx, 'locked_view', pad, refVan(request, url));
       return redirect('/login');
@@ -465,7 +465,7 @@ export default {
       recordEvent(env, ctx, 'voucher', v.campagne || code, '');
       return redirect('/leren');
     }
-    if (/^\/(module|theorie|info)-\d+$/.test(pad)) {
+    if (/^\/(module|theorie|info|am|motor|aanhanger)-\d+$/.test(pad)) {
       const m = inhoud.modules.find((x) => '/' + x.slug === pad);
       if (!m) return page(L, '404', `<h1>${esc(t(L, 'p404'))}</h1>`, { user, status: 404, noindex: true });
       const pas = await activePass(env, user.id);
