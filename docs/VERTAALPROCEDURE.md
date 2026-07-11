@@ -12,7 +12,7 @@ live omgeving, in te plannen vóór actieve campagnes in die taal.
 2. Voeg de taal toe aan STAPWOORD in `build.js` en `features.js`.
 3. Start een subagent (model: Opus) met het promptsjabloon hieronder.
 4. Valideer: `./valideer-taal.sh <code>` — alles moet groen zijn
-   (16/16 bestanden, 0 dashes, 85/85 vragen, 48 stap-delen, 52 foto-delen).
+   (17/17 bestanden, 0 dashes, 85/85 vragen, 48 stap-delen, 52 foto-delen).
 5. Commit `content/<code>/`, `content/vragen-vertalingen/<code>.json` en de
    geregenereerde `worker-content.js`; push (CI deployt).
 6. Live-steekproef: testaccount op die taal zetten (/account), één
@@ -30,13 +30,13 @@ Je bent vertaler voor het leerplatform Dandan Drive (werkmap
 rijbewijs B halen; toon helder en instructief.
 
 BRONNEN (lezen):
-- content/zh/*.md (16 lesbestanden; Chinese lestekst, Nederlandse referentiekoppen)
+- content/zh/*.md (17 lesbestanden (16 les + 1 info); Chinese lestekst, Nederlandse referentiekoppen)
 - content/vragen/vragen-kennis.json en content/vragen/vragen-gevaar.json
   (85 vragen; veld "nl" is de brontekst, "zh" is toonreferentie)
 - content/lexicon.json (verkeersterminologie; gebruik EXACT vert.{code})
 
 MAAK:
-1. Map content/{code}/ met 16 bestanden, BESTANDSNAMEN IDENTIEK aan content/zh/.
+1. Map content/{code}/ met 17 bestanden, BESTANDSNAMEN IDENTIEK aan content/zh/.
 2. content/vragen-vertalingen/{code}.json
 
 HARDE FORMAATREGELS (parser breekt anders):
@@ -54,7 +54,7 @@ HARDE FORMAATREGELS (parser breekt anders):
   {"v": "...", "opts": [zelfde aantal en volgorde], "uitleg": "..."}.
 
 VERBODEN: andere bestanden wijzigen, git-commando's, build draaien.
-Controleer zelf voor afronden: 16 bestanden, {code}.json met 85 sleutels en
+Controleer zelf voor afronden: 17 bestanden, {code}.json met 85 sleutels en
 identieke id-set, 48 Stap-koppen, geen verboden streepjes.
 Rapporteer kort: aantallen en twijfelpunten.
 ---

@@ -11,7 +11,7 @@ d=json.load(open('content/vragen-vertalingen/$T.json'))
 mis=[i for i in bron if i not in d]
 kapot=[k for k,w in d.items() if not (w.get('v') and isinstance(w.get('opts'),list) and w.get('uitleg'))]
 print(f'ontbrekend:{len(mis)} kapot:{len(kapot)}')" 2>/dev/null)
-echo "[$T] bestanden:$F/16 dashes:$D vragen:$Q/85 $QK"
+echo "[$T] bestanden:$F/17 dashes:$D vragen:$Q/85 $QK"
 node build.js >/dev/null 2>&1 && node --input-type=module -e "
 import('./worker-content.js').then(m=>{
   const c=m.CONTENT['$T'];
@@ -20,5 +20,5 @@ import('./worker-content.js').then(m=>{
   const stappen=parts.filter(p=>p.step).length;
   const fotos=parts.filter(p=>p.html.includes('img/')).length;
   const vert=m.VRAGEN.filter(v=>v['$T']).length;
-  console.log('[$T] modules:'+c.modules.length+'/16 stap-delen:'+stappen+' fotos:'+fotos+' vraagvertalingen:'+vert+'/85');
+  console.log('[$T] modules:'+c.modules.length+'/17 stap-delen:'+stappen+' fotos:'+fotos+' vraagvertalingen:'+vert+'/85');
 })" 2>/dev/null
