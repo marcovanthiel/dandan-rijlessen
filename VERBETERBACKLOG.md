@@ -26,8 +26,9 @@ Bevindingen uit statische audit (landing-HTML + `assets/style.css` 372 regels + 
 - [ ] **P1** **Sectieregister centraliseren (blokkeert schone variant-uitrol).** De sectielijst `['praktijk','theorie','info']` is nu hardcoded op ~6 plekken: build.js (regel 144 sectie-detectie, 180 slug, 281 fig, 452 preview, 485 pmap), worker.js (185 courseNav, route-regex + gated-lijst), features.js (dashboard secKaart 66 + iconen), i18n `sectie.*`, sitemap. Eerst één centrale definitie (sectie → prefix, slug-prefix, icoon, i18n-key, preview-regel) maken; daarna schalen varianten zonder 6× te editen.
 - [ ] **P1** Sectie-architectuur varianten: naast B in navigatie, sidebar, dashboard, sitemap, zoekfunctie. Aanname toegangsmodel A2 ([M]). Model: elke variant = eigen sectie(s) (bijv. `am-theorie`, `am-praktijk` of één `am`-sectie), of overkoepelende "rijbewijs-kiezer". Beslissen in de bouw-loop; motiveren in AANNAMES.
 - [x] **P1** AM-variant live (loop 3, commit 097eeff): sectie `am`, `/am-1` NL+ZH, gated, 1e deel gratis preview; parser/routing/courseNav/dashboard/i18n additief; **veiligheidsklep gefixt** (variant-secties tellen niet mee voor taal-compleetheid → 9 talen behouden). Wiring ondersteunt nu am/motor/aanhanger.
-- [~] **P1** BE-content (aanhanger) bouwen (NL+ZH) — loop 4.
-- [ ] **P1** A-content (motor) bouwen (NL+ZH) — loop 5.
+- [x] **P1** BE/aanhanger live (loop 4, ca2188f) NL+ZH; A/motor live (loop 5, 7d8bf1e) NL+ZH.
+- [x] **P2** Alle 3 varianten vertaald naar de overige 9 lestalen (loop 6, 5f5960f) via 9 parallelle subagents; alle 11 talen = 20 modules, 3 varianten; validatie OK, live. Native taalreview = openstaand (zie hieronder).
+- [ ] **P2** Native taalreview van de 9 machinevertalingen van AM/A/BE vóór campagnes (o.a. hi: "vermogen" → correcte term i.p.v. transliteratie).
 - [ ] **P2** Vertaling nieuwe content naar overige 9 lestalen (VERTAALPROCEDURE.md).
 - [ ] **P2** Eigen oefenvragenset per variant waar zinvol (AM-theorie).
 - [M] **P2** Prijs/pas per variant of één pas voor alles (aanname A2 = één pas).
