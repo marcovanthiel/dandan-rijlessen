@@ -19,10 +19,18 @@ bên kia"), phải nhìn vai phải và ngoái đầu thật sự. Đừng bật
 biệt cẩn thận khi tầm nhìn kém, khi ra khỏi vùng ngoại ô (lập tức nhập vào dòng xe chạy nhanh) và khi đi
 ra từ một lối ra.
 
+**Lỗi thường gặp:** Bật xi nhan quá sớm (xe sau tưởng bạn đi ngay); khi ngoái nhìn qua vai thì vô lăng lệch theo; khởi hành do dự, để lỡ mất khoảng trống người khác đã nhường.
+
+**Mẹo thi:** Thứ tự khởi hành "gương, ngoái nhìn, xi nhan, đi" phải thành phản xạ cơ bắp. Giám khảo gần như buổi thi nào cũng bắt đầu chấm điểm từ bước này.
+
 ### Stap 20 · Khoảng cách an toàn (Volgafstand)
 Bám quá gần thì không đủ thời gian phản xạ. Khoảng cách an toàn tùy vào tốc độ, thời tiết và mặt đường.
 Cách thực dụng: **quy tắc hai giây**; khi thời tiết xấu hoặc chạy sau xe tải thì phải chừa nhiều khoảng
 cách hơn. Khi khoảng cách đủ, tầm nhìn tốt hơn và cũng dễ quan sát xe ngược chiều hơn.
+
+**Lỗi thường gặp:** Trong khu đô thị, giữa các đèn giao thông vẫn bám sát xe trước (không có khoảng đệm nào); sau khi bị người khác chen vào thì không kéo giãn khoảng cách lại.
+
+**Mẹo thi:** Cách đếm hai giây: khi xe trước đi qua một cột biển báo thì bắt đầu nhẩm "hai mươi mốt, hai mươi hai", đếm xong mà bạn mới tới cột biển đó là đạt.
 
 ### Stap 21 · Khoảng đệm an toàn (Ruimtekussen)
 Khi lái, phải chừa khoảng trống ở mọi phía quanh xe (trước, bên, sau) để giảm xung đột và có thêm thời
@@ -32,6 +40,8 @@ gian phản xạ. Khi vào cua có lực ly tâm, "hiệu ứng xoắn ốc" khi
 người khác (cho nhập làn, nhường đường); khi kẹt xe hãy giữ khoảng cách đều với xe trước để tránh "hiệu
 ứng đàn xếp". Khi đi qua người đi xe đạp phải đặc biệt cẩn thận.
 
+**Lỗi thường gặp:** Chỉ lo khoảng cách phía trước mà đi sát sườn khi vượt qua người đi xe đạp; vào cua với tốc độ quá cao, đến khi trong cua mới phanh.
+
 ### Stap 22 · Tránh xe ngược chiều (Tegemoetkomen)
 Khi đường không đủ cho hai xe cùng qua, cả hai bên đều phải né tránh; phải ước lượng chính xác tốc độ xe
 ngược chiều. Khi né, bánh phải lăn xuống lề đường sẽ bị ghì chậm lại và xe lệch sang phải (khi trả lái
@@ -39,11 +49,17 @@ lại lệch sang trái), hãy chuẩn bị sẵn. Không phải xe nào cũng x
 tránh kịp thời để bên kia hiểu ý định của bạn; chú ý mặt đường và lề đường, cũng như người và xe ở bên
 cạnh và phía sau. Khi phía làn của bạn có chướng ngại vật thì nhường xe ngược chiều đi trước.
 
+**Lỗi thường gặp:** Do dự không quyết, đến phút chót mới né tránh (bên kia không hiểu ý định của bạn); quên quy tắc "chướng ngại ở phía làn của tôi thì tôi nhường".
+
+**Mẹo thi:** Khi tránh xe trên đường hẹp hãy giảm tốc và sát phải **từ sớm**, dùng ngôn ngữ thân xe rõ ràng để báo cho bên kia biết kế hoạch của bạn. Rõ ràng = an toàn = được điểm.
+
 ### Stap 23 · Bị vượt (Ingehaald worden)
 Bên vượt là bên chủ động, nhưng bạn cũng có trách nhiệm giữ an toàn. Phải ước lượng tốc độ từng xe (qua
 gương sẽ bị sai lệch). Giữ tầm nhìn phía sau. Vị trí và tốc độ: đi quá sát phải hoặc quá chậm sẽ làm
 tăng khả năng bị vượt; khi bị vượt **đừng tăng tốc**. Hãy chừa đủ khoảng trống an toàn để đề phòng. Cũng
 chú ý chiếc xe chạy sau chiếc vượt đầu tiên (tầm nhìn kém, dễ phán đoán sai).
+
+**Lỗi thường gặp:** Vừa bị vượt thì theo phản xạ tăng tốc (nguy hiểm và bất lịch sự); vừa bị vượt xong đã bám ngay lên xe trước, ép mất khoảng trống để họ nhập làn.
 
 ### Stap 24 · Giao lộ (Kruispunten)
 Giao lộ là nơi các dòng xe đổi hướng, phải nhường đường; ngay cả khi mình có quyền ưu tiên cũng phải
@@ -55,6 +71,10 @@ nhường đường đã trải nhựa; quy tắc vòng xuyến và tàu điện
 phải, lặp đi lặp lại. Tầm nhìn kém thì giảm tốc, thậm chí dừng lại; đừng chắn ngang người đi bộ và người
 đi xe đạp đang qua đường. Không được cản trở người có quyền ưu tiên.
 
+**Lỗi thường gặp:** Có quyền ưu tiên thì không giảm tốc mà lao qua giao lộ; nhìn trái phải mà không nhìn người đi bộ ngay chính diện; dừng chờ ngay trên vạch qua đường hoặc làn xe đạp.
+
+**Mẹo thi:** Khi đến gần mỗi giao lộ hãy để giám khảo "thấy" sự phán đoán của bạn: đảo mắt quan sát, giảm tốc khi cần, chuyển chân sang bàn đạp phanh để sẵn sàng. Đây là vùng chấm điểm cốt lõi của bài thi đường trường.
+
 ### Stap 25 · Rẽ (Afslaan)
 Khi rẽ ở giao lộ hoặc vòng xuyến, phải nhường xe đi thẳng trên cùng con đường đi trước. Quan sát xa từ
 sớm, nhận ra xi nhan của người khác. Hoàn tất mọi chuẩn bị trước khi rẽ; nếu phải dừng thì trả lái thẳng
@@ -65,6 +85,10 @@ làn xe đạp riêng, đường phụ hoặc làn xe đạp thì rẽ phải kh
 đi, thường vòng qua phía trước xe rẽ trái ngược chiều. Khi đi vào nhà xe hoặc lối ra vào thì nhường mọi
 người đi trước.
 
+**Lỗi thường gặp:** Trước khi rẽ phải không nhìn người đi xe đạp ở phía sau bên phải (tình huống tai nạn điển hình nhất ở Hà Lan); khi chờ để rẽ trái mà vô lăng đã đánh sang trái (bị húc đuôi sẽ lao vào làn ngược chiều).
+
+**Mẹo thi:** Rẽ phải là luôn luôn nhìn xe đạp trong điểm mù ở vai phải trước tiên. Giám khảo không khoan nhượng với cái liếc này.
+
 ### Stap 26 · Khởi hành trên dốc (Hellingproef)
 Khởi hành trên dốc không được trôi lùi. Khi dốc khá đứng thì dùng phanh tay và nhả ra đúng lúc (nếu
 không xe sẽ "ghì" đến chết máy); tránh bán côn quá lâu. Lên dốc: dừng (Stap 15), kéo phanh tay, về số N
@@ -72,16 +96,24 @@ và nhả côn (chờ lâu thì có thể tắt máy), rồi phối hợp ga đ�
 nhưng xe rất dễ tăng tốc nên phải điều chỉnh ga và côn cho phù hợp. Xe điện và số tự động không cần để ý
 đến côn.
 
+**Lỗi thường gặp:** Nhả phanh tay quá sớm (trôi lùi) hoặc quá muộn (ghì máy); vì căng thẳng mà đạp ga và côn cùng lúc một cách thô bạo.
+
 ### Stap 27a · Lùi thẳng (Achteruitrijden rechte lijn)
 Thao tác đặc biệt: nhường mọi người đi trước (người đi bộ, trẻ đang chơi); động tác phải nhanh và ngắn
 (dùng bán côn). Khi dừng thì trả lái thẳng, đừng sát mép vỉa quá; vào số R. Cách quan sát: nhìn qua kính
 sau (thỉnh thoảng cũng nhìn phía trước; tay trái đặt trên đỉnh vô lăng để biết đã trả lái thẳng chưa),
 hoặc dùng gương chiếu hậu (giữ tư thế ngồi bình thường).
 
+**Lỗi thường gặp:** Suốt quá trình lùi chỉ nhìn về một hướng; tốc độ quá nhanh nên chỉnh không kịp.
+
+**Mẹo thi:** Chấm điểm thao tác đặc biệt nhìn vào ba điểm: quan sát có liên tục không, có nhường mọi người không, điều khiển có gọn gàng không. Quỹ đạo hơi lệch cũng không sao, có thể chỉnh lại.
+
 ### Stap 27b · Lùi theo đường vòng (Achteruitrijden aangegeven bocht)
 Cũng là thao tác đặc biệt; đây là cách thay thế an toàn cho việc quay đầu. Các bước: lùi thẳng cách mép
 phải khoảng 30 cm, đánh lái (thường đánh hết một vòng, chú ý đầu xe văng ra ngoài), rồi trả lái. Trước
 khi đánh lái phải nhìn gương ngoài và ngoái đầu (đầu xe sẽ văng ra phía lòng đường, lối đi hẹp lại).
+
+**Lỗi thường gặp:** Quên rằng đầu xe sẽ văng ra phía lòng đường và quét vào dòng xe bên cạnh; khi lùi chỉ chăm chăm nhìn mép vỉa mà không nhìn xung quanh.
 
 ### Stap 28 · Đỗ xe vào chỗ (bên đường, ô đỗ, trên dốc) (Parkeren)
 Chỉ đỗ ở nơi cho phép; trước tiên đánh giá khoảng trống và sau này có ra được thuận lợi không; đây là
@@ -92,17 +124,27 @@ chuối", nhìn qua kính sau kết hợp gương chiếu hậu, chỉnh lệch 
 xe: khi xuống dốc đánh bánh trước hướng vào lề, vào số R; khi lên dốc đánh bánh trước hướng ra lòng
 đường (khi có mép vỉa). Hỗ trợ: cảm biến lùi, camera, cảnh báo xe cắt ngang phía sau.
 
+**Lỗi thường gặp:** Chọn một chỗ đỗ "vào được mà ra không được"; trong lúc vào chỗ quên tiếp tục quan sát người đi bộ; hoàn toàn phụ thuộc vào camera lùi.
+
+**Mẹo thi:** Khi giám khảo yêu cầu đỗ xe, bạn được tự chọn vị trí cụ thể, hãy chọn một chỗ rộng rãi! Bản thân việc phán đoán chọn chỗ cũng là nội dung được kiểm tra.
+
 ### Stap 29a · Quay đầu (nửa vòng) (Omkeren halve draai)
 Các cách quay đầu: lùi theo đường vòng, giữa hai mép vỉa, quay nửa vòng, đi vòng quanh dãy phố. Nếu đủ
 chỗ thì dùng cách nửa vòng (làm bằng cách tiến, tầm nhìn tốt). Phải ước lượng bán kính quay; tốc độ thấp
 thì đánh lái nhanh; khi xe đứng yên thì không đánh lái; lốp đừng cọ vào mép vỉa. Dừng bên phải, quan sát
 điểm mù, quay đầu xong lập tức nhập vào vị trí đúng một cách êm thuận.
 
+**Lỗi thường gặp:** Đánh giá quá cao độ rộng của đường, quay được nửa chừng thì kẹt lại mà không dám lùi để chỉnh; đứng yên tại chỗ mà đánh lái (hại lốp, cũng là điểm bị trừ).
+
 ### Stap 29b · Quay đầu (tiến lùi nhiều lần) (Omkeren steken)
 Chỉ dùng khi không còn cách nào khác; gần như chắc chắn sẽ cản trở người khác, vì vậy phải làm gọn gàng
 dứt khoát. Đi chậm, đánh lái nhanh. Khi tiến, chờ bánh trước bên trái gần sát mép vỉa rồi mới trả lái;
 khi lùi, chờ bánh sau bên trái gần sát mép vỉa rồi mới đánh sang trái; đừng đâm mạnh vào mép vỉa. Nhường
 mọi người đi trước; khi có xe đang tới thì chỉ bắt đầu khi chắc chắn xe đó có thể vòng qua phía sau bạn.
+
+**Lỗi thường gặp:** Mỗi đoạn đều lề mề, biến con đường thành bãi đỗ xe; đâm vào mép vỉa rồi mà vẫn tiếp tục đánh lái.
+
+**Mẹo thi:** "Tốc độ chậm, đánh lái nhanh" là câu thần chú cho mọi thao tác tiến lùi nhích. Bánh xe lăn, đánh lái nhanh, hoàn thành cả bộ động tác trong ba đoạn là lý tưởng nhất.
 
 ---
 *Cuối mỗi bước cũng có "bảng điểm chính" và "phần tự đánh giá", trên trang web được làm thành thẻ thống nhất.*

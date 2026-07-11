@@ -63,3 +63,12 @@ Rapporteer kort: aantallen en twijfelpunten.
 Wijzigt een hoofdstuk of komen er vragen bij: geef een subagent per taal
 alleen de gewijzigde bestanden/vraag-id's met hetzelfde sjabloon (sectie
 "MAAK" beperken tot de delta). Valideer en push identiek.
+
+## Verrijking per rijstap (sinds 11-7-2026)
+De praktijkmodules bevatten per stap een of twee verrijkingsparagrafen:
+"veelgemaakte fouten" en "examentip" (plus een examendag-checklist in module 5).
+De build herkent ze aan het VETTE LABEL aan het begin van de paragraaf en
+rendert er gekleurde chips van (p-fout amber, p-tip rood). De labels staan
+per taal vast in `build.js` (LABEL_FOUT / LABEL_TIP); vertalers gebruiken ze
+EXACT, vet, met dubbele punt binnen het vet: bv. "**Częste błędy:** tekst".
+Nieuwe lestaal? Voeg de taal ook aan LABEL_FOUT/LABEL_TIP toe.

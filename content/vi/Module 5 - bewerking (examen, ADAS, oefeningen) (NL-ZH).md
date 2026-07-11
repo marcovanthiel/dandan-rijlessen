@@ -18,6 +18,15 @@ cách tiết kiệm. Cốt lõi: tránh rơi vào tình huống nguy hiểm, hã
 45 (thích ứng và dứt khoát). Luôn giữ quan sát rộng và xa (nhìn xa, đổi hướng nhìn, nhìn gương, xen kẽ
 gần xa, để ý xe khác).
 
+**Mẹo thi:** Giám khảo không mong sự hoàn hảo, mà mong **an toàn, độc lập, đoán được**. Mắc lỗi nhỏ rồi bình tĩnh khôi phục còn thể hiện sự chín chắn khi lái tốt hơn là không mắc lỗi nào.
+
+Danh sách kiểm tra ngày thi (rà lại một lượt vào tối hôm trước):
+- Ngủ đủ giấc; một tiếng trước khi thi thì ngừng luyện đề.
+- Mang theo: giấy tờ tùy thân còn hiệu lực (hộ chiếu hoặc thẻ cư trú), chứng chỉ đạt lý thuyết còn trong hạn (hệ thống CBR tự động đối chiếu), kính hoặc kính áp tròng (nếu cần).
+- Bản khai sức khỏe đã được duyệt; trường lái đã xác nhận xe và giờ.
+- Đến trước 15 phút; sau khi lên xe thì thong thả chỉnh tư thế ngồi, gương, dây an toàn (Stap 5 đến 7).
+- Khi hồi hộp: hít thở sâu, xem kỳ thi như "một buổi học bình thường có khách ngồi bên cạnh".
+
 ## B. Hệ thống hỗ trợ và an toàn (ADAS)
 Xe hiện đại được trang bị ngày càng nhiều hệ thống hỗ trợ; bạn phải hiểu cách chúng hoạt động (đọc hướng
 dẫn) và luôn tự mình chịu trách nhiệm. Sách giới thiệu chủ yếu những hệ thống sau:
@@ -35,6 +44,8 @@ dẫn) và luôn tự mình chịu trách nhiệm. Sách giới thiệu chủ y�
 9. **Nhận diện biển báo giao thông**: nhận ra giới hạn tốc độ và cấm vượt rồi hiển thị trên bảng đồng
    hồ.
 10. **Cảnh báo xe cắt ngang phía sau**: nhắc khi lùi ra khỏi chỗ đỗ.
+
+**Mẹo thi:** Hệ thống hỗ trợ trên xe thi được phép dùng, nhưng giám khảo phải thấy **chính bạn** đang quan sát và ra quyết định. "Hệ thống không báo cho tôi" không bao giờ là lý do.
 
 ## C. Bài tập củng cố (Controleoefeningen)
 Đây là các bài tập bổ sung mà huấn luyện viên dùng để kiểm tra xem bạn có thật sự nắm vững và vận dụng
@@ -57,6 +68,8 @@ ADAS**. Ví dụ các loại bài tập:
 
 Cuối sách còn có trang ghi chú và bìa sau (giới thiệu phương pháp, nhà xuất bản Vekabest và thông tin
 liên hệ).
+
+**Mẹo thi:** Thấy một bước nào đó "gần như biết rồi"? Hãy để huấn luyện viên dùng bài tập củng cố tương ứng kiểm tra bạn một lần. Qua được rồi mới đánh dấu "tôi đã nắm vững", trước khi thi sẽ không còn điểm mù.
 
 ---
 *Đến đây, toàn bộ cuốn sách (Mô-đun 1 đến 5 / phần 1 đến 7) đã được biên soạn theo cùng một phương pháp thành tài liệu học gốc bằng tiếng Việt.*

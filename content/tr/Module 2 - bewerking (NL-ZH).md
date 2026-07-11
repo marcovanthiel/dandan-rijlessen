@@ -19,10 +19,18 @@ tarafta" oturursunuz), sağ omza bakıp mutlaka dönüp bakın. Sinyali çok erk
 anlaşılır). Görüşün kötü olduğu yerlerde, kırsaldan çıkarken (hemen hızlı akışa girersiniz) ve çıkış
 yolundan (uitrit) çıkarken çok dikkatli olun.
 
+**Sık yapılan hatalar:** Sinyali çok erken vermek (arkadaki araç hemen kalkacağınızı sanır); omuz üzerinden dönüp bakarken direksiyonun da kaymasına izin vermek; kalkışta tereddüt edip açılan boşluğu boşuna kaçırmak.
+
+**Sınav ipucu:** Kalkış sırası “aynalar, dönüp bak, sinyal, git” kas hafızasına yerleşmelidir. Sınav görevlisi neredeyse her sınavda puanlamaya bu adımdan başlar.
+
 ### Stap 20 · Takip mesafesi (Volgafstand)
 Çok yakın takipte tepki süresi (tepki süresi) yetmez. Güvenli mesafe hıza, havaya ve yol yüzeyine
 bağlıdır. Pratik yöntem: **iki saniye kuralı**; hava kötüyse veya kamyon arkasındaysanız daha fazla
 mesafe bırakın. Mesafe yeterliyken görüş daha iyidir ve karşıdan geleni gözlemek kolaylaşır.
+
+**Sık yapılan hatalar:** Şehir içinde trafik ışıkları arasında bile öndeki araca yapışmak (hiç tampon boşluk yok); biri araya girdikten sonra mesafeyi yeniden açmamak.
+
+**Sınav ipucu:** İki saniyeyi sayma yöntemi: öndeki araç bir levhanın hizasından geçtiğinde içinizden “yirmi bir, yirmi iki” demeye başlayın; siz o levhaya ancak saymayı bitirince ulaşıyorsanız mesafe yeterlidir.
 
 ### Stap 21 · Güvenlik boşluğu (Ruimtekussen)
 Sürüş sırasında aracın çevresinde (ön, yan, arka) boşluk bırakın; bu çatışmayı azaltır ve tepki süresi
@@ -32,6 +40,8 @@ eğimi (kamber) yardımcı olur, bunların hepsi için önceden yavaşlayın. Ge
 Başkalarına da boşluk bırakın (şerit değiştirene, yol verilene); sıkışıklıkta öndeki araçla eşit mesafe
 tutun, "akordeon etkisini" önleyin. Bisikletlilerin yanından geçerken çok dikkatli olun.
 
+**Sık yapılan hatalar:** Yalnızca öndeki mesafeye bakıp yandan bisikletlilere sürterek geçmek; viraja çok yüksek hızla girip ancak virajın içinde fren yapmak.
+
 ### Stap 22 · Karşılıklı geçiş (Tegemoetkomen)
 Yol iki aracın aynı anda geçmesine yetmezse iki taraf da kaçınmalıdır; karşıdan gelenin hızını doğru
 değerlendirin. Kaçınırken sağ tekerlek banket kenarına girerse araç yavaşlar ve sağa çeker (düzelirken
@@ -39,11 +49,17 @@ yine sola çeker), buna hazır olun. Her araç bankete güvenle giremez (ağır 
 niyetinizi karşı tarafa anlatır; yol yüzeyine/bankete ve yanınızdaki ile arkanızdaki yayalara ve
 araçlara dikkat edin. Kendi tarafınızda engel varsa karşıdan gelene yol verin.
 
+**Sık yapılan hatalar:** Kararsız kalıp son ana kadar kaçınmamak (karşı taraf niyetinizi anlamaz); “engel benim tarafımdaysa yol veririm” kuralını unutmak.
+
+**Sınav ipucu:** Dar yolda karşılıklı geçişte **önceden** yavaşlayıp sağa yaklaşın; net bir araç diliyle karşı tarafa planınızı anlatın. Net olmak, güvenli olmak ve puan almak demektir.
+
 ### Stap 23 · Sollanmak (Ingehaald worden)
 Sollayan taraf inisiyatifi elinde tutar, ama sizin de güvenlik sorumluluğunuz vardır. Araçların
 hızlarını değerlendirin (aynada yanıltıcıdır). Arka görüşünüzü koruyun. Konum/hız: çok sağda veya
 çok yavaş gitmek sollanma olasılığını artırır; sollanırken **hızlanmayın**. Acil durum için yeterli
 güvenlik boşluğu bırakın. İlk sollayan aracın arkasından gelen araca da dikkat edin (görüşü kötü, kolayca yanlış değerlendirir).
+
+**Sık yapılan hatalar:** Sollanırken refleksle hızlanmak (tehlikeli ve nezaketsiz); sollandıktan sonra hemen öndeki araca yapışıp karşı tarafın şeride girme boşluğunu kapatmak.
 
 ### Stap 24 · Kavşaklar (Kruispunten)
 Kavşak, trafik akışının yön değiştirdiği yerdir ve yol verilmelidir; kendinizde **geçiş önceliği**
@@ -54,6 +70,10 @@ levha yoksa eşdeğer kavşak (sağdan gelen önce; toprak yol asfalt yola yol v
 kuralı). Bakış sırası: tam öne, sola, tam öne, sağa, tekrar tekrar. Görüş kötüyse yavaşlayın hatta durun;
 karşıdan geçen yayaları ve bisikletlileri kapatmayın. Önceliği olanı engellemeyin.
 
+**Sık yapılan hatalar:** Önceliğiniz var diye yavaşlamadan kavşaktan geçmek; sağa sola bakıp tam önünüzdeki yayaları görmemek; yaya geçidinde veya bisiklet yolunda durup beklemek.
+
+**Sınav ipucu:** Her kavşağa yaklaşırken değerlendirmenizi sınav görevlisine “gösterin”: bakışınızı gezdirin, gerektiğinde yavaşlayın, ayağınızı frene alıp hazır bekletin. Bu, direksiyon sınavının çekirdek puan alanıdır.
+
 ### Stap 25 · Dönme (Afslaan)
 Kavşakta veya dönel kavşakta dönerken aynı yolda düz giden araçlara önce yol verin. Erkenden uzağı
 gözleyin, başkalarının sinyalini tanıyın. Dönmeden önce tüm hazırlığı tamamlayın; durursanız direksiyonu
@@ -63,11 +83,17 @@ orta çizgiye; tek yönde tamamen sola olabilir), kavşağa gir, yol ver. Ayrı 
 bisiklet şeridi varsa sağa dönüş daha zordur; sola dönüş daha zordur: önce sürüş çizginizi belirleyin,
 genelde karşıdan sola dönen aracın önünden dolaşın. Garaja/çıkış yoluna girerken herkese önce yol verin.
 
+**Sık yapılan hatalar:** Sağa dönmeden önce sağ arkadaki bisikletlilere bakmamak (Hollanda'nın en tipik kaza senaryosu); sola dönüş için beklerken direksiyonu şimdiden sola kırmış olmak (arkadan çarpılınca karşı şeride fırlarsınız).
+
+**Sınav ipucu:** Sağa dönüş, her zaman önce sağ omuzdaki kör noktadaki bisikleti görmek demektir. Sınav görevlisi bu bakışta hiç tolerans göstermez.
+
 ### Stap 26 · Yokuşta kalkış (Hellingproef)
 Yokuşta kalkarken geriye kaymamalısınız. Dik yokuşta el frenini kullanın ve tam zamanında bırakın (yoksa
 motor "boğulup" stop eder); uzun süre yarım debriyajda kalmayın. Yukarı çıkış: dur (adım 15), el freni,
 boşta debriyajı bırak (uzun beklerseniz motoru durdurabilirsiniz), gazla uyumlu kalk. İniş: aynı
 hareketler, ama araç kolayca hızlanır, gaz ve debriyajı buna göre ayarlayın. Elektrikli/otomatik araçta debriyajla ilgilenmenize gerek yoktur.
+
+**Sık yapılan hatalar:** El frenini çok erken bırakmak (geriye kayma) veya çok geç bırakmak (motoru boğma); gerginlikle gaz ve debriyaja aynı anda sert basmak.
 
 ### Stap 27a · Düz geri gitme (Achteruitrijden rechte lijn)
 Özel manevra: herkese önce yol verin (yayalar, oynayan çocuklar); hareket hızlı ve kısa olsun (yarım
@@ -75,10 +101,16 @@ debriyaj). Dururken direksiyonu düzeltin, bordüre çok yaklaşmayın; R vitesi
 bakarak (ara sıra öne de bakın; sol el direksiyonun tepesinde, böylece düz mü olduğunu anlarsınız) veya
 aynaları kullanarak (normal oturuşu koruyun).
 
+**Sık yapılan hatalar:** Geri giderken baştan sona tek yöne bakmak; hızın çok yüksek olması yüzünden düzeltmeye yetişememek.
+
+**Sınav ipucu:** Özel manevralar üç noktadan değerlendirilir: gözlem sürekli mi, herkese yol veriyor musunuz, kullanım derli toplu mu. Gidiş çizgisinin biraz eğri olması sorun değildir, düzeltilebilir.
+
 ### Stap 27b · Virajlı geri gitme (Achteruitrijden aangegeven bocht)
 Yine özel manevradır; U dönüşünün güvenli bir alternatifidir. Adımlar: sağdan yaklaşık 30 santimetre
 mesafede düz geri git, direksiyonu çevir (genelde tam bir tur, aracın önünün dışa savrulmasına dikkat),
 direksiyonu düzelt. Direksiyonu çevirmeden önce dış aynaya bakın ve dönüp bakın (aracın önü yola savrulur, geçit daralır).
+
+**Sık yapılan hatalar:** Aracın önünün yola doğru dışa savrulup yandaki trafiği süpüreceğini unutmak; geri giderken yalnızca bordüre bakıp çevreye bakmamak.
 
 ### Stap 28 · Park etme (yol kenarı/park yeri/yokuş) (Parkeren)
 Yalnızca izin verilen yerde park edin; önce boş alanı ve sonra rahatça çıkabilecek misiniz onu
@@ -89,11 +121,17 @@ aracın yanında yaklaşık 50 santimetrede dur, vitese al, kör noktayı gözle
 bakın, zamanında düzeltin. Yokuşta park = yokuş + park birleşimi: inişte ön tekerlekler bankete dönük,
 R vitesi; çıkışta ön tekerlekler yola dönük (bordür varsa). Yardımcılar: geri park radarı, kamera, arkadan yanal yaklaşan araç uyarısı.
 
+**Sık yapılan hatalar:** “Girilen ama çıkılamayan” bir park yeri seçmek; park sırasında yayaları gözlemeyi sürdürmeyi unutmak; tamamen geri görüş kamerasına güvenmek.
+
+**Sınav ipucu:** Sınav görevlisi park etmenizi istediğinde, yeri kendiniz seçebilirsiniz; geniş bir yer seçin! Yer seçimindeki muhakeme başlı başına değerlendirilen bir konudur.
+
 ### Stap 29a · U dönüşü (yarım tur) (Omkeren halve draai)
 U dönüşü yolları: virajlı geri gitme, iki bordür arasında, yarım turla dönme, mahalleyi dolaşma. Alan
 yeterliyse yarım turu kullanın (ileri giderek tamamlanır, görüş iyidir). Dönüş yarıçapını değerlendirin;
 düşük hızda direksiyonu hızlı çevirin; dururken direksiyonu çevirmeyin; lastikleri bordüre sürtmeyin.
 Sağda dur, kör noktayı gözle, dönüşten sonra hemen akıcı biçimde doğru konuma geçin.
+
+**Sık yapılan hatalar:** Yolun genişliğini fazla tahmin edip dönüşün yarısında sıkışmak ve geri gidip düzeltmeye cesaret edememek; olduğunuz yerde durup direksiyon çevirmek (lastikleri yıpratır, ayrıca puan kaybettirir).
 
 ### Stap 29b · U dönüşü (ileri geri manevrayla) (Omkeren steken)
 Yalnızca başka çare yoksa kullanın; neredeyse kesinlikle başkalarını engeller, o yüzden derli toplu
@@ -101,6 +139,10 @@ yapın. Yavaş git, direksiyonu hızlı çevir. İleri giderken sol ön tekerlek
 bekleyip direksiyonu düzeltin; geri giderken sol arka tekerlek bordüre neredeyse değene kadar bekleyip
 sola çevirin; bordüre çarpmayın. Herkese önce yol verin; araç geliyorsa ancak karşı taraf arkanızdan
 dolaşabileceğinden eminseniz başlayın.
+
+**Sık yapılan hatalar:** Her aşamada ağırdan alıp yolu otoparka çevirmek; bordüre çarptığı hâlde direksiyon çevirmeye devam etmek.
+
+**Sınav ipucu:** “Yavaş hız, hızlı direksiyon” tüm manevralı işlemlerin özlü kuralıdır. Tekerlek dönerken direksiyonu hızlı çevirin; tüm hareketi en fazla üç aşamada tamamlamak idealdir.
 
 ---
 *Her adımın sonunda yine "püf noktaları tablosu" ve "öz değerlendirme" vardır, sitede tek tip kartlar hâline getirilir.*

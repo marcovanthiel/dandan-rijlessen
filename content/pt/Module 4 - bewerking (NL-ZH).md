@@ -21,6 +21,10 @@ conta com pessoas que veem mal. Há ainda os túneis (mudança brusca de luz), o
 cidade e os rodados no piso (com tempo seco ou molhado). Evita meteres-te em apuros através da observação, da
 antecipação e da adaptação da velocidade. Não confies cegamente nas luzes automáticas.
 
+**Erros frequentes:** achar ao entardecer que "ainda vês" e não acender as luzes (o problema é que os outros não te veem), manter à chuva a distância de seguimento do piso seco.
+
+**Dica de exame:** num exame à chuva, acende os médios por iniciativa própria, aumenta a distância de seguimento e trava com antecedência; o examinador está justamente à espera de ver se te "ajustas às condições".
+
 ### Stap 41 · Preparação autónoma da viagem (Zelfstandige ritvoorbereiding)
 Pensa primeiro se a viagem é mesmo necessária (nos trajetos curtos com o motor frio as emissões e o consumo
 são altos); alternativas: transportes públicos, boleia partilhada, deixar o carro à entrada da cidade e mudar
@@ -28,11 +32,17 @@ de meio. Uma boa preparação reduz a poluição desnecessária. O navegador ser
 na cidade pode orientar, mas o software/os desvios podem não corresponder à realidade); é sempre apenas uma
 ferramenta, tu continuas a ter de estar atento.
 
+**Erros frequentes:** seguir o navegador cegamente ("inverta a marcha em frente" não quer dizer que aqui seja permitido inverter), mudar de destino enquanto conduzes.
+
+**Dica de exame:** o troço de **condução autónoma** do exame testa precisamente isto: o examinador dá-te uma morada ou manda-te seguir o navegador. Enganares-te no caminho não desconta; corrigir de forma insegura é que desconta.
+
 ### Stap 42 · Treino de condução em condições especiais (ROSO) (ROSO-training)
 Opcional, num recinto próprio experimentas situações de perigo/emergência. Os três fatores do acidente: a
 pessoa, o veículo e o ambiente; cerca de 90% devem-se a erro humano. Um condutor principiante controla o
 carro com dificuldade numa emergência, por isso o mais importante é **evitar** meter-se nela (isso está, em
 grande parte, nas tuas mãos).
+
+**Dica de exame:** quando o examinador pergunta "o que fazes numa emergência?", a melhor resposta começa muitas vezes por "eu evito-a com antecedência...". A prevenção vem antes da manobra.
 
 ### Stap 43 · Condução ecológica (Milieuverantwoord rijden)
 Princípios da "nova condução" (HNR): sobe de mudança o mais cedo possível, acelera de forma rápida e decidida
@@ -42,6 +52,10 @@ cerca de 30%), reduz o peso e a resistência do ar. Na caixa automática: influe
 força no acelerador. No carro elétrico: reduz a resistência do ar/ao rolamento, usa acessórios de baixo
 consumo, evita acelerações bruscas inúteis e aproveita bem a recuperação de energia.
 
+**Erros frequentes:** insistir em rotações baixas sem reduzir de mudança para "poupar" (o motor treme), não largar o acelerador para deixar rolar antes de um vermelho e manter a velocidade até travar com força mesmo em cima dele.
+
+**Dica de exame:** ao ver um vermelho ao longe, larga o acelerador e deixa rolar com a mudança engatada; muitas vezes o sinal fica verde e nem precisas de parar. Este pequeno gesto mostra ao mesmo tempo antecipação e condução ecológica, e o examinador repara em tudo.
+
 ### Stap 44 · Condução defensiva (Defensief rijden)
 Evita ao máximo os acidentes e os conflitos: erra menos e conta também com os erros dos outros. Adapta-te a
 condições anormais da estrada/do trânsito, reconhece os riscos o mais cedo possível e toma logo decisões
@@ -50,6 +64,10 @@ previsíveis (por exemplo, o sol baixo a bater no teu espelho significa que os c
 ser encandeados, por isso acende as luzes e fica alerta). Nunca forces a passagem, deixa distância de
 seguimento e espaço de segurança suficientes e não te irrites quando os outros erram.
 
+**Erros frequentes:** a mentalidade "tenho prioridade", ter direito não é o mesmo que ser seguro, buzinar aos erros dos outros para desabafar em vez de os desfazer.
+
+**Dica de exame:** abdicares por iniciativa própria de uma prioridade para desfazer uma situação ambígua, e deixares o examinador ver que é uma **decisão consciente** (um toque leve no travão, um gesto com a mão), conta a teu favor.
+
 ### Stap 45 · Condução adaptada e decidida (Aangepast en besluitvaardig rijden)
 A velocidade e a rapidez dos gestos devem estar sempre à altura do trânsito/da situação; não andes devagar sem
 motivo (estorvas a circulação); executa todas as manobras com desembaraço. Depois de começares uma manobra,
@@ -57,6 +75,10 @@ tens de a concluir (exceto em emergência), desde que tenhas feito bem os prepar
 por quem anda a cavalo, deixa muito espaço e vai devagar; ultrapassar exige mais espaço do que um principiante
 imagina (é difícil avaliar a velocidade do carro em sentido contrário, e é por isso que ultrapassar é tão
 perigoso).
+
+**Erros frequentes:** conduzir por todo o lado bem abaixo do limite "por segurança" (o examinador regista falta de decisão e estorvo ao trânsito), começar uma manobra e desistir a meio.
+
+**Dica de exame:** o critério do CBR é "**depressa quando é preciso, devagar quando é preciso**". Andar a 60 numa estrada de 80 vazia desconta tanto como andar acima do limite.
 
 ### Stap 46 · Mentalidade e responsabilidade (Mentaliteit en verantwoordelijkheid)
 O congestionamento e a tensão tornam as pessoas mais impacientes (colam-se ao carro da frente, enfiam-se à
@@ -67,6 +89,10 @@ para 15 minutos a cada 2 horas e atenção à postura/à pega. Álcool/droga/med
 efeito é ilegal e perigoso (nos Países Baixos cerca de 25% dos acidentes mortais estão-lhe associados): a
 observação, o discernimento, a reação e os gestos ficam todos piores. Medicamentos que podem afetar a condução
 (autocolante amarelo da farmácia): lê o folheto/pergunta ao médico. "Como o Bob": conduz sóbrio.
+
+**Erros frequentes:** passar a noite antes do exame a estudar perguntas (chegas cansado ao exame, não compensa), travar por despeito quando o carro de trás te cola.
+
+**Dica de exame:** depois de um pequeno erro no exame (ir abaixo, enganar-se no caminho), o **minuto seguinte** é que é decisivo: o examinador vê se recuperas com calma. Um erro quase nunca reprova; o pânico é que reprova.
 
 ---
 *No fim de cada passo há também uma "tabela de pontos-chave" e uma "autoavaliação" (o Módulo 4 compara sobretudo com o nível do "escalão 8").*

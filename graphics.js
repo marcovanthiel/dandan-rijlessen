@@ -271,6 +271,27 @@ F['examen']=svg('260 150','路考', `<g filter="url(#sh)"><path d="M74 128V34h92
 F['adas']=svg('260 160','ADAS', `${carTop(130,98,0.7)}<path d="M130 62 A62 62 0 0 1 192 98" fill="none" stroke="${BLUE}" stroke-opacity=".45" stroke-width="3"/><path d="M130 46 A78 78 0 0 1 208 98" fill="none" stroke="${BLUE}" stroke-opacity=".28" stroke-width="3"/>${cap(130,150,'辅助系统 · rijhulpsystemen')}`);
 F['oefening']=svg('260 140','练习', `${[46,74,102].map(y=>`<g filter="url(#sh)"><circle cx="44" cy="${y}" r="9" fill="#eef4fd" stroke="${BLUE}" stroke-width="2"/></g><path d="M60 ${y} h150" stroke="${SOFT}" stroke-width="4" stroke-linecap="round"/><path d="M40 ${y}l4 4 8-9" fill="none" stroke="${BLUE}" stroke-width="2.6"/>`).join('')}${cap(130,132,'巩固练习 · controleoefeningen')}`);
 
+
+// ---- info-sectie: 185-dagen-tijdlijn, labels per lestaal ----
+const TL_LABELS = {
+  zh:['登记居住','第 185 天','需荷兰驾照'], nl:['inschrijving','dag 185','NL-rijbewijs'],
+  en:['registration','day 185','Dutch licence'], tr:['kayıt','185. gün','NL ehliyeti'],
+  ar:['التسجيل','اليوم 185','رخصة هولندية'], pl:['meldunek','dzień 185','prawo jazdy NL'],
+  uk:['реєстрація','день 185','посвідчення NL'], ru:['регистрация','день 185','права NL'],
+  es:['registro','día 185','permiso NL'], pt:['registo','dia 185','carta NL'],
+  hi:['पंजीकरण','दिन 185','NL लाइसेंस'], vi:['đăng ký','ngày 185','bằng lái NL']
+};
+function tijdlijn185(taal){
+  const L = TL_LABELS[taal] || TL_LABELS.zh;
+  return svg('440 150','185',`
+<path d="M40 78 H400" stroke="${SOFT}" stroke-width="5" stroke-linecap="round"/>
+<path d="M40 78 H240" stroke="#1a7f5a" stroke-width="5" stroke-linecap="round"/>
+<circle cx="40" cy="78" r="9" fill="#1a7f5a"/><circle cx="240" cy="78" r="9" fill="#e5730a"/><circle cx="400" cy="78" r="9" fill="#c0392b"/>
+<text x="40" y="52" text-anchor="middle" class="mini">${L[0]}</text>
+<text x="240" y="52" text-anchor="middle" class="mini">${L[1]}</text>
+<text x="392" y="112" text-anchor="middle" class="mini">${L[2]}</text>`);
+}
+
 function figFor(step, zh){
   if(step && F[step]) return F[step];
   if(/学习方法|leermodel/i.test(zh)) return F['leermodel'];
@@ -280,4 +301,4 @@ function figFor(step, zh){
   return '';
 }
 
-module.exports = { iconFor, moduleIcon, figFor, moduleBanner };
+module.exports = { iconFor, moduleIcon, figFor, moduleBanner, tijdlijn185 };

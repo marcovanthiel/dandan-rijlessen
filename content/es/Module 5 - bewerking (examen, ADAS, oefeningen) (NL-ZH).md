@@ -20,6 +20,15 @@ económica. Lo esencial: evita meterte en situaciones peligrosas, usando mucho e
 y el paso 45 (adaptada y resuelta). Mantén siempre una observación amplia y de largo alcance (mira
 lejos, cambia la vista, mira los espejos, alterna cerca y lejos y atiende a los demás vehículos).
 
+**Consejo para el examen:** el examinador no espera perfección, espera que seas **seguro, independiente y previsible**. Recuperarte con calma tras un error pequeño demuestra más madurez al volante que no cometer ningún fallo.
+
+Lista de comprobación del día del examen (repásala la noche anterior):
+- Duerme lo suficiente; deja de repasar preguntas la última hora antes del examen.
+- Lleva: un documento de identidad válido (pasaporte o tarjeta de residencia), el certificado teórico en vigor (el sistema del CBR lo verifica de forma automática) y las gafas o lentillas (si las necesitas).
+- La declaración de salud está aprobada; la autoescuela ha confirmado el coche y la hora.
+- Llega 15 minutos antes; una vez dentro del coche, ajusta con calma la postura, los espejos y el cinturón (pasos 5-7).
+- Si te pones nervioso: respira hondo y toma el examen como "una clase normal con un invitado sentado al lado".
+
 ## B. Sistemas de asistencia y seguridad (ADAS)
 Los coches modernos llevan cada vez más sistemas de asistencia; debes conocer su funcionamiento (lee
 el manual) y asumir siempre tú la responsabilidad. En el libro se explican sobre todo estos:
@@ -39,6 +48,8 @@ el manual) y asumir siempre tú la responsabilidad. En el libro se explican sobr
 9. **Reconocimiento de señales de tráfico**: reconoce el límite de velocidad y la prohibición de
    adelantar y los muestra en el cuadro.
 10. **Aviso de tráfico transversal por detrás**: avisa al salir marcha atrás de una plaza.
+
+**Consejo para el examen:** puedes usar los sistemas de asistencia del coche del examen, pero el examinador tiene que ver que eres **tú** quien observa y decide. "El sistema no me avisó" nunca es una excusa.
 
 ## C. Ejercicios de refuerzo (Controleoefeningen)
 Son ejercicios extra que usa el instructor para comprobar si de verdad dominas cada paso y lo aplicas
@@ -63,6 +74,8 @@ Ejemplos de tipos de ejercicio:
 
 Al final del libro hay además páginas de notas y la contraportada (promoción del método, la editorial
 Vekabest y sus datos de contacto).
+
+**Consejo para el examen:** ¿crees que un paso "más o menos ya lo dominas"? Pide al instructor que te examine con el ejercicio de refuerzo correspondiente. Marca "ya lo domino" solo cuando lo apruebes, y así no te quedará ningún punto ciego antes del examen.
 
 ---
 *Con esto, todo el libro (Módulos 1 a 5 / partes 1 a 7) queda elaborado con el mismo método como material de aprendizaje original en español.*

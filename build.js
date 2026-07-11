@@ -103,6 +103,7 @@ function pageForScript(step, zh){
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function inline(s){
   s = esc(s);
+  s = s.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" rel="noopener">$1</a>');
   s = s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
   s = s.replace(/`(.+?)`/g,'<code>$1</code>');
   return s;
@@ -140,8 +141,8 @@ function splitTitle(h){ // "步骤 1 · 车外检查 (Controle buiten de auto)" 
 }
 function parseModule(file){
   const base = path.basename(file);
-  const sectie = /^Theorie/i.test(base) ? 'theorie' : 'praktijk';
-  const fnameNum = (base.match(/(?:Module|Theorie)\s*(\d+)/i)||[])[1] || '';
+  const sectie = /^Theorie/i.test(base) ? 'theorie' : (/^Info/i.test(base) ? 'info' : 'praktijk');
+  const fnameNum = (base.match(/(?:Module|Theorie|Info)\s*(\d+)/i)||[])[1] || '';
   const raw = fs.readFileSync(file,'utf8').replace(/^---[\s\S]*?---\s*/,''); // strip frontmatter
   const lines = raw.split('\n');
   let modZh='',modNl='',modNum='',intro=[]; const blocks=[];
@@ -176,7 +177,7 @@ function parseModule(file){
   if(/Slotdeel/i.test(modNl) || /Slotdeel/i.test(modZh) || /结业/.test(modZh)){ if(/结业|Slotdeel/.test(modZh)===false || /结业/.test(modZh)) modZh = /结业/.test(modZh)?'结业部分':modZh; if(/结业/.test(modZh)) modNl='Slotdeel: examen · ADAS · oefeningen'; }
   // drop empty divider blocks (no body text)
   const scripts = blocks.filter(b=>b.body.join('').trim().length>0);
-  return {modZh,modNl,modNum,intro,scripts,sectie,slug:(sectie==='theorie'?'theorie-':'module-')+(modNum||blocks.length)};
+  return {modZh,modNl,modNum,intro,scripts,sectie,slug:(sectie==='theorie'?'theorie-':(sectie==='info'?'info-':'module-'))+(modNum||blocks.length)};
 }
 
 // ---------- templates ----------
@@ -276,7 +277,8 @@ function articleHtml(m, s, taal){
     const stapw = STAPWOORD[taal] || STAPWOORD.zh;
     const zhTitle = s.zh;
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
-    const fig = G.figFor(s.step, s.zh);
+    // info-sectie: taalbewust diagram bij het 185-dagen-deel (eerste sectie)
+    const fig = (m.sectie==='info' && s.id==='sec1') ? G.tijdlijn185(taal) : G.figFor(s.step, s.zh);
     const photo = findPhoto(m, s);
     const cleanTitle = zhTitle.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*[:·]?\s*/i,'');
     const dim = photo ? imgSize(photo) : null;
@@ -445,7 +447,9 @@ function writeWorkerContent(perTaal){
       id: s.id, step: s.step||'', zh: s.zh, nl: s.nl||'', page: s.page||null,
       label: (s.step?((STAPWOORD[taal]||'Stap')+' '+s.step+' · '):'')+ s.zh.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*[:·]?\s*/i,''),
       html: articleHtml(m, s, taal),
-      preview: String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1')
+      // preview = gratis leesbaar na login; de info-sectie (rijbewijsproces) is
+      // bewust volledig gratis: praktische wegwijzer en instap voor nieuwe leden.
+      preview: m.sectie==='info' || (String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1'))
     }))
       })),
       pmap: d.pmap,

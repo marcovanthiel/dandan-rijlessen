@@ -19,6 +19,15 @@ situações perigosas, usando muito o passo 44 (defensiva) e o passo 45 (adaptad
 observação ampla e de longo alcance (olha ao longe, muda o olhar, olha os espelhos, alterna perto e longe e
 atende aos outros veículos).
 
+**Dica de exame:** o examinador não espera perfeição, espera que sejas **seguro, independente e previsível**. Recuperares com calma depois de um pequeno erro mostra mais maturidade ao volante do que não cometeres erro nenhum.
+
+Lista de verificação do dia do exame (passa-a na véspera à noite):
+- Dorme o suficiente; na última hora antes do exame não voltes a fazer perguntas de treino.
+- Leva contigo: um documento de identificação válido (passaporte/cartão de residência), o certificado teórico dentro do prazo de validade (o sistema do CBR verifica-o automaticamente) e óculos/lentes de contacto (se precisares).
+- A declaração de saúde já foi aprovada; a escola de condução já confirmou o carro e a hora.
+- Chega 15 minutos antes; depois de entrares no carro, ajusta com calma a posição, os espelhos e o cinto (passos 5 a 7).
+- Se estiveres nervoso: respira fundo e encara o exame como "uma aula normal com um passageiro ao lado".
+
 ## B. Sistemas de assistência e segurança (ADAS)
 Os carros modernos trazem cada vez mais sistemas de assistência; deves conhecer o seu funcionamento (lê o
 manual) e assumir sempre tu a responsabilidade. No livro explicam-se sobretudo estes:
@@ -38,6 +47,8 @@ manual) e assumir sempre tu a responsabilidade. No livro explicam-se sobretudo e
 9. **Reconhecimento de sinais de trânsito**: reconhece o limite de velocidade e a proibição de ultrapassar e
    mostra-os no painel.
 10. **Aviso de trânsito transversal por trás**: avisa ao sair de um lugar em marcha-atrás.
+
+**Dica de exame:** podes usar os sistemas de assistência do carro do exame, mas o examinador tem de ver que és **tu** a observar e a decidir. "O sistema não me avisou" nunca é uma desculpa.
 
 ## C. Exercícios de reforço (Controleoefeningen)
 São exercícios extra que o instrutor usa para verificar se dominas mesmo cada passo e o aplicas de forma
@@ -60,6 +71,8 @@ tipos de exercício:
 
 No fim do livro há ainda páginas de notas e a contracapa (promoção do método, a editora Vekabest e os seus
 contactos).
+
+**Dica de exame:** achas que um passo "já mais ou menos sabes"? Pede ao instrutor que te teste com o exercício de reforço correspondente. Só marcas "já domino" depois de passares, e assim não ficas com pontos cegos antes do exame.
 
 ---
 *Com isto, todo o livro (Módulos 1 a 5 / partes 1 a 7) fica elaborado com o mesmo método como material de aprendizagem original em português.*

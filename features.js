@@ -42,7 +42,7 @@ export function lerenBody(L, user, pas, inhoud, klaarPct, examDate, banner, verv
        <span class="vk-pijl" aria-hidden="true">▶</span>
        <span class="vk-tekst"><small>${esc(t(L, klaarPct > 0 ? 'pad.opweg' : 'quiz.start'))}</small>
        <strong lang="${lesL}">${esc(vervolg.mtitel)}</strong>
-       <span class="vk-deel">${vervolg.sectie === 'theorie' ? '📘' : '🚗'} ${esc(t(L, 'module.kicker', { n: vervolg.num }))} · ${esc(vervolg.plabel)}</span></span>
+       <span class="vk-deel">${vervolg.sectie === 'theorie' ? '📘' : (vervolg.sectie === 'info' ? '🧭' : '🚗')} ${esc(t(L, 'module.kicker', { n: vervolg.num }))} · ${esc(vervolg.plabel)}</span></span>
        <span class="vk-ga" aria-hidden="true">→</span></a>`
     : '';
   // Samenvattingskaart per sectie (geen wall of modules meer; die staan links).
@@ -56,14 +56,14 @@ export function lerenBody(L, user, pas, inhoud, klaarPct, examDate, banner, verv
     return `<section class="sectiekaart" id="${sec}">
       <div class="sk-kop"><span class="sk-ico" aria-hidden="true">${ico}</span><h2>${esc(t(L, 'sectie.' + sec))}</h2><span class="sk-pct">${pct}%</span></div>
       <div class="balkje" aria-hidden="true"><span style="width:${pct}%"></span></div>
-      <div class="sk-meta">✓ ${modAf}/${ms.length} · ${esc(sec === 'theorie' ? t(L, 'nav.theorie') : t(L, 'nav.praktijk'))}</div>
+      <div class="sk-meta">✓ ${modAf}/${ms.length} · ${esc(sec === 'theorie' ? t(L, 'nav.theorie') : (sec === 'info' ? t(L, 'sectie.info') : t(L, 'nav.praktijk')))}</div>
       <a class="cta klein" href="${doel}">${esc(t(L, klaarPct > 0 ? 'lock.bekijk' : 'quiz.start'))} →</a>
     </section>`;
   };
   return `<div class="modbanner">${banner}</div>
   <div class="dash-head"><h1>${esc(t(L, 'leren.kop'))}</h1></div>
   ${status}${schema}${verder}
-  <div class="sectiekaarten">${secKaart('praktijk', '🚗')}${secKaart('theorie', '📘')}</div>
+  <div class="sectiekaarten">${secKaart('praktijk', '🚗')}${secKaart('theorie', '📘')}${secKaart('info', '🧭')}</div>
   <div class="dash-tools">
     <a class="tool" href="/oefenexamen"><span aria-hidden="true">🎓</span>${esc(t(L, 'nav.examen'))}</a>
     <a class="tool" href="/begrippen"><span aria-hidden="true">🗂️</span>${esc(t(L, 'nav.begrippen'))}</a>

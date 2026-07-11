@@ -15,6 +15,15 @@ Egzamin obejmuje **manewry szczególne**, na przykład zawracanie półokręgiem
 Rzecz najważniejsza: unikaj wpadania w niebezpieczne sytuacje, korzystaj często z kroku 44 (jazda defensywna) i kroku 45 (jazda dostosowana i zdecydowana).
 Stale obserwuj szeroko i daleko (patrz daleko, zmieniaj punkt patrzenia, spoglądaj w lusterka, na przemian blisko i daleko, zwracaj uwagę na inne pojazdy).
 
+**Wskazówka egzaminacyjna:** Egzaminator nie oczekuje perfekcji, lecz jazdy **bezpiecznej, samodzielnej i przewidywalnej**. Spokojne pozbieranie się po drobnym błędzie świadczy o dojrzałości za kierownicą lepiej niż jazda bez żadnej pomyłki.
+
+Lista kontrolna na dzień egzaminu (przejrzyj ją wieczorem poprzedniego dnia):
+- Wyśpij się; na godzinę przed egzaminem odłóż rozwiązywanie testów.
+- Zabierz ze sobą: ważny dokument tożsamości (paszport lub karta pobytu), aktualny certyfikat zdania egzaminu teoretycznego (system CBR sprawdza go automatycznie), okulary lub soczewki kontaktowe (jeśli są potrzebne).
+- Deklaracja zdrowotna jest zatwierdzona; szkoła jazdy potwierdziła samochód i godzinę.
+- Przyjedź 15 minut wcześniej; po wsiadaniu spokojnie wyreguluj pozycję siedzenia, lusterka i pas (kroki 5-7).
+- Gdy się denerwujesz: weź głęboki oddech i potraktuj egzamin jak „zwykłą lekcję, na której obok siedzi gość".
+
 ## B. Systemy wspomagające i bezpieczeństwa · ADAS
 Nowoczesne samochody mają coraz więcej systemów wspomagających; musisz rozumieć, jak działają (przeczytaj instrukcję), i zawsze sam odpowiadasz. W podręczniku omawiamy przede wszystkim:
 
@@ -29,6 +38,8 @@ Nowoczesne samochody mają coraz więcej systemów wspomagających; musisz rozum
 9. **Rozpoznawanie znaków drogowych**: rozpoznaje ograniczenia prędkości i zakaz wyprzedzania oraz pokazuje je na desce rozdzielczej.
 10. **Ostrzeganie o pojazdach nadjeżdżających z boku z tyłu**: sygnalizuje podczas wyjeżdżania tyłem.
 
+**Wskazówka egzaminacyjna:** Systemów wspomagających w samochodzie egzaminacyjnym możesz używać, ale egzaminator musi widzieć, że to **ty** obserwujesz i podejmujesz decyzje. „System mnie nie ostrzegł" nigdy nie jest usprawiedliwieniem.
+
 ## C. Ćwiczenia utrwalające · Controleoefeningen
 Dodatkowe ćwiczenia, którymi instruktor sprawdza, czy naprawdę opanowałeś każdy krok i stosujesz go automatycznie, uporządkowane według kroków (1-40), plus osobny zestaw **ćwiczeń ADAS**. Przykładowe rodzaje ćwiczeń:
 - **Kontrola (kroki 1 i 2)**: instruktor stwarza zakłócenie (nawiew ciepłego powietrza na maksa, zasłonięte szyby, luźne przedmioty), a ty masz je wykryć.
@@ -40,6 +51,8 @@ Dodatkowe ćwiczenia, którymi instruktor sprawdza, czy naprawdę opanowałeś k
 - **Ćwiczenia ADAS**: na zamkniętym placu wywołaj hamowanie awaryjne; ustaw ACC i opisz jego działanie; czujniki cofania; porównaj rozpoznawanie znaków z własną oceną.
 
 Na końcu podręcznika są jeszcze strony na notatki i tylna okładka (informacja o metodzie, wydawca Vekabest oraz dane kontaktowe).
+
+**Wskazówka egzaminacyjna:** Masz wrażenie, że któryś krok „mniej więcej umiesz"? Poproś instruktora, aby sprawdził cię odpowiednim ćwiczeniem utrwalającym. Dopiero po zaliczeniu zaznacz „opanowane", a przed egzaminem nie zostaną żadne białe plamy.
 
 ---
 *W ten sposób cały podręcznik (moduły od pierwszego do piątego / części od pierwszej do siódmej) został opracowany w jednolity sposób jako oryginalny materiał lekcyjny.*
