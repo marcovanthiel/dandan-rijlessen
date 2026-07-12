@@ -34,3 +34,9 @@ Elke aanname: tijdstip · keuze · motivering · alternatief. Bij "besluit Marco
 - **11:20 · Keuze:** verificatie per loop = build-check + `valideer-taal.sh` + geautomatiseerde linkcheck + live HTTP-check + statische controle (regex) op contrast/lang/overflow-risico's. Volledige visuele/pixel-QA en 360px-rendering vereist een browser die in deze omgeving ontbreekt; die punten worden gemarkeerd als "visueel te reviewen door Marco" in EINDRAPPORT.
 - **Motivering:** eerlijk over wat wél/niet headless verifieerbaar is; liever een veilige, controleerbare wijziging dan een blind gedeployde redesign die de paywall breekt.
 - **Alternatief:** grote visuele redesign blind deployen — afgewezen (betalende gebruikers, §10).
+
+## A2-update (13-7) — auto B gesplitst + prijzen definitief (besluit Marco)
+- **Besluit Marco:** auto rijbewijs B = **twee losse modules**: theorie-examen en praktijk-examen. Prijs: elk **€18/mnd**, **samen €24/mnd** (bundel, €12 korting). Overige: AM €8, A/motor €12, BE €8. Elke module: **1 gratis proefles**.
+- **Scopes:** `b-theorie`, `b-praktijk`, bundel `b` (dekt beide), `am`/`motor`/`be`, `all` (grandfather). Info-wegwijzer = `free` (altijd gratis). `magSectie` met SCOPE_DEKT; logica met 8 scenario's getest.
+- **Landing:** goedgekeurde moderne layout toegepast (gescoped `.lp`): aurora-hero + glas-rijbewijskaart + rijbewijs-kiezer + stappen + trust + dark mode. Live geverifieerd met Playwright-screenshots (desktop/mobiel/dark; geen 360px-overflow).
+- **Openstaand:** publieke checkout/`/prijzen` per variant met de nieuwe prijzen (nu toont /prijzen nog de oude duur-passen €18/38/58/88; betalen loopt via admin/voucher, WeChat pending). 6 nieuwe i18n-keys → native review. Aparte theorie/praktijk-verkoop werkt al via admin-scope.

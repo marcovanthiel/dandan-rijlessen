@@ -51,3 +51,10 @@ _(per theoriehoofdstuk: onderwerp → gewenst diagram → status)_
 ## Deelopdracht B — visualisaties
 - [x] **P2** Eigen theorie-diagrammen (remweg h.5, dode hoek h.8, voorrang-kruispunt h.2), taalonafhankelijk per hoofdstuk, labels per lestaal. Commit 725762a.
 - [ ] **P2** Meer diagrammen (rotonde-rijstrook, inhalen, borden-overzicht) voor overige hoofdstukken.
+
+## Landing-redesign + auto-split (13-7, commit c23f2dd)
+- [x] **P1** Moderne landing live (aurora-hero, glas-kaart, rijbewijs-kiezer, stappen, trust, dark mode), gescoped `.lp`. Research toegepast; skill `webvormgeving` gemaakt. Playwright-verificatie desktop/mobiel/dark.
+- [x] **P1** Auto B gesplitst in b-theorie/b-praktijk + bundel `b`; prijzen 18/18/24 · AM 8 · A 12 · BE 8; 1 gratis proefles per module. Access-logica getest (8 scenario's).
+- [ ] **P1** Publieke checkout per variant met nieuwe prijzen (prijzenBody + /bestellen scope-bewust); nu nog admin/voucher. Betaalprovider (WeChat/Alipay) pending.
+- [ ] **P2** /prijzen-pagina en siteHeader-navlabel gelijktrekken met de nieuwe kiezer (nu nog oude PASSEN/label).
+- [ ] **P2** Native review van de 6 nieuwe landing-i18n-keys (nav.auto, landing.proefles/samen/kies/kieskop/hoekop).
