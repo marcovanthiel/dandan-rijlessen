@@ -492,3 +492,6 @@ header.site :focus-visible,.hero :focus-visible{outline-color:var(--dd-geel)}
 @media(max-width:620px){.lp-plans,.lp-steps,.lp-trust{grid-template-columns:1fr}.lp-trust{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){.lp *{transition:none!important}}
 @media(prefers-color-scheme:dark){.lp{--sf:#111f31;--sf2:#16243c;--pap:#0a1220;--ink:#e7edf7;--mut:#9db0cd;--rand:rgba(255,255,255,.09)}.lp-gratis{background:#10321f}.lp-note{background:#2a2410;border-color:#5f5220;color:#f0dca0}}
+.lp-knop2{background:var(--sf2);color:var(--ink)!important;border:1px solid var(--rand);border-radius:10px;padding:8px 10px;font-weight:700;font-size:.82rem;cursor:pointer;flex:1;transition:border-color .15s}
+.lp-knop2:hover{border-color:var(--n)}
+.lp-los{display:flex;gap:8px;margin-top:8px}

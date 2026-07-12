@@ -9,6 +9,14 @@ export const PASSEN = [
   { kind: '1m', mnd: 1, eur: 18 }, { kind: '3m', mnd: 3, eur: 38 },
   { kind: '6m', mnd: 6, eur: 58 }, { kind: '12m', mnd: 12, eur: 88 },
 ];
+// Per-rijbewijs producten (maandpas). Auto B splitst in theorie/praktijk + bundel.
+export const PRODUCTEN = [
+  { scope: 'b', eur: 24, ico: '🚗', code: 'B', feat: true, split: true },
+  { scope: 'am', eur: 8, ico: '🛵', code: 'AM' },
+  { scope: 'motor', eur: 12, ico: '🏍️', code: 'A' },
+  { scope: 'be', eur: 8, ico: '🚚', code: 'BE' },
+];
+export const PRIJS = { b: 24, 'b-theorie': 18, 'b-praktijk': 18, am: 8, motor: 12, be: 8 };
 // onderwerp -> theoriehoofdstuk (voor foutenanalyse-links)
 export const OND_HOOFDSTUK = {
   wetgeving: 'theorie-1', voorrang: 'theorie-2', borden: 'theorie-3', lichten: 'theorie-4',
@@ -184,20 +192,36 @@ export function begrippenBody(L) {
 
 // ---------- prijzen / bestellen / betalen ----------
 export function prijzenBody(L, user) {
-  const kaarten = PASSEN.map((p, i) => `<div class="prijskaart${i === 1 ? ' aanbevolen' : ''}">
-    ${i === 1 ? `<span class="ribbon">${esc(t(L, 'prijs.populair'))}</span>` : ''}
-    <div class="prijs-mnd">${p.mnd === 1 ? esc(t(L, 'landing.mnd1')) : esc(t(L, 'landing.mnd', { n: p.mnd }))}</div>
-    <div class="prijs-eur">€ ${p.eur}</div>
-    ${user ? `<form method="post" action="/bestellen"><button name="kind" value="${p.kind}" class="cta">${esc(t(L, 'prijs.kies'))}</button></form>`
-           : `<a class="cta" href="/login">${esc(t(L, 'prijs.eerstaccount'))}</a>`}
-  </div>`).join('');
-  return `<h1>${esc(t(L, 'landing.prijskop'))}</h1>
-  <div class="prijsgrid">${kaarten}</div>
-  <div class="note">${esc(t(L, 'landing.betaal'))}</div>
-  <h2>${esc(t(L, 'voucher.kop'))}</h2>
-  ${user ? `<form method="post" action="/voucher" class="authform rij">
-    <label>${esc(t(L, 'voucher.code'))} <input name="code" required maxlength="20" style="text-transform:uppercase"></label>
-    <button>${esc(t(L, 'voucher.inwisselen'))}</button></form>` : `<div class="note">${esc(t(L, 'voucher.login'))} <a href="/login">${esc(t(L, 'nav.login'))}</a></div>`}`;
+  const naam = (sc) => sc === 'am' ? t(L, 'sectie.am') : sc === 'motor' ? t(L, 'sectie.motor') : sc === 'be' ? t(L, 'sectie.aanhanger') : t(L, 'nav.auto');
+  const kies = (sc, label) => user
+    ? `<form method="post" action="/bestellen"><button name="scope" value="${sc}" class="lp-knop">${esc(label)} →</button></form>`
+    : `<a class="lp-knop" href="/login">${esc(t(L, 'prijs.eerstaccount'))}</a>`;
+  const autoKaart = `<div class="lp-plan lp-feat"><span class="lp-badge">★</span><div class="lp-pico">🚗</div>
+    <div><span class="lp-code">B · ${esc(t(L, 'nav.auto'))}</span><h3>${esc(t(L, 'nav.theorie'))} &amp; ${esc(t(L, 'nav.praktijk'))}</h3></div>
+    <ul><li class="lp-split">📖 ${esc(t(L, 'nav.theorie'))} <span class="lp-mp">€18<small>/mnd</small></span></li>
+      <li class="lp-split">🚗 ${esc(t(L, 'nav.praktijk'))} <span class="lp-mp">€18<small>/mnd</small></span></li></ul>
+    <div class="lp-samen"><span class="lp-slbl">${esc(t(L, 'landing.samen'))}</span><span class="lp-eur tnum">€24</span></div>
+    <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
+    ${user ? `<button form="fb" name="scope" value="b" class="lp-knop">${esc(t(L, 'landing.samen'))} €24 →</button>
+      <form id="fb" method="post" action="/bestellen"></form>
+      <div class="lp-los"><button form="ft" name="scope" value="b-theorie" class="lp-knop2">${esc(t(L, 'nav.theorie'))} €18</button><form id="ft" method="post" action="/bestellen"></form>
+      <button form="fp" name="scope" value="b-praktijk" class="lp-knop2">${esc(t(L, 'nav.praktijk'))} €18</button><form id="fp" method="post" action="/bestellen"></form></div>`
+      : `<a class="lp-knop" href="/login">${esc(t(L, 'prijs.eerstaccount'))}</a>`}
+    </div>`;
+  const varKaart = (p) => `<div class="lp-plan"><div class="lp-pico">${p.ico}</div>
+    <div><span class="lp-code">${p.code}</span><h3>${esc(naam(p.scope))}</h3></div>
+    <ul><li>${esc(naam(p.scope))}</li></ul>
+    <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
+    <div class="lp-prijs"><span class="lp-eur tnum">€${p.eur}</span><span class="lp-per">/ ${t(L, 'landing.mnd1')}</span></div>
+    ${kies(p.scope, t(L, 'landing.kies'))}</div>`;
+  const kaarten = autoKaart + PRODUCTEN.filter((p) => p.scope !== 'b').map(varKaart).join('');
+  return `<div class="lp"><div class="lp-wrap" style="padding-block:20px">
+    <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.kieskop'))}</span><h2>${esc(t(L, 'landing.prijskop'))}</h2><p>${esc(t(L, 'landing.betaal'))}</p></div>
+    <div class="lp-plans">${kaarten}</div>
+    <div class="lp-note">${esc(t(L, 'landing.betaal'))}</div>
+    <h2 style="margin-top:32px">${esc(t(L, 'voucher.kop'))}</h2>
+    ${user ? `<form method="post" action="/voucher" class="authform rij"><label>${esc(t(L, 'voucher.code'))} <input name="code" required maxlength="20" style="text-transform:uppercase"></label><button class="lp-knop" style="max-width:220px">${esc(t(L, 'voucher.inwisselen'))}</button></form>` : `<div class="lp-note">${esc(t(L, 'voucher.login'))} <a href="/login">${esc(t(L, 'nav.login'))}</a></div>`}
+  </div></div>`;
 }
 export function betaalBody(L, order) {
   return `<h1>${esc(t(L, 'betaal.kop'))}</h1>

@@ -516,11 +516,13 @@ export default {
     }
     if (pad === '/bestellen' && request.method === 'POST') {
       const f = await request.formData();
-      const p = F.PASSEN.find((x) => x.kind === String(f.get('kind')));
-      if (!p) return redirect('/prijzen');
+      const scope = String(f.get('scope') || '');
+      const eur = F.PRIJS[scope];
+      if (!eur) return redirect('/prijzen');
       const id = crypto.randomUUID();
-      await env.DB.prepare(`INSERT INTO orders (id, user_id, kind, amount_cents) VALUES (?, ?, ?, ?)`).bind(id, user.id, p.kind, p.eur * 100).run();
-      recordEvent(env, ctx, 'order', p.kind, '');
+      // order.kind bewaart de gekozen rijbewijs-scope (product); bedrag uit PRIJS.
+      await env.DB.prepare(`INSERT INTO orders (id, user_id, kind, amount_cents) VALUES (?, ?, ?, ?)`).bind(id, user.id, scope, eur * 100).run();
+      recordEvent(env, ctx, 'order', scope, '');
       return redirect('/betalen/' + id);
     }
     const bm = pad.match(/^\/betalen\/([0-9a-f-]{36})$/);
