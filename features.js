@@ -26,13 +26,12 @@ const optTekst = (v, i, L) => (v['opts_' + L] ? v['opts_' + L][i] + ' (' + v.opt
 const uitleg = (v, L) => v['uitleg_' + L] || v.uitleg_nl;
 
 // ---------- leren-overzicht: twee secties + voortgang + leerpad ----------
-export function lerenBody(L, user, pas, inhoud, klaarPct, examDate, banner, vervolg) {
-  const vol = !!pas || !!user.is_admin;
+export function lerenBody(L, user, passes, inhoud, klaarPct, examDate, banner, vervolg, mag) {
   const lesL = LESTALEN.includes(L) ? L : 'zh';
-  const status = pas
-    ? `<div class="note ok">${esc(t(L, 'leren.pas', { tot: String(pas.ends_at).slice(0, 10) }))}</div>`
-    : user.is_admin ? ''
-    : `<div class="note">${esc(t(L, 'leren.gratis'))} <a href="/prijzen">${esc(t(L, 'leren.passen'))}</a></div>`;
+  const status = user.is_admin ? ''
+    : (passes && passes.length)
+      ? `<div class="note ok">${esc(t(L, 'leren.pas', { tot: String(passes[0].ends_at).slice(0, 10) }))}</div>`
+      : `<div class="note">${esc(t(L, 'leren.gratis'))} <a href="/prijzen">${esc(t(L, 'leren.passen'))}</a></div>`;
   const schema = examDate
     ? `<div class="leerpad"><div class="ring" style="--p:${klaarPct}"><span>${klaarPct}%</span></div>
        <div><strong>${esc(t(L, 'pad.examen', { datum: examDate }))}</strong><br>${esc(t(L, klaarPct >= 90 ? 'pad.klaar' : 'pad.opweg'))}
@@ -56,11 +55,15 @@ export function lerenBody(L, user, pas, inhoud, klaarPct, examDate, banner, verv
     ms.forEach((m) => { const n = m.parts.length; tp += n; dp += Math.round((m.pct / 100) * n); if (m.pct >= 100) modAf++; });
     const pct = tp ? Math.round((dp / tp) * 100) : 0;
     const doel = '/' + (ms.find((m) => m.pct < 100) || ms[0]).slug;
-    return `<section class="sectiekaart" id="${sec}">
-      <div class="sk-kop"><span class="sk-ico" aria-hidden="true">${ico}</span><h2>${esc(t(L, 'sectie.' + sec))}</h2><span class="sk-pct">${pct}%</span></div>
+    const magSec = mag(sec);
+    const cta = magSec
+      ? `<a class="cta klein" href="${doel}">${esc(t(L, klaarPct > 0 ? 'lock.bekijk' : 'quiz.start'))} →</a>`
+      : `<a class="cta klein" href="/prijzen">🔒 ${esc(t(L, 'leren.passen'))}</a>`;
+    return `<section class="sectiekaart${magSec ? '' : ' vergrendeld'}" id="${sec}">
+      <div class="sk-kop"><span class="sk-ico" aria-hidden="true">${ico}</span><h2>${esc(t(L, 'sectie.' + sec))}</h2><span class="sk-pct">${magSec ? pct + '%' : '🔒'}</span></div>
       <div class="balkje" aria-hidden="true"><span style="width:${pct}%"></span></div>
       <div class="sk-meta">✓ ${modAf}/${ms.length} · ${esc(secLabel(L, sec))}</div>
-      <a class="cta klein" href="${doel}">${esc(t(L, klaarPct > 0 ? 'lock.bekijk' : 'quiz.start'))} →</a>
+      ${cta}
     </section>`;
   };
   return `<div class="modbanner">${banner}</div>

@@ -108,7 +108,22 @@ function overRateLimit(userId) {
   return cur > 240;
 }
 async function activePass(env, userId) {
-  return env.DB.prepare(`SELECT kind, ends_at FROM passes WHERE user_id = ? AND ends_at > datetime('now') ORDER BY ends_at DESC LIMIT 1`).bind(userId).first();
+  return env.DB.prepare(`SELECT kind, scope, ends_at FROM passes WHERE user_id = ? AND ends_at > datetime('now') ORDER BY ends_at DESC LIMIT 1`).bind(userId).first();
+}
+// Per-rijbewijs toegang: elke sectie hoort bij een rijbewijs-scope.
+const SECTIE_SCOPE = { praktijk: 'b', theorie: 'b', info: 'b', am: 'am', motor: 'motor', aanhanger: 'be' };
+async function activePasses(env, userId) {
+  return (await env.DB.prepare(`SELECT kind, scope, ends_at FROM passes WHERE user_id = ? AND ends_at > datetime('now') ORDER BY ends_at DESC`).bind(userId).all()).results || [];
+}
+// Heeft de gebruiker toegang tot een sectie? Admin altijd; anders een actieve
+// pas met scope 'all' of de scope die bij die sectie hoort.
+function magSectie(passes, isAdmin, sectie) {
+  if (isAdmin) return true;
+  const nodig = SECTIE_SCOPE[sectie] || 'b';
+  return (passes || []).some((p) => p.scope === 'all' || p.scope === nodig);
+}
+function scopeLabel(L, sc) {
+  return sc === 'all' ? t(L, 'scope.all') : sc === 'b' ? 'B' : sc === 'am' ? t(L, 'sectie.am') : sc === 'motor' ? t(L, 'sectie.motor') : sc === 'be' ? t(L, 'sectie.aanhanger') : String(sc || 'b');
 }
 function recordEvent(env, ctx, type, pad, ref) {
   ctx.waitUntil(env.DB.prepare(
@@ -179,7 +194,7 @@ const lockCard = (L, p) => `<article class="script lock" id="${p.id}">
 // Cursusnavigatie: linker menubalk met beide secties (praktijk/theorie),
 // alle modules, de actieve module gemarkeerd, en onder de actieve module de
 // onderdelen (met voortgang-vinkjes; de scrollspy in les.js licht de huidige op).
-function courseNav(L, current, mods, doneSet, vol) {
+function courseNav(L, current, mods, doneSet, mag) {
   const lesT = lesTaalVoor(L);
   const pkey = (mm, p) => `${mm.sectie[0]}:${mm.slug}:${p.id}`;
   const secties = ['praktijk', 'theorie', 'info', 'am', 'motor', 'aanhanger'].map((sec) => {
@@ -194,7 +209,7 @@ function courseNav(L, current, mods, doneSet, vol) {
       const sub = actief
         ? `<ul class="cn-parts">` + mm.parts.map((p) => {
             const done = doneSet.has(pkey(mm, p));
-            const lock = !(vol || p.preview);
+            const lock = !(mag(mm.sectie) || p.preview);
             return `<li><a href="#${p.id}" data-spy="${p.id}">${done ? '<span class="tick">✓</span> ' : ''}<span class="cn-plabel">${esc(p.label)}</span>${lock ? ' <span class="cn-lock" aria-label="vergrendeld">🔒</span>' : ''}</a></li>`;
           }).join('') + `</ul>`
         : '';
@@ -207,12 +222,13 @@ function courseNav(L, current, mods, doneSet, vol) {
   const nu = current ? `${esc(t(L, 'sectie.' + current.sectie))} · ${esc(t(L, 'module.kicker', { n: current.num }))}` : esc(t(L, 'module.crumb'));
   return `<details class="cn-box" open><summary class="cn-summary"><span class="cn-here">${esc(t(L, 'module.crumb'))}:</span> ${nu}</summary><nav class="coursenav" aria-label="${esc(t(L, 'module.crumb'))}">${secties}</nav></details>`;
 }
-function moduleBody(L, m, vol, user, doneSet) {
+function moduleBody(L, m, user, doneSet, mag) {
   const lesT = lesTaalVoor(L);
+  const vol = mag(m.sectie); // toegang tot deze rijbewijs-sectie
   const key = (p) => `${m.sectie[0]}:${m.slug}:${p.id}`;
   const afvink = (p) => `<form method="post" action="/voortgang" class="afvink"><input type="hidden" name="key" value="${key(p)}"><input type="hidden" name="terug" value="/${m.slug}#${p.id}">
     <button class="${doneSet.has(key(p)) ? 'is-af' : ''}">${doneSet.has(key(p)) ? '✓ ' + esc(t(L, 'pad.af')) : esc(t(L, 'pad.markeer'))}</button></form>`;
-  const nav = courseNav(L, m, CONTENT[lesT].modules, doneSet, vol);
+  const nav = courseNav(L, m, CONTENT[lesT].modules, doneSet, mag);
   const delen = m.parts.map((p) => (vol || p.preview ? p.html + afvink(p) : lockCard(L, p))).join('\n');
   const taalnote = L !== lesT ? `<div class="note">${esc(t(L, 'module.lestaal'))}</div>` : '';
   return `<div class="crumbs"><a href="/leren">${esc(t(L, 'module.crumb'))}</a> › ${esc(t(L, 'sectie.' + m.sectie))} › ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
@@ -353,7 +369,8 @@ export default {
     if (pad.startsWith('/img/')) return env.ASSETS.fetch(request);
     const inhoud = CONTENT[lesTaalVoor(L)];
     if (pad === '/leren') {
-      const pas = await activePass(env, user.id);
+      const passes = await activePasses(env, user.id);
+      const mag = (s) => magSectie(passes, user.is_admin, s);
       const done = new Set(((await env.DB.prepare(`SELECT part_key FROM progress WHERE user_id = ?`).bind(user.id).all()).results || []).map((r) => r.part_key));
       let totaal = 0, af = 0;
       const modsMetPct = inhoud.modules.map((m) => {
@@ -363,18 +380,17 @@ export default {
         return { ...m, pct: keys.length ? Math.round((d / keys.length) * 100) : 0 };
       });
       const klaarPct = totaal ? Math.round((af / totaal) * 100) : 0;
-      const vol = !!pas || !!user.is_admin;
       let vervolg = null;
       for (const m of modsMetPct) {
         for (const p of m.parts) {
           const k = `${m.sectie[0]}:${m.slug}:${p.id}`;
-          if ((vol || p.preview) && !done.has(k)) { vervolg = { slug: m.slug, num: m.num, sectie: m.sectie, mtitel: m.zh, pid: p.id, plabel: p.label }; break; }
+          if ((mag(m.sectie) || p.preview) && !done.has(k)) { vervolg = { slug: m.slug, num: m.num, sectie: m.sectie, mtitel: m.zh, pid: p.id, plabel: p.label }; break; }
         }
         if (vervolg) break;
       }
       recordEvent(env, ctx, 'view', '/leren', '');
-      const dash = F.lerenBody(L, user, pas, { ...inhoud, modules: modsMetPct }, klaarPct, user.exam_date, HOME_BANNER, vervolg);
-      const inner = `<div class="layout"><aside class="toc">${courseNav(L, null, modsMetPct, done, vol)}</aside><div class="dash">${dash}</div></div>`;
+      const dash = F.lerenBody(L, user, passes, { ...inhoud, modules: modsMetPct }, klaarPct, user.exam_date, HOME_BANNER, vervolg, mag);
+      const inner = `<div class="layout"><aside class="toc">${courseNav(L, null, modsMetPct, done, mag)}</aside><div class="dash">${dash}</div></div>`;
       return page(L, t(L, 'leren.kop') + ' · Dandan Drive', inner, { user, noindex: true, path: '/leren' });
     }
     if (pad === '/voortgang' && request.method === 'POST') {
@@ -398,8 +414,8 @@ export default {
       const f = await request.formData();
       const mode = String(f.get('mode') || 'examen');
       if (mode !== 'examen' && !/^onderwerp:[a-z]+$/.test(mode)) return redirect('/oefenexamen');
-      const pas = await activePass(env, user.id);
-      if (!pas && !user.is_admin && mode !== 'onderwerp:gevaar')
+      const examPasses = await activePasses(env, user.id);
+      if (!magSectie(examPasses, user.is_admin, 'theorie') && mode !== 'onderwerp:gevaar')
         return page(L, t(L, 'nav.examen'), `<h1>${esc(t(L, 'nav.examen'))}</h1><div class="note">${esc(t(L, 'quiz.pasnodig'))} <a href="/prijzen">${esc(t(L, 'leren.passen'))}</a></div>`, { user, noindex: true });
       const ids = F.stelVragenSamen(mode);
       const a = await env.DB.prepare(`INSERT INTO exam_attempts (user_id, mode, vragen) VALUES (?, ?, ?) RETURNING id`).bind(user.id, mode, JSON.stringify(ids)).first();
@@ -468,15 +484,15 @@ export default {
     if (/^\/(module|theorie|info|am|motor|aanhanger)-\d+$/.test(pad)) {
       const m = inhoud.modules.find((x) => '/' + x.slug === pad);
       if (!m) return page(L, '404', `<h1>${esc(t(L, 'p404'))}</h1>`, { user, status: 404, noindex: true });
-      const pas = await activePass(env, user.id);
-      const vol = !!pas || !!user.is_admin;
+      const passes = await activePasses(env, user.id);
+      const mag = (s) => magSectie(passes, user.is_admin, s);
       const done = new Set(((await env.DB.prepare(`SELECT part_key FROM progress WHERE user_id = ?`).bind(user.id).all()).results || []).map((r) => r.part_key));
-      recordEvent(env, ctx, vol ? 'view' : 'locked_view', pad, '');
-      return page(L, m.zh + ' · Dandan Drive', moduleBody(L, m, vol, user, done), { user, gated: true, noindex: true, path: pad });
+      recordEvent(env, ctx, mag(m.sectie) ? 'view' : 'locked_view', pad, '');
+      return page(L, m.zh + ' · Dandan Drive', moduleBody(L, m, user, done, mag), { user, gated: true, noindex: true, path: pad });
     }
     if (pad === '/boek-index') {
-      const pas = await activePass(env, user.id);
-      if (!pas && !user.is_admin) return page(L, t(L, 'boek.kop'), `<h1>${esc(t(L, 'boek.kop'))}</h1><div class="note">${esc(t(L, 'boek.pas'))} <a href="/account">${esc(t(L, 'lock.bekijk'))}</a></div>`, { user, noindex: true });
+      const boekPasses = await activePasses(env, user.id);
+      if (!magSectie(boekPasses, user.is_admin, 'praktijk')) return page(L, t(L, 'boek.kop'), `<h1>${esc(t(L, 'boek.kop'))}</h1><div class="note">${esc(t(L, 'boek.pas'))} <a href="/account">${esc(t(L, 'lock.bekijk'))}</a></div>`, { user, noindex: true });
       return page(L, t(L, 'boek.kop') + ' · Dandan Drive', boekIndexBody(L, inhoud.pmap), { user, gated: true, noindex: true, path: pad });
     }
     if (pad === '/search.json') return Response.json(inhoud.search, { headers: { 'Cache-Control': 'no-store' } });
@@ -497,7 +513,7 @@ export default {
       return redirect('/account');
     }
     if (pad === '/account' && request.method === 'GET') {
-      const pas = await activePass(env, user.id);
+      const passes = await activePasses(env, user.id);
       if (!user.ref_code) {
         user.ref_code = Array.from(crypto.getRandomValues(new Uint8Array(4))).map((b) => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('') + String(user.id % 97);
         await env.DB.prepare(`UPDATE users SET ref_code = ? WHERE id = ?`).bind(user.ref_code, user.id).run();
@@ -507,8 +523,8 @@ export default {
       return page(L, t(L, 'account.kop') + ' · Dandan Drive', `
         <h1>${esc(t(L, 'account.kop'))}</h1>
         <div class="note">${esc(user.email)}${user.is_admin ? ' · beheerder' : ''}</div>
-        ${pas ? `<div class="note">${esc(t(L, 'account.pas', { kind: pas.kind, tot: String(pas.ends_at).slice(0, 10) }))}</div>`
-          : `<div class="note">${esc(t(L, 'account.geenpas'))}</div>`}
+        ${passes.length ? `<div class="note ok">${passes.map((p) => `<div>🎫 <strong>${esc(scopeLabel(L, p.scope))}</strong> · ${esc(t(L, 'account.pas', { kind: p.kind, tot: String(p.ends_at).slice(0, 10) }))}</div>`).join('')}</div>`
+          : `<div class="note">${esc(t(L, 'account.geenpas'))} <a href="/prijzen">${esc(t(L, 'leren.passen'))}</a></div>`}
         <form method="post" action="/account/taal" class="authform rij">
           <label>${esc(t(L, 'account.taal'))} <select name="taal">${opties}</select></label>
           <button>${esc(t(L, 'account.taalopslaan'))}</button>
@@ -529,13 +545,14 @@ export default {
         const f = await request.formData();
         const actie = String(f.get('actie') || 'pas');
         const kind = String(f.get('kind') || '3m');
+        const scope = ['all', 'b', 'am', 'motor', 'be'].includes(String(f.get('scope'))) ? String(f.get('scope')) : 'all';
         const mnd = { '1m': 1, '3m': 3, '6m': 6, '12m': 12 }[kind] || 3;
         if (actie === 'pas') {
           const emails = String(f.get('email') || '').toLowerCase().split(/[\s,;]+/).filter((e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)).slice(0, 100);
           for (const email of emails) {
             let u = await env.DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
             if (!u) u = await env.DB.prepare(`INSERT INTO users (email) VALUES (?) RETURNING id`).bind(email).first();
-            await env.DB.prepare(`INSERT INTO passes (user_id, kind, ends_at, source) VALUES (?, ?, datetime('now', ?), 'admin')`).bind(u.id, kind, `+${mnd} months`).run();
+            await env.DB.prepare(`INSERT INTO passes (user_id, kind, scope, ends_at, source) VALUES (?, ?, ?, datetime('now', ?), 'admin')`).bind(u.id, kind, scope, `+${mnd} months`).run();
           }
         } else if (actie === 'voucher') {
           const aantal = Math.min(Number(f.get('aantal') || 1), 100);
@@ -565,6 +582,7 @@ export default {
         <form method="post" action="/admin" class="authform rij">
           <input type="hidden" name="actie" value="pas">
           <label>e-mail(s) <textarea name="email" rows="2" required placeholder="een@adres.nl, twee@adres.nl"></textarea></label>
+          <label>rijbewijs <select name="scope"><option value="all">alles</option><option value="b">B (auto)</option><option value="am">AM (bromfiets)</option><option value="motor">A (motor)</option><option value="be">BE (aanhanger)</option></select></label>
           <label>pas <select name="kind"><option value="1m">1 maand</option><option value="3m" selected>3 maanden</option><option value="6m">6 maanden</option><option value="12m">12 maanden</option></select></label>
           <button>toekennen</button></form>
         <h2>Vouchers (campagnes, partners, referral-beloningen)</h2>

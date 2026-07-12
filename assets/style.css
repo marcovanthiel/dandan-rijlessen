@@ -370,3 +370,6 @@ header.site :focus-visible,.hero :focus-visible{outline-color:var(--dd-geel)}
 /* pinyin-hulp op begrippenkaarten (alleen bij lestaal zh, na omdraaien) */
 .fc-pinyin{display:none;color:#5b6b7b;font-size:.8rem;font-style:italic}
 .flashcard.is-om .fc-pinyin{display:block}
+
+.sectiekaart.vergrendeld{opacity:.82}
+.sectiekaart.vergrendeld .sk-pct{color:var(--muted)}
