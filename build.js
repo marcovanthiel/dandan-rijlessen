@@ -280,7 +280,8 @@ function articleHtml(m, s, taal){
     const zhTitle = s.zh;
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
     // info-sectie: taalbewust diagram bij het 185-dagen-deel (eerste sectie)
-    const fig = (m.sectie==='info' && s.id==='sec1') ? G.tijdlijn185(taal) : G.figFor(s.step, s.zh);
+    const theoFig = (m.sectie==='theorie' && s.id==='sec1') ? G.theorieFig(m.modNum, taal) : '';
+    const fig = (m.sectie==='info' && s.id==='sec1') ? G.tijdlijn185(taal) : (theoFig || G.figFor(s.step, s.zh));
     const photo = findPhoto(m, s);
     const cleanTitle = zhTitle.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*[:·]?\s*/i,'');
     const dim = photo ? imgSize(photo) : null;

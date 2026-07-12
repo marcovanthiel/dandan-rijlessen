@@ -292,6 +292,51 @@ function tijdlijn185(taal){
 <text x="392" y="112" text-anchor="middle" class="mini">${L[2]}</text>`);
 }
 
+// ---- theorie-diagrammen: gekoppeld per hoofdstuknummer (taalonafhankelijk),
+//      labels per lestaal. Eigen SVG, rechtenvrij, meertalige aria-label. ----
+const THEO_LBL = {
+  remweg:  { zh:['反应','刹车','停车距离'], nl:['reactie','remmen','stopafstand'], en:['reaction','braking','stopping'], tr:['tepki','frenleme','durma mesafesi'], ar:['رد الفعل','الكبح','مسافة التوقف'], pl:['reakcja','hamowanie','droga zatrzymania'], uk:['реакція','гальмування','зупинка'], ru:['реакция','торможение','остановка'], es:['reacción','frenado','distancia total'], pt:['reação','travagem','distância total'], hi:['प्रतिक्रिया','ब्रेकिंग','रुकने की दूरी'], vi:['phản ứng','phanh','tổng quãng đường'] },
+  dodehoek:{ zh:['盲区'], nl:['dode hoek'], en:['blind spot'], tr:['kör nokta'], ar:['النقطة العمياء'], pl:['martwe pole'], uk:['сліпа зона'], ru:['слепая зона'], es:['ángulo muerto'], pt:['ângulo morto'], hi:['अंध क्षेत्र'], vi:['điểm mù'] },
+  voorrang:{ zh:['优先','让行'], nl:['voorrang','wachten'], en:['priority','wait'], tr:['öncelik','bekle'], ar:['أولوية','انتظر'], pl:['pierwszeństwo','czekaj'], uk:['пріоритет','чекай'], ru:['приоритет','ждите'], es:['prioridad','esperar'], pt:['prioridade','esperar'], hi:['प्राथमिकता','रुकें'], vi:['ưu tiên','chờ'] }
+};
+const tlbl = (k, taal) => (THEO_LBL[k][taal] || THEO_LBL[k].zh);
+// Remweg = reactieafstand (geel) + remweg (rood) = stopafstand.
+function figRemweg(taal){ const L = tlbl('remweg', taal);
+  return svg('460 150', L[2], `
+${roadH(20,66,420,44)}
+${carSide(90,80,0.95,'blue')}
+<rect x="140" y="112" width="90" height="11" rx="5.5" fill="#ffce3a"/>
+<rect x="230" y="112" width="180" height="11" rx="5.5" fill="#e2574c"/>
+<line x1="140" y1="104" x2="140" y2="132" stroke="${SOFT}" stroke-width="2"/>
+<line x1="230" y1="104" x2="230" y2="132" stroke="${SOFT}" stroke-width="2"/>
+<line x1="410" y1="104" x2="410" y2="132" stroke="${SOFT}" stroke-width="2"/>
+${cap(185,143,L[0],'mini')}${cap(320,143,L[1],'mini')}${cap(275,34,L[2],'mini')}`);
+}
+// Dode hoek: auto met schaduwzone rechtsachter waarin een fietser zit.
+function figDodehoek(taal){ const L = tlbl('dodehoek', taal);
+  return svg('300 200', L[0], `
+${roadV(120,10,70,180)}
+<path d="M188 96 L292 60 L292 150 L188 128 Z" fill="#c0392b" opacity="0.16"/>
+<path d="M188 96 L292 60 L292 150 L188 128 Z" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 5"/>
+${carTop(150,110,1.05,'blue')}
+${cyclistTop(232,104,1)}
+${cap(250,44,L[0],'mini')}`);
+}
+// Voorrang: kruispunt, jij wacht (geel) voor voorrangsvoertuig (blauw, pijl).
+function figVoorrang(taal){ const L = tlbl('voorrang', taal);
+  return svg('260 220', L[0], `
+${roadH(10,92,240,54)}
+${roadV(96,10,54,200)}
+${carTop(123,170,0.95,'gray')}
+<path d="M123 150 v-16" stroke="#8a6d00" stroke-width="3"/><path d="M117 140 l6 -8 l6 8 z" fill="#8a6d00"/>
+${carTop(60,119,0.95,'blue')}
+<path d="M84 119 h20" stroke="#14488f" stroke-width="4"/><path d="M100 111 l10 8 l-10 8 z" fill="#14488f"/>
+${cap(60,150,L[0],'mini')}${cap(150,196,L[1],'mini')}`);
+}
+function theorieFig(num, taal){
+  return num==='2' ? figVoorrang(taal) : num==='5' ? figRemweg(taal) : num==='8' ? figDodehoek(taal) : '';
+}
+
 function figFor(step, zh){
   if(step && F[step]) return F[step];
   if(/学习方法|leermodel/i.test(zh)) return F['leermodel'];
@@ -301,4 +346,4 @@ function figFor(step, zh){
   return '';
 }
 
-module.exports = { iconFor, moduleIcon, figFor, moduleBanner, tijdlijn185 };
+module.exports = { iconFor, moduleIcon, figFor, moduleBanner, tijdlijn185, theorieFig };
