@@ -3,7 +3,7 @@
 // e-mailcode-login via Resend, server-side gerenderde lescontent per gebruiker.
 // Taal: chrome in de voorkeurstaal (zh/nl/en, cookie dd_lang of account),
 // lestekst in de lestaal (nu zh) met nette fallback-melding.
-import { SITE, HOME_BANNER, CONTENT, LESTALEN, TOTAL_PAGES } from './worker-content.js';
+import { SITE, HOME_BANNER, CONTENT, LESTALEN, TOTAL_PAGES, ASSET_VER } from './worker-content.js';
 import { t, TALEN, TAALNAMEN } from './i18n.js';
 import * as F from './features.js';
 
@@ -41,10 +41,10 @@ function shell(L, title, body, o = {}) {
 <meta property="og:url" content="${canon}"><meta property="og:image" content="${SITE.baseUrl}/og.png">
 <meta name="twitter:card" content="summary_large_image">${hreflang}
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v=${ASSET_VER}">
 </head><body data-nl="on"${o.gated ? ' class="beschermd"' : ''}>
 <a class="skip-link" href="#inhoud">${esc(t(L, 'skip'))}</a>${body}
-<script src="/assets/search.js" defer></script><script src="/assets/interactie.js" defer></script>${o.gated ? '<script src="/assets/les.js" defer></script>' : ''}
+<script src="/assets/search.js?v=${ASSET_VER}" defer></script><script src="/assets/interactie.js?v=${ASSET_VER}" defer></script>${o.gated ? `<script src="/assets/les.js?v=${ASSET_VER}" defer></script>` : ''}
 </body></html>`;
 }
 function siteHeader(L, user, mods) {

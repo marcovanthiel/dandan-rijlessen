@@ -461,7 +461,14 @@ function writeWorkerContent(perTaal){
       search: buildSearch(d.modules)
     };
   }
+  // asset-versie voor cache-busting: verandert zodra CSS/JS wijzigt.
+  const assetVer = require('crypto').createHash('md5').update(
+    fs.readFileSync(path.join(ASSETS_SRC,'style.css'),'utf8')
+    + fs.readFileSync(path.join(ASSETS_SRC,'les.js'),'utf8')
+    + fs.readFileSync(path.join(ASSETS_SRC,'interactie.js'),'utf8')
+  ).digest('hex').slice(0,10);
   const out = '// GEGENEREERD door build.js; niet handmatig bewerken.\n'
+    + 'export const ASSET_VER = '+JSON.stringify(assetVer)+';\n'
     + 'export const SITE = '+JSON.stringify(SITE)+';\n'
     + 'export const HOME_BANNER = '+JSON.stringify(G.moduleBanner(0))+';\n'
     + 'export const CONTENT = '+JSON.stringify(inhoud)+';\n'
