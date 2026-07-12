@@ -40,3 +40,14 @@ Bevindingen uit statische audit (landing-HTML + `assets/style.css` 372 regels + 
 
 ## Onderwerpen-inventaris visualisatie (vullen in loop B)
 _(per theoriehoofdstuk: onderwerp → gewenst diagram → status)_
+
+## Verdienmodel — per-rijbewijs passen (besluit Marco 12-7)
+- [x] **P1** Toegang per rijbewijs: passen met scope (all/b/am/motor/be), `magSectie` per sectie; migratie 0003 op live-D1 (grandfather=all). Admin geeft pas per rijbewijs uit via /admin. Account toont passen met label. Logica lokaal getest (8 scenario's). Commit 26d69f9.
+- [ ] **P1 [besluit Marco]** Prijzen per variant (maandpas AM/A/BE). Nu placeholder/onbekend; uit te geven via admin tot betaalflow live is.
+- [ ] **P2** Publieke per-variant prijs-/checkout-UI (`prijzenBody` per rijbewijs, `/bestellen` met scope). Betalen loopt nog via admin/voucher (WeChat Pay pending), dus lagere urgentie.
+- [ ] **P2** Vouchers met scope (nu granten voucher-passen `all`); admin-pas met scope is het huidige per-variant-mechanisme.
+- [ ] **P1 [Marco verifieert ingelogd]** Koop→toegang-flow: B-pas geeft alleen B; variant-pas alleen die variant; admin volledig; /account toont scope. Geen headless browser in bouwomgeving.
+
+## Deelopdracht B — visualisaties
+- [x] **P2** Eigen theorie-diagrammen (remweg h.5, dode hoek h.8, voorrang-kruispunt h.2), taalonafhankelijk per hoofdstuk, labels per lestaal. Commit 725762a.
+- [ ] **P2** Meer diagrammen (rotonde-rijstrook, inhalen, borden-overzicht) voor overige hoofdstukken.

@@ -8,10 +8,12 @@ Elke aanname: tijdstip · keuze · motivering · alternatief. Bij "besluit Marco
 - **Coördinatierisico (niet in de opdracht benoemd):** twee machines die tegelijk autonoom bouwen én deployen op dit live betaalplatform botsen op git en OneDrive. **Aanname:** alleen deze machine voert de opdracht uit; de MacBook draait hem niet parallel. Vóór elke deploy: `git fetch` + rebase.
 - **Alternatief:** op de MacBook draaien — afgewezen omdat Marco de opdracht hier gaf.
 
-## A2 · Toegangsmodel nieuwe rijbewijsvarianten (besluit Marco vereist)
-- **11:20 · Keuze:** de bestaande periode-passen (€18/38/58/88) geven toegang tot **alle** rijbewijsvarianten (B + AM + A + BE); geen aparte prijs per variant in deze ronde.
-- **Motivering:** eenvoudigste model, geen wijziging aan de betaalflow (kader §4). Meerprijs per variant is een commerciële keuze.
-- **Alternatief (backlog, "besluit Marco vereist"):** aparte pas/prijs per variant, of variant-bundels. Genoteerd in VERBETERBACKLOG.
+## A2 · Toegangsmodel varianten — BESLIST DOOR MARCO (12-7): aparte pas per rijbewijs
+- **12-7 · Besluit Marco:** de cursist neemt content **per rijbewijs** af. Er is dus een **aparte (maand)pas per variant**: één voor B (auto), één voor AM, één voor A/motor, één voor BE/aanhanger. (Vervangt mijn eerdere aanname "één pas voor alles".)
+- **Implementatie:** elke pas heeft een **scope** (`all`/`b`/`am`/`motor`/`be`); migratie 0003 op live-D1 (default `all`). Toegang per sectie via `magSectie` (worker.js): admin altijd; anders een actieve pas met scope `all` of de scope die bij de sectie hoort. Sectie→scope: praktijk/theorie/info→`b`, am→`am`, motor→`motor`, aanhanger→`be`. Oefenexamen en boek-index vallen onder `b`.
+- **Grandfather:** bestaande passen kregen scope `all` (behoud volle toegang). Er waren 0 bestaande passen, dus niemand geraakt. Admin (marco@) behoudt volledige toegang.
+- **Nog open [besluit Marco]:** de **prijzen per variant** (bijv. maandpas AM/A/BE). Nu uit te geven via **/admin** (pas + rijbewijs-scope) en later via de betaalflow. Publieke per-variant prijs-UI = follow-up (betalen loopt nog via admin/voucher; WeChat Pay pending).
+- **Te verifiëren door Marco (ingelogd):** admin heeft nog volle toegang; een test-user met alleen een B-pas ziet B maar niet AM/A/BE; /account toont de pas(sen) met rijbewijs-label. (Deze bouwomgeving heeft geen ingelogde browsertest; logica is met 8 scenario's lokaal geverifieerd.)
 
 ## A3 · Bouwvolgorde varianten
 - **11:20 · Keuze:** volgorde **AM → BE → A**. AM: grootste jonge doelgroep en laagste drempel (16 jaar, veel bromfietsers). BE/code 96: veel B-rijbewijshouders met caravan/aanhanger, puur praktijk (weinig content-risico). A (motor) als laatste: meest complex (A1/A2/A-opbouw).
