@@ -452,7 +452,9 @@ function writeWorkerContent(perTaal){
       html: articleHtml(m, s, taal),
       // preview = gratis leesbaar na login; de info-sectie (rijbewijsproces) is
       // bewust volledig gratis: praktische wegwijzer en instap voor nieuwe leden.
-      preview: m.sectie==='info' || (['am','motor','aanhanger'].includes(m.sectie) && s.id==='sec1') || (String(m.modNum)==='1' && (m.sectie==='praktijk' ? (s.id==='leermodel' || s.id==='s1') : s.id==='sec1'))
+      // 1 gratis proefles per rijbewijs-module: info volledig gratis; praktijk = leermodel;
+      // theorie/AM/motor/aanhanger = eerste onderdeel (sec1).
+      preview: m.sectie==='info' || (String(m.modNum)==='1' && (m.sectie==='praktijk' ? s.id==='leermodel' : s.id==='sec1')) || (['am','motor','aanhanger'].includes(m.sectie) && s.id==='sec1')
     }))
       })),
       pmap: d.pmap,

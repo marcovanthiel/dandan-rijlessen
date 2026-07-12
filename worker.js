@@ -110,20 +110,31 @@ function overRateLimit(userId) {
 async function activePass(env, userId) {
   return env.DB.prepare(`SELECT kind, scope, ends_at FROM passes WHERE user_id = ? AND ends_at > datetime('now') ORDER BY ends_at DESC LIMIT 1`).bind(userId).first();
 }
-// Per-rijbewijs toegang: elke sectie hoort bij een rijbewijs-scope.
-const SECTIE_SCOPE = { praktijk: 'b', theorie: 'b', info: 'b', am: 'am', motor: 'motor', aanhanger: 'be' };
+// Per-rijbewijs toegang. Auto B is gesplitst in twee losse modules:
+// theorie-examen (b-theorie) en praktijk-examen (b-praktijk). De info-wegwijzer
+// is gratis. Een pas-scope 'dekt' een set secties:
+const SECTIE_SCOPE = { theorie: 'b-theorie', praktijk: 'b-praktijk', info: 'free', am: 'am', motor: 'motor', aanhanger: 'be' };
+const SCOPE_DEKT = {
+  all: ['b-theorie', 'b-praktijk', 'am', 'motor', 'be'], // bestaande/admin passen (grandfather)
+  b: ['b-theorie', 'b-praktijk'],                        // auto-bundel (theorie + praktijk samen)
+  'b-theorie': ['b-theorie'], 'b-praktijk': ['b-praktijk'],
+  am: ['am'], motor: ['motor'], be: ['be'],
+};
 async function activePasses(env, userId) {
   return (await env.DB.prepare(`SELECT kind, scope, ends_at FROM passes WHERE user_id = ? AND ends_at > datetime('now') ORDER BY ends_at DESC`).bind(userId).all()).results || [];
 }
-// Heeft de gebruiker toegang tot een sectie? Admin altijd; anders een actieve
-// pas met scope 'all' of de scope die bij die sectie hoort.
+// Toegang tot een sectie? Admin altijd; info is gratis; anders een actieve pas
+// waarvan de scope de vereiste sectie-scope dekt.
 function magSectie(passes, isAdmin, sectie) {
   if (isAdmin) return true;
-  const nodig = SECTIE_SCOPE[sectie] || 'b';
-  return (passes || []).some((p) => p.scope === 'all' || p.scope === nodig);
+  const nodig = SECTIE_SCOPE[sectie] || 'b-theorie';
+  if (nodig === 'free') return true;
+  return (passes || []).some((p) => (SCOPE_DEKT[p.scope] || [p.scope]).includes(nodig));
 }
 function scopeLabel(L, sc) {
-  return sc === 'all' ? t(L, 'scope.all') : sc === 'b' ? 'B' : sc === 'am' ? t(L, 'sectie.am') : sc === 'motor' ? t(L, 'sectie.motor') : sc === 'be' ? t(L, 'sectie.aanhanger') : String(sc || 'b');
+  return sc === 'all' ? t(L, 'scope.all')
+    : sc === 'b' ? 'Auto (theorie + praktijk)' : sc === 'b-theorie' ? 'Auto · theorie' : sc === 'b-praktijk' ? 'Auto · praktijk'
+    : sc === 'am' ? t(L, 'sectie.am') : sc === 'motor' ? t(L, 'sectie.motor') : sc === 'be' ? t(L, 'sectie.aanhanger') : String(sc || 'b');
 }
 function recordEvent(env, ctx, type, pad, ref) {
   ctx.waitUntil(env.DB.prepare(
@@ -155,25 +166,73 @@ async function mailCode(env, L, email, code) {
 
 // ---------- landing ----------
 function landingBody(L, reviewsHtml) {
-  const kaarten = F.PASSEN.map((p) => `<div class="card" style="text-align:center"><div class="mnum">${p.mnd}</div>
-    <h3>€ ${p.eur}</h3><div class="count">${esc(p.mnd === 1 ? t(L, 'landing.mnd1') : t(L, 'landing.mnd', { n: p.mnd }))}</div></div>`).join('');
   const taalkeuze = TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="is-actief"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join(' · ');
-  return `
-  <section class="hero"><div class="container">
-    <div class="pill">rijbewijs B · 荷兰驾照</div>
-    <h1>${esc(t(L, 'landing.titel'))}</h1>
-    <p>${esc(t(L, 'landing.sub'))}</p>
-    <p><a class="cta" href="/login">${esc(t(L, 'landing.proef'))} →</a></p>
-    <p class="landtaal">${taalkeuze}</p>
+  const glasrij = [['🚗', t(L, 'nav.auto'), 'B', '€18'], ['🛵', t(L, 'sectie.am'), 'AM', '€8'], ['🏍️', t(L, 'sectie.motor'), 'A', '€12'], ['🚚', t(L, 'sectie.aanhanger'), 'BE', '€8']]
+    .map(([e, n, , pr]) => `<a class="lp-hglink" href="/login"><span class="lp-em">${e}</span><span class="lp-tt"><b>${esc(n)}</b></span><span class="lp-pr">${pr}<small>/mnd</small></span></a>`).join('');
+  const variant = (e, code, titel, feats, eur, cta) => `<div class="lp-plan"><div class="lp-pico">${e}</div>
+    <div><span class="lp-code">${esc(code)}</span><h3>${esc(titel)}</h3></div>
+    <ul>${feats.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
+    <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
+    <div class="lp-prijs"><span class="lp-eur tnum">${eur}</span><span class="lp-per">/ ${t(L, 'landing.mnd1')}</span></div>
+    <a class="lp-knop" href="/login">${esc(cta)} →</a></div>`;
+  return `<div class="lp">
+  <section class="lp-hero"><div class="lp-hwrap">
+    <div>
+      <span class="lp-pill">🇳🇱 · <b>11</b> 🗣️</span>
+      <h1>${esc(t(L, 'landing.titel'))}</h1>
+      <p class="lp-lead">${esc(t(L, 'landing.sub'))}</p>
+      <a class="lp-cta" href="/login">${esc(t(L, 'landing.proef'))} →</a>
+      <div class="lp-stat"><div><b>11</b> 🗣️</div><div><b>4</b> 🚗</div><div><b>85+</b> 🎓</div></div>
+      <p class="lp-talen">${taalkeuze}</p>
+    </div>
+    <aside class="lp-glass" aria-label="${esc(t(L, 'landing.kieskop'))}">
+      <div class="lp-gkop">${esc(t(L, 'landing.kieskop'))}</div>${glasrij}
+    </aside>
   </div></section>
-  <div class="modbanner">${HOME_BANNER}</div>
-  <ul class="usps"><li>${esc(t(L, 'landing.usp1'))}</li><li>${esc(t(L, 'landing.usp2'))}</li><li>${esc(t(L, 'landing.usp3'))}</li></ul>
-  <h2 style="margin-top:28px">${esc(t(L, 'landing.prijskop'))}</h2>
-  <div class="grid">${kaarten}</div>
-  <div class="note">${esc(t(L, 'landing.betaal'))}</div>
-  <div class="note boektip">📖 ${esc(t(L, 'boektip'))} <a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a></div>
-  ${reviewsHtml || ''}
-  <p style="margin-top:22px"><a href="/partner">${esc(t(L, 'nav.partner'))}</a></p>`;
+
+  <section class="lp-blk" id="kiezer"><div class="lp-wrap">
+    <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.kieskop'))}</span><h2>${esc(t(L, 'landing.prijskop'))}</h2><p>${esc(t(L, 'landing.betaal'))}</p></div>
+    <div class="lp-plans">
+      <div class="lp-plan lp-feat"><span class="lp-badge">★</span><div class="lp-pico">🚗</div>
+        <div><span class="lp-code">B · ${esc(t(L, 'nav.auto'))}</span><h3>${esc(t(L, 'nav.theorie'))} &amp; ${esc(t(L, 'nav.praktijk'))}</h3></div>
+        <ul>
+          <li class="lp-split">📖 ${esc(t(L, 'nav.theorie'))} <span class="lp-mp">€18<small>/mnd</small></span></li>
+          <li class="lp-split">🚗 ${esc(t(L, 'nav.praktijk'))} <span class="lp-mp">€18<small>/mnd</small></span></li>
+        </ul>
+        <div class="lp-samen"><span class="lp-slbl">${esc(t(L, 'landing.samen'))}</span><span class="lp-eur tnum">€24</span></div>
+        <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
+        <a class="lp-knop" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>
+      ${variant('🛵', 'AM', t(L, 'sectie.am'), [t(L, 'sectie.am')], '€8', t(L, 'landing.kies'))}
+      ${variant('🏍️', 'A', t(L, 'sectie.motor'), [t(L, 'sectie.motor')], '€12', t(L, 'landing.kies'))}
+      ${variant('🚚', 'BE', t(L, 'sectie.aanhanger'), [t(L, 'sectie.aanhanger')], '€8', t(L, 'landing.kies'))}
+    </div>
+    <div class="lp-note">${esc(t(L, 'landing.betaal'))}</div>
+  </div></section>
+
+  <section class="lp-blk lp-alt" id="hoe"><div class="lp-wrap">
+    <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.hoekop'))}</span><h2>${esc(t(L, 'landing.hoekop'))}</h2></div>
+    <div class="lp-steps">
+      <div class="lp-step"><div class="lp-bar"></div><h3>${esc(t(L, 'sectie.theorie'))}</h3><p>${esc(t(L, 'landing.usp1'))}</p></div>
+      <div class="lp-step"><div class="lp-bar"></div><h3>${esc(t(L, 'nav.examen'))}</h3><p>${esc(t(L, 'landing.usp3'))}</p></div>
+      <div class="lp-step"><div class="lp-bar"></div><h3>${esc(t(L, 'sectie.praktijk'))}</h3><p>${esc(t(L, 'landing.usp2'))}</p></div>
+    </div>
+  </div></section>
+
+  <section class="lp-blk"><div class="lp-wrap"><div class="lp-gband">
+    <span class="lp-gem">✦</span><div><h3>${esc(t(L, 'landing.proefles'))}</h3><p>${esc(t(L, 'landing.sub'))}</p></div>
+    <a class="lp-cta" href="/login">${esc(t(L, 'landing.proef'))} →</a>
+  </div></div></section>
+
+  <section class="lp-blk lp-alt"><div class="lp-wrap">
+    <div class="lp-trust"><div><div class="lp-n tnum">11</div><div class="lp-l">🗣️</div></div>
+      <div><div class="lp-n tnum">4</div><div class="lp-l">🚗🛵🏍️🚚</div></div>
+      <div><div class="lp-n tnum">85+</div><div class="lp-l">🎓</div></div>
+      <div><div class="lp-n tnum">100%</div><div class="lp-l">✦</div></div></div>
+    <p class="lp-bron">CBR · RDW · Rijksoverheid · RIS</p>
+    <p style="text-align:center;margin-top:16px"><a class="lp-mut" href="/boek" rel="nofollow">📖 ${esc(t(L, 'boektip.link'))}</a> · <a class="lp-mut" href="/partner">${esc(t(L, 'nav.partner'))}</a></p>
+    ${reviewsHtml || ''}
+  </div></section>
+  </div>`;
 }
 
 // ---------- lespagina's ----------
@@ -545,7 +604,7 @@ export default {
         const f = await request.formData();
         const actie = String(f.get('actie') || 'pas');
         const kind = String(f.get('kind') || '3m');
-        const scope = ['all', 'b', 'am', 'motor', 'be'].includes(String(f.get('scope'))) ? String(f.get('scope')) : 'all';
+        const scope = ['all', 'b', 'b-theorie', 'b-praktijk', 'am', 'motor', 'be'].includes(String(f.get('scope'))) ? String(f.get('scope')) : 'all';
         const mnd = { '1m': 1, '3m': 3, '6m': 6, '12m': 12 }[kind] || 3;
         if (actie === 'pas') {
           const emails = String(f.get('email') || '').toLowerCase().split(/[\s,;]+/).filter((e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)).slice(0, 100);
@@ -582,7 +641,7 @@ export default {
         <form method="post" action="/admin" class="authform rij">
           <input type="hidden" name="actie" value="pas">
           <label>e-mail(s) <textarea name="email" rows="2" required placeholder="een@adres.nl, twee@adres.nl"></textarea></label>
-          <label>rijbewijs <select name="scope"><option value="all">alles</option><option value="b">B (auto)</option><option value="am">AM (bromfiets)</option><option value="motor">A (motor)</option><option value="be">BE (aanhanger)</option></select></label>
+          <label>rijbewijs <select name="scope"><option value="all">alles</option><option value="b">Auto — theorie + praktijk (bundel)</option><option value="b-theorie">Auto — theorie-examen</option><option value="b-praktijk">Auto — praktijk-examen</option><option value="am">AM (bromfiets)</option><option value="motor">A (motor)</option><option value="be">BE (aanhanger)</option></select></label>
           <label>pas <select name="kind"><option value="1m">1 maand</option><option value="3m" selected>3 maanden</option><option value="6m">6 maanden</option><option value="12m">12 maanden</option></select></label>
           <button>toekennen</button></form>
         <h2>Vouchers (campagnes, partners, referral-beloningen)</h2>
