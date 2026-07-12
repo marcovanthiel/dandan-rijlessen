@@ -139,3 +139,40 @@ live op dandan-rijlessen.pages.dev) is in het platform geïntegreerd:
   veiligheidsklep in build.js laat een taal zonder Info-bestand niet meebouwen.
 - De statische site op dandan-rijlessen.pages.dev staat hier los van; besluit over
   uitzetten/doorverwijzen ligt bij Marco.
+
+## Architectuur-update 13-7-2026
+
+**Rijbewijsvarianten.** Naast B (praktijk/theorie/info) zijn er secties `am`,
+`motor`, `aanhanger`. Content-parser (build.js) leidt de sectie af uit de
+bestandsnaam-prefix (Module/Theorie/Info/AM/Motor/Aanhanger); slug = `<prefix>-N`.
+De **veiligheidsklep** rekent alleen KERN-modules (niet-variant) mee voor
+taal-compleetheid, zodat variant-content per taal incrementeel toegevoegd mag.
+
+**Per-module toegang (paywall).** Passen hebben een `scope` (kolom, migratie
+`0003-pas-scope.sql`, default `all`). `SCOPE_DEKT` (worker.js) mapt scope → set
+secties: `all`=alles (grandfather/admin), `b`=auto-bundel (b-theorie+b-praktijk),
+`b-theorie`, `b-praktijk`, `am`, `motor`, `be`. Sectie→scope: theorie=b-theorie,
+praktijk=b-praktijk, **info=free** (altijd gratis), varianten=zichzelf.
+`magSectie(passes,isAdmin,sectie)` bepaalt toegang. Migraties toepassen met
+`wrangler d1 execute dandandrive --remote --file=migrations/000X-*.sql`
+(CLOUDFLARE_API_TOKEN uit `~/.cf-token`).
+
+**Prijzen (besluit Marco):** auto theorie €18 + praktijk €18, samen €24; AM €8,
+A €12, BE €8. `F.PRODUCTEN`/`F.PRIJS` in features.js; `/bestellen` verwerkt scope.
+Betaalprovider (WeChat/Alipay) pending → passen via /admin (scope-selector) of voucher.
+
+**Landing (moderne redesign).** `landingBody` in worker.js, CSS gescoped onder
+**`.lp`** in `assets/style.css` (aurora-hero, glas-rijbewijskaart, kiezer met
+✓-features, taalkeuze-chips, stappen, trust, dark mode). Identiteit "Onderweg":
+nachtblauw `#07152b` + wegmarkering-geel `#ffcf2e`. Ontwerp-aanpak in de skill
+`webvormgeving`; visueel verifiëren met Playwright-screenshots vóór deploy.
+
+**Cache-busting (belangrijk).** build.js schrijft `ASSET_VER` (md5 van
+style.css+les.js+interactie.js) in worker-content.js; de shell hangt
+`?v=${ASSET_VER}` aan álle asset-URL's. **Wijzig CSS/JS altijd via een `node
+build.js`-run** zodat de hash meebeweegt — anders zien terugkerende bezoekers een
+gecachete oude stylesheet (ongestylede pagina).
+
+**i18n.** `i18n.js` is GEGENEREERD uit de i18n-werkmap. Handmatig toegevoegde keys
+(nav/sectie/scope/landing.*) ook in de werkmap zetten, anders vallen ze bij
+regeneratie weg (`t()` valt terug op zh). Native review van AI-vertalingen openstaand.
