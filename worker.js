@@ -169,12 +169,13 @@ function landingBody(L, reviewsHtml) {
   const taalkeuze = TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="is-actief"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join(' · ');
   const glasrij = [['🚗', t(L, 'nav.auto'), 'B', '€18'], ['🛵', t(L, 'sectie.am'), 'AM', '€8'], ['🏍️', t(L, 'sectie.motor'), 'A', '€12'], ['🚚', t(L, 'sectie.aanhanger'), 'BE', '€8']]
     .map(([e, n, , pr]) => `<a class="lp-hglink" href="/login"><span class="lp-em">${e}</span><span class="lp-tt"><b>${esc(n)}</b></span><span class="lp-pr">${pr}<small>/mnd</small></span></a>`).join('');
-  const variant = (e, code, titel, feats, eur, cta) => `<div class="lp-plan"><div class="lp-pico">${e}</div>
+  const feats = `<ul><li>${esc(t(L, 'landing.feat1'))}</li><li>${esc(t(L, 'landing.feat2'))}</li><li>${esc(t(L, 'landing.feat3'))}</li></ul>`;
+  const variant = (e, code, titel, eur) => `<div class="lp-plan"><div class="lp-pico">${e}</div>
     <div><span class="lp-code">${esc(code)}</span><h3>${esc(titel)}</h3></div>
-    <ul>${feats.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
+    ${feats}
     <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
     <div class="lp-prijs"><span class="lp-eur tnum">${eur}</span><span class="lp-per">/ ${t(L, 'landing.mnd1')}</span></div>
-    <a class="lp-knop" href="/login">${esc(cta)} →</a></div>`;
+    <a class="lp-knop" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>`;
   return `<div class="lp">
   <section class="lp-hero"><div class="lp-hwrap">
     <div>
@@ -190,6 +191,11 @@ function landingBody(L, reviewsHtml) {
     </aside>
   </div></section>
 
+  <section class="lp-blk lp-alt" style="padding-block:clamp(2.2rem,4vw,3.2rem)"><div class="lp-wrap">
+    <div class="lp-kop" style="margin-bottom:16px"><span class="lp-eyebrow">🌍 ${esc(t(L, 'landing.taalkop'))}</span></div>
+    <div class="lp-talenchips">${TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="aan"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join('')}</div>
+  </div></section>
+
   <section class="lp-blk" id="kiezer"><div class="lp-wrap">
     <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.kieskop'))}</span><h2>${esc(t(L, 'landing.prijskop'))}</h2><p>${esc(t(L, 'landing.betaal'))}</p></div>
     <div class="lp-plans">
@@ -202,9 +208,9 @@ function landingBody(L, reviewsHtml) {
         <div class="lp-samen"><span class="lp-slbl">${esc(t(L, 'landing.samen'))}</span><span class="lp-eur tnum">€24</span></div>
         <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
         <a class="lp-knop" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>
-      ${variant('🛵', 'AM', t(L, 'sectie.am'), [t(L, 'sectie.am')], '€8', t(L, 'landing.kies'))}
-      ${variant('🏍️', 'A', t(L, 'sectie.motor'), [t(L, 'sectie.motor')], '€12', t(L, 'landing.kies'))}
-      ${variant('🚚', 'BE', t(L, 'sectie.aanhanger'), [t(L, 'sectie.aanhanger')], '€8', t(L, 'landing.kies'))}
+      ${variant('🛵', 'AM', t(L, 'sectie.am'), '€8')}
+      ${variant('🏍️', 'A', t(L, 'sectie.motor'), '€12')}
+      ${variant('🚚', 'BE', t(L, 'sectie.aanhanger'), '€8')}
     </div>
     <div class="lp-note">${esc(t(L, 'landing.betaal'))}</div>
   </div></section>
