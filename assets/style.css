@@ -373,3 +373,40 @@ header.site :focus-visible,.hero :focus-visible{outline-color:var(--dd-geel)}
 
 .sectiekaart.vergrendeld{opacity:.82}
 .sectiekaart.vergrendeld .sk-pct{color:var(--muted)}
+
+/* ================================================================
+   Dark mode (prefers-color-scheme). Alleen tokens + hardcoded lichte
+   vlakken worden omgezet; lichte modus blijft ongewijzigd. WCAG AA-doel.
+   Visuele review aanbevolen (geen headless browser in de bouwomgeving).
+   ================================================================ */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b1424; --card:#111f38; --ink:#e7edf6; --muted:#9fb0c4; --accent:#16294a; --line:#26385a;
+    --dd-papier:#0b1424; --dd-inkt:#e7edf6; --dd-rand:#26385a; --dd-blauw:#5c98f2;
+    --brand:#5c98f2; --brand-dark:#bcd4fb;
+    --shadow:0 10px 30px -12px rgba(0,0,0,.55); --dd-schaduw:0 10px 30px -12px rgba(0,0,0,.55);
+  }
+  /* witte/lichte vlakken -> donkere kaart */
+  .card,.prijskaart,.usps li,.note,.leerpad,.vraagkaart,.ondknop,.foutdetail,.flashcard,.cn-box,.sectiekaart,.tool,.antwoord{background:var(--card)}
+  .ring span{background:var(--card);color:var(--ink)}
+  /* voortgang-tracks */
+  .balkje,.qtype,.voortgangsbalk{background:#22314e}
+  .ring{background:conic-gradient(var(--dd-blauw) calc(var(--p)*1%),#22314e 0)}
+  /* getinte notes/antwoorden -> donkere tint met leesbare tekst */
+  .note{color:#cfe0f5}
+  .note.ok,.resultaatkop.geslaagd,.antwoord.goed,.afvink button.is-af{background:#12301f;border-color:#2f6b47;color:#bfe6cd}
+  .note.fout,.antwoord.fout{background:#331619;border-color:#7a3a3f;color:#f3c9c6}
+  .note.wacht,.resultaatkop.gezakt,.analyse tr.zwak td{background:#33280f;border-color:#7a6320;color:#f0dca0}
+  .antwoord:has(input:checked),.flashcard.is-om,.deellink,.kopieer{background:#16294a}
+  .afvink button{background:var(--card)}
+  /* secundaire tekst die hardcoded #5b6b7b/#38506e was */
+  .antwoord small,.vraagvert,.ondknop small,.fc-vert,.review figcaption,.prijs-mnd,.sk-meta,.cn-parts a,.vraagvert{color:var(--muted)}
+  /* chips verrijking + boekpagina */
+  .p-fout{background:#33280f;border-color:#7a6320}.p-fout>strong:first-child{color:#f0c975}
+  .p-tip{background:#331619;border-color:#7a3a3f}.p-tip>strong:first-child{color:#f0a99e}
+  .bookpage{background:#33280f;border-color:#7a6320;color:#f0c975}
+  mark{background:#5a4b12;color:#fff}
+  .hero p{color:#cdddf5}
+  .prijs-eur,.ring span{color:var(--ink)}
+  /* header blijft nachtblauw in beide modi (ongewijzigd) */
+}
