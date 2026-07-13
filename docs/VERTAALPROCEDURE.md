@@ -4,6 +4,9 @@ Reproduceerbaar draaiboek (voor het eerst uitgevoerd 10-7-2026 voor 10 talen).
 Kosten: geen, mits uitgevoerd met Claude-subagents binnen het abonnement.
 Vertaalmodel: Opus (afspraak Marco). Review: door een moedertaalspreker in de
 live omgeving, in te plannen vóór actieve campagnes in die taal.
+De actuele volgorde, reviewcriteria en registratie staan in
+`docs/NATIVE-REVIEW-QUEUE.md`. Een machinevertaling mag niet als native-reviewed
+worden aangeduid voordat een naam en datum in dat register zijn vastgelegd.
 
 ## Stappen
 1. Controleer dat de taalcode (ISO, 2 letters) in `i18n.js` bestaat (chrome).

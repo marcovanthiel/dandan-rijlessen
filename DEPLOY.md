@@ -162,6 +162,10 @@ voegt de productscope voor vouchers en de tabel met toegangscode-aanvragen toe. 
 deze migratie op de remote D1-database uit voordat de bijbehorende Worker-release
 wordt gepubliceerd.
 
+**Partneraanvragen (13-7-2026).** Migratie `0005-partner-requests.sql` voegt de
+tabel voor demo- en offerteaanvragen van rijscholen toe. Voer ook deze migratie op
+de remote D1-database uit voordat de partnerpagina-release wordt gepubliceerd.
+
 **Prijzen (besluit Marco):** auto theorie €18 + praktijk €18, samen €24; AM €8,
 A €12, BE €8. `F.PRODUCTEN`/`F.PRIJS` in features.js; `/bestellen` verwerkt scope.
 Betaalprovider (WeChat/Alipay) pending → passen via /admin (scope-selector) of voucher.

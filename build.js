@@ -550,7 +550,10 @@ function main(){
     "});\n");
   // SEO: sitemap met taalvarianten van de publieke pagina's
   const TALEN_SEO = ['zh','nl','en','tr','ar','pl','uk','ru','es','pt','hi','vi'];
-  const urls = ['/','/prijzen','/partner','/over'].flatMap(p => [SITE.baseUrl+p, ...TALEN_SEO.map(l=>SITE.baseUrl+p+'?taal='+l)]);
+  const publiekeRoutes = ['/', '/prijzen', '/partner', '/over',
+    '/producten/auto-b-theorie', '/producten/auto-b-praktijk', '/producten/auto-b-bundel',
+    '/producten/am', '/producten/motor', '/producten/be'];
+  const urls = publiekeRoutes.flatMap(p => [SITE.baseUrl+p, ...TALEN_SEO.map(l=>SITE.baseUrl+p+'?taal='+l)]);
   fs.writeFileSync(path.join(DIST,'sitemap.xml'),
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     urls.map(u=>'  <url><loc>'+u.replace(/&/g,'&amp;')+'</loc></url>').join('\n') + '\n</urlset>\n');

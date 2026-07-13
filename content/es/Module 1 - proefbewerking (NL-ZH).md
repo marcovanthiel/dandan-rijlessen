@@ -2,7 +2,6 @@
 titel: "Módulo 1: control del vehículo, material didáctico en español (NL-ES)"
 aard: material didáctico ORIGINAL, basado en hechos públicos (normas de tráfico/técnica)
 opzet: encabezado en neerlandés + texto de lección original; la terminología sigue el glosario
-status: borrador para acordar el tono, el nivel y la terminología
 ---
 
 # Módulo 1: control del vehículo · Module 1: Voertuigbeheersing

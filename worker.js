@@ -180,6 +180,10 @@ function landingBody(L, reviewsHtml) {
     ? 'Geen abonnement. Vraag na je gratis account een toegangscode aan voor precies het rijbewijs dat je wilt leren.'
     : 'No subscription. After creating your free account, request an access code for the exact licence course you want to learn.';
   const eenmaligTekst = L === 'nl' ? 'eenmalig' : 'one-time';
+  const examenLead = L === 'nl'
+    ? 'Train onder tijdsdruk, krijg foutanalyse per onderwerp en ga daarna direct terug naar de juiste les.'
+    : 'Train under time pressure, get topic feedback and return directly to the right lesson.';
+  const examenCta = L === 'nl' ? 'Start de examentrainer' : 'Start the exam trainer';
   const glasrij = [['🚗', t(L, 'nav.auto'), 'B', '€18'], ['🛵', t(L, 'sectie.am'), 'AM', '€8'], ['🏍️', t(L, 'sectie.motor'), 'A', '€12'], ['🚚', t(L, 'sectie.aanhanger'), 'BE', '€8']]
     .map(([e, n, , pr]) => `<a class="lp-hglink" href="/login"><span class="lp-em">${e}</span><span class="lp-tt"><b>${esc(n)}</b></span><span class="lp-pr">${pr}<small>${eenmaligTekst}</small></span></a>`).join('');
   const feats = `<ul><li>${esc(t(L, 'landing.feat1'))}</li><li>${esc(t(L, 'landing.feat2'))}</li><li>${esc(t(L, 'landing.feat3'))}</li></ul>`;
@@ -217,7 +221,9 @@ function landingBody(L, reviewsHtml) {
 
   <section class="lp-blk lp-alt lp-language-section" id="talen"><div class="lp-wrap">
     <div class="lp-kop lp-language-head"><h2>Kies eerst je taal.</h2><p>Begrijp de Nederlandse verkeersregels eerst in een taal die voor jou vertrouwd voelt.</p></div>
-    <div class="lp-talenchips">${TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="aan"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join('')}</div>
+    <div class="lp-talenchips">${TALEN.map((x) => x === 'en'
+      ? `<span class="lp-language-soon" lang="en" title="English interface; full English lessons are in preparation">English <small>interface</small></span>`
+      : `<a href="/?taal=${x}"${x === L ? ' class="aan"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join('')}</div>
   </div></section>
 
   <section class="lp-blk lp-product" id="leren"><div class="lp-wrap">
@@ -230,8 +236,9 @@ function landingBody(L, reviewsHtml) {
       </div>
       <div class="lp-exam-card">
         <h3>${esc(t(L, 'nav.examen'))}</h3>
-        <p>${esc(t(L, 'quiz.examen'))} · 29:12 · 12/50</p>
+        <p>${esc(examenLead)}</p>
         <div class="lp-question"><strong>${esc(t(L, 'quiz.juisteantwoord'))}</strong><span></span><span class="ok"></span><span></span></div>
+        <a class="lp-cta" href="/login">${esc(examenCta)} →</a>
       </div>
     </div>
   </div></section>
@@ -335,14 +342,16 @@ function moduleBody(L, m, user, doneSet, mag) {
     <button class="${doneSet.has(key(p)) ? 'is-af' : ''}">${doneSet.has(key(p)) ? '✓ ' + esc(t(L, 'pad.af')) : esc(t(L, 'pad.markeer'))}</button></form>`;
   const nav = courseNav(L, m, CONTENT[lesT].modules, doneSet, mag);
   const delen = m.parts.map((p) => (vol || p.preview ? p.html + afvink(p) : lockCard(L, p))).join('\n');
-  const taalnote = L !== lesT ? `<div class="note">${esc(t(L, 'module.lestaal'))}</div>` : '';
+  const taalnote = L === 'en' && !LESTALEN.includes('en')
+    ? `<div class="note">The English interface is available. Full English lessons and exam questions are not published yet; choose another lesson language for the course content.</div>`
+    : (L !== lesT ? `<div class="note">${esc(t(L, 'module.lestaal'))}</div>` : '');
   return `<div class="crumbs"><a href="/leren">${esc(t(L, 'module.crumb'))}</a> › ${esc(t(L, 'sectie.' + m.sectie))} › ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
   <div class="modbanner">${m.banner}</div>
   <div class="module-head"><div class="kicker">${esc(t(L, 'sectie.' + m.sectie))} · ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
   <h1 lang="${lesT}">${esc(m.zh)}</h1><div class="nl nl-only" lang="nl" style="color:var(--muted)">${esc(m.nl)}</div></div>
   ${taalnote}${vol ? '' : `<div class="note">${esc(t(L, 'module.previewnote'))}</div>`}
   ${m.introHtml ? `<div lang="${lesT}">${m.introHtml}</div>` : ''}
-  <div class="layout"><aside class="toc">${nav}</aside><div class="les-wrap" lang="${lesT}">${watermerk(user)}${delen}</div></div>`;
+  <div class="layout"><aside class="toc">${nav}</aside><div class="les-wrap" lang="${lesT}">${watermerk(user)}${delen}${vol && m.sectie === 'theorie' ? F.theoryCompanion(L, m.num) : ''}</div></div>`;
 }
 function boekIndexBody(L, pmap) {
   const rows = pmap.map((e) => `<tr id="p${e.from}"><td class="pcol"><span class="pill">${e.from === e.to ? 'p.' + e.from : 'p.' + e.from + '-' + e.to}</span></td>
@@ -403,11 +412,37 @@ export default {
       return resp;
     }
     if (pad === '/partner' && request.method === 'GET')
-      return page(L, t(L, 'nav.partner') + ' · Dandan Drive', F.partnerBody(L), { path: '/partner' });
+      return page(L, t(L, 'nav.partner') + ' · Dandan Drive', F.partnerBody(L), { path: '/partner', fullBleed: true });
+    if (pad === '/partner-aanvraag' && request.method === 'POST') {
+      const f = await request.formData();
+      const rijschool = String(f.get('rijschool') || '').trim();
+      const naam = String(f.get('naam') || '').trim();
+      const email = String(f.get('email') || '').trim().toLowerCase();
+      const omvang = String(f.get('omvang') || '').trim();
+      const bericht = String(f.get('bericht') || '').trim();
+      if (!rijschool || !naam || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !['1-9', '10-24', '25-49', '50+'].includes(omvang)) {
+        return page(L, t(L, 'nav.partner') + ' · Dandan Drive', F.partnerBody(L), { path: '/partner', fullBleed: true, status: 400 });
+      }
+      await env.DB.prepare(`INSERT INTO partner_requests (school, contact_name, email, learner_range, message) VALUES (?, ?, ?, ?, ?)`)
+        .bind(rijschool.slice(0, 160), naam.slice(0, 120), email, omvang, bericht.slice(0, 800)).run();
+      recordEvent(env, ctx, 'partner_request', '/partner', '');
+      return page(L, t(L, 'nav.partner') + ' · Dandan Drive', F.partnerBedanktBody(L), { path: '/partner', fullBleed: true });
+    }
     if (pad === '/over' && request.method === 'GET')
       return page(L, 'Over Dandan Drive', F.overBody(L), { path: '/over', fullBleed: true });
     if (pad === '/prijzen' && request.method === 'GET')
       return page(L, t(L, 'landing.prijskop') + ' · Dandan Drive', F.prijzenBody(L, user), { user, path: '/prijzen' });
+    const productMatch = pad.match(/^\/producten\/(auto-b-theorie|auto-b-praktijk|auto-b-bundel|am|motor|be)$/);
+    if (productMatch && request.method === 'GET') {
+      const product = F.PRODUCT_PAGINAS[productMatch[1]];
+      const title = (L === 'nl' ? product.title : product.enTitle) + ' · Dandan Drive';
+      return page(L, title, F.productBody(L, user, productMatch[1]), {
+        user,
+        path: pad,
+        fullBleed: true,
+        desc: L === 'nl' ? `${product.title}: duidelijke uitleg, gratis preview en eenmalige toegang.` : `${product.enTitle}: clear explanation, free preview and one-time access.`,
+      });
+    }
     if (pad === '/boek' && request.method === 'GET') {
       recordEvent(env, ctx, 'boekklik', '/boek', '');
       // Affiliate-parameter configureerbaar via env.BOEK_URL (aanname: bol.com-zoeklink tot een partnerdeal er is)
@@ -694,6 +729,7 @@ export default {
           (SELECT MAX(ends_at) FROM passes p WHERE p.user_id = u.id AND p.ends_at > datetime('now')) AS pas_tot
         FROM users u ORDER BY u.created_at DESC LIMIT 200`).all()).results;
       const aanvragen = (await env.DB.prepare(`SELECT a.scope, a.message, a.created_at, u.email FROM access_requests a JOIN users u ON u.id = a.user_id ORDER BY a.created_at DESC LIMIT 100`).all()).results;
+      const partnerAanvragen = (await env.DB.prepare(`SELECT school, contact_name, email, learner_range, message, created_at FROM partner_requests ORDER BY created_at DESC LIMIT 100`).all()).results;
       const stats = (await env.DB.prepare(`SELECT day, type, SUM(count) n FROM events WHERE day > date('now','-14 days') GROUP BY day, type ORDER BY day DESC`).all()).results;
       return page(L, 'Beheer · Dandan Drive', `
         <h1>Beheer</h1>
@@ -716,6 +752,10 @@ export default {
         <h2>Toegangscode-aanvragen (${aanvragen.length})</h2>
         <table class="pagetable"><thead><tr><th>e-mail</th><th>onderdeel</th><th>bericht</th><th>ontvangen</th></tr></thead><tbody>
         ${aanvragen.map((a) => `<tr><td>${esc(a.email)}</td><td>${esc(scopeLabel(L, a.scope))}</td><td>${esc(a.message || '-')}</td><td>${esc(String(a.created_at).slice(0, 16))}</td></tr>`).join('')}
+        </tbody></table>
+        <h2>Partneraanvragen (${partnerAanvragen.length})</h2>
+        <table class="pagetable"><thead><tr><th>rijschool</th><th>contact</th><th>e-mail</th><th>omvang</th><th>bericht</th><th>ontvangen</th></tr></thead><tbody>
+        ${partnerAanvragen.map((a) => `<tr><td>${esc(a.school)}</td><td>${esc(a.contact_name)}</td><td>${esc(a.email)}</td><td>${esc(a.learner_range)}</td><td>${esc(a.message || '-')}</td><td>${esc(String(a.created_at).slice(0, 16))}</td></tr>`).join('')}
         </tbody></table>
         <h2>Review toevoegen (alleen échte slagingsverhalen)</h2>
         <form method="post" action="/admin" class="authform rij">

@@ -2,7 +2,6 @@
 titel: "Modül 1: araç hakimiyeti, Türkçe ders materyali (NL-TR)"
 aard: ÖZGÜN ders materyali, kamuya açık bilgilere dayalı (trafik kuralları/teknik)
 opzet: Hollandaca başlık + özgün ders metni; terminoloji sözlüğe uyar
-status: taslak (üslup, düzey ve terminoloji üzerinde anlaşmak için)
 ---
 
 # Modül 1: araç hakimiyeti · Module 1: Voertuigbeheersing
