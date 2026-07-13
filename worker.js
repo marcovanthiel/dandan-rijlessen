@@ -190,11 +190,7 @@ function landingBody(L, reviewsHtml) {
       <p class="lp-talen">${taalkeuze}</p>
     </div>
     <aside class="lp-showcase" aria-label="Dandan Drive">
-      <div class="lp-roadscene">
-        <div class="lp-sun"></div><div class="lp-building b1"></div><div class="lp-building b2"></div><div class="lp-building b3"></div>
-        <div class="lp-road"></div><div class="lp-lane"></div>
-        <div class="lp-redcar"><div class="lp-window"><span class="lp-driver"></span></div><span class="lp-wheel w1"></span><span class="lp-wheel w2"></span></div>
-      </div>
+      <img class="lp-hero-photo" src="/assets/landing-hero.webp?v=${ASSET_VER}" alt="Dandan Drive rijles in Nederland" width="1672" height="941">
       <div class="lp-progress-card">
         <div><strong>${esc(t(L, 'pad.opweg'))}</strong><span>B · ${esc(t(L, 'nav.auto'))}</span></div>
         <div class="lp-mini-progress"><span></span></div>
