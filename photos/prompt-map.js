@@ -3,7 +3,7 @@
    Het zijn nadrukkelijk GEEN reproducties of natekeningen van de foto's uit het bronboek.
    De 'key' bepaalt de bestandsnaam (img/<key>.png) en koppelt aan het juiste onderdeel op de site. */
 
-const STYLE = "Photorealistic instructional photo, modern Netherlands (Dutch) driving-school context, realistic Dutch roads, markings and signage, natural daylight, clear and clean composition, documentary style, safe and correct driving behaviour, no text, no captions, no watermark, no brand logos, no recognizable faces, 3:2 landscape.";
+const STYLE = "Photorealistic instructional photo, modern Netherlands (Dutch) driving-school context, realistic Dutch roads, markings and signage, natural daylight, clear and clean composition, documentary style, safe and correct driving behaviour. Use the same red learner car in every image. The driver is always the same Asian woman based on the supplied reference photo: long dark hair, round red-brown glasses, calm friendly expression, wearing a soft mint blouse. No text, no captions, no watermark, no brand logos, 3:2 landscape.";
 
 const MANIFEST = [
   // Module 1 — voertuigbeheersing

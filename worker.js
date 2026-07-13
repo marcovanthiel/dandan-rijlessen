@@ -176,24 +176,52 @@ function landingBody(L, reviewsHtml) {
     <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
     <div class="lp-prijs"><span class="lp-eur tnum">${eur}</span><span class="lp-per">/ ${t(L, 'landing.mnd1')}</span></div>
     <a class="lp-knop" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>`;
-  return `<div class="lp">
-  <section class="lp-hero"><div class="lp-hwrap">
-    <div>
-      <span class="lp-pill">🇳🇱 · <b>11</b> 🗣️</span>
+  return `<div class="lp lp-modern">
+  <section class="lp-hero"><div class="lp-hero-grid">
+    <div class="lp-copy">
+      <span class="lp-pill">11 ${esc(t(L, 'landing.taalkop')).toLowerCase()} · ${esc(t(L, 'nav.theorie'))} · ${esc(t(L, 'nav.praktijk'))} · ${esc(t(L, 'nav.examen'))}</span>
       <h1>${esc(t(L, 'landing.titel'))}</h1>
       <p class="lp-lead">${esc(t(L, 'landing.sub'))}</p>
-      <a class="lp-cta" href="/login">${esc(t(L, 'landing.proef'))} →</a>
-      <div class="lp-stat"><div><b>11</b> 🗣️</div><div><b>4</b> 🚗</div><div><b>85+</b> 🎓</div></div>
+      <div class="lp-actions">
+        <a class="lp-cta" href="/login">${esc(t(L, 'landing.proef'))} →</a>
+        <a class="lp-ghost" href="/prijzen">${esc(t(L, 'landing.prijskop'))}</a>
+      </div>
+      <div class="lp-stat"><div><b>11</b> ${esc(t(L, 'landing.taalkop'))}</div><div><b>85+</b> ${esc(t(L, 'leren.onderdelen', { n: '' })).replace('{n}', '').trim() || 'lessen'}</div><div><b>50</b> ${esc(t(L, 'quiz.vragen'))}</div></div>
       <p class="lp-talen">${taalkeuze}</p>
     </div>
-    <aside class="lp-glass" aria-label="${esc(t(L, 'landing.kieskop'))}">
-      <div class="lp-gkop">${esc(t(L, 'landing.kieskop'))}</div>${glasrij}
+    <aside class="lp-showcase" aria-label="Dandan Drive">
+      <div class="lp-roadscene">
+        <div class="lp-sun"></div><div class="lp-building b1"></div><div class="lp-building b2"></div><div class="lp-building b3"></div>
+        <div class="lp-road"></div><div class="lp-lane"></div>
+        <div class="lp-redcar"><div class="lp-window"><span class="lp-driver"></span></div><span class="lp-wheel w1"></span><span class="lp-wheel w2"></span></div>
+      </div>
+      <div class="lp-progress-card">
+        <div><strong>${esc(t(L, 'pad.opweg'))}</strong><span>B · ${esc(t(L, 'nav.auto'))}</span></div>
+        <div class="lp-mini-progress"><span></span></div>
+        <p>✓ ${esc(t(L, 'landing.feat1'))} · ✓ ${esc(t(L, 'landing.feat2'))}</p>
+      </div>
     </aside>
   </div></section>
 
   <section class="lp-blk lp-alt" style="padding-block:clamp(2.2rem,4vw,3.2rem)"><div class="lp-wrap">
     <div class="lp-kop" style="margin-bottom:16px"><span class="lp-eyebrow">🌍 ${esc(t(L, 'landing.taalkop'))}</span></div>
     <div class="lp-talenchips">${TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="aan"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join('')}</div>
+  </div></section>
+
+  <section class="lp-blk lp-product"><div class="lp-wrap">
+    <div class="lp-kop"><span class="lp-eyebrow">Dandan Drive</span><h2>${esc(t(L, 'landing.hoekop'))}</h2><p>${esc(t(L, 'landing.usp3'))}</p></div>
+    <div class="lp-product-grid">
+      <div class="lp-path-card">
+        <div><span>1</span><strong>${esc(t(L, 'sectie.theorie'))}</strong><p>${esc(t(L, 'landing.usp1'))}</p></div>
+        <div><span>2</span><strong>${esc(t(L, 'nav.examen'))}</strong><p>${esc(t(L, 'quiz.uitleg', { v: 50, m: 30, n: 44 }))}</p></div>
+        <div><span>3</span><strong>${esc(t(L, 'sectie.praktijk'))}</strong><p>${esc(t(L, 'landing.usp2'))}</p></div>
+      </div>
+      <div class="lp-exam-card">
+        <h3>${esc(t(L, 'nav.examen'))}</h3>
+        <p>${esc(t(L, 'quiz.examen'))} · 29:12 · 12/50</p>
+        <div class="lp-question"><strong>${esc(t(L, 'quiz.juisteantwoord'))}</strong><span></span><span class="ok"></span><span></span></div>
+      </div>
+    </div>
   </div></section>
 
   <section class="lp-blk" id="kiezer"><div class="lp-wrap">
