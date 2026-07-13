@@ -577,11 +577,16 @@ function main(){
   fs.writeFileSync(path.join(DIST,'sitemap.xml'),
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     urls.map(u=>'  <url><loc>'+u.replace(/&/g,'&amp;')+'</loc></url>').join('\n') + '\n</urlset>\n');
-  // foto's meenemen (indien aanwezig)
+  // Alleen geoptimaliseerde WebP-lesbeelden publiceren. PNG/JPEG-bestanden
+  // zijn lokale bronbestanden en mogen de live-lesomgeving niet verzwaren.
   let nPhoto=0;
   if(fs.existsSync(IMG)){
     const dimg=path.join(DIST,'img'); fs.mkdirSync(dimg,{recursive:true});
-    for(const f of fs.readdirSync(IMG)){ if(/\.(png|jpe?g|webp)$/i.test(f)){ fs.copyFileSync(path.join(IMG,f), path.join(dimg,f)); nPhoto++; } }
+    for(const f of fs.readdirSync(dimg)){
+      const target = path.join(dimg,f);
+      if(fs.statSync(target).isFile() && !/\.webp$/i.test(f)) fs.unlinkSync(target);
+    }
+    for(const f of fs.readdirSync(IMG)){ if(/\.webp$/i.test(f)){ fs.copyFileSync(path.join(IMG,f), path.join(dimg,f)); nPhoto++; } }
   }
   fs.writeFileSync(path.join(DIST,'assets','search.js'), SEARCH_JS);
   fs.writeFileSync(path.join(DIST,'favicon.svg'), FAVICON_SVG);
