@@ -523,7 +523,9 @@ function main(){
   fs.copyFileSync(path.join(ASSETS_SRC,'style.css'), path.join(DIST,'assets','style.css'));
   fs.copyFileSync(path.join(ASSETS_SRC,'les.js'), path.join(DIST,'assets','les.js'));
   fs.copyFileSync(path.join(ASSETS_SRC,'interactie.js'), path.join(DIST,'assets','interactie.js'));
-  if(fs.existsSync(path.join(ASSETS_SRC,'landing-hero.webp'))) fs.copyFileSync(path.join(ASSETS_SRC,'landing-hero.webp'), path.join(DIST,'assets','landing-hero.webp'));
+  for(const photo of ['landing-hero.webp','product-auto-b-v2.png']){
+    if(fs.existsSync(path.join(ASSETS_SRC,photo))) fs.copyFileSync(path.join(ASSETS_SRC,photo), path.join(DIST,'assets',photo));
+  }
   for(const ic of ['icon-192.png','icon-512.png']) if(fs.existsSync(path.join(ASSETS_SRC,ic))) fs.copyFileSync(path.join(ASSETS_SRC,ic), path.join(DIST,ic));
   // PWA: manifest + service worker (cachet alleen de schil, nooit lescontent)
   fs.writeFileSync(path.join(DIST,'manifest.webmanifest'), JSON.stringify({
