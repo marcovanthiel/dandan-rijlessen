@@ -23,6 +23,8 @@ async function sha256(s) {
 }
 const cookies = (req) => Object.fromEntries((req.headers.get('Cookie') || '').split(/;\s*/).filter(Boolean).map((c) => [c.slice(0, c.indexOf('=')), c.slice(c.indexOf('=') + 1)]));
 const taalCookie = (l) => `dd_lang=${l}; Path=/; Max-Age=31536000; HttpOnly; Secure; SameSite=Lax`;
+const SESSION_DAYS = 30;
+const SESSION_MAX_AGE = SESSION_DAYS * 24 * 60 * 60;
 
 // ---------- html-schil ----------
 function shell(L, title, body, o = {}) {
@@ -444,12 +446,12 @@ export default {
         recordEvent(env, ctx, 'signup', '', ref ? 'ref' : '');
       }
       const token = crypto.randomUUID() + crypto.randomUUID();
-      await env.DB.prepare(`INSERT INTO sessions (token_hash, user_id, expires_at, ua) VALUES (?, ?, datetime('now','+30 days'), ?)`)
-        .bind(await sha256(token), u.id, (request.headers.get('User-Agent') || '').slice(0, 120)).run();
+      await env.DB.prepare(`INSERT INTO sessions (token_hash, user_id, expires_at, ua) VALUES (?, ?, datetime('now', ?), ?)`)
+        .bind(await sha256(token), u.id, `+${SESSION_DAYS} days`, (request.headers.get('User-Agent') || '').slice(0, 120)).run();
       await env.DB.prepare(`DELETE FROM sessions WHERE user_id = ? AND token_hash NOT IN (
         SELECT token_hash FROM sessions WHERE user_id = ? ORDER BY created_at DESC LIMIT 3)`).bind(u.id, u.id).run();
       recordEvent(env, ctx, 'login', '', '');
-      return redirect('/leren', { 'Set-Cookie': `dd_sess=${token}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax` });
+      return redirect('/leren', { 'Set-Cookie': `dd_sess=${token}; Path=/; Max-Age=${SESSION_MAX_AGE}; HttpOnly; Secure; SameSite=Lax` });
     }
     if (pad === '/logout' && request.method === 'POST') {
       const tk = cookies(request).dd_sess;
