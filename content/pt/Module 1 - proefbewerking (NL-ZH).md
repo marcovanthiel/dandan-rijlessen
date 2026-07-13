@@ -227,4 +227,3 @@ compara o nível do "escalão 4" com o do "escalão 8"). No site, transformo ess
 
 ---
 *Este é o rascunho do Módulo 1. Depois do teu acordo quanto ao tom e à terminologia, trato os Módulos 2 a 5 da mesma forma.*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

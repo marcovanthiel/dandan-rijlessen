@@ -222,4 +222,3 @@ status: чернетка (для узгодження тону, рівня та 
 
 ---
 *Це чернетка першого модуля. Після узгодження тону й термінології я так само опрацюю модулі з другого по п'ятий.*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

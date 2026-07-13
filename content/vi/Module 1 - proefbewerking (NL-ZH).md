@@ -214,4 +214,3 @@ trình độ của "bậc 4" với "bậc 8"). Trên trang web, tôi sẽ làm h
 
 ---
 *Đây là bản thảo của Mô-đun 1. Sau khi bạn đồng ý về giọng điệu và thuật ngữ, tôi sẽ xử lý Mô-đun 2 đến 5 theo cách tương tự.*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

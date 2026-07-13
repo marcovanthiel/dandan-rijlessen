@@ -103,7 +103,7 @@ function pageForScript(step, zh){
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function inline(s){
   s = esc(s);
-  s = s.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" rel="noopener">$1</a>');
+  s = s.replace(/\[([^\]]+)\]\((https?:[^)\s]+|\/[a-zA-Z0-9_?=&/-]+)\)/g,'<a href="$2" rel="noopener">$1</a>');
   s = s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
   s = s.replace(/`(.+?)`/g,'<code>$1</code>');
   return s;
@@ -550,7 +550,7 @@ function main(){
     "});\n");
   // SEO: sitemap met taalvarianten van de publieke pagina's
   const TALEN_SEO = ['zh','nl','en','tr','ar','pl','uk','ru','es','pt','hi','vi'];
-  const urls = ['/','/prijzen','/partner'].flatMap(p => [SITE.baseUrl+p, ...TALEN_SEO.map(l=>SITE.baseUrl+p+'?taal='+l)]);
+  const urls = ['/','/prijzen','/partner','/over'].flatMap(p => [SITE.baseUrl+p, ...TALEN_SEO.map(l=>SITE.baseUrl+p+'?taal='+l)]);
   fs.writeFileSync(path.join(DIST,'sitemap.xml'),
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     urls.map(u=>'  <url><loc>'+u.replace(/&/g,'&amp;')+'</loc></url>').join('\n') + '\n</urlset>\n');

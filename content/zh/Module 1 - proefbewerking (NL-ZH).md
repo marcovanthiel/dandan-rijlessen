@@ -182,4 +182,3 @@ status: PROEF ter afstemming van toon, niveau en terminologie
 
 ---
 *这是模块一的样稿。确认语气与用词后，我会按同样方式处理模块二至五。*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

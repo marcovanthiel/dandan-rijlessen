@@ -217,4 +217,3 @@ status: लहजे, स्तर और शब्दावली पर सह
 
 ---
 *यह मॉड्यूल 1 का प्रारूप है। लहजे और शब्दावली पर आपकी सहमति के बाद मैं मॉड्यूल 2 से 5 को इसी तरह तैयार करूँगा।*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

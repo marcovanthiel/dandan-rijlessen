@@ -220,4 +220,3 @@ Kitapta her adımın sonunda renkli bir **püf noktaları tablosu** ve bir **öz
 
 ---
 *Bu, birinci modülün taslağıdır. Üslup ve terminoloji onaylandıktan sonra ikinci modülden beşinciye kadar aynı şekilde işlenecektir.*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

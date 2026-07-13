@@ -215,4 +215,3 @@ status: نسخة تجريبية لضبط الأسلوب والمستوى وال�
 
 ---
 *هذه مسوّدة نموذجية للوحدة الأولى. بعد موافقتك على الأسلوب والمصطلحات سأعالج الوحدات من الثانية إلى الخامسة بالطريقة نفسها.*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

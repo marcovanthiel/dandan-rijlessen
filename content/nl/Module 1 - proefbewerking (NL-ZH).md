@@ -138,4 +138,3 @@ Combineer handrem, koppeling, versnelling en gas tot één vloeiende handeling e
 Aan het eind van elke stap in het boek staat een **aandachtspuntentabel** (in kleur) en een **zelfevaluatie** (die het niveau van "stap 4" en "stap 8" vergelijkt). Op de website maak ik deze twee onderdelen als uniforme "aandachtspuntenkaart" en "zelfevaluatielijst".
 
 ---
-*Dit is de proef voor module 1. Na akkoord op toon en terminologie worden module 2 tot en met 5 op dezelfde manier bewerkt.*

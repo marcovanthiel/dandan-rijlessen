@@ -9,7 +9,7 @@ export const PASSEN = [
   { kind: '1m', mnd: 1, eur: 18 }, { kind: '3m', mnd: 3, eur: 38 },
   { kind: '6m', mnd: 6, eur: 58 }, { kind: '12m', mnd: 12, eur: 88 },
 ];
-// Per-rijbewijs producten (maandpas). Auto B splitst in theorie/praktijk + bundel.
+// Per-rijbewijs producten met eenmalige toegang. Auto B splitst in theorie/praktijk + bundel.
 export const PRODUCTEN = [
   { scope: 'b', eur: 24, ico: '🚗', code: 'B', feat: true, split: true },
   { scope: 'am', eur: 8, ico: '🛵', code: 'AM' },
@@ -87,12 +87,14 @@ export function lerenBody(L, user, passes, inhoud, klaarPct, examDate, banner, v
 }
 
 // ---------- oefenexamen ----------
-export function examenOverzicht(L, laatste) {
+export function examenOverzicht(L, laatste, onderwerp = '') {
   const onderwerpen = Object.keys(OND_HOOFDSTUK).map((o) =>
     `<button name="mode" value="onderwerp:${o}" class="ondknop">${esc(t(L, 'ond.' + o))} <small>${VRAGEN.filter((v) => v.ond === o).length}</small></button>`).join('');
   const hist = laatste.length ? `<h2>${esc(t(L, 'quiz.historie'))}</h2><table class="pagetable"><thead><tr><th>${esc(t(L, 'quiz.datum'))}</th><th>${esc(t(L, 'quiz.mode'))}</th><th>${esc(t(L, 'quiz.score'))}</th></tr></thead><tbody>${
     laatste.map((a) => `<tr><td>${esc(String(a.started_at).slice(0, 16))}</td><td>${esc(a.mode === 'examen' ? t(L, 'quiz.examen') : t(L, 'ond.' + a.mode.split(':')[1]))}</td><td>${a.score}/${a.totaal}${a.mode === 'examen' ? (a.geslaagd ? ' ✅' : ' ❌') : ''}</td></tr>`).join('')}</tbody></table>` : '';
+  const gekozen = OND_HOOFDSTUK[onderwerp] ? `<div class="note ok"><strong>${esc(t(L, 'ond.' + onderwerp))}</strong><br>${esc(L === 'nl' ? 'Je komt vanuit de les. Start hieronder meteen met een gerichte oefenset.' : 'You came here from a lesson. Start a focused practice set below.')}</div>` : '';
   return `<h1>${esc(t(L, 'nav.examen'))}</h1>
+  ${gekozen}
   <div class="note">${esc(t(L, 'quiz.uitleg', { v: EXAMEN.vragen, n: EXAMEN.norm, m: EXAMEN.minuten }))}</div>
   <form method="post" action="/oefenexamen/start" class="examenstart">
     <button name="mode" value="examen" class="cta groot">🎓 ${esc(t(L, 'quiz.examen'))} · ${EXAMEN.vragen} ${esc(t(L, 'quiz.vragen'))} · ${EXAMEN.minuten} min</button>
@@ -192,36 +194,121 @@ export function begrippenBody(L) {
 
 // ---------- prijzen / bestellen / betalen ----------
 export function prijzenBody(L, user) {
+  const T = L === 'nl' ? {
+    eyebrow: 'Eenvoudig en persoonlijk geregeld',
+    intro: 'Kies wat je wilt leren. Na je aanvraag ontvang je persoonlijk een toegangscode voor precies dit onderdeel.',
+    how: 'Zo werkt toegang',
+    steps: ['Maak gratis je account aan.', 'Kies je rijbewijs en vraag een toegangscode aan.', 'Na bevestiging ontvang je een code die je direct kunt inwisselen.'],
+    code: 'Heb je al een toegangscode?',
+    request: 'Toegangscode aanvragen',
+    foot: 'Geen abonnement. Je betaalt alleen voor de gekozen toegang en ziet vooraf precies wat je krijgt.',
+  } : {
+    eyebrow: 'Simple, personal access',
+    intro: 'Choose what you want to learn. After your request, you receive a personal access code for that exact course.',
+    how: 'How access works',
+    steps: ['Create your free account.', 'Choose your licence and request an access code.', 'After confirmation, redeem your code and start learning.'],
+    code: 'Already have an access code?',
+    request: 'Request an access code',
+    foot: 'No subscription. You pay only for the access you choose, with the contents clear before you start.',
+  };
+  const eenmaligTekst = L === 'nl' ? 'eenmalig' : 'one-time';
   const naam = (sc) => sc === 'am' ? t(L, 'sectie.am') : sc === 'motor' ? t(L, 'sectie.motor') : sc === 'be' ? t(L, 'sectie.aanhanger') : t(L, 'nav.auto');
   const kies = (sc, label) => user
-    ? `<form method="post" action="/bestellen"><button name="scope" value="${sc}" class="lp-knop">${esc(label)} →</button></form>`
+    ? `<a class="lp-knop" href="/toegang-aanvragen?scope=${encodeURIComponent(sc)}">${esc(T.request)} →</a>`
     : `<a class="lp-knop" href="/login">${esc(t(L, 'prijs.eerstaccount'))}</a>`;
   const autoKaart = `<div class="lp-plan lp-feat"><span class="lp-badge">★</span><div class="lp-pico">🚗</div>
     <div><span class="lp-code">B · ${esc(t(L, 'nav.auto'))}</span><h3>${esc(t(L, 'nav.theorie'))} &amp; ${esc(t(L, 'nav.praktijk'))}</h3></div>
-    <ul><li class="lp-split">📖 ${esc(t(L, 'nav.theorie'))} <span class="lp-mp">€18<small>/mnd</small></span></li>
-      <li class="lp-split">🚗 ${esc(t(L, 'nav.praktijk'))} <span class="lp-mp">€18<small>/mnd</small></span></li></ul>
+    <ul><li class="lp-split">📖 ${esc(t(L, 'nav.theorie'))} <span class="lp-mp">€18<small>${eenmaligTekst}</small></span></li>
+      <li class="lp-split">🚗 ${esc(t(L, 'nav.praktijk'))} <span class="lp-mp">€18<small>${eenmaligTekst}</small></span></li></ul>
     <div class="lp-samen"><span class="lp-slbl">${esc(t(L, 'landing.samen'))}</span><span class="lp-eur tnum">€24</span></div>
     <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
-    ${user ? `<button form="fb" name="scope" value="b" class="lp-knop">${esc(t(L, 'landing.samen'))} €24 →</button>
-      <form id="fb" method="post" action="/bestellen"></form>
-      <div class="lp-los"><button form="ft" name="scope" value="b-theorie" class="lp-knop2">${esc(t(L, 'nav.theorie'))} €18</button><form id="ft" method="post" action="/bestellen"></form>
-      <button form="fp" name="scope" value="b-praktijk" class="lp-knop2">${esc(t(L, 'nav.praktijk'))} €18</button><form id="fp" method="post" action="/bestellen"></form></div>`
+    ${user ? `<a href="/toegang-aanvragen?scope=b" class="lp-knop">${esc(T.request)} →</a>
+      <div class="lp-los"><a href="/toegang-aanvragen?scope=b-theorie" class="lp-knop2">${esc(t(L, 'nav.theorie'))} €18</a>
+      <a href="/toegang-aanvragen?scope=b-praktijk" class="lp-knop2">${esc(t(L, 'nav.praktijk'))} €18</a></div>`
       : `<a class="lp-knop" href="/login">${esc(t(L, 'prijs.eerstaccount'))}</a>`}
     </div>`;
   const varKaart = (p) => `<div class="lp-plan"><div class="lp-pico">${p.ico}</div>
     <div><span class="lp-code">${p.code}</span><h3>${esc(naam(p.scope))}</h3></div>
     <ul><li>${esc(naam(p.scope))}</li></ul>
     <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
-    <div class="lp-prijs"><span class="lp-eur tnum">€${p.eur}</span><span class="lp-per">/ ${t(L, 'landing.mnd1')}</span></div>
+    <div class="lp-prijs"><span class="lp-eur tnum">€${p.eur}</span><span class="lp-per">${eenmaligTekst}</span></div>
     ${kies(p.scope, t(L, 'landing.kies'))}</div>`;
   const kaarten = autoKaart + PRODUCTEN.filter((p) => p.scope !== 'b').map(varKaart).join('');
   return `<div class="lp"><div class="lp-wrap" style="padding-block:20px">
-    <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.kieskop'))}</span><h2>${esc(t(L, 'landing.prijskop'))}</h2><p>${esc(t(L, 'landing.betaal'))}</p></div>
+    <div class="lp-kop"><span class="lp-eyebrow">${esc(T.eyebrow)}</span><h1>${esc(t(L, 'landing.prijskop'))}</h1><p>${esc(T.intro)}</p></div>
     <div class="lp-plans">${kaarten}</div>
-    <div class="lp-note">${esc(t(L, 'landing.betaal'))}</div>
-    <h2 style="margin-top:32px">${esc(t(L, 'voucher.kop'))}</h2>
+    <div class="lp-access-steps"><h2>${esc(T.how)}</h2><ol>${T.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol></div>
+    <div class="lp-note">${esc(T.foot)}</div>
+    <h2 style="margin-top:32px">${esc(T.code)}</h2>
     ${user ? `<form method="post" action="/voucher" class="authform rij"><label>${esc(t(L, 'voucher.code'))} <input name="code" required maxlength="20" style="text-transform:uppercase"></label><button class="lp-knop" style="max-width:220px">${esc(t(L, 'voucher.inwisselen'))}</button></form>` : `<div class="lp-note">${esc(t(L, 'voucher.login'))} <a href="/login">${esc(t(L, 'nav.login'))}</a></div>`}
   </div></div>`;
+}
+
+export function toegangAanvragenBody(L, user, scope) {
+  const T = L === 'nl' ? {
+    eyebrow: 'Toegang aanvragen', title: 'Vraag je toegangscode aan',
+    lead: 'Je aanvraag staat klaar voor de juiste cursus. Na persoonlijk contact ontvang je een code die alleen toegang geeft tot dit gekozen onderdeel.',
+    selected: 'Gekozen toegang', message: 'Opmerking of vraag (optioneel)', placeholder: 'Bijvoorbeeld: ik wil starten op 1 september.',
+    send: 'Aanvraag versturen', note: 'We gebruiken je e-mailadres alleen om je aanvraag en toegang te regelen.',
+  } : {
+    eyebrow: 'Request access', title: 'Request your access code',
+    lead: 'Your request is ready for the right course. After personal confirmation, you receive a code that unlocks only this selected course.',
+    selected: 'Selected access', message: 'Question or note (optional)', placeholder: 'For example: I would like to start on 1 September.',
+    send: 'Send request', note: 'We use your email address only to handle this request and your access.',
+  };
+  return `<div class="lp"><div class="lp-wrap lp-form-wrap"><div class="lp-kop"><span class="lp-eyebrow">${esc(T.eyebrow)}</span><h1>${esc(T.title)}</h1><p>${esc(T.lead)}</p></div>
+    <form method="post" action="/toegang-aanvragen" class="access-form">
+      <input type="hidden" name="scope" value="${esc(scope)}">
+      <div class="access-selected"><span>${esc(T.selected)}</span><strong>${esc(scopeLabel(L, scope))}</strong></div>
+      <label>${esc(user.email)}</label>
+      <label>${esc(T.message)}<textarea name="bericht" rows="4" maxlength="600" placeholder="${esc(T.placeholder)}"></textarea></label>
+      <button class="lp-knop">${esc(T.send)} →</button>
+      <p class="access-privacy">${esc(T.note)}</p>
+    </form></div></div>`;
+}
+
+export function aanvraagBedanktBody(L, scope) {
+  const T = L === 'nl' ? {
+    eyebrow: 'Aanvraag ontvangen', title: 'We hebben je aanvraag ontvangen.',
+    text: 'Je aanvraag voor {scope} staat klaar. Je ontvangt persoonlijk bericht zodra je toegangscode geregeld is.',
+    back: 'Terug naar je leeromgeving',
+  } : {
+    eyebrow: 'Request received', title: 'We received your request.',
+    text: 'Your request for {scope} is ready. We will contact you personally when your access code is arranged.',
+    back: 'Go to your learning dashboard',
+  };
+  return `<div class="lp"><div class="lp-wrap lp-form-wrap"><div class="lp-confirm"><span class="lp-confirm-check">✓</span><span class="lp-eyebrow">${esc(T.eyebrow)}</span><h1>${esc(T.title)}</h1><p>${esc(T.text.replace('{scope}', scopeLabel(L, scope)))}</p><a class="lp-knop" href="/leren">${esc(T.back)} →</a></div></div></div>`;
+}
+
+export function overBody(L) {
+  const T = L === 'nl' ? {
+    eyebrow: 'Over Dandan Drive', title: 'Rijbewijs B leren zonder dat taal je tegenhoudt.',
+    intro: 'Dandan Drive is gemaakt door Dandan en Marco voor internationale leerlingen die hun Nederlandse rijbewijs stap voor stap willen begrijpen.',
+    p1: 'De lessen maken de Nederlandse verkeersregels, examenroutine en rijpraktijk overzichtelijk. Je leert eerst in je eigen taal en bouwt daarna het Nederlandse vakjargon rustig op.',
+    p2: 'We kiezen bewust voor heldere uitleg, echte verkeerssituaties en een rustig leerpad. Geen drukke marketing, geen verzonnen beoordelingen, wel een plek waar je gericht kunt oefenen.',
+    cbr: 'Belangrijk: Dandan Drive is een onafhankelijk oefenplatform en geen officiële website van het CBR, de RDW of de Rijksoverheid. Controleer voor je examen altijd de actuele officiële regels en procedures.',
+    start: 'Gratis beginnen',
+  } : {
+    eyebrow: 'About Dandan Drive', title: 'Learn for your Dutch driving licence without language getting in the way.',
+    intro: 'Dandan Drive was created by Dandan and Marco for international learners who want to understand their Dutch driving licence step by step.',
+    p1: 'The lessons make Dutch traffic rules, exam routines and driving practice clear. Start in your own language, then build Dutch driving vocabulary calmly as you go.',
+    p2: 'We deliberately choose clear explanations, real traffic situations and a calm learning path. No loud marketing, no invented reviews, just a place to practise with purpose.',
+    cbr: 'Important: Dandan Drive is an independent practice platform and not an official website of the CBR, RDW or the Dutch government. Always check the latest official rules and procedures before your exam.',
+    start: 'Start for free',
+  };
+  return `<div class="lp"><section class="lp-about"><div class="lp-wrap"><div class="lp-about-grid"><div><span class="lp-eyebrow">${esc(T.eyebrow)}</span><h1>${esc(T.title)}</h1><p class="lp-lead">${esc(T.intro)}</p><a class="lp-cta" href="/login">${esc(T.start)} →</a></div><div class="lp-about-mark"><span>11</span><small>talen<br>een duidelijk leerpad</small></div></div></div></section>
+  <section class="lp-blk"><div class="lp-wrap lp-prose"><p>${esc(T.p1)}</p><p>${esc(T.p2)}</p><div class="lp-disclaimer"><strong>CBR</strong><p>${esc(T.cbr)}</p></div></div></section></div>`;
+}
+
+function scopeLabel(L, scope) {
+  const auto = L === 'nl' ? 'Auto B' : 'Car B';
+  if (scope === 'b') return `${auto} · theorie + praktijk`;
+  if (scope === 'b-theorie') return `${auto} · ${L === 'nl' ? 'theorie-examen' : 'theory'}`;
+  if (scope === 'b-praktijk') return `${auto} · ${L === 'nl' ? 'praktijk-examen' : 'practical course'}`;
+  if (scope === 'am') return 'AM · bromfiets';
+  if (scope === 'motor') return 'A · motor';
+  if (scope === 'be') return 'BE · aanhanger';
+  return `${auto} · theorie + praktijk`;
 }
 export function betaalBody(L, order) {
   return `<h1>${esc(t(L, 'betaal.kop'))}</h1>

@@ -232,4 +232,3 @@ esas dos partes en una "tarjeta de puntos clave" y una "lista de autoevaluación
 
 ---
 *Este es el borrador del Módulo 1. Tras tu visto bueno sobre el tono y la terminología, procesaré los Módulos 2 a 5 del mismo modo.*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*

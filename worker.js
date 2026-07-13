@@ -61,7 +61,7 @@ function siteHeader(L, user, mods) {
   const rechts = user
     ? `<a href="/account">👤 ${esc(user.email.split('@')[0])}</a>${user.is_admin ? '<a href="/admin">beheer</a>' : ''}`
     : `<a href="/login">${esc(t(L, 'nav.login'))}</a>`;
-  const publicNav = `<a href="/#talen">Talen</a><a href="/#leren">Leerpad</a><a href="/prijzen">Passen</a><a class="nav-cta" href="/login">Gratis starten</a>`;
+  const publicNav = `<a href="/#talen">Talen</a><a href="/#leren">Leerpad</a><a href="/prijzen">Passen</a><a href="/over">Over ons</a><a class="nav-cta" href="/login">Gratis starten</a>`;
   return `<header class="site"><div class="container">
   <a class="brand" href="/" style="color:#fff"><span class="logo">丹</span>
     <span><span lang="nl">Dandan Drive</span><small>${user ? `${esc(SITE.titleZh)} · 驾照路考` : 'rijbewijs leren in jouw taal'}</small></span></a>
@@ -71,7 +71,8 @@ function siteHeader(L, user, mods) {
 }
 const siteFooter = (L) => `<footer class="site"><div class="container">
   <strong>Dandan Drive · ${esc(SITE.titleZh)}</strong><br>
-  ${esc(t(L, 'footer.tekst'))} · ${esc(SITE.domain)} · <a href="/login">${esc(t(L, 'nav.login'))}</a>
+  ${esc(t(L, 'footer.tekst'))} · ${esc(SITE.domain)} · <a href="/over">Over Dandan Drive</a> · <a href="/login">${esc(t(L, 'nav.login'))}</a><br>
+  <small>Dandan Drive is een onafhankelijk oefenplatform, geen officiële website van het CBR, RDW of de Rijksoverheid.</small>
   </div></footer>`;
 function page(L, title, inner, o = {}) {
   const mods = CONTENT[LESTALEN.includes(L) ? L : 'zh'].modules;
@@ -175,14 +176,18 @@ function landingBody(L, reviewsHtml) {
   const heroLead = L === 'nl'
     ? 'Dandan Drive maakt het Nederlandse rijbewijs begrijpelijk voor internationale leerlingen: korte lessen, duidelijke beelden, examenritme en uitleg in je eigen taal.'
     : t(L, 'landing.sub');
+  const toegangTekst = L === 'nl'
+    ? 'Geen abonnement. Vraag na je gratis account een toegangscode aan voor precies het rijbewijs dat je wilt leren.'
+    : 'No subscription. After creating your free account, request an access code for the exact licence course you want to learn.';
+  const eenmaligTekst = L === 'nl' ? 'eenmalig' : 'one-time';
   const glasrij = [['🚗', t(L, 'nav.auto'), 'B', '€18'], ['🛵', t(L, 'sectie.am'), 'AM', '€8'], ['🏍️', t(L, 'sectie.motor'), 'A', '€12'], ['🚚', t(L, 'sectie.aanhanger'), 'BE', '€8']]
-    .map(([e, n, , pr]) => `<a class="lp-hglink" href="/login"><span class="lp-em">${e}</span><span class="lp-tt"><b>${esc(n)}</b></span><span class="lp-pr">${pr}<small>/mnd</small></span></a>`).join('');
+    .map(([e, n, , pr]) => `<a class="lp-hglink" href="/login"><span class="lp-em">${e}</span><span class="lp-tt"><b>${esc(n)}</b></span><span class="lp-pr">${pr}<small>${eenmaligTekst}</small></span></a>`).join('');
   const feats = `<ul><li>${esc(t(L, 'landing.feat1'))}</li><li>${esc(t(L, 'landing.feat2'))}</li><li>${esc(t(L, 'landing.feat3'))}</li></ul>`;
   const variant = (e, code, titel, eur) => `<div class="lp-plan"><div class="lp-pico">${e}</div>
     <div><span class="lp-code">${esc(code)}</span><h3>${esc(titel)}</h3></div>
     ${feats}
     <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
-    <div class="lp-prijs"><span class="lp-eur tnum">${eur}</span><span class="lp-per">/ ${t(L, 'landing.mnd1')}</span></div>
+    <div class="lp-prijs"><span class="lp-eur tnum">${eur}</span><span class="lp-per">${eenmaligTekst}</span></div>
     <a class="lp-knop" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>`;
   return `<div class="lp lp-modern">
   <section class="lp-hero"><div class="lp-hero-grid">
@@ -211,7 +216,7 @@ function landingBody(L, reviewsHtml) {
   </div></section>
 
   <section class="lp-blk lp-alt lp-language-section" id="talen"><div class="lp-wrap">
-    <div class="lp-kop lp-language-head"><h2>Kies eerst je taal.</h2><p>Maak de taalkeuze visueel en direct. Dat is het unieke verschil van Dandan Drive, dus het mag al in de eerste scroll duidelijk voelbaar zijn.</p></div>
+    <div class="lp-kop lp-language-head"><h2>Kies eerst je taal.</h2><p>Begrijp de Nederlandse verkeersregels eerst in een taal die voor jou vertrouwd voelt.</p></div>
     <div class="lp-talenchips">${TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="aan"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join('')}</div>
   </div></section>
 
@@ -232,13 +237,13 @@ function landingBody(L, reviewsHtml) {
   </div></section>
 
   <section class="lp-blk" id="kiezer"><div class="lp-wrap">
-    <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.kieskop'))}</span><h2>${esc(t(L, 'landing.prijskop'))}</h2><p>${esc(t(L, 'landing.betaal'))}</p></div>
+    <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.kieskop'))}</span><h2>${esc(t(L, 'landing.prijskop'))}</h2><p>${esc(toegangTekst)}</p></div>
     <div class="lp-plans">
       <div class="lp-plan lp-feat"><span class="lp-badge">★</span><div class="lp-pico">🚗</div>
         <div><span class="lp-code">B · ${esc(t(L, 'nav.auto'))}</span><h3>${esc(t(L, 'nav.theorie'))} &amp; ${esc(t(L, 'nav.praktijk'))}</h3></div>
         <ul>
-          <li class="lp-split">📖 ${esc(t(L, 'nav.theorie'))} <span class="lp-mp">€18<small>/mnd</small></span></li>
-          <li class="lp-split">🚗 ${esc(t(L, 'nav.praktijk'))} <span class="lp-mp">€18<small>/mnd</small></span></li>
+          <li class="lp-split">📖 ${esc(t(L, 'nav.theorie'))} <span class="lp-mp">€18<small>${eenmaligTekst}</small></span></li>
+          <li class="lp-split">🚗 ${esc(t(L, 'nav.praktijk'))} <span class="lp-mp">€18<small>${eenmaligTekst}</small></span></li>
         </ul>
         <div class="lp-samen"><span class="lp-slbl">${esc(t(L, 'landing.samen'))}</span><span class="lp-eur tnum">€24</span></div>
         <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
@@ -247,7 +252,7 @@ function landingBody(L, reviewsHtml) {
       ${variant('🏍️', 'A', t(L, 'sectie.motor'), '€12')}
       ${variant('🚚', 'BE', t(L, 'sectie.aanhanger'), '€8')}
     </div>
-    <div class="lp-note">${esc(t(L, 'landing.betaal'))}</div>
+    <div class="lp-note">${esc(toegangTekst)}</div>
   </div></section>
 
   <section class="lp-blk lp-alt" id="hoe"><div class="lp-wrap">
@@ -260,7 +265,7 @@ function landingBody(L, reviewsHtml) {
   </div></section>
 
   <section class="lp-blk"><div class="lp-wrap"><div class="lp-gband">
-    <span class="lp-gem">✦</span><div><h3>${esc(t(L, 'landing.proefles'))}</h3><p>${esc(t(L, 'landing.sub'))}</p></div>
+    <span class="lp-gem">✦</span><div><h3>${esc(t(L, 'landing.proefles'))}</h3><p>${esc(heroLead)}</p></div>
     <a class="lp-cta" href="/login">${esc(t(L, 'landing.proef'))} →</a>
   </div></div></section>
 
@@ -399,6 +404,8 @@ export default {
     }
     if (pad === '/partner' && request.method === 'GET')
       return page(L, t(L, 'nav.partner') + ' · Dandan Drive', F.partnerBody(L), { path: '/partner' });
+    if (pad === '/over' && request.method === 'GET')
+      return page(L, 'Over Dandan Drive', F.overBody(L), { path: '/over', fullBleed: true });
     if (pad === '/prijzen' && request.method === 'GET')
       return page(L, t(L, 'landing.prijskop') + ' · Dandan Drive', F.prijzenBody(L, user), { user, path: '/prijzen' });
     if (pad === '/boek' && request.method === 'GET') {
@@ -460,7 +467,7 @@ export default {
     }
 
     // vanaf hier: inloggen vereist (incl. lesbeelden: /img en /foto zijn niet meer publiek)
-    const gated = pad === '/leren' || pad === '/boek-index' || pad === '/account' || pad.startsWith('/account/') || pad === '/admin' || pad === '/search.json' || pad === '/pagemap.json' || /^\/(module|theorie|info|am|motor|aanhanger)-\d+$/.test(pad) || pad === '/begrippen' || pad.startsWith('/oefenexamen') || pad === '/voortgang' || pad === '/bestellen' || pad.startsWith('/betalen') || pad === '/voucher' || pad.startsWith('/img/');
+    const gated = pad === '/leren' || pad === '/boek-index' || pad === '/account' || pad.startsWith('/account/') || pad === '/admin' || pad === '/search.json' || pad === '/pagemap.json' || /^\/(module|theorie|info|am|motor|aanhanger)-\d+$/.test(pad) || pad === '/begrippen' || pad.startsWith('/oefenexamen') || pad === '/voortgang' || pad === '/bestellen' || pad.startsWith('/betalen') || pad === '/voucher' || pad === '/toegang-aanvragen' || pad.startsWith('/img/');
     if (gated && !user) {
       recordEvent(env, ctx, 'locked_view', pad, refVan(request, url));
       return redirect('/login');
@@ -508,7 +515,8 @@ export default {
     }
     if (pad === '/oefenexamen' && request.method === 'GET') {
       const laatste = ((await env.DB.prepare(`SELECT * FROM exam_attempts WHERE user_id = ? AND finished_at IS NOT NULL ORDER BY started_at DESC LIMIT 8`).bind(user.id).all()).results) || [];
-      return page(L, t(L, 'nav.examen') + ' · Dandan Drive', F.examenOverzicht(L, laatste), { user, noindex: true, path: '/oefenexamen' });
+      const onderwerp = String(url.searchParams.get('onderwerp') || '');
+      return page(L, t(L, 'nav.examen') + ' · Dandan Drive', F.examenOverzicht(L, laatste, onderwerp), { user, noindex: true, path: '/oefenexamen' });
     }
     if (pad === '/oefenexamen/start' && request.method === 'POST') {
       const f = await request.formData();
@@ -558,13 +566,7 @@ export default {
     if (pad === '/bestellen' && request.method === 'POST') {
       const f = await request.formData();
       const scope = String(f.get('scope') || '');
-      const eur = F.PRIJS[scope];
-      if (!eur) return redirect('/prijzen');
-      const id = crypto.randomUUID();
-      // order.kind bewaart de gekozen rijbewijs-scope (product); bedrag uit PRIJS.
-      await env.DB.prepare(`INSERT INTO orders (id, user_id, kind, amount_cents) VALUES (?, ?, ?, ?)`).bind(id, user.id, scope, eur * 100).run();
-      recordEvent(env, ctx, 'order', scope, '');
-      return redirect('/betalen/' + id);
+      return redirect('/toegang-aanvragen?scope=' + encodeURIComponent(F.PRIJS[scope] ? scope : 'b'));
     }
     const bm = pad.match(/^\/betalen\/([0-9a-f-]{36})$/);
     if (bm && request.method === 'GET') {
@@ -578,10 +580,24 @@ export default {
       const v = await env.DB.prepare(`SELECT * FROM vouchers WHERE code = ? AND used_count < max_uses AND (expires_at IS NULL OR expires_at > datetime('now'))`).bind(code).first();
       if (!v) return page(L, t(L, 'voucher.kop'), `<h1>${esc(t(L, 'voucher.kop'))}</h1><div class="note fout" role="alert">${esc(t(L, 'voucher.ongeldig'))}</div><p><a class="cta" href="/prijzen">← ${esc(t(L, 'landing.prijskop'))}</a></p>`, { user, noindex: true, status: 400 });
       const mnd = { '1m': 1, '3m': 3, '6m': 6, '12m': 12 }[v.kind] || 1;
-      await env.DB.prepare(`UPDATE vouchers SET used_count = used_count + 1 WHERE code = ?`).bind(code).run();
-      await env.DB.prepare(`INSERT INTO passes (user_id, kind, ends_at, source) VALUES (?, ?, datetime('now', ?), ?)`).bind(user.id, v.kind, `+${mnd} months`, 'voucher:' + code).run();
+      const scope = ['all', 'b', 'b-theorie', 'b-praktijk', 'am', 'motor', 'be'].includes(v.scope) ? v.scope : 'b';
+      const used = await env.DB.prepare(`UPDATE vouchers SET used_count = used_count + 1 WHERE code = ? AND used_count < max_uses`).bind(code).run();
+      if (!used.meta?.changes) return page(L, t(L, 'voucher.kop'), `<h1>${esc(t(L, 'voucher.kop'))}</h1><div class="note fout" role="alert">Deze code is al gebruikt.</div>`, { user, noindex: true, status: 400 });
+      await env.DB.prepare(`INSERT INTO passes (user_id, kind, scope, ends_at, source) VALUES (?, ?, ?, datetime('now', ?), ?)`).bind(user.id, v.kind, scope, `+${mnd} months`, 'voucher:' + code).run();
       recordEvent(env, ctx, 'voucher', v.campagne || code, '');
       return redirect('/leren');
+    }
+    if (pad === '/toegang-aanvragen' && request.method === 'GET') {
+      const scope = ['b', 'b-theorie', 'b-praktijk', 'am', 'motor', 'be'].includes(url.searchParams.get('scope')) ? url.searchParams.get('scope') : 'b';
+      return page(L, 'Toegang aanvragen · Dandan Drive', F.toegangAanvragenBody(L, user, scope), { user, noindex: true, path: '/toegang-aanvragen' });
+    }
+    if (pad === '/toegang-aanvragen' && request.method === 'POST') {
+      const f = await request.formData();
+      const scope = ['b', 'b-theorie', 'b-praktijk', 'am', 'motor', 'be'].includes(String(f.get('scope'))) ? String(f.get('scope')) : 'b';
+      const bericht = String(f.get('bericht') || '').trim().slice(0, 600);
+      await env.DB.prepare(`INSERT INTO access_requests (user_id, scope, message) VALUES (?, ?, ?)`).bind(user.id, scope, bericht).run();
+      recordEvent(env, ctx, 'access_request', scope, '');
+      return page(L, 'Aanvraag ontvangen · Dandan Drive', F.aanvraagBedanktBody(L, scope), { user, noindex: true, path: '/toegang-aanvragen' });
     }
     if (/^\/(module|theorie|info|am|motor|aanhanger)-\d+$/.test(pad)) {
       const m = inhoud.modules.find((x) => '/' + x.slug === pad);
@@ -662,7 +678,7 @@ export default {
           const codes = [];
           for (let i = 0; i < aantal; i++) {
             const code = 'DD' + Array.from(crypto.getRandomValues(new Uint8Array(6))).map((b) => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('');
-            await env.DB.prepare(`INSERT INTO vouchers (code, kind, campagne, max_uses) VALUES (?, ?, ?, ?)`).bind(code, kind, campagne, Number(f.get('max_uses') || 1)).run();
+            await env.DB.prepare(`INSERT INTO vouchers (code, kind, scope, campagne, max_uses) VALUES (?, ?, ?, ?, ?)`).bind(code, kind, scope, campagne, Number(f.get('max_uses') || 1)).run();
             codes.push(code);
           }
           return page(L, 'Vouchers', `<h1>Vouchers aangemaakt (${codes.length})</h1><pre class="codeblok">${codes.join('\n')}</pre><p><a class="cta" href="/admin">← beheer</a></p>`, { user, noindex: true });
@@ -677,6 +693,7 @@ export default {
       const leden = (await env.DB.prepare(`SELECT u.email, u.lang, u.created_at, u.is_admin,
           (SELECT MAX(ends_at) FROM passes p WHERE p.user_id = u.id AND p.ends_at > datetime('now')) AS pas_tot
         FROM users u ORDER BY u.created_at DESC LIMIT 200`).all()).results;
+      const aanvragen = (await env.DB.prepare(`SELECT a.scope, a.message, a.created_at, u.email FROM access_requests a JOIN users u ON u.id = a.user_id ORDER BY a.created_at DESC LIMIT 100`).all()).results;
       const stats = (await env.DB.prepare(`SELECT day, type, SUM(count) n FROM events WHERE day > date('now','-14 days') GROUP BY day, type ORDER BY day DESC`).all()).results;
       return page(L, 'Beheer · Dandan Drive', `
         <h1>Beheer</h1>
@@ -691,10 +708,15 @@ export default {
         <form method="post" action="/admin" class="authform rij">
           <input type="hidden" name="actie" value="voucher">
           <label>aantal <input type="number" name="aantal" value="1" min="1" max="100"></label>
+          <label>rijbewijs <select name="scope"><option value="b" selected>Auto — theorie + praktijk (bundel)</option><option value="b-theorie">Auto — theorie-examen</option><option value="b-praktijk">Auto — praktijk-examen</option><option value="am">AM (bromfiets)</option><option value="motor">A (motor)</option><option value="be">BE (aanhanger)</option></select></label>
           <label>pas <select name="kind"><option value="1m">1 maand</option><option value="3m">3 maanden</option><option value="6m">6 maanden</option><option value="12m">12 maanden</option></select></label>
           <label>campagne <input name="campagne" placeholder="tiktok-jan"></label>
           <label>max. gebruik <input type="number" name="max_uses" value="1" min="1" max="1000"></label>
           <button>aanmaken</button></form>
+        <h2>Toegangscode-aanvragen (${aanvragen.length})</h2>
+        <table class="pagetable"><thead><tr><th>e-mail</th><th>onderdeel</th><th>bericht</th><th>ontvangen</th></tr></thead><tbody>
+        ${aanvragen.map((a) => `<tr><td>${esc(a.email)}</td><td>${esc(scopeLabel(L, a.scope))}</td><td>${esc(a.message || '-')}</td><td>${esc(String(a.created_at).slice(0, 16))}</td></tr>`).join('')}
+        </tbody></table>
         <h2>Review toevoegen (alleen échte slagingsverhalen)</h2>
         <form method="post" action="/admin" class="authform rij">
           <input type="hidden" name="actie" value="review">

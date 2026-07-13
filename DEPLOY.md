@@ -157,6 +157,11 @@ praktijk=b-praktijk, **info=free** (altijd gratis), varianten=zichzelf.
 `wrangler d1 execute dandandrive --remote --file=migrations/000X-*.sql`
 (CLOUDFLARE_API_TOKEN uit `~/.cf-token`).
 
+**Toegang aanvragen (13-7-2026).** Migratie `0004-voucher-scope-and-access-requests.sql`
+voegt de productscope voor vouchers en de tabel met toegangscode-aanvragen toe. Voer
+deze migratie op de remote D1-database uit voordat de bijbehorende Worker-release
+wordt gepubliceerd.
+
 **Prijzen (besluit Marco):** auto theorie €18 + praktijk €18, samen €24; AM €8,
 A €12, BE €8. `F.PRODUCTEN`/`F.PRIJS` in features.js; `/bestellen` verwerkt scope.
 Betaalprovider (WeChat/Alipay) pending → passen via /admin (scope-selector) of voucher.

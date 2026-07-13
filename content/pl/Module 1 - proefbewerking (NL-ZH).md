@@ -182,4 +182,3 @@ Na stronie internetowej obie te części ujmuję w jednolitą „kartę najważn
 
 ---
 *To jest próbka modułu pierwszego. Po zatwierdzeniu tonu i słownictwa opracuję w ten sam sposób moduły od drugiego do piątego.*
-*Dit is de proef voor Module 1. Na jouw akkoord op toon/terminologie verwerk ik Module 2-5 zo.*
