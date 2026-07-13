@@ -59,10 +59,11 @@ function siteHeader(L, user, mods) {
   const rechts = user
     ? `<a href="/account">👤 ${esc(user.email.split('@')[0])}</a>${user.is_admin ? '<a href="/admin">beheer</a>' : ''}`
     : `<a href="/login">${esc(t(L, 'nav.login'))}</a>`;
+  const publicNav = `<a href="/#talen">Talen</a><a href="/#leren">Leerpad</a><a href="/prijzen">Passen</a><a class="nav-cta" href="/login">Gratis starten</a>`;
   return `<header class="site"><div class="container">
   <a class="brand" href="/" style="color:#fff"><span class="logo">丹</span>
-    <span><span lang="nl">Dandan Drive</span><small>${esc(SITE.titleZh)} · 驾照路考</small></span></a>
-  <nav>${user ? nav : `<a href="/">${esc(t(L, 'nav.home'))}</a><a href="/prijzen">${esc(t(L, 'landing.prijskop'))}</a>`}${rechts}
+    <span><span lang="nl">Dandan Drive</span><small>${user ? `${esc(SITE.titleZh)} · 驾照路考` : 'rijbewijs leren in jouw taal'}</small></span></a>
+  <nav>${user ? nav + rechts : publicNav}
   ${user ? `<label class="searchbox">🔍<input id="q" type="search" placeholder="${esc(t(L, 'nav.zoek'))}" autocomplete="off" aria-label="${esc(t(L, 'nav.zoek'))}"></label>` : ''}</nav>
   </div><div id="results" class="container" style="display:none"></div></header>`;
 }
@@ -72,7 +73,9 @@ const siteFooter = (L) => `<footer class="site"><div class="container">
   </div></footer>`;
 function page(L, title, inner, o = {}) {
   const mods = CONTENT[LESTALEN.includes(L) ? L : 'zh'].modules;
-  const body = siteHeader(L, o.user, mods) + `<main id="inhoud"><div class="container">` + inner + `</div></main>` + siteFooter(L);
+  const body = siteHeader(L, o.user, mods) + (o.fullBleed
+    ? `<main id="inhoud" class="fullbleed">` + inner + `</main>`
+    : `<main id="inhoud"><div class="container">` + inner + `</div></main>`) + siteFooter(L);
   const headers = { 'Content-Type': 'text/html; charset=utf-8', ...SEC };
   if (o.setTaal) headers['Set-Cookie'] = taalCookie(o.setTaal);
   return new Response(shell(L, title, body, o), { status: o.status || 200, headers });
@@ -166,7 +169,10 @@ async function mailCode(env, L, email, code) {
 
 // ---------- landing ----------
 function landingBody(L, reviewsHtml) {
-  const taalkeuze = TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="is-actief"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join(' · ');
+  const heroTitle = L === 'nl' ? 'Je rijbewijs halen voelt ineens overzichtelijk.' : t(L, 'landing.titel');
+  const heroLead = L === 'nl'
+    ? 'Dandan Drive maakt het Nederlandse rijbewijs begrijpelijk voor internationale leerlingen: korte lessen, duidelijke beelden, examenritme en uitleg in je eigen taal.'
+    : t(L, 'landing.sub');
   const glasrij = [['🚗', t(L, 'nav.auto'), 'B', '€18'], ['🛵', t(L, 'sectie.am'), 'AM', '€8'], ['🏍️', t(L, 'sectie.motor'), 'A', '€12'], ['🚚', t(L, 'sectie.aanhanger'), 'BE', '€8']]
     .map(([e, n, , pr]) => `<a class="lp-hglink" href="/login"><span class="lp-em">${e}</span><span class="lp-tt"><b>${esc(n)}</b></span><span class="lp-pr">${pr}<small>/mnd</small></span></a>`).join('');
   const feats = `<ul><li>${esc(t(L, 'landing.feat1'))}</li><li>${esc(t(L, 'landing.feat2'))}</li><li>${esc(t(L, 'landing.feat3'))}</li></ul>`;
@@ -179,32 +185,35 @@ function landingBody(L, reviewsHtml) {
   return `<div class="lp lp-modern">
   <section class="lp-hero"><div class="lp-hero-grid">
     <div class="lp-copy">
-      <span class="lp-pill">11 ${esc(t(L, 'landing.taalkop')).toLowerCase()} · ${esc(t(L, 'nav.theorie'))} · ${esc(t(L, 'nav.praktijk'))} · ${esc(t(L, 'nav.examen'))}</span>
-      <h1>${esc(t(L, 'landing.titel'))}</h1>
-      <p class="lp-lead">${esc(t(L, 'landing.sub'))}</p>
+      <span class="lp-pill">11 talen · theorie · praktijk · oefenexamen</span>
+      <h1>${esc(heroTitle)}</h1>
+      <p class="lp-lead">${esc(heroLead)}</p>
       <div class="lp-actions">
-        <a class="lp-cta" href="/login">${esc(t(L, 'landing.proef'))} →</a>
-        <a class="lp-ghost" href="/prijzen">${esc(t(L, 'landing.prijskop'))}</a>
+        <a class="lp-cta" href="/login">Start met een proefles</a>
+        <a class="lp-ghost" href="/prijzen">Bekijk toegangspassen</a>
       </div>
-      <div class="lp-stat"><div><b>11</b> ${esc(t(L, 'landing.taalkop'))}</div><div><b>85+</b> ${esc(t(L, 'leren.onderdelen', { n: '' })).replace('{n}', '').trim() || 'lessen'}</div><div><b>50</b> ${esc(t(L, 'quiz.vragen'))}</div></div>
-      <p class="lp-talen">${taalkeuze}</p>
+      <div class="lp-stat"><div><b>11</b> lestalen</div><div><b>85+</b> lessen en stappen</div><div><b>50</b> examenvragen</div></div>
     </div>
     <aside class="lp-showcase" aria-label="Dandan Drive">
       <img class="lp-hero-photo" src="/assets/landing-hero.webp?v=${ASSET_VER}" alt="Dandan Drive rijles in Nederland" width="1672" height="941">
       <div class="lp-progress-card">
-        <div><strong>${esc(t(L, 'pad.opweg'))}</strong><span>B · ${esc(t(L, 'nav.auto'))}</span></div>
+        <div><strong>Vandaag verder</strong><span>B · Auto</span></div>
         <div class="lp-mini-progress"><span></span></div>
-        <p>✓ ${esc(t(L, 'landing.feat1'))} · ✓ ${esc(t(L, 'landing.feat2'))}</p>
+        <ul>
+          <li><span>✓</span> Begrippen in je eigen taal</li>
+          <li><span>✓</span> Oefenen zoals op het examen</li>
+          <li><span>→</span> Volgende les: spiegelen</li>
+        </ul>
       </div>
     </aside>
   </div></section>
 
-  <section class="lp-blk lp-alt" style="padding-block:clamp(2.2rem,4vw,3.2rem)"><div class="lp-wrap">
-    <div class="lp-kop" style="margin-bottom:16px"><span class="lp-eyebrow">🌍 ${esc(t(L, 'landing.taalkop'))}</span></div>
+  <section class="lp-blk lp-alt lp-language-section" id="talen"><div class="lp-wrap">
+    <div class="lp-kop lp-language-head"><h2>Kies eerst je taal.</h2><p>Maak de taalkeuze visueel en direct. Dat is het unieke verschil van Dandan Drive, dus het mag al in de eerste scroll duidelijk voelbaar zijn.</p></div>
     <div class="lp-talenchips">${TALEN.map((x) => `<a href="/?taal=${x}"${x === L ? ' class="aan"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join('')}</div>
   </div></section>
 
-  <section class="lp-blk lp-product"><div class="lp-wrap">
+  <section class="lp-blk lp-product" id="leren"><div class="lp-wrap">
     <div class="lp-kop"><span class="lp-eyebrow">Dandan Drive</span><h2>${esc(t(L, 'landing.hoekop'))}</h2><p>${esc(t(L, 'landing.usp3'))}</p></div>
     <div class="lp-product-grid">
       <div class="lp-path-card">
@@ -380,7 +389,7 @@ export default {
       if (user) return redirect('/leren');
       recordEvent(env, ctx, 'view', '/', refVan(request, url));
       const rows = ((await env.DB.prepare(`SELECT naam, taal, tekst, sterren FROM reviews WHERE zichtbaar = 1 ORDER BY created_at DESC LIMIT 6`).all()).results) || [];
-      const opts = { path: '/', desc: t(L, 'landing.sub'), hreflang: true };
+      const opts = { path: '/', desc: t(L, 'landing.sub'), hreflang: true, fullBleed: true };
       const refc = url.searchParams.get('ref');
       const resp = page(L, 'Dandan Drive · ' + SITE.titleZh, landingBody(L, F.reviewsBlok(L, rows)), opts);
       if (refc && /^[A-Z0-9]{4,12}$/i.test(refc)) resp.headers.append('Set-Cookie', `dd_ref=${refc.toUpperCase()}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`);
