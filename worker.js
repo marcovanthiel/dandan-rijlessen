@@ -329,7 +329,7 @@ function courseNav(L, current, mods, doneSet, mag) {
     }).join('');
     const secActief = current && current.sectie === sec;
     const ico = { theorie: '📘', info: '🧭', am: '🛵', motor: '🏍️', aanhanger: '🚚' }[sec] || '🚗';
-    return `<div class="cn-sec${secActief ? ' active' : ''}"><div class="cn-sec-kop"><span class="cn-sec-ico" aria-hidden="true">${ico}</span>${esc(t(L, 'sectie.' + sec))}</div><ul class="cn-mods">${items}</ul></div>`;
+    return `<details class="cn-sec${secActief ? ' active' : ''}"${secActief ? ' open' : ''}><summary class="cn-sec-kop"><span class="cn-sec-ico" aria-hidden="true">${ico}</span><span>${esc(t(L, 'sectie.' + sec))}</span></summary><ul class="cn-mods">${items}</ul></details>`;
   }).join('');
   const nu = current ? `${esc(t(L, 'sectie.' + current.sectie))} · ${esc(t(L, 'module.kicker', { n: current.num }))}` : esc(t(L, 'module.crumb'));
   return `<details class="cn-box" open><summary class="cn-summary"><span class="cn-here">${esc(t(L, 'module.crumb'))}:</span> ${nu}</summary><nav class="coursenav" aria-label="${esc(t(L, 'module.crumb'))}">${secties}</nav></details>`;
