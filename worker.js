@@ -54,12 +54,12 @@ function siteHeader(L, user, mods) {
   // leercategorieën (praktijk/theorie) + examen + boek. Dezelfde indeling als
   // de linker cursusbalk en het dashboard.
   const nav = `<a href="/leren">${esc(t(L, 'leren.kop'))}</a>`
-    + `<a href="/leren#praktijk">🚗 ${esc(t(L, 'nav.praktijk'))}</a>`
-    + `<a href="/leren#theorie">📘 ${esc(t(L, 'nav.theorie'))}</a>`
-    + `<a href="/oefenexamen">🎓 ${esc(t(L, 'nav.examen'))}</a>`
+    + `<a href="/leren#praktijk">${esc(t(L, 'nav.praktijk'))}</a>`
+    + `<a href="/leren#theorie">${esc(t(L, 'nav.theorie'))}</a>`
+    + `<a href="/oefenexamen">${esc(t(L, 'nav.examen'))}</a>`
     + `<a href="/boek-index">${esc(t(L, 'nav.boek'))}</a>`;
   const rechts = user
-    ? `<a href="/account">👤 ${esc(user.email.split('@')[0])}</a>${user.is_admin ? '<a href="/admin">beheer</a>' : ''}`
+    ? `<a class="user-link" href="/account"><span class="user-monogram">${esc(user.email.slice(0, 1).toUpperCase())}</span>${esc(user.email.split('@')[0])}</a>${user.is_admin ? '<a href="/admin">beheer</a>' : ''}`
     : `<a href="/login">${esc(t(L, 'nav.login'))}</a>`;
   const publicNav = `<a href="/#talen">Talen</a><a href="/#leren">Leerpad</a><a href="/prijzen">Passen</a><a href="/over">Over ons</a><a class="nav-cta" href="/login">Gratis starten</a>`;
   return `<header class="site"><div class="container">
@@ -120,6 +120,10 @@ async function activePass(env, userId) {
 // theorie-examen (b-theorie) en praktijk-examen (b-praktijk). De info-wegwijzer
 // is gratis. Een pas-scope 'dekt' een set secties:
 const SECTIE_SCOPE = { theorie: 'b-theorie', praktijk: 'b-praktijk', info: 'free', am: 'am', motor: 'motor', aanhanger: 'be' };
+const MODULE_COVERS = {
+  'module-1': 'module-1_s10.webp', 'module-2': 'module-2_s24.webp', 'module-3': 'module-3_s33.webp', 'module-4': 'module-4_s44.webp', 'module-5': 'module-5_examen.webp',
+  'theorie-1': 'module-1_s10.webp', 'theorie-2': 'module-2_s24.webp', 'theorie-3': 'theorie-3_sec4.webp', 'theorie-4': 'theorie-4_sec2.webp', 'theorie-5': 'module-2_s20.webp', 'theorie-6': 'module-3_s32.webp', 'theorie-7': 'module-1_s4.webp', 'theorie-8': 'module-2_s25.webp', 'theorie-9': 'module-1_s10.webp', 'theorie-10': 'module-5_adas.webp', 'theorie-11': 'module-4_s40.webp',
+};
 const SCOPE_DEKT = {
   all: ['b-theorie', 'b-praktijk', 'am', 'motor', 'be'], // bestaande/admin passen (grandfather)
   b: ['b-theorie', 'b-praktijk'],                        // auto-bundel (theorie + praktijk samen)
@@ -345,10 +349,12 @@ function moduleBody(L, m, user, doneSet, mag) {
   const taalnote = L === 'en' && !LESTALEN.includes('en')
     ? `<div class="note">The English interface is available. Full English lessons and exam questions are not published yet; choose another lesson language for the course content.</div>`
     : (L !== lesT ? `<div class="note">${esc(t(L, 'module.lestaal'))}</div>` : '');
+  const cover = MODULE_COVERS[m.slug];
+  const moduleHero = cover
+    ? `<section class="roadbook-module-hero"><div class="rm-copy"><span class="rm-eyebrow">${esc(t(L, 'sectie.' + m.sectie))} · ${esc(t(L, 'module.kicker', { n: m.num }))}</span><h1 lang="${lesT}">${esc(m.zh)}</h1><p>${esc(m.nl || t(L, 'module.kicker', { n: m.num }))}</p><div class="rm-points"><span>Zie de situatie</span><span>Begrijp de stap</span><span>Oefen met rust</span></div></div><div class="rm-photo"><img src="/img/${cover}" alt="${esc(m.nl || m.zh)}" width="1200" height="800" loading="eager"></div></section>`
+    : `<div class="modbanner">${m.banner}</div><div class="module-head"><div class="kicker">${esc(t(L, 'sectie.' + m.sectie))} · ${esc(t(L, 'module.kicker', { n: m.num }))}</div><h1 lang="${lesT}">${esc(m.zh)}</h1><div class="nl nl-only" lang="nl">${esc(m.nl)}</div></div>`;
   return `<div class="crumbs"><a href="/leren">${esc(t(L, 'module.crumb'))}</a> › ${esc(t(L, 'sectie.' + m.sectie))} › ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
-  <div class="modbanner">${m.banner}</div>
-  <div class="module-head"><div class="kicker">${esc(t(L, 'sectie.' + m.sectie))} · ${esc(t(L, 'module.kicker', { n: m.num }))}</div>
-  <h1 lang="${lesT}">${esc(m.zh)}</h1><div class="nl nl-only" lang="nl" style="color:var(--muted)">${esc(m.nl)}</div></div>
+  ${moduleHero}
   ${taalnote}${vol ? '' : `<div class="note">${esc(t(L, 'module.previewnote'))}</div>`}
   ${m.introHtml ? `<div lang="${lesT}">${m.introHtml}</div>` : ''}
   <div class="layout"><aside class="toc">${nav}</aside><div class="les-wrap" lang="${lesT}">${watermerk(user)}${delen}${vol && m.sectie === 'theorie' ? F.theoryCompanion(L, m.num) : ''}</div></div>`;
