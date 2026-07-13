@@ -101,6 +101,12 @@ const uitleg = (v, L) => v['uitleg_' + L] || v.uitleg_nl;
 // ---------- leren-overzicht: twee secties + voortgang + leerpad ----------
 export function lerenBody(L, user, passes, inhoud, klaarPct, examDate, banner, vervolg, mag) {
   const lesL = LESTALEN.includes(L) ? L : 'zh';
+  const nl = L === 'nl';
+  const copy = nl ? {
+    eyebrow: 'Jouw leeromgeving', title: 'Jouw weg naar je rijbewijs.', lead: 'Kies je volgende stap en houd je voortgang rustig bij.', progress: 'Totale voortgang', route: 'Jouw route', routeLead: 'Werk in je eigen tempo door de onderdelen. Begin waar het voor jou het meeste oplevert.', courses: 'Kies een leerpad', coursesLead: 'Elk leerpad opent op de eerste stap die nog aandacht vraagt.', open: 'Open leerpad', continue: 'Ga verder', next: 'Volgende stap', lessons: 'onderdelen'
+  } : {
+    eyebrow: 'Your learning space', title: 'Your licence route, clearly in view.', lead: 'Choose your next step and keep your progress in one calm place.', progress: 'Total progress', route: 'Your route', routeLead: 'Work through the lessons at your own pace.', courses: 'Choose a learning path', coursesLead: 'Each path opens at its next useful step.', open: 'Open learning path', continue: 'Continue', next: 'Next step', lessons: 'parts'
+  };
   const status = user.is_admin ? ''
     : (passes && passes.length)
       ? `<div class="note ok">${esc(t(L, 'leren.pas', { tot: String(passes[0].ends_at).slice(0, 10) }))}</div>`
@@ -115,10 +121,10 @@ export function lerenBody(L, user, passes, inhoud, klaarPct, examDate, banner, v
   const verder = vervolg
     ? `<a class="vervolgkaart" href="/${vervolg.slug}#${vervolg.pid}">
        <span class="vk-pijl" aria-hidden="true">▶</span>
-       <span class="vk-tekst"><small>${esc(t(L, klaarPct > 0 ? 'pad.opweg' : 'quiz.start'))}</small>
+       <span class="vk-tekst"><small>${esc(copy.next)}</small>
        <strong lang="${lesL}">${esc(vervolg.mtitel)}</strong>
        <span class="vk-deel">${SEC_ICO[vervolg.sectie] || '🚗'} ${esc(t(L, 'module.kicker', { n: vervolg.num }))} · ${esc(vervolg.plabel)}</span></span>
-       <span class="vk-ga" aria-hidden="true">→</span></a>`
+       <span class="vk-ga" aria-hidden="true">${esc(copy.continue)} →</span></a>`
     : '';
   // Samenvattingskaart per sectie (geen wall of modules meer; die staan links).
   const secKaart = (sec, ico) => {
@@ -130,25 +136,33 @@ export function lerenBody(L, user, passes, inhoud, klaarPct, examDate, banner, v
     const doel = '/' + (ms.find((m) => m.pct < 100) || ms[0]).slug;
     const magSec = mag(sec);
     const cta = magSec
-      ? `<a class="cta klein" href="${doel}">${esc(t(L, klaarPct > 0 ? 'lock.bekijk' : 'quiz.start'))} →</a>`
+      ? `<a class="cta klein" href="${doel}">${esc(pct > 0 ? copy.continue : copy.open)} →</a>`
       : `<a class="cta klein" href="/prijzen">🔒 ${esc(t(L, 'leren.passen'))}</a>`;
-    return `<section class="sectiekaart${magSec ? '' : ' vergrendeld'}" id="${sec}">
+    return `<section class="sectiekaart dash-course${magSec ? '' : ' vergrendeld'}" id="${sec}">
       <div class="sk-kop"><span class="sk-ico" aria-hidden="true">${ico}</span><h2>${esc(t(L, 'sectie.' + sec))}</h2><span class="sk-pct">${magSec ? pct + '%' : '🔒'}</span></div>
       <div class="balkje" aria-hidden="true"><span style="width:${pct}%"></span></div>
-      <div class="sk-meta">✓ ${modAf}/${ms.length} · ${esc(secLabel(L, sec))}</div>
+      <div class="sk-meta">${modAf}/${ms.length} ${esc(copy.lessons)} · ${esc(secLabel(L, sec))}</div>
       ${cta}
     </section>`;
   };
-  return `<div class="modbanner">${banner}</div>
-  <div class="dash-head"><h1>${esc(t(L, 'leren.kop'))}</h1></div>
-  ${status}${schema}${verder}
-  <div class="sectiekaarten">${['praktijk', 'theorie', 'info', 'am', 'motor', 'aanhanger'].map((s) => secKaart(s, SEC_ICO[s])).join('')}</div>
+  const courseCount = inhoud.modules.reduce((n, m) => n + m.parts.length, 0);
+  return `<div class="learn-dashboard">
+  <section class="learn-hero">
+    <div class="learn-hero-copy"><span class="learn-eyebrow">${esc(copy.eyebrow)}</span><h1>${esc(copy.title)}</h1><p>${esc(copy.lead)}</p>
+      <div class="learn-hero-stats"><div><strong>${klaarPct}%</strong><span>${esc(copy.progress)}</span></div><div><strong>${courseCount}</strong><span>${esc(copy.lessons)}</span></div><div><strong>11</strong><span>${esc(t(L, 'nav.theorie'))}</span></div></div>
+    </div>
+    <div class="learn-hero-visual"><img src="/img/module-2_s24.webp" alt="Dandan Drive rijles in Nederland" width="1200" height="800" loading="eager"><div class="learn-hero-badge"><span>🚗</span><div><small>${esc(copy.route)}</small><strong>${esc(t(L, 'nav.auto'))}</strong></div></div></div>
+  </section>
+  ${status}
+  <section class="learn-route"><div class="learn-section-head"><div><span>${esc(copy.route)}</span><h2>${esc(copy.next)}</h2></div><p>${esc(copy.routeLead)}</p></div>${schema}${verder}</section>
+  <section class="learn-courses"><div class="learn-section-head"><div><span>${esc(copy.courses)}</span><h2>${esc(t(L, 'leren.kop'))}</h2></div><p>${esc(copy.coursesLead)}</p></div>
+  <div class="sectiekaarten">${['praktijk', 'theorie', 'info', 'am', 'motor', 'aanhanger'].map((s) => secKaart(s, SEC_ICO[s])).join('')}</div></section>
   <div class="dash-tools">
     <a class="tool" href="/oefenexamen"><span aria-hidden="true">🎓</span>${esc(t(L, 'nav.examen'))}</a>
     <a class="tool" href="/begrippen"><span aria-hidden="true">🗂️</span>${esc(t(L, 'nav.begrippen'))}</a>
     <a class="tool" href="/boek-index"><span aria-hidden="true">📖</span>${esc(t(L, 'nav.boek'))}</a>
   </div>
-  <div class="note boektip">📖 ${esc(t(L, 'boektip'))} <a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a></div>`;
+  <div class="note boektip">📖 ${esc(t(L, 'boektip'))} <a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a></div></div>`;
 }
 
 // ---------- oefenexamen ----------

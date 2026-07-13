@@ -11,6 +11,22 @@ const DIST = path.join(ROOT, 'dist');
 const ASSETS_SRC = path.join(ROOT, 'assets');
 const IMG = path.join(ROOT, 'img');
 const PHOTO_EXT = ['png','jpg','jpeg','webp'];
+// Theorie blijft voor regels en afstanden gebruikmaken van diagrammen. Op de
+// didactische kernparagraaf staat daarnaast een herkenbare praktijksituatie.
+// Zo wordt een foto geen versiering, maar een concrete ankerplek voor de uitleg.
+const THEORY_PHOTOS = {
+  'theorie-1': { sec3: 'module-2_s25.webp' },
+  'theorie-2': { sec2: 'module-2_s24.webp' },
+  'theorie-3': { sec4: 'theorie-3_sec4.webp' },
+  'theorie-4': { sec2: 'theorie-4_sec2.webp' },
+  'theorie-5': { sec2: 'module-2_s20.webp' },
+  'theorie-6': { sec2: 'module-3_s32.webp' },
+  'theorie-7': { sec4: 'module-1_s4.webp' },
+  'theorie-8': { sec2: 'module-2_s25.webp' },
+  'theorie-9': { sec5: 'module-1_s10.webp' },
+  'theorie-10': { sec4: 'module-5_adas.webp' },
+  'theorie-11': { sec2: 'module-4_s40.webp' },
+};
 function photoSuffix(s){
   if(s.step) return 's'+s.step;
   const k = (s.zh||'') + ' ' + (s.nl||'');
@@ -21,6 +37,8 @@ function photoSuffix(s){
   return null;
 }
 function findPhoto(m,s){
+  const theoryPhoto = THEORY_PHOTOS[m.slug]?.[s.id];
+  if(theoryPhoto && fs.existsSync(path.join(IMG,theoryPhoto))) return 'img/'+theoryPhoto;
   const suf = photoSuffix(s); if(!suf) return null;
   for(const e of PHOTO_EXT){ const f=`${m.slug}_${suf}.${e}`; if(fs.existsSync(path.join(IMG,f))) return 'img/'+f; }
   return null;

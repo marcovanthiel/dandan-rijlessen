@@ -11,6 +11,21 @@
   wrap.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 })();
 
+// Op een telefoon is de volledige cursusroute te lang vóór de lesinhoud.
+// Houd de navigatie daarom dicht bij laden; op groter scherm blijft hij open.
+(function () {
+  var box = document.querySelector('.toc .cn-box');
+  if (!box || !window.matchMedia) return;
+  var compact = window.matchMedia('(max-width: 820px)');
+  function syncCourseNav() {
+    if (compact.matches) box.removeAttribute('open');
+    else box.setAttribute('open', '');
+  }
+  syncCourseNav();
+  if (compact.addEventListener) compact.addEventListener('change', syncCourseNav);
+  else if (compact.addListener) compact.addListener(syncCourseNav);
+})();
+
 // Scrollspy: markeer in de cursusnavigatie het onderdeel dat nu in beeld is.
 (function () {
   var links = document.querySelectorAll('.coursenav .cn-parts a[data-spy]');

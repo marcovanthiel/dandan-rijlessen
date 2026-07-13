@@ -533,7 +533,7 @@ export default {
       recordEvent(env, ctx, 'view', '/leren', '');
       const dash = F.lerenBody(L, user, passes, { ...inhoud, modules: modsMetPct }, klaarPct, user.exam_date, HOME_BANNER, vervolg, mag);
       const inner = `<div class="layout"><aside class="toc">${courseNav(L, null, modsMetPct, done, mag)}</aside><div class="dash">${dash}</div></div>`;
-      return page(L, t(L, 'leren.kop') + ' · Dandan Drive', inner, { user, noindex: true, path: '/leren' });
+      return page(L, t(L, 'leren.kop') + ' · Dandan Drive', inner, { user, gated: true, noindex: true, path: '/leren' });
     }
     if (pad === '/voortgang' && request.method === 'POST') {
       const f = await request.formData();
