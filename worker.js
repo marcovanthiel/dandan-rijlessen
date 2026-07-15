@@ -267,7 +267,7 @@ function landingBody(L, reviewsHtml) {
   </div></section>
 
   <section class="lp-blk lp-alt" id="hoe"><div class="lp-wrap">
-    <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.hoekop'))}</span><h2>${esc(t(L, 'landing.hoekop'))}</h2></div>
+    <div class="lp-kop"><h2>${esc(t(L, 'landing.hoekop'))}</h2></div>
     <div class="lp-steps">
       <div class="lp-step"><div class="lp-bar"></div><h3>${esc(t(L, 'sectie.theorie'))}</h3><p>${esc(t(L, 'landing.usp1'))}</p></div>
       <div class="lp-step"><div class="lp-bar"></div><h3>${esc(t(L, 'nav.examen'))}</h3><p>${esc(t(L, 'landing.usp3'))}</p></div>

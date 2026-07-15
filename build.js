@@ -541,6 +541,9 @@ function main(){
   fs.copyFileSync(path.join(ASSETS_SRC,'style.css'), path.join(DIST,'assets','style.css'));
   fs.copyFileSync(path.join(ASSETS_SRC,'les.js'), path.join(DIST,'assets','les.js'));
   fs.copyFileSync(path.join(ASSETS_SRC,'interactie.js'), path.join(DIST,'assets','interactie.js'));
+  for(const font of ['bricolage-latin.woff2','bricolage-latinext.woff2','bricolage-viet.woff2']){
+    if(fs.existsSync(path.join(ASSETS_SRC,font))) fs.copyFileSync(path.join(ASSETS_SRC,font), path.join(DIST,'assets',font));
+  }
   for(const photo of ['landing-hero.webp','product-auto-b-v2.png']){
     if(fs.existsSync(path.join(ASSETS_SRC,photo))) fs.copyFileSync(path.join(ASSETS_SRC,photo), path.join(DIST,'assets',photo));
   }
