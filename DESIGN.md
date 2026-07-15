@@ -7,6 +7,20 @@ internationaal (11 lestalen, Latijn + CJK + Arabisch/RTL), mobile-first.
 "Onderweg" — nachtblauw als betrouwbare basis, wegmarkering-geel als accent/actie.
 Rustig, professioneel, met speelse verkeers-iconografie in eigen SVG.
 
+## Typografie
+- **Koppen (`.lp h1/h2/h3`):** Bricolage Grotesque (OFL, self-hosted in `assets/bricolage-*.woff2`,
+  variabel wght 400-800, `--disp`-token). Alleen Latijnse subsets (latin/latin-ext/vietnamese);
+  zh/ar/cyrillisch/hindi vallen via de fontstack correct terug op Noto/systeem. `font-display:swap`.
+- **Body:** systeemstack met Noto Sans SC voor CJK (regel 1 van style.css).
+- Geen CDN-fonts (CSP `font-src 'self'`); nieuwe fonts altijd zelf hosten + in `build.js` naar `dist/` kopiëren.
+
+## Kwaliteitsborging
+- `/impeccable audit` (detector) draaien op de gerenderde landing; doel = **0 anti-patterns**.
+  Verificatie via `wrangler dev --local` + Playwright (desktop/mobiel) vóór deploy; na deploy
+  de edge-cache negeren (eerste run vlak na deploy kan stale zijn, cache-bust met `?v=`).
+- Schaduwen op donkere vlakken: strak en near-black (gegronde elevatie), nooit gekleurde glow
+  (dark-glow = AI-tell). Koptekst-tracking niet strakker dan -.04em.
+
 ## Kleurtokens (licht)
 Canoniek in `:root`. `--brand*` blijven bestaan als **alias** naar deze waarden
 (geen enkel bestaand component breekt).
