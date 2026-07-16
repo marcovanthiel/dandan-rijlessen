@@ -12,7 +12,11 @@ Richtlijn stijl (consistent met bestaand): fotorealistische, generieke Nederland
 verkeers-/lesscènes, daglicht, neutrale mensen, herkenbaar NL straatbeeld; 1536×1024,
 daarna WebP 1200px q82. Geen merken/kentekens leesbaar, geen boekreproductie.
 
-## Landing-hero rijfoto (13-7)
+## Landing-hero rijfoto (13-7) — KLAAR 16-7-2026
+De foto stond al klaar als `assets/landing-hero.webp` (gegenereerd in een eerdere ronde,
+voldeed volledig aan de opdracht) en is nu geïntegreerd in de hp-landing-hero:
+fotokaart in `.hp-showcard`, glas-kaart overlapt de onderrand, orbits eromheen.
+Geen nieuwe generatie nodig geweest.
 | Bestandsnaam | Plek | Doelmaat | Onderwerp | Stijl | Prompt |
 |---|---|---|---|---|---|
 | `img/hero-rijles.webp` | landing-hero (rechterkolom, i.p.v./achter de glas-kaart) | 1200×900 → WebP q82 | Moderne rijles in een Nederlandse straat: instructeur + leerling in een auto, daglicht, herkenbaar NL straatbeeld (fietspad, bakstenen huizen) | fotorealistisch, warm daglicht, rustig, geen leesbare merken/kentekens | "Photorealistic modern driving lesson in a Dutch residential street, instructor and learner in a car seen from outside through the windscreen, daylight, red-brick houses and a bicycle lane, neutral friendly people, no readable brands or licence plates, 1536x1024" |

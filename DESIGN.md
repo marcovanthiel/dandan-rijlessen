@@ -79,7 +79,7 @@ pil `999px`. Touch-doelen **minimaal 44×44px** (knoppen, nav-links, afvink).
 
 ## Componenten (bestaand + te verzorgen)
 - **Header**: sticky, navy→blauw gradient; nav met categorieën (Dashboard, 🚗 Praktijk,
-  📘 Theorie, 🧭 Info, 🎓 Examen). Op mobiel: hamburger/collapse < 720px (backlog).
+  📘 Theorie, 🧭 Info, 🎓 Examen). Op mobiel: **hamburger < 720px (LIVE 16-7-2026)**: `.navburger` (44px, aria-expanded, balkjes→kruis), nav klapt uit als kolom, sluit op linkklik en Escape; label via i18n-key `nav.menu` (12 talen).
 - **Kaart** (`.card`, `.sectiekaart`, `.modkaart`): wit, subtiele schaduw, hover-lift.
 - **Cursusbalk** (`.coursenav`): linker menubalk, secties → modules → onderdelen + scrollspy.
 - **Voortgang**: ring (`.ring`), balk (`.balkje`), vinkjes.
@@ -118,3 +118,9 @@ zet de donkere grond.
 - **Rollback:** git-tag `voor-hip-redesign` (commit vóór de omzetting).
 - **Nog niet omgezet:** de in-app pagina's (cursusroute, lespagina, dashboard) staan nog in
   het lichte navy/geel-systeem; die kunnen in een volgende fase mee.
+
+### Hero-rijfoto (16-7-2026)
+De landing-hero toont `assets/landing-hero.webp` (AI-gegenereerde NL-rijlesscène,
+rechtenvrij, geen leesbaar kenteken) als fotokaart in `.hp-showcard`; de glas-kaart
+overlapt de onderrand (`:has(.hp-foto)`-regel), orbit-taalbubbels blijven. Foto laadt
+eager/fetchpriority=high met vaste width/height (geen CLS).
