@@ -124,3 +124,11 @@ De landing-hero toont `assets/landing-hero.webp` (AI-gegenereerde NL-rijlesscèn
 rechtenvrij, geen leesbaar kenteken) als fotokaart in `.hp-showcard`; de glas-kaart
 overlapt de onderrand (`:has(.hp-foto)`-regel), orbit-taalbubbels blijven. Foto laadt
 eager/fetchpriority=high met vaste width/height (geen CLS).
+
+### Taalkeuze op de landing (16-7-2026)
+De zwevende orbit-taalbubbels zijn vervangen door een **taalkeuzelijst rechtsboven**
+in de landing-nav: native `<select>` (donkere pil) met emoji-vlag + taalnaam per
+chrome-taal (TAALVLAG-map in worker.js), wisselen = herladen via het bestaande
+`?taal=`-mechanisme; toegankelijk label via i18n-key landing.taalkop. Onder 640px:
+compacte lijst, kop-CTA verborgen (hero-CTA staat direct eronder), brand-ondertitel weg.
+Let op: emoji-vlaggen renderen op oudere Windows-desktops als landletters; geaccepteerd.
