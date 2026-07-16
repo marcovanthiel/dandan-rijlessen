@@ -100,3 +100,21 @@ pil `999px`. Touch-doelen **minimaal 44×44px** (knoppen, nav-links, afvink).
 - Focus-visible zichtbaar; `prefers-reduced-motion` respecteren (transities uit).
 - Contrast ≥ AA; geen tekst puur op kleur zonder contrastcheck.
 - Alle SVG/beeld met `title`/`aria-label` of `aria-hidden` indien decoratief.
+
+## Landing: hip redesign (16-7-2026) — LIVE
+De publieke landing (`/`) is een **op zichzelf staand donker design**, gescoped onder `.hp`
+(worker.js `landingBody`), los van de lichte app-shell. `page()` draait de landing in
+**solo-modus** (`o.solo`): eigen donkere nav + footer i.p.v. `header.site`; `body.hp-body`
+zet de donkere grond.
+- **Palet (2026, research-gedreven):** zinc near-black `#0a0b0e`; gradient
+  **electric cobalt `#3d6fff` → cyaan `#22d3ee` → lime `#b8f23d`**; off-white tekst
+  `#f3f5f8` (elevated neutral, geen puur wit). Bewust wég van de generieke violet/paars
+  "AI-gradient". Lime = pop-accent.
+- **Stijl:** glasmorfisme (`backdrop-filter`), ambient gloed-blobs (lighting, geen decoratie),
+  zwevende taal-bubbels, talen-marquee, glas-productkaart met conische voortgangsring,
+  ronde hoeken (14-26px). Koppen in Bricolage. Contrast ruim > AA op donker (doorgerekend).
+- **Login-knop** rechtsboven in de landing-nav (+ toegevoegd aan de gedeelde publieke nav).
+- **Meertalig** via bestaande i18n-keys + NL/EN-patroon (geen nieuwe gegenereerde keys).
+- **Rollback:** git-tag `voor-hip-redesign` (commit vóór de omzetting).
+- **Nog niet omgezet:** de in-app pagina's (cursusroute, lespagina, dashboard) staan nog in
+  het lichte navy/geel-systeem; die kunnen in een volgende fase mee.
