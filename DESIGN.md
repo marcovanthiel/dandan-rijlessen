@@ -114,7 +114,7 @@ zet de donkere grond.
   zwevende taal-bubbels, talen-marquee, glas-productkaart met conische voortgangsring,
   ronde hoeken (14-26px). Koppen in Bricolage. Contrast ruim > AA op donker (doorgerekend).
 - **Login-knop** rechtsboven in de landing-nav (+ toegevoegd aan de gedeelde publieke nav).
-- **Meertalig** via bestaande i18n-keys + NL/EN-patroon (geen nieuwe gegenereerde keys).
+- **Meertalig (16-7-2026 volledig):** de NL/EN-terugval is vervangen door 45 echte i18n-keys (`hp.*` + nav.leerpad/passen/overons/gratisstarten) in alle 12 chrome-talen; de NL()-helper bestaat niet meer. Let op de bekende regeneratie-gotcha: deze keys horen ook in de i18n-werkmap.
 - **Rollback:** git-tag `voor-hip-redesign` (commit vóór de omzetting).
 - **Nog niet omgezet:** de in-app pagina's (cursusroute, lespagina, dashboard) staan nog in
   het lichte navy/geel-systeem; die kunnen in een volgende fase mee.
