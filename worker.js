@@ -5,6 +5,9 @@
 // lestekst in de lestaal (nu zh) met nette fallback-melding.
 import { SITE, HOME_BANNER, CONTENT, LESTALEN, TOTAL_PAGES, ASSET_VER } from './worker-content.js';
 import { t, TALEN, TAALNAMEN } from './i18n.js';
+// Vlag per chrome-taal voor de taalkeuzelijst (emoji: geen assets, werkt op
+// telefoons; op oudere Windows-desktops vallen ze terug op landletters).
+const TAALVLAG = { zh: '🇨🇳', nl: '🇳🇱', en: '🇬🇧', tr: '🇹🇷', ar: '🇸🇦', pl: '🇵🇱', uk: '🇺🇦', ru: '🇷🇺', es: '🇪🇸', pt: '🇵🇹', hi: '🇮🇳', vi: '🇻🇳' };
 import * as F from './features.js';
 
 const SEC = {
@@ -195,6 +198,8 @@ function landingBody(L, reviewsHtml) {
   <header class="hp-top"><div class="hp-wrap">
     <a class="hp-brand" href="/"><span class="m">丹</span><span>Dandan Drive<small>${esc(NL('rijbewijs in jouw taal', 'driving licence in your language'))}</small></span></a>
     <nav class="hp-nav"><a href="#waarom">${esc(NL('Waarom', 'Why'))}</a><a href="#talen">${esc(NL('Talen', 'Languages'))}</a><a href="#app">${esc(NL('De app', 'The app'))}</a><a href="/prijzen">${esc(NL('Prijzen', 'Pricing'))}</a></nav>
+    <label class="hp-taal"><span class="visueel-weg">${esc(t(L, 'landing.taalkop'))}</span>
+      <select id="hp-taalkeuze">${TALEN.map((x) => `<option value="${x}"${x === L ? ' selected' : ''}>${TAALVLAG[x]} ${esc(TAALNAMEN[x])}</option>`).join('')}</select></label>
     <a class="hp-login" href="/login">${login}</a>
     <a class="hp-cta" href="/login">${gratis} →</a>
   </div></header>
@@ -213,9 +218,6 @@ function landingBody(L, reviewsHtml) {
       </div>
       <div class="hp-showcard">
         <img class="hp-foto" src="/assets/landing-hero.webp?v=${ASSET_VER}" alt="${esc(NL('Rijles in een Nederlandse straat: instructeur en leerling in een lesauto', 'Driving lesson in a Dutch street: instructor and learner in a car'))}" width="1672" height="941" loading="eager" fetchpriority="high">
-        <span class="hp-orbit a"><span class="dot"></span>中文</span>
-        <span class="hp-orbit b"><span class="dot"></span>العربية</span>
-        <span class="hp-orbit c"><span class="dot"></span>Türkçe</span>
         <div class="hp-gcard">
           <div class="hp-gtop"><div class="hp-ring"></div><div><b>${esc(NL('Vandaag verder', 'Continue today'))}</b><span>${esc(t(L, 'nav.theorie'))} · 4/11</span></div></div>
           <div class="hp-gsteps">

@@ -1,6 +1,14 @@
 // Progressieve verrijking: examentimer, flashcards met NL-audio, kopieerknop,
 // PWA-registratie. Alles werkt óók zonder dit script (formulieren + lijsten).
 (function () {
+  // --- taalkeuzelijst op de landing: kiezen = herladen in die taal
+  var taalkeuze = document.getElementById('hp-taalkeuze');
+  if (taalkeuze) {
+    taalkeuze.addEventListener('change', function () {
+      window.location.href = '/?taal=' + encodeURIComponent(taalkeuze.value);
+    });
+  }
+
   // --- hamburger (mobiel): klapt de hoofdnavigatie open en dicht
   var burger = document.querySelector('.navburger');
   var sitenav = document.getElementById('sitenav');
