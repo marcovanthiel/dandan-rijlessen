@@ -44,7 +44,7 @@ function shell(L, title, body, o = {}) {
 <meta name="twitter:card" content="summary_large_image">${hreflang}
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/style.css?v=${ASSET_VER}">
-</head><body data-nl="on"${o.gated ? ' class="beschermd"' : ''}>
+</head><body data-nl="on"${(o.gated || o.bodyClass) ? ` class="${[o.gated ? 'beschermd' : '', o.bodyClass || ''].filter(Boolean).join(' ')}"` : ''}>
 <a class="skip-link" href="#inhoud">${esc(t(L, 'skip'))}</a>${body}
 <script src="/assets/search.js?v=${ASSET_VER}" defer></script><script src="/assets/interactie.js?v=${ASSET_VER}" defer></script>${o.gated ? `<script src="/assets/les.js?v=${ASSET_VER}" defer></script>` : ''}
 </body></html>`;
@@ -61,7 +61,7 @@ function siteHeader(L, user, mods) {
   const rechts = user
     ? `<a class="user-link" href="/account"><span class="user-monogram">${esc(user.email.slice(0, 1).toUpperCase())}</span>${esc(user.email.split('@')[0])}</a>${user.is_admin ? '<a href="/admin">beheer</a>' : ''}`
     : `<a href="/login">${esc(t(L, 'nav.login'))}</a>`;
-  const publicNav = `<a href="/#talen">Talen</a><a href="/#leren">Leerpad</a><a href="/prijzen">Passen</a><a href="/over">Over ons</a><a class="nav-cta" href="/login">Gratis starten</a>`;
+  const publicNav = `<a href="/#talen">Talen</a><a href="/#app">Leerpad</a><a href="/prijzen">Passen</a><a href="/over">Over ons</a><a href="/login">${esc(t(L, 'nav.login'))}</a><a class="nav-cta" href="/login">Gratis starten</a>`;
   return `<header class="site"><div class="container">
   <a class="brand" href="/" style="color:#fff"><span class="logo">丹</span>
     <span><span lang="nl">Dandan Drive</span><small>${user ? `${esc(SITE.titleZh)} · 驾照路考` : 'rijbewijs leren in jouw taal'}</small></span></a>
@@ -76,9 +76,9 @@ const siteFooter = (L) => `<footer class="site"><div class="container">
   </div></footer>`;
 function page(L, title, inner, o = {}) {
   const mods = CONTENT[LESTALEN.includes(L) ? L : 'zh'].modules;
-  const body = siteHeader(L, o.user, mods) + (o.fullBleed
+  const body = (o.solo ? '' : siteHeader(L, o.user, mods)) + ((o.fullBleed || o.solo)
     ? `<main id="inhoud" class="fullbleed">` + inner + `</main>`
-    : `<main id="inhoud"><div class="container">` + inner + `</div></main>`) + siteFooter(L);
+    : `<main id="inhoud"><div class="container">` + inner + `</div></main>`) + (o.solo ? '' : siteFooter(L));
   const headers = { 'Content-Type': 'text/html; charset=utf-8', ...SEC };
   if (o.setTaal) headers['Set-Cookie'] = taalCookie(o.setTaal);
   return new Response(shell(L, title, body, o), { status: o.status || 200, headers });
@@ -176,119 +176,115 @@ async function mailCode(env, L, email, code) {
 
 // ---------- landing ----------
 function landingBody(L, reviewsHtml) {
-  const heroTitle = L === 'nl' ? 'Je rijbewijs halen voelt ineens overzichtelijk.' : t(L, 'landing.titel');
-  const heroLead = L === 'nl'
-    ? 'Dandan Drive maakt het Nederlandse rijbewijs begrijpelijk voor internationale leerlingen: korte lessen, duidelijke beelden, examenritme en uitleg in je eigen taal.'
-    : t(L, 'landing.sub');
-  const toegangTekst = L === 'nl'
-    ? 'Geen abonnement. Vraag na je gratis account een toegangscode aan voor precies het rijbewijs dat je wilt leren.'
-    : 'No subscription. After creating your free account, request an access code for the exact licence course you want to learn.';
-  const eenmaligTekst = L === 'nl' ? 'eenmalig' : 'one-time';
-  const examenLead = L === 'nl'
-    ? 'Train onder tijdsdruk, krijg foutanalyse per onderwerp en ga daarna direct terug naar de juiste les.'
-    : 'Train under time pressure, get topic feedback and return directly to the right lesson.';
-  const examenCta = L === 'nl' ? 'Start de examentrainer' : 'Start the exam trainer';
-  const glasrij = [['🚗', t(L, 'nav.auto'), 'B', '€18'], ['🛵', t(L, 'sectie.am'), 'AM', '€8'], ['🏍️', t(L, 'sectie.motor'), 'A', '€12'], ['🚚', t(L, 'sectie.aanhanger'), 'BE', '€8']]
-    .map(([e, n, , pr]) => `<a class="lp-hglink" href="/login"><span class="lp-em">${e}</span><span class="lp-tt"><b>${esc(n)}</b></span><span class="lp-pr">${pr}<small>${eenmaligTekst}</small></span></a>`).join('');
+  const NL = (nl, en) => (L === 'nl' ? nl : en);
+  const login = esc(t(L, 'nav.login'));
+  const gratis = esc(NL('Gratis proefles', 'Free lesson'));
+  const heroH1 = L === 'nl'
+    ? 'Haal je rijbewijs<br>in <span class="grad-txt">jouw taal</span>.'
+    : esc(t(L, 'landing.titel'));
+  const heroLead = esc(t(L, 'landing.sub'));
+  const proefCta = esc(NL('Start je gratis proefles', 'Start your free trial lesson'));
+  const prijsCta = esc(NL('Bekijk de prijzen', 'See the prices'));
+  const talen = TALEN.filter((x) => x !== 'en');
+  const chip = (x) => `<span class="hp-lchip"><span class="dot"></span>${esc(TAALNAMEN[x])}</span>`;
+  const marquee = talen.map(chip).join('');
   const feats = `<ul><li>${esc(t(L, 'landing.feat1'))}</li><li>${esc(t(L, 'landing.feat2'))}</li><li>${esc(t(L, 'landing.feat3'))}</li></ul>`;
-  const variant = (e, code, titel, eur) => `<div class="lp-plan"><div class="lp-pico">${e}</div>
-    <div><span class="lp-code">${esc(code)}</span><h3>${esc(titel)}</h3></div>
-    ${feats}
-    <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
-    <div class="lp-prijs"><span class="lp-eur tnum">${eur}</span><span class="lp-per">${eenmaligTekst}</span></div>
-    <a class="lp-knop" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>`;
-  return `<div class="lp lp-modern">
-  <section class="lp-hero"><div class="lp-hero-grid">
-    <div class="lp-copy">
-      <span class="lp-pill">11 talen · theorie · praktijk · oefenexamen</span>
-      <h1>${esc(heroTitle)}</h1>
-      <p class="lp-lead">${esc(heroLead)}</p>
-      <div class="lp-actions">
-        <a class="lp-cta" href="/login">Start met een proefles</a>
-        <a class="lp-ghost" href="/prijzen">Bekijk toegangspassen</a>
+  const variant = (e, titel, eur) => `<div class="hp-plan"><div class="hp-ph"><span class="hp-pico">${e}</span><div class="hp-pname">${esc(titel)}</div></div>${feats}<div class="hp-price">${eur}<small>${NL('/mnd', '/mo')}</small></div><span class="hp-free grad-txt">✦ ${esc(t(L, 'landing.proefles'))}</span><a class="hp-pbtn" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>`;
+  return `<div class="hp">
+  <header class="hp-top"><div class="hp-wrap">
+    <a class="hp-brand" href="/"><span class="m">丹</span><span>Dandan Drive<small>${esc(NL('rijbewijs in jouw taal', 'driving licence in your language'))}</small></span></a>
+    <nav class="hp-nav"><a href="#waarom">${esc(NL('Waarom', 'Why'))}</a><a href="#talen">${esc(NL('Talen', 'Languages'))}</a><a href="#app">${esc(NL('De app', 'The app'))}</a><a href="/prijzen">${esc(NL('Prijzen', 'Pricing'))}</a></nav>
+    <a class="hp-login" href="/login">${login}</a>
+    <a class="hp-cta" href="/login">${gratis} →</a>
+  </div></header>
+  <section class="hp-hero">
+    <span class="hp-glow g1"></span><span class="hp-glow g2"></span><span class="hp-glow g3"></span>
+    <div class="hp-wrap hp-hero-grid">
+      <div>
+        <span class="hp-pill"><b>${esc(NL('NIEUW', 'NEW'))}</b> ${esc(NL('11 lestalen, van theorie tot examen', '11 lesson languages, theory to exam'))}</span>
+        <h1>${heroH1}</h1>
+        <p class="hp-lead">${heroLead}</p>
+        <div class="hp-actions">
+          <a class="hp-btn hp-primary" href="/login">${proefCta} →</a>
+          <a class="hp-btn hp-ghost" href="/prijzen">${prijsCta}</a>
+        </div>
+        <div class="hp-stats"><div><b class="tnum">11</b><span>${esc(NL('lestalen', 'languages'))}</span></div><div><b class="tnum">85+</b><span>${esc(NL('lessen & stappen', 'lessons & steps'))}</span></div><div><b class="tnum">4</b><span>${esc(NL('rijbewijzen', 'licences'))}</span></div><div><b class="grad-txt">100%</b><span>${esc(NL('examengericht', 'exam-focused'))}</span></div></div>
       </div>
-      <div class="lp-stat"><div><b>11</b> lestalen</div><div><b>85+</b> lessen en stappen</div><div><b>50</b> examenvragen</div></div>
-    </div>
-    <aside class="lp-showcase" aria-label="Dandan Drive">
-      <img class="lp-hero-photo" src="/assets/landing-hero.webp?v=${ASSET_VER}" alt="Dandan Drive rijles in Nederland" width="1672" height="941">
-      <div class="lp-progress-card">
-        <div><strong>Vandaag verder</strong><span>B · Auto</span></div>
-        <div class="lp-mini-progress"><span></span></div>
-        <ul>
-          <li><span>✓</span> Begrippen in je eigen taal</li>
-          <li><span>✓</span> Oefenen zoals op het examen</li>
-          <li><span>→</span> Volgende les: spiegelen</li>
-        </ul>
-      </div>
-    </aside>
-  </div></section>
-
-  <section class="lp-blk lp-alt lp-language-section" id="talen"><div class="lp-wrap">
-    <div class="lp-kop lp-language-head"><h2>Kies eerst je taal.</h2><p>Begrijp de Nederlandse verkeersregels eerst in een taal die voor jou vertrouwd voelt.</p></div>
-    <div class="lp-talenchips">${TALEN.map((x) => x === 'en'
-      ? `<span class="lp-language-soon" lang="en" title="English interface; full English lessons are in preparation">English <small>interface</small></span>`
-      : `<a href="/?taal=${x}"${x === L ? ' class="aan"' : ''} lang="${x}">${TAALNAMEN[x]}</a>`).join('')}</div>
-  </div></section>
-
-  <section class="lp-blk lp-product" id="leren"><div class="lp-wrap">
-    <div class="lp-kop"><span class="lp-eyebrow">Dandan Drive</span><h2>${esc(t(L, 'landing.hoekop'))}</h2><p>${esc(t(L, 'landing.usp3'))}</p></div>
-    <div class="lp-product-grid">
-      <div class="lp-path-card">
-        <div><span>1</span><strong>${esc(t(L, 'sectie.theorie'))}</strong><p>${esc(t(L, 'landing.usp1'))}</p></div>
-        <div><span>2</span><strong>${esc(t(L, 'nav.examen'))}</strong><p>${esc(t(L, 'quiz.uitleg', { v: 50, m: 30, n: 44 }))}</p></div>
-        <div><span>3</span><strong>${esc(t(L, 'sectie.praktijk'))}</strong><p>${esc(t(L, 'landing.usp2'))}</p></div>
-      </div>
-      <div class="lp-exam-card">
-        <h3>${esc(t(L, 'nav.examen'))}</h3>
-        <p>${esc(examenLead)}</p>
-        <div class="lp-question"><strong>${esc(t(L, 'quiz.juisteantwoord'))}</strong><span></span><span class="ok"></span><span></span></div>
-        <a class="lp-cta" href="/login">${esc(examenCta)} →</a>
+      <div class="hp-showcard">
+        <span class="hp-orbit a"><span class="dot"></span>中文</span>
+        <span class="hp-orbit b"><span class="dot"></span>العربية</span>
+        <span class="hp-orbit c"><span class="dot"></span>Türkçe</span>
+        <div class="hp-gcard">
+          <div class="hp-gtop"><div class="hp-ring"></div><div><b>${esc(NL('Vandaag verder', 'Continue today'))}</b><span>${esc(t(L, 'nav.theorie'))} · 4/11</span></div></div>
+          <div class="hp-gsteps">
+            <div class="hp-gstep done"><span class="d">✓</span>${esc(t(L, 'landing.feat1'))}</div>
+            <div class="hp-gstep now"><span class="d">▶</span>${esc(NL('Oefen zoals op het examen', 'Practise like the exam'))}</div>
+            <div class="hp-gstep"><span class="d">3</span>${esc(NL('Volgende les', 'Next lesson'))}</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div></section>
-
-  <section class="lp-blk" id="kiezer"><div class="lp-wrap">
-    <div class="lp-kop"><span class="lp-eyebrow">${esc(t(L, 'landing.kieskop'))}</span><h2>${esc(t(L, 'landing.prijskop'))}</h2><p>${esc(toegangTekst)}</p></div>
-    <div class="lp-plans">
-      <div class="lp-plan lp-feat"><span class="lp-badge">★</span><div class="lp-pico">🚗</div>
-        <div><span class="lp-code">B · ${esc(t(L, 'nav.auto'))}</span><h3>${esc(t(L, 'nav.theorie'))} &amp; ${esc(t(L, 'nav.praktijk'))}</h3></div>
-        <ul>
-          <li class="lp-split">📖 ${esc(t(L, 'nav.theorie'))} <span class="lp-mp">€18<small>${eenmaligTekst}</small></span></li>
-          <li class="lp-split">🚗 ${esc(t(L, 'nav.praktijk'))} <span class="lp-mp">€18<small>${eenmaligTekst}</small></span></li>
-        </ul>
-        <div class="lp-samen"><span class="lp-slbl">${esc(t(L, 'landing.samen'))}</span><span class="lp-eur tnum">€24</span></div>
-        <span class="lp-gratis">✦ ${esc(t(L, 'landing.proefles'))}</span>
-        <a class="lp-knop" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>
-      ${variant('🛵', 'AM', t(L, 'sectie.am'), '€8')}
-      ${variant('🏍️', 'A', t(L, 'sectie.motor'), '€12')}
-      ${variant('🚚', 'BE', t(L, 'sectie.aanhanger'), '€8')}
-    </div>
-    <div class="lp-note">${esc(toegangTekst)}</div>
-  </div></section>
-
-  <section class="lp-blk lp-alt" id="hoe"><div class="lp-wrap">
-    <div class="lp-kop"><h2>${esc(t(L, 'landing.hoekop'))}</h2></div>
-    <div class="lp-steps">
-      <div class="lp-step"><div class="lp-bar"></div><h3>${esc(t(L, 'sectie.theorie'))}</h3><p>${esc(t(L, 'landing.usp1'))}</p></div>
-      <div class="lp-step"><div class="lp-bar"></div><h3>${esc(t(L, 'nav.examen'))}</h3><p>${esc(t(L, 'landing.usp3'))}</p></div>
-      <div class="lp-step"><div class="lp-bar"></div><h3>${esc(t(L, 'sectie.praktijk'))}</h3><p>${esc(t(L, 'landing.usp2'))}</p></div>
+  </section>
+  <section class="hp-blk" id="waarom"><div class="hp-wrap">
+    <div class="hp-kop reveal"><span class="hp-kap grad-txt">${esc(NL('Waarom Dandan Drive', 'Why Dandan Drive'))}</span><h2>${esc(NL('Alles voor je rijbewijs, op één plek.', 'Everything for your licence, in one place.'))}</h2></div>
+    <div class="hp-bento">
+      <div class="hp-b lg reveal"><div class="ico">🗣️</div><h3>${esc(t(L, 'landing.feat1'))}</h3><p>${esc(t(L, 'landing.usp1'))}</p><div class="hp-langflow">${talen.map((x, i) => `<span${i === 0 ? ' class="hot"' : ''}>${esc(TAALNAMEN[x])}</span>`).join('')}</div></div>
+      <div class="hp-b reveal"><div class="ico">🎯</div><h3>${esc(t(L, 'nav.examen'))}</h3><p>${esc(t(L, 'landing.usp3'))}</p></div>
+      <div class="hp-b reveal"><div class="ico">🖼️</div><h3>${esc(t(L, 'landing.feat2'))}</h3><p>${esc(t(L, 'landing.usp2'))}</p></div>
+      <div class="hp-b wide reveal"><div class="ico">🚗</div><h3>${esc(NL('Theorie én praktijk · vier rijbewijzen', 'Theory and practice · four licences'))}</h3><p>${esc(t(L, 'nav.auto'))} (B) · ${esc(t(L, 'sectie.am'))} · ${esc(t(L, 'sectie.motor'))} · ${esc(t(L, 'sectie.aanhanger'))}.</p></div>
+      <div class="hp-b reveal"><div class="ico">📱</div><h3>${esc(t(L, 'landing.feat3'))}</h3><p>${esc(NL('Installeer als app en leer onderweg, ook offline.', 'Install as an app and learn on the go, even offline.'))}</p></div>
+      <div class="hp-b reveal"><div class="ico">🎓</div><h3>${esc(NL('Bronnen die kloppen', 'Sources that hold up'))}</h3><p>CBR · RDW · Rijksoverheid · RIS.</p></div>
     </div>
   </div></section>
-
-  <section class="lp-blk"><div class="lp-wrap"><div class="lp-gband">
-    <span class="lp-gem">✦</span><div><h3>${esc(t(L, 'landing.proefles'))}</h3><p>${esc(heroLead)}</p></div>
-    <a class="lp-cta" href="/login">${esc(t(L, 'landing.proef'))} →</a>
-  </div></div></section>
-
-  <section class="lp-blk lp-alt"><div class="lp-wrap">
-    <div class="lp-trust"><div><div class="lp-n tnum">11</div><div class="lp-l">🗣️</div></div>
-      <div><div class="lp-n tnum">4</div><div class="lp-l">🚗🛵🏍️🚚</div></div>
-      <div><div class="lp-n tnum">85+</div><div class="lp-l">🎓</div></div>
-      <div><div class="lp-n tnum">100%</div><div class="lp-l">✦</div></div></div>
-    <p class="lp-bron">CBR · RDW · Rijksoverheid · RIS</p>
-    <p style="text-align:center;margin-top:16px"><a class="lp-mut" href="/boek" rel="nofollow">📖 ${esc(t(L, 'boektip.link'))}</a> · <a class="lp-mut" href="/partner">${esc(t(L, 'nav.partner'))}</a></p>
-    ${reviewsHtml || ''}
+  <section class="hp-blk" id="talen"><div class="hp-wrap"><div class="hp-kop mid reveal"><span class="hp-kap grad-txt">${esc(t(L, 'landing.taalkop'))}</span><h2>${esc(NL('Elf lestalen. Twaalf voor de interface.', 'Eleven lesson languages. Twelve for the interface.'))}</h2></div></div>
+    <div class="hp-marquee reveal"><div class="hp-mtrack">${marquee}${marquee}</div></div>
+  </section>
+  <section class="hp-blk" id="app"><div class="hp-wrap">
+    <div class="hp-kop reveal"><span class="hp-kap grad-txt">${esc(NL('Zo ziet leren eruit', 'This is what learning looks like'))}</span><h2>${esc(NL('Een cursus die je bij de hand neemt.', 'A course that guides you.'))}</h2></div>
+    <div class="hp-appframe reveal">
+      <div class="hp-apnav">
+        <div class="hp-kap">${esc(t(L, 'nav.theorie'))}</div>
+        <a class="done"><span class="n">✓</span>${esc(NL('Verkeersborden', 'Road signs'))}</a>
+        <a class="done"><span class="n">✓</span>${esc(NL('Voorrang', 'Right of way'))}</a>
+        <a class="now"><span class="n">4</span>${esc(NL('Kruisingen', 'Intersections'))}</a>
+        <a><span class="n">5</span>${esc(NL('Snelheid', 'Speed'))}</a>
+        <div class="hp-kap">${esc(t(L, 'nav.praktijk'))}</div>
+        <a><span class="n">1</span>${esc(NL('Bediening', 'Controls'))}</a>
+        <a><span class="n">2</span>${esc(NL('Kruisingen', 'Intersections'))}</a>
+      </div>
+      <div class="hp-apmain">
+        <div class="hp-crumb grad-txt">${esc(t(L, 'nav.theorie'))} · ${esc(NL('Kruisingen', 'Intersections'))}</div>
+        <h3>${esc(NL('Voorrang op een gelijkwaardige kruising', 'Right of way at an equal intersection'))}</h3>
+        <div class="hp-zh" lang="zh">在同等路口的优先权</div>
+        <div class="hp-apcols">
+          <div class="hp-scene"><div class="rd"></div><div class="rd2"></div><div class="ca r"></div><div class="ca b"></div></div>
+          <div class="hp-apcopy"><p>${esc(NL('Geen borden of verkeerslichten? Dan verleen je voorrang aan wie van rechts komt.', 'No signs or traffic lights? Then give way to traffic coming from the right.'))}</p><span class="hp-rc k">✓ ${esc(NL('Rechts gaat voor', 'Right goes first'))}</span></div>
+        </div>
+      </div>
+    </div>
   </div></section>
+  <section class="hp-blk" id="prijzen"><div class="hp-wrap"><div class="hp-kop mid reveal"><span class="hp-kap grad-txt">${esc(t(L, 'landing.prijskop'))}</span><h2>${esc(NL('Eenmalig betalen. Geen abonnement.', 'Pay once. No subscription.'))}</h2></div>
+    <div class="hp-plans reveal">
+      <div class="hp-plan feat"><span class="badge">${esc(NL('MEEST GEKOZEN', 'MOST CHOSEN'))}</span>
+        <div class="hp-ph"><span class="hp-pico">🚗</span><div><div class="hp-pname">${esc(t(L, 'nav.auto'))} · B</div><div class="hp-psub">${esc(NL('Theorie en praktijk, los of samen', 'Theory and practice, apart or together'))}</div></div></div>
+        <div class="hp-split"><span>${esc(t(L, 'nav.theorie'))}</span><b>€18<small>${NL('/mnd', '/mo')}</small></b></div>
+        <div class="hp-split"><span>${esc(t(L, 'nav.praktijk'))}</span><b>€18<small>${NL('/mnd', '/mo')}</small></b></div>
+        <div class="hp-samen"><span>${esc(t(L, 'landing.samen'))}</span><span class="hp-price">€24<small>${NL('/mnd', '/mo')}</small></span></div>
+        <span class="hp-free grad-txt">✦ ${esc(t(L, 'landing.proefles'))}</span>
+        <a class="hp-pbtn" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>
+      ${variant('🛵', t(L, 'sectie.am'), '€8')}
+      ${variant('🏍️', t(L, 'sectie.motor'), '€12')}
+      ${variant('🚚', t(L, 'sectie.aanhanger'), '€8')}
+    </div></div></section>
+  <section class="hp-end"><span class="hp-glow g1"></span><div class="hp-wrap">
+    <h2>${esc(NL('Klaar om te starten?', 'Ready to start?'))}<br>${esc(NL('Je eerste les is', 'Your first lesson is'))} <span class="grad-txt">${esc(NL('gratis', 'free'))}</span>.</h2>
+    <div class="hp-actions"><a class="hp-btn hp-primary" href="/login">${proefCta} →</a></div>
+  </div></section>
+  ${reviewsHtml ? `<section class="hp-blk hp-reviews"><div class="hp-wrap">${reviewsHtml}</div></section>` : ''}
+  <footer class="hp-foot"><div class="hp-wrap">
+    <span>丹 Dandan Drive · ${esc(NL('rijbewijs in jouw taal', 'driving licence in your language'))}</span>
+    <span><a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a> · <a href="/partner">${esc(t(L, 'nav.partner'))}</a> · <a href="/over">Over</a></span>
+  </div></footer>
   </div>`;
 }
 
@@ -411,7 +407,7 @@ export default {
       if (user) return redirect('/leren');
       recordEvent(env, ctx, 'view', '/', refVan(request, url));
       const rows = ((await env.DB.prepare(`SELECT naam, taal, tekst, sterren FROM reviews WHERE zichtbaar = 1 ORDER BY created_at DESC LIMIT 6`).all()).results) || [];
-      const opts = { path: '/', desc: t(L, 'landing.sub'), hreflang: true, fullBleed: true };
+      const opts = { path: '/', desc: t(L, 'landing.sub'), hreflang: true, solo: true, bodyClass: 'hp-body' };
       const refc = url.searchParams.get('ref');
       const resp = page(L, 'Dandan Drive · ' + SITE.titleZh, landingBody(L, F.reviewsBlok(L, rows)), opts);
       if (refc && /^[A-Z0-9]{4,12}$/i.test(refc)) resp.headers.append('Set-Cookie', `dd_ref=${refc.toUpperCase()}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`);
