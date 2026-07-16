@@ -65,7 +65,8 @@ function siteHeader(L, user, mods) {
   return `<header class="site"><div class="container">
   <a class="brand" href="/" style="color:#fff"><span class="logo">丹</span>
     <span><span lang="nl">Dandan Drive</span><small>${user ? `${esc(SITE.titleZh)} · 驾照路考` : 'rijbewijs leren in jouw taal'}</small></span></a>
-  <nav>${user ? nav + rechts : publicNav}
+  <button class="navburger" type="button" aria-expanded="false" aria-controls="sitenav" aria-label="${esc(t(L, 'nav.menu'))}"><span></span><span></span><span></span></button>
+  <nav id="sitenav">${user ? nav + rechts : publicNav}
   ${user ? `<label class="searchbox">🔍<input id="q" type="search" placeholder="${esc(t(L, 'nav.zoek'))}" autocomplete="off" aria-label="${esc(t(L, 'nav.zoek'))}"></label>` : ''}</nav>
   </div><div id="results" class="container" style="display:none"></div></header>`;
 }
@@ -211,6 +212,7 @@ function landingBody(L, reviewsHtml) {
         <div class="hp-stats"><div><b class="tnum">11</b><span>${esc(NL('lestalen', 'languages'))}</span></div><div><b class="tnum">85+</b><span>${esc(NL('lessen & stappen', 'lessons & steps'))}</span></div><div><b class="tnum">4</b><span>${esc(NL('rijbewijzen', 'licences'))}</span></div><div><b class="grad-txt">100%</b><span>${esc(NL('examengericht', 'exam-focused'))}</span></div></div>
       </div>
       <div class="hp-showcard">
+        <img class="hp-foto" src="/assets/landing-hero.webp?v=${ASSET_VER}" alt="${esc(NL('Rijles in een Nederlandse straat: instructeur en leerling in een lesauto', 'Driving lesson in a Dutch street: instructor and learner in a car'))}" width="1672" height="941" loading="eager" fetchpriority="high">
         <span class="hp-orbit a"><span class="dot"></span>中文</span>
         <span class="hp-orbit b"><span class="dot"></span>العربية</span>
         <span class="hp-orbit c"><span class="dot"></span>Türkçe</span>

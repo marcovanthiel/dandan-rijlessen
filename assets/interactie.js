@@ -1,6 +1,29 @@
 // Progressieve verrijking: examentimer, flashcards met NL-audio, kopieerknop,
 // PWA-registratie. Alles werkt óók zonder dit script (formulieren + lijsten).
 (function () {
+  // --- hamburger (mobiel): klapt de hoofdnavigatie open en dicht
+  var burger = document.querySelector('.navburger');
+  var sitenav = document.getElementById('sitenav');
+  if (burger && sitenav) {
+    burger.addEventListener('click', function () {
+      var open = sitenav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    sitenav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        sitenav.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && sitenav.classList.contains('open')) {
+        sitenav.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.focus();
+      }
+    });
+  }
+
   // --- examentimer: telt af naar data-deadline en levert dan het formulier in
   var timer = document.getElementById('timer');
   if (timer && timer.dataset.deadline) {
