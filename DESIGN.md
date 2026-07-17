@@ -132,3 +132,16 @@ chrome-taal (TAALVLAG-map in worker.js), wisselen = herladen via het bestaande
 `?taal=`-mechanisme; toegankelijk label via i18n-key landing.taalkop. Onder 640px:
 compacte lijst, kop-CTA verborgen (hero-CTA staat direct eronder), brand-ondertitel weg.
 Let op: emoji-vlaggen renderen op oudere Windows-desktops als landletters; geaccepteerd.
+
+## App dark mode (17-7-2026) — LIVE (fase 2)
+De studeer-app heeft nu een **volwaardige dark mode** (`@media(prefers-color-scheme:dark)`),
+naast het licht-first thema. Aanpak = **token-iseren + flippen** (robuust):
+- app-vlakken (`background:#fff` → `var(--card)`), page/callout-tinten (semantische tokens
+  `--ok/--bad/--warn/--info-bg` + `-tx` tekst, `--track`, `--soft`) en dominante tekstkleuren
+  (`--muted`, `--ink`) zijn getokeniseerd.
+- Dark-blok: grond `#08090f`, kaarten `#141824`, tekst `#eef1f8`, cobalt-links lichter
+  (`#7a97ff`), lime accent behouden; gerichte overrides voor dashboard/lespagina/cursusnav/
+  examen/formulieren; hamburger-lijnen wit gehouden.
+- Contrast overal > WCAG AA (ink 15.7, muted 7.1, cobalt 6.5, lime 14.2). Landing (`.hp`)
+  blijft z'n eigen donkere ontwerp.
+- **Nieuwe kleuren altijd via de tokens**, niet hardcoden, zodat dark mode blijft kloppen.
