@@ -180,113 +180,136 @@ async function mailCode(env, L, email, code) {
 
 // ---------- landing ----------
 function landingBody(L, reviewsHtml) {
-  const login = esc(t(L, 'nav.login'));
-  const gratis = esc(t(L, 'hp.gratisproefles'));
-  const heroH1 = L === 'nl'
-    ? 'Haal je rijbewijs<br>in <span class="grad-txt">jouw taal</span>.'
-    : esc(t(L, 'landing.titel'));
-  const heroLead = esc(t(L, 'landing.sub'));
-  const proefCta = esc(t(L, 'hp.proefcta'));
-  const prijsCta = esc(t(L, 'hp.prijscta'));
+  // Variant 3 (instructie 17-7-2026): professionele leeromgeving met speelse
+  // accenten. Donkerpaarse hero, lichte kennissecties, roze primaire CTA
+  // (tinten verdiept t.o.v. de brief voor WCAG-AA-contrast met witte tekst).
+  const begin = esc(t(L, 'v3.begin'));
+  const onder = esc(t(L, 'v3.onder'));
   const talen = TALEN.filter((x) => x !== 'en');
-  const chip = (x) => `<span class="hp-lchip"><span class="dot"></span>${esc(TAALNAMEN[x])}</span>`;
+  const chip = (x) => `<span class="v3-lchip"><span class="dot"></span>${esc(TAALNAMEN[x])}</span>`;
   const marquee = talen.map(chip).join('');
-  const feats = `<ul><li>${esc(t(L, 'landing.feat1'))}</li><li>${esc(t(L, 'landing.feat2'))}</li><li>${esc(t(L, 'landing.feat3'))}</li></ul>`;
-  const variant = (e, titel, eur) => `<div class="hp-plan"><div class="hp-ph"><span class="hp-pico">${e}</span><div class="hp-pname">${esc(titel)}</div></div>${feats}<div class="hp-price">${eur}<small>${t(L, 'hp.permaand')}</small></div><span class="hp-free grad-txt">✦ ${esc(t(L, 'landing.proefles'))}</span><a class="hp-pbtn" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>`;
-  return `<div class="hp">
-  <header class="hp-top"><div class="hp-wrap">
-    <a class="hp-brand" href="/"><span class="m">丹</span><span>Dandan Drive<small>${esc(t(L, 'hp.merksub'))}</small></span></a>
-    <nav class="hp-nav"><a href="#waarom">${esc(t(L, 'hp.nav.waarom'))}</a><a href="#talen">${esc(t(L, 'hp.nav.talen'))}</a><a href="#app">${esc(t(L, 'hp.nav.app'))}</a><a href="/prijzen">${esc(t(L, 'hp.nav.prijzen'))}</a></nav>
-    <label class="hp-taal"><span class="visueel-weg">${esc(t(L, 'landing.taalkop'))}</span>
-      <select id="hp-taalkeuze">${TALEN.map((x) => `<option value="${x}"${x === L ? ' selected' : ''}>${TAALVLAG[x]} ${esc(TAALNAMEN[x])}</option>`).join('')}</select></label>
-    <a class="hp-login" href="/login">${login}</a>
-    <a class="hp-cta" href="/login">${gratis} →</a>
-  </div></header>
-  <section class="hp-hero">
-    <span class="hp-glow g1"></span><span class="hp-glow g2"></span><span class="hp-glow g3"></span>
-    <div class="hp-wrap hp-hero-grid">
-      <div>
-        <span class="hp-pill"><b>${esc(t(L, 'hp.nieuw'))}</b> ${esc(t(L, 'hp.nieuwtekst'))}</span>
-        <h1>${heroH1}</h1>
-        <p class="hp-lead">${heroLead}</p>
-        <div class="hp-actions">
-          <a class="hp-btn hp-primary" href="/login">${proefCta} →</a>
-          <a class="hp-btn hp-ghost" href="/prijzen">${prijsCta}</a>
+  const taalSelect = (id) => `<label class="v3-taal"><span class="visueel-weg">${esc(t(L, 'landing.taalkop'))}</span>
+      <select id="${id}" class="taalwissel">${TALEN.map((x) => `<option value="${x}"${x === L ? ' selected' : ''}>${TAALVLAG[x]} ${esc(TAALNAMEN[x])}</option>`).join('')}</select></label>`;
+  // Lijniconen (Lucide-stijl, 24px, stroke 2): één consistente set, inline
+  // zodat de strikte CSP en het zonder-internet-principe blijven staan.
+  const IC = {
+    chat: '<path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/>',
+    doel: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/>',
+    route: '<circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="5" r="2.2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/>',
+    vernieuw: '<path d="M20 11a8 8 0 1 0-2.3 6.3"/><path d="M20 5v6h-6"/>',
+    lagen: '<path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/>',
+    kaart: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 12h4M7 15.5h7"/><circle cx="16.2" cy="10" r="1.6"/>',
+  };
+  const ic = (naam, kleur) => `<svg class="v3-ic ${kleur}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[naam]}</svg>`;
+  const ctaBlok = `<div class="v3-acties">
+          <a class="v3-btn v3-primair" href="/login">${begin} →</a>
+          <a class="v3-btn v3-ghost" href="#zowerkt">${esc(t(L, 'v3.hoewerkt'))}</a>
         </div>
-        <div class="hp-stats"><div><b class="tnum">11</b><span>${esc(t(L, 'hp.stat.lestalen'))}</span></div><div><b class="tnum">85+</b><span>${esc(t(L, 'hp.stat.lessen'))}</span></div><div><b class="tnum">4</b><span>${esc(t(L, 'hp.stat.rijbewijzen'))}</span></div><div><b class="grad-txt">100%</b><span>${esc(t(L, 'hp.stat.examengericht'))}</span></div></div>
+        <p class="v3-onder">${onder}</p>`;
+  return `<div class="v3">
+  <header class="v3-top"><div class="v3-wrap">
+    <a class="v3-brand" href="/"><span class="m">丹</span><span>Dandan Drive<small>${esc(t(L, 'hp.merksub'))}</small></span></a>
+    <button class="navburger v3-burger" type="button" aria-expanded="false" aria-controls="v3nav" aria-label="${esc(t(L, 'nav.menu'))}"><span></span><span></span><span></span></button>
+    <nav class="v3-nav" id="v3nav"><a href="#waarom">${esc(t(L, 'hp.nav.waarom'))}</a><a href="#lessen">${esc(t(L, 'v3.nav.lessen'))}</a><a href="#talen">${esc(t(L, 'hp.nav.talen'))}</a><a href="#prijzen">${esc(t(L, 'hp.nav.prijzen'))}</a><a class="v3-navlogin" href="/login">${esc(t(L, 'nav.login'))}</a><a class="v3-btn v3-primair v3-navcta" href="/login">${begin}</a></nav>
+    ${taalSelect('hp-taalkeuze')}
+    <a class="v3-login" href="/login">${esc(t(L, 'nav.login'))}</a>
+    <a class="v3-btn v3-primair v3-topcta" href="/login">${begin}</a>
+  </div></header>
+  <section class="v3-hero">
+    <div class="v3-wrap v3-hero-grid">
+      <div class="v3-hcopy">
+        <span class="v3-pill">${esc(t(L, 'v3.label'))}</span>
+        <h1><span>${esc(t(L, 'v3.titel1'))}</span><br><span class="v3-roze">${esc(t(L, 'v3.titel2'))}</span><br><span>${esc(t(L, 'v3.titel3'))}</span></h1>
+        <p class="v3-lead">${esc(t(L, 'v3.sub'))}</p>
+        ${ctaBlok}
       </div>
-      <div class="hp-showcard">
-        <img class="hp-foto" src="/assets/landing-hero.webp?v=${ASSET_VER}" alt="${esc(t(L, 'hp.heroalt'))}" width="1672" height="941" loading="eager" fetchpriority="high">
-        <div class="hp-gcard">
-          <div class="hp-gtop"><div class="hp-ring"></div><div><b>${esc(t(L, 'hp.gvandaag'))}</b><span>${esc(t(L, 'nav.theorie'))} · 4/11</span></div></div>
-          <div class="hp-gsteps">
-            <div class="hp-gstep done"><span class="d">✓</span>${esc(t(L, 'landing.feat1'))}</div>
-            <div class="hp-gstep now"><span class="d">▶</span>${esc(t(L, 'hp.goefen'))}</div>
-            <div class="hp-gstep"><span class="d">3</span>${esc(t(L, 'hp.gvolgende'))}</div>
+      <div class="v3-visual">
+        <img class="v3-foto" src="/assets/landing-hero.webp?v=${ASSET_VER}" alt="${esc(t(L, 'hp.heroalt'))}" width="1672" height="941" loading="eager" fetchpriority="high">
+        <div class="v3-pcard">
+          <div class="v3-ptop"><div class="v3-ring"></div><div><b>${esc(t(L, 'hp.gvandaag'))}</b><span>${esc(t(L, 'nav.theorie'))} · 4/11</span></div></div>
+          <div class="v3-psteps">
+            <div class="v3-pstep done"><span class="d">✓</span>${esc(t(L, 'landing.feat1'))}</div>
+            <div class="v3-pstep now"><span class="d">▶</span>${esc(t(L, 'hp.goefen'))}</div>
+            <div class="v3-pstep"><span class="d">3</span>${esc(t(L, 'hp.gvolgende'))}</div>
           </div>
         </div>
       </div>
     </div>
+    <div class="v3-wrap"><div class="v3-statbalk reveal">
+      <div>${ic('chat', 'blauw')}<b class="tnum">11</b><span>${esc(t(L, 'hp.stat.lestalen'))}</span></div>
+      <div>${ic('lagen', 'roze')}<b class="tnum">85+</b><span>${esc(t(L, 'hp.stat.lessen'))}</span></div>
+      <div>${ic('kaart', 'groen')}<b class="tnum">4</b><span>${esc(t(L, 'hp.stat.rijbewijzen'))}</span></div>
+      <div>${ic('doel', 'blauw')}<b class="tnum">100%</b><span>${esc(t(L, 'hp.stat.examengericht'))}</span></div>
+    </div></div>
   </section>
-  <section class="hp-blk" id="waarom"><div class="hp-wrap">
-    <div class="hp-kop reveal"><span class="hp-kap grad-txt">${esc(t(L, 'hp.waaromkap'))}</span><h2>${esc(t(L, 'hp.waaromkop'))}</h2></div>
-    <div class="hp-bento">
-      <div class="hp-b lg reveal"><div class="ico">🗣️</div><h3>${esc(t(L, 'landing.feat1'))}</h3><p>${esc(t(L, 'landing.usp1'))}</p><div class="hp-langflow">${talen.map((x, i) => `<span${i === 0 ? ' class="hot"' : ''}>${esc(TAALNAMEN[x])}</span>`).join('')}</div></div>
-      <div class="hp-b reveal"><div class="ico">🎯</div><h3>${esc(t(L, 'nav.examen'))}</h3><p>${esc(t(L, 'landing.usp3'))}</p></div>
-      <div class="hp-b reveal"><div class="ico">🖼️</div><h3>${esc(t(L, 'landing.feat2'))}</h3><p>${esc(t(L, 'landing.usp2'))}</p></div>
-      <div class="hp-b wide reveal"><div class="ico">🚗</div><h3>${esc(t(L, 'hp.vier'))}</h3><p>${esc(t(L, 'nav.auto'))} (B) · ${esc(t(L, 'sectie.am'))} · ${esc(t(L, 'sectie.motor'))} · ${esc(t(L, 'sectie.aanhanger'))}.</p></div>
-      <div class="hp-b reveal"><div class="ico">📱</div><h3>${esc(t(L, 'landing.feat3'))}</h3><p>${esc(t(L, 'hp.pwa'))}</p></div>
-      <div class="hp-b reveal"><div class="ico">🎓</div><h3>${esc(t(L, 'hp.bronnen'))}</h3><p>CBR · RDW · Rijksoverheid · RIS.</p></div>
+  <section class="v3-band" id="talen">
+    <div class="v3-wrap v3-bandkop"><h2>${esc(t(L, 'hp.talenkop'))}</h2></div>
+    <div class="v3-marquee"><div class="v3-mtrack">${marquee}${marquee}</div></div>
+  </section>
+  <section class="v3-licht" id="waarom"><div class="v3-wrap">
+    <div class="v3-kop reveal"><h2>${esc(t(L, 'v3.waarom'))}</h2></div>
+    <div class="v3-benefits">
+      <div class="v3-benefit reveal">${ic('chat', 'blauw')}<h3>${esc(t(L, 'v3.b1t'))}</h3><p>${esc(t(L, 'v3.b1x'))}</p></div>
+      <div class="v3-benefit reveal">${ic('doel', 'roze')}<h3>${esc(t(L, 'v3.b2t'))}</h3><p>${esc(t(L, 'v3.b2x'))}</p></div>
+      <div class="v3-benefit reveal">${ic('route', 'groen')}<h3>${esc(t(L, 'v3.b3t'))}</h3><p>${esc(t(L, 'v3.b3x'))}</p></div>
+      <div class="v3-benefit reveal">${ic('vernieuw', 'blauw')}<h3>${esc(t(L, 'v3.b4t'))}</h3><p>${esc(t(L, 'v3.b4x'))}</p></div>
     </div>
   </div></section>
-  <section class="hp-blk" id="talen"><div class="hp-wrap"><div class="hp-kop mid reveal"><span class="hp-kap grad-txt">${esc(t(L, 'landing.taalkop'))}</span><h2>${esc(t(L, 'hp.talenkop'))}</h2></div></div>
-    <div class="hp-marquee reveal"><div class="hp-mtrack">${marquee}${marquee}</div></div>
-  </section>
-  <section class="hp-blk" id="app"><div class="hp-wrap">
-    <div class="hp-kop reveal"><span class="hp-kap grad-txt">${esc(t(L, 'hp.zoleren'))}</span><h2>${esc(t(L, 'hp.cursus'))}</h2></div>
-    <div class="hp-appframe reveal">
-      <div class="hp-apnav">
-        <div class="hp-kap">${esc(t(L, 'nav.theorie'))}</div>
-        <a class="done"><span class="n">✓</span>${esc(t(L, 'hp.borden'))}</a>
-        <a class="done"><span class="n">✓</span>${esc(t(L, 'hp.voorrang'))}</a>
-        <a class="now"><span class="n">4</span>${esc(t(L, 'hp.kruisingen'))}</a>
-        <a><span class="n">5</span>${esc(t(L, 'hp.snelheid'))}</a>
-        <div class="hp-kap">${esc(t(L, 'nav.praktijk'))}</div>
-        <a><span class="n">1</span>${esc(t(L, 'hp.bediening'))}</a>
-        <a><span class="n">2</span>${esc(t(L, 'hp.kruisingen'))}</a>
-      </div>
-      <div class="hp-apmain">
-        <div class="hp-crumb grad-txt">${esc(t(L, 'nav.theorie'))} · ${esc(t(L, 'hp.kruisingen'))}</div>
-        <h3>${esc(t(L, 'hp.voorrangkop'))}</h3>
-        <div class="hp-zh" lang="zh">在同等路口的优先权</div>
-        <div class="hp-apcols">
-          <div class="hp-scene"><div class="rd"></div><div class="rd2"></div><div class="ca r"></div><div class="ca b"></div></div>
-          <div class="hp-apcopy"><p>${esc(t(L, 'hp.voorrangtekst'))}</p><span class="hp-rc k">✓ ${esc(t(L, 'hp.rechtsvoor'))}</span></div>
+  <section class="v3-licht v3-zowerkt" id="zowerkt"><div class="v3-wrap">
+    <div class="v3-kop reveal"><h2>${esc(t(L, 'v3.hoe'))}</h2></div>
+    <ol class="v3-stappen reveal">
+      <li><span class="n blauw">1</span><b>${esc(t(L, 'v3.stap1'))}</b></li>
+      <li><span class="n roze">2</span><b>${esc(t(L, 'v3.stap2'))}</b></li>
+      <li><span class="n groen">3</span><b>${esc(t(L, 'v3.stap3'))}</b></li>
+    </ol>
+    <div class="v3-midcta reveal"><a class="v3-btn v3-primair" href="/login">${begin} →</a><p class="v3-onder donker">${onder}</p></div>
+  </div></section>
+  <section class="v3-licht v3-vb" id="lessen"><div class="v3-wrap">
+    <div class="v3-kop reveal"><h2>${esc(t(L, 'v3.vb'))}</h2><p class="v3-koptekst">${esc(t(L, 'hp.voorrangkop'))}</p></div>
+    <div class="v3-vbkaart reveal">
+      <div class="v3-scene" role="img" aria-label="${esc(t(L, 'hp.voorrangkop'))}"><div class="rd"></div><div class="rd2"></div><div class="ca r"></div><div class="ca b"></div></div>
+      <div class="v3-vbcopy">
+        <p>${esc(t(L, 'hp.voorrangtekst'))}</p>
+        <div class="v3-zh" lang="zh">在同等路口的优先权</div>
+        <div class="v3-vraag"><b>${esc(t(L, 'v3.vraag'))}</b>
+          <span class="v3-chip goed">✓ ${esc(t(L, 'hp.rechtsvoor'))}</span>
         </div>
+        <a class="v3-btn v3-ghost donker" href="/login">${esc(t(L, 'v3.vbknop'))} →</a>
       </div>
     </div>
   </div></section>
-  <section class="hp-blk" id="prijzen"><div class="hp-wrap"><div class="hp-kop mid reveal"><span class="hp-kap grad-txt">${esc(t(L, 'landing.prijskop'))}</span><h2>${esc(t(L, 'hp.eenmalig'))}</h2></div>
-    <div class="hp-plans reveal">
-      <div class="hp-plan feat"><span class="badge">${esc(t(L, 'hp.meestgekozen'))}</span>
-        <div class="hp-ph"><span class="hp-pico">🚗</span><div><div class="hp-pname">${esc(t(L, 'nav.auto'))} · B</div><div class="hp-psub">${esc(t(L, 'hp.prijzenkop'))}</div></div></div>
-        <div class="hp-split"><span>${esc(t(L, 'nav.theorie'))}</span><b>€18<small>${t(L, 'hp.permaand')}</small></b></div>
-        <div class="hp-split"><span>${esc(t(L, 'nav.praktijk'))}</span><b>€18<small>${t(L, 'hp.permaand')}</small></b></div>
-        <div class="hp-samen"><span>${esc(t(L, 'landing.samen'))}</span><span class="hp-price">€24<small>${t(L, 'hp.permaand')}</small></span></div>
-        <span class="hp-free grad-txt">✦ ${esc(t(L, 'landing.proefles'))}</span>
-        <a class="hp-pbtn" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>
-      ${variant('🛵', t(L, 'sectie.am'), '€8')}
-      ${variant('🏍️', t(L, 'sectie.motor'), '€12')}
-      ${variant('🚚', t(L, 'sectie.aanhanger'), '€8')}
-    </div></div></section>
-  <section class="hp-end"><span class="hp-glow g1"></span><div class="hp-wrap">
-    <h2>${esc(t(L, 'hp.klaar'))}<br>${esc(t(L, 'hp.eersteles'))} <span class="grad-txt">${esc(t(L, 'hp.gratis'))}</span>.</h2>
-    <div class="hp-actions"><a class="hp-btn hp-primary" href="/login">${proefCta} →</a></div>
+  ${reviewsHtml ? `<section class="v3-licht v3-reviews"><div class="v3-wrap">${reviewsHtml}</div></section>` : ''}
+  <section class="v3-donker" id="prijzen"><div class="v3-wrap">
+    <div class="v3-kop reveal"><h2>${esc(t(L, 'landing.prijskop'))}</h2><p class="v3-koptekst licht">${esc(t(L, 'hp.eenmalig'))}</p></div>
+    <div class="v3-plans reveal">
+      <div class="v3-plan feat"><span class="badge">${esc(t(L, 'hp.meestgekozen'))}</span>
+        <div class="v3-ph"><span class="v3-pico">🚗</span><div><div class="v3-pname">${esc(t(L, 'nav.auto'))} · B</div><div class="v3-psub">${esc(t(L, 'hp.prijzenkop'))}</div></div></div>
+        <div class="v3-split"><span>${esc(t(L, 'nav.theorie'))}</span><b>€18<small>${t(L, 'hp.permaand')}</small></b></div>
+        <div class="v3-split"><span>${esc(t(L, 'nav.praktijk'))}</span><b>€18<small>${t(L, 'hp.permaand')}</small></b></div>
+        <div class="v3-samen"><span>${esc(t(L, 'landing.samen'))}</span><span class="v3-prijs">€24<small>${t(L, 'hp.permaand')}</small></span></div>
+        <span class="v3-free">✦ ${esc(t(L, 'landing.proefles'))}</span>
+        <a class="v3-btn v3-primair" href="/login">${begin} →</a></div>
+      ${['🛵|sectie.am|€8', '🏍️|sectie.motor|€12', '🚚|sectie.aanhanger|€8'].map((rij) => {
+        const [emo, key, eur] = rij.split('|');
+        return `<div class="v3-plan"><div class="v3-ph"><span class="v3-pico">${emo}</span><div class="v3-pname">${esc(t(L, key))}</div></div><div class="v3-prijs">${eur}<small>${t(L, 'hp.permaand')}</small></div><span class="v3-free">✦ ${esc(t(L, 'landing.proefles'))}</span><a class="v3-pbtn" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>`;
+      }).join('')}
+    </div>
+    <p class="v3-onder mid">${onder}</p>
   </div></section>
-  ${reviewsHtml ? `<section class="hp-blk hp-reviews"><div class="hp-wrap">${reviewsHtml}</div></section>` : ''}
-  <footer class="hp-foot"><div class="hp-wrap">
-    <span>丹 Dandan Drive · ${esc(t(L, 'hp.merksub'))}</span>
-    <span><a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a> · <a href="/partner">${esc(t(L, 'nav.partner'))}</a> · <a href="/over">Over</a></span>
+  <section class="v3-donker v3-eind"><div class="v3-wrap">
+    <h2>${esc(t(L, 'hp.klaar'))}<br>${esc(t(L, 'hp.eersteles'))} <span class="v3-roze">${esc(t(L, 'hp.gratis'))}</span>.</h2>
+    <div class="v3-acties midden"><a class="v3-btn v3-primair" href="/login">${begin} →</a></div>
+    <p class="v3-onder mid">${onder}</p>
+  </div></section>
+  <footer class="v3-foot"><div class="v3-wrap">
+    <div class="v3-fkol"><span class="v3-brand"><span class="m">丹</span><span>Dandan Drive</span></span>
+      <p>${esc(t(L, 'v3.titel1'))} ${esc(t(L, 'v3.titel2'))} ${esc(t(L, 'v3.titel3'))}</p></div>
+    <div class="v3-fkol"><a href="mailto:info@dandandrive.nl">${esc(t(L, 'v3.contact'))}</a>
+      <a href="/over">Over Dandan Drive</a>
+      <a href="/partner">${esc(t(L, 'nav.partner'))}</a>
+      <a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a></div>
+    <div class="v3-fkol">${taalSelect('v3-taalvoet')}
+      <p class="v3-fdisc">${esc(t(L, 'footer.tekst'))}</p></div>
   </div></footer>
   </div>`;
 }
@@ -410,7 +433,7 @@ export default {
       if (user) return redirect('/leren');
       recordEvent(env, ctx, 'view', '/', refVan(request, url));
       const rows = ((await env.DB.prepare(`SELECT naam, taal, tekst, sterren FROM reviews WHERE zichtbaar = 1 ORDER BY created_at DESC LIMIT 6`).all()).results) || [];
-      const opts = { path: '/', desc: t(L, 'landing.sub'), hreflang: true, solo: true, bodyClass: 'hp-body' };
+      const opts = { path: '/', desc: t(L, 'landing.sub'), hreflang: true, solo: true, bodyClass: 'v3-body' };
       const refc = url.searchParams.get('ref');
       const resp = page(L, 'Dandan Drive · ' + SITE.titleZh, landingBody(L, F.reviewsBlok(L, rows)), opts);
       if (refc && /^[A-Z0-9]{4,12}$/i.test(refc)) resp.headers.append('Set-Cookie', `dd_ref=${refc.toUpperCase()}; Path=/; Max-Age=2592000; HttpOnly; Secure; SameSite=Lax`);
