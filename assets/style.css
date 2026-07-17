@@ -825,6 +825,8 @@ body.v3-body{background:var(--v3-bg);color:var(--v3-inkt)}
   .v3 .v3-acties{flex-direction:column}
   .v3 .v3-login,.v3 .v3-topcta{display:none}
   .v3 .v3-burger{display:flex;margin-inline-start:auto}
+  .v3 .v3-brand{white-space:nowrap}
+  .v3 .v3-brand small{display:none}
   .v3 .v3-top .v3-taal{order:5}
   .v3 .v3-nav{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(17,22,46,.97);backdrop-filter:blur(16px);flex-direction:column;gap:0;padding:10px 24px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
   .v3 .v3-nav.open{display:flex}
