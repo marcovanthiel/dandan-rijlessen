@@ -145,3 +145,28 @@ naast het licht-first thema. Aanpak = **token-iseren + flippen** (robuust):
 - Contrast overal > WCAG AA (ink 15.7, muted 7.1, cobalt 6.5, lime 14.2). Landing (`.hp`)
   blijft z'n eigen donkere ontwerp.
 - **Nieuwe kleuren altijd via de tokens**, niet hardcoden, zodat dark mode blijft kloppen.
+
+## Landing Variant 3 (17-7-2026) — LIVE
+Uitgevoerd volgens de instructie "Dandan Drive Variant 3" (Downloads, 17-7).
+Kernboodschap: "Jouw rijbewijs. Jouw taal. Jouw tempo." Scope `.v3` (body
+`v3-body`); de hippe `.hp`-landing is volledig vervangen (rollback: tag
+`voor-variant-3`; oudere: `voor-hip-redesign`).
+- **Opbouw:** sticky blur-header (nav Waarom/Lessen/Talen/Prijzen + taalkeuze
+  + Inloggen + CTA) → donkerpaarse hero (verloop uit de brief) met foto +
+  voortgangskaart → witte statistiekenbalk → talenband (marquee) → lichte
+  secties Waarom (4 kaarten) / Zo werkt het (3 stappen) / Voorbeeldles
+  (scene + vertaling + oefenvraag) → reviews (alleen echte, via
+  F.reviewsBlok) → donker prijsblok → eind-CTA → effen donkerpaarse footer
+  met merkbelofte, contact, taalkeuze en disclaimer.
+- **Afwijkingen van de brief (bewust):** CTA-verlooptinten verdiept
+  (#C42E82/#6A50F0/#2A63C8) omdat het briefrecept met witte tekst AA
+  faalt (3,0-3,2; nu 5,2-5,7); geen Manrope-webfont (regel: self-hosted
+  only) — Bricolage als display + systeemstack; ondertekst "7 dagen gratis"
+  vervangen door het kloppende "1 gratis proefles · geen betaalgegevens
+  nodig"; prijsblok volgt het echte model (eenmalige passen, geen
+  abonnement); footer-links naar privacy/voorwaarden/cookies volgen zodra
+  die pagina's bestaan (BACKLOG).
+- **Meertalig:** 26 nieuwe keys (v3.*) in alle 12 talen; pariteit groen;
+  in de native-review-queue. Iconen: inline Lucide-stijl (24px, stroke 2).
+- Geverifieerd: desktop + mobiel (0px horizontale overflow), hamburger,
+  reveal/puls met prefers-reduced-motion-respect.

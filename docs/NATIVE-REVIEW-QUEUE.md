@@ -29,3 +29,4 @@ review als "volledige lestaal" voordat alle lessen en de volledige vragenbank in
 het Engels zijn geschreven en inhoudelijk gecontroleerd.
 
 - 16-7-2026: 45 nieuwe chrome-keys (landing, hp.* + publieke nav) AI-vertaald in alle 12 talen; meenemen in de native review per taal.
+- 17-7-2026: 26 nieuwe chrome-keys (landing Variant 3, v3.*) AI-vertaald in alle 12 talen; meenemen in de native review per taal.
