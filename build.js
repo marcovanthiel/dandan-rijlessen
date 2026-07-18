@@ -17,7 +17,6 @@ const PHOTO_EXT = ['png','jpg','jpeg','webp'];
 const THEORY_PHOTOS = {
   'theorie-1': { sec3: 'module-2_s25.webp' },
   'theorie-2': { sec2: 'module-2_s24.webp' },
-  'theorie-3': { sec4: 'theorie-3_sec4.webp' },
   'theorie-4': { sec2: 'theorie-4_sec2.webp' },
   'theorie-5': { sec2: 'module-2_s20.webp' },
   'theorie-6': { sec2: 'module-3_s32.webp' },
@@ -403,8 +402,9 @@ function articleHtml(m, s, taal, occurrence=1){
     const stapw = STAPWOORD[taal] || STAPWOORD.zh;
     const zhTitle = s.zh;
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
-    // info-sectie: taalbewust diagram bij het 185-dagen-deel (eerste sectie)
-    const theoFig = (m.sectie==='theorie' && s.id==='sec1') ? G.theorieFig(m.modNum, taal) : '';
+    // Theoriefiguren kunnen aan een specifieke paragraaf hangen; de info-
+    // tijdlijn blijft beperkt tot het 185-dagen-deel in de eerste paragraaf.
+    const theoFig = m.sectie==='theorie' ? G.theorieFig(m.modNum, taal, s.id) : '';
     const fig = (m.sectie==='info' && s.id==='sec1') ? G.tijdlijn185(taal) : (theoFig || G.figFor(s.step, s.zh));
     const photo = findPhoto(m, s);
     const photos = [photo, ...findSectionPhotos(m, s, occurrence)]

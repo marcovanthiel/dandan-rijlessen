@@ -300,6 +300,21 @@ const THEO_LBL = {
   voorrang:{ zh:['优先','让行'], nl:['voorrang','wachten'], en:['priority','wait'], tr:['öncelik','bekle'], ar:['أولوية','انتظر'], pl:['pierwszeństwo','czekaj'], uk:['пріоритет','чекай'], ru:['приоритет','ждите'], es:['prioridad','esperar'], pt:['prioridade','esperar'], hi:['प्राथमिकता','रुकें'], vi:['ưu tiên','chờ'] }
 };
 const tlbl = (k, taal) => (THEO_LBL[k][taal] || THEO_LBL[k].zh);
+const MARK_LBL = {
+  zh:['实线','虚线','块状标线','鲨鱼齿','斑马线','停止线','禁止停车','禁止泊车','道路标线'],
+  nl:['Doorgetrokken','Onderbroken','Blokmarkering','Haaientanden','Zebra','Stopstreep','Niet stilstaan','Niet parkeren','Wegmarkeringen'],
+  en:['Solid line','Broken line','Block marking','Shark teeth','Zebra crossing','Stop line','No stopping','No parking','Road markings'],
+  tr:['Devamlı çizgi','Kesik çizgi','Blok işareti','Köpekbalığı dişleri','Yaya geçidi','Dur çizgisi','Durmak yasak','Park etmek yasak','Yol işaretleri'],
+  ar:['خط متصل','خط متقطع','علامات كتلية','أسنان القرش','ممر مشاة','خط التوقف','ممنوع التوقف','ممنوع الركن','علامات الطريق'],
+  pl:['Linia ciągła','Linia przerywana','Oznakowanie blokowe','Trójkąty ustąpienia','Zebra','Linia zatrzymania','Zakaz zatrzymania','Zakaz parkowania','Oznakowanie poziome'],
+  uk:['Суцільна','Переривчаста','Блокова розмітка','Трикутники поступки','Зебра','Стоп-лінія','Не зупинятися','Не паркуватися','Дорожня розмітка'],
+  ru:['Сплошная','Прерывистая','Блочная разметка','Треугольники уступки','Зебра','Стоп-линия','Остановка запрещена','Стоянка запрещена','Дорожная разметка'],
+  es:['Línea continua','Línea discontinua','Marcas de bloque','Dientes de tiburón','Paso de cebra','Línea de detención','Prohibido parar','Prohibido estacionar','Marcas viales'],
+  pt:['Linha contínua','Linha descontínua','Marcação em blocos','Dentes de tubarão','Passadeira','Linha de paragem','Proibido parar','Proibido estacionar','Marcas rodoviárias'],
+  hi:['लगातार रेखा','टूटी रेखा','ब्लॉक चिह्न','शार्क दाँत','ज़ेब्रा क्रॉसिंग','स्टॉप रेखा','रुकना मना','पार्किंग मना','सड़क चिह्न'],
+  vi:['Vạch liền','Vạch đứt','Vạch khối','Răng cá mập','Vạch qua đường','Vạch dừng','Cấm dừng','Cấm đỗ','Vạch kẻ đường']
+};
+const mlbl = taal => (MARK_LBL[taal] || MARK_LBL.zh);
 // Remweg = reactieafstand (geel) + remweg (rood) = stopafstand.
 function figRemweg(taal){ const L = tlbl('remweg', taal);
   return svg('460 150', L[2], `
@@ -333,7 +348,36 @@ ${carTop(150,192,0.62,'gray')}
 <path d="M150 158 V106" stroke="#14488f" stroke-width="4" opacity=".85"/><path d="M141.5 110 l8.5 -14 l8.5 14 z" fill="#14488f"/>
 ${cap(62,80,L[1],'mini')}${cap(226,206,L[0],'mini')}`);
 }
-function theorieFig(num, taal){
+// Exact, schaalbaar overzicht van de markeringen uit theorie 3. De foto die
+// hier eerder stond kon de vorm en richting van de strepen niet betrouwbaar
+// laten zien; deze SVG tekent iedere markering deterministisch.
+function figWegmarkering(taal){ const L = mlbl(taal);
+  const labelStyle = 'font-size:13px;font-weight:750;fill:#26384f;stroke:none';
+  const card = (x,y,title,body) => `<g transform="translate(${x} ${y})">
+    <rect x="0" y="0" width="300" height="170" rx="14" fill="#f9fbfe" stroke="#d5dfeb" stroke-width="1.5"/>
+    <text x="150" y="25" text-anchor="middle" style="${labelStyle}">${title}</text>${body}</g>`;
+  const road = '<rect x="24" y="40" width="252" height="112" rx="8" fill="#5f6875"/><rect x="24" y="40" width="8" height="112" fill="#c7ced8"/><rect x="268" y="40" width="8" height="112" fill="#c7ced8"/>';
+  return svg('640 560', L[8], `
+${card(10,10,L[0],`${road}<line x1="150" y1="49" x2="150" y2="143" stroke="#fff" stroke-width="7"/>`)}
+${card(330,10,L[1],`${road}<line x1="150" y1="49" x2="150" y2="143" stroke="#fff" stroke-width="7" stroke-dasharray="20 16"/>`)}
+${card(10,195,L[2],`<rect x="24" y="40" width="176" height="112" rx="8" fill="#5f6875"/><rect x="200" y="40" width="76" height="112" rx="0 8 8 0" fill="#b95851"/>${[0,1,2,3].map(i=>`<rect x="189" y="48" width="22" height="16" rx="2" fill="#fff" transform="translate(0 ${i*27})"/>`).join('')}`)}
+${card(330,195,L[3],`${road}${[0,1,2,3,4].map(i=>`<polygon points="${91+i*30},72 ${111+i*30},72 ${101+i*30},93" fill="#fff"/>`).join('')}${carTop(150,126,0.42,'red')}`)}
+<g transform="translate(10 380)">
+  <rect x="0" y="0" width="300" height="170" rx="14" fill="#f9fbfe" stroke="#d5dfeb" stroke-width="1.5"/>
+  <text x="78" y="25" text-anchor="middle" style="${labelStyle}">${L[4]}</text><text x="222" y="25" text-anchor="middle" style="${labelStyle}">${L[5]}</text>
+  <rect x="20" y="40" width="116" height="112" rx="8" fill="#5f6875"/>${[0,1,2,3,4].map(i=>`<rect x="29" y="49" width="98" height="12" rx="2" fill="#fff" transform="translate(0 ${i*20})"/>`).join('')}
+  <rect x="164" y="40" width="116" height="112" rx="8" fill="#5f6875"/><line x1="176" y1="91" x2="268" y2="91" stroke="#fff" stroke-width="11"/>
+</g>
+<g transform="translate(330 380)">
+  <rect x="0" y="0" width="300" height="170" rx="14" fill="#f9fbfe" stroke="#d5dfeb" stroke-width="1.5"/>
+  <text x="78" y="25" text-anchor="middle" style="${labelStyle}">${L[6]}</text><text x="222" y="25" text-anchor="middle" style="${labelStyle}">${L[7]}</text>
+  <rect x="20" y="40" width="116" height="112" rx="8" fill="#5f6875"/><rect x="118" y="40" width="18" height="112" fill="#c7ced8"/><line x1="111" y1="47" x2="111" y2="145" stroke="#f3c43f" stroke-width="7"/>
+  <rect x="164" y="40" width="116" height="112" rx="8" fill="#5f6875"/><rect x="262" y="40" width="18" height="112" fill="#c7ced8"/><line x1="255" y1="47" x2="255" y2="145" stroke="#f3c43f" stroke-width="7" stroke-dasharray="18 13"/>
+</g>`);
+}
+function theorieFig(num, taal, sectionId='sec1'){
+  if(num==='3' && sectionId==='sec4') return figWegmarkering(taal);
+  if(sectionId!=='sec1') return '';
   return num==='2' ? figVoorrang(taal) : num==='5' ? figRemweg(taal) : num==='8' ? figDodehoek(taal) : '';
 }
 
