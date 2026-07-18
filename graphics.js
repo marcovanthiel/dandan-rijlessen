@@ -328,10 +328,10 @@ function figVoorrang(taal){ const L = tlbl('voorrang', taal);
 ${roadH(0,90,300,60)}
 ${roadV(120,0,60,240)}
 <g transform="rotate(90 62 135)">${carTop(62,135,0.62,'blue')}</g>
-<path d="M92 135 h96" stroke="#14488f" stroke-width="4" opacity=".85"/><path d="M184 126 l13 9 l-13 9 z" fill="#14488f"/>
+<path d="M92 135 h12" stroke="#8a6d00" stroke-width="3"/><path d="M102 129 l9 6 l-9 6 z" fill="#8a6d00"/>
 ${carTop(150,192,0.62,'gray')}
-<path d="M150 158 v-12" stroke="#8a6d00" stroke-width="3"/><path d="M144 148 l6 -8 l6 8 z" fill="#8a6d00"/>
-${cap(62,80,L[0],'mini')}${cap(226,206,L[1],'mini')}`);
+<path d="M150 158 V106" stroke="#14488f" stroke-width="4" opacity=".85"/><path d="M141.5 110 l8.5 -14 l8.5 14 z" fill="#14488f"/>
+${cap(62,80,L[1],'mini')}${cap(226,206,L[0],'mini')}`);
 }
 function theorieFig(num, taal){
   return num==='2' ? figVoorrang(taal) : num==='5' ? figRemweg(taal) : num==='8' ? figDodehoek(taal) : '';
@@ -371,12 +371,13 @@ function landingScene(){
   ${[0,1,2,3,4].map(i=>`<rect x="${240+i*17}" y="268" width="10" height="24" rx="2" fill="#fff"/>`).join('')}
   <rect x="232" y="262" width="96" height="4.5" rx="2" fill="#fff"/>
   <g transform="rotate(90 130 236)">${carTop(130,236,0.82,'blue')}</g>
-  <path d="M172 236 h198" stroke="#14488f" stroke-width="5" opacity=".8"/>
-  <path d="M362 225 l17 11 l-17 11 z" fill="#14488f"/>
+  <path d="M174 236 h14" stroke="#8a6d00" stroke-width="3.6" opacity=".9"/>
+  <path d="M186 228.5 l10 7.5 l-10 7.5 z" fill="#8a6d00"/>
   ${carTop(306,352,0.82,'red')}
   <g filter="url(#sh)"><rect x="296" y="330" width="20" height="14" rx="3" fill="#fff"/></g>
   <text x="306" y="341.5" text-anchor="middle" font-family="system-ui" font-size="11.5" font-weight="800" fill="#1f66d0">L</text>
-  <path d="M306 318 v-14" stroke="#8a6d00" stroke-width="3.4" opacity=".9"/><path d="M299.5 306 l6.5 -9 l6.5 9 z" fill="#8a6d00"/>
+  <path d="M306 302 V140" stroke="#14488f" stroke-width="5" opacity=".8"/>
+  <path d="M295 144 l11 -18 l11 18 z" fill="#14488f"/>
   </svg>`;
 }
 
