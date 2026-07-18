@@ -79,6 +79,7 @@ const MANIFEST = [
 
   // Aanvullende theoriebeelden
   { key:'theorie-1_fietser-naast-auto', title:'Fietser naast de auto', prompt:'Dandan in the stationary red learner car looks directly toward a cyclist riding beside the car on the right at a Dutch junction.' },
+  { key:'theorie-2_afslaan-v2', title:'Afslaan', prompt:'At a coherent Dutch junction, Dandan waits in the red learner car entirely before a continuous red-asphalt cycle crossing, looks right toward a cyclist riding fully on that cycle path and signals before turning right.' },
   { key:'theorie-2_hulpdienst', title:'Hulpdienst ruimte geven', prompt:'Dandan moves the red learner car safely to the right and stops without blocking a junction so an ambulance with blue lights can pass.' },
   { key:'theorie-2_uitrit', title:'Uitrit', prompt:'Frontal view from across the road: the red learner car faces outward from a private driveway and stops fully before a continuous grey sidewalk; a pedestrian walks only on that sidewalk and a cyclist rides only on the separate red-asphalt cycle path in front of it.' },
   { key:'theorie-3_bordcategorieen', title:'Bordcategorieën', prompt:'Dandan and an instructor study a naturally installed group of correct Dutch speed, yield, mandatory-direction and parking signs.' },

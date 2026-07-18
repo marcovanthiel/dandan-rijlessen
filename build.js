@@ -61,7 +61,7 @@ const SECTION_PHOTOS = {
     sec12: ['module-5_oefening.webp'],
   },
   'theorie-2': {
-    sec3: ['module-2_s25.webp'],
+    sec3: ['theorie-2_afslaan-v2.webp'],
     sec4: ['theorie-2_hulpdienst.webp'],
     sec5: ['theorie-2_uitrit.webp'],
   },
