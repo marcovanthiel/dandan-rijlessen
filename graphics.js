@@ -76,7 +76,7 @@ function carTop(cx,cy,s,tone){ tone=tone||'blue'; const g=GRAD[tone], ac=ACC[ton
  <path d="M-12 -30 L-4 -18 L-8 -18 Z" fill="#ffffff" opacity=".5"/>
  <path d="M-14 20 Q0 25 14 20 L12.5 32 Q0 37.5 -12.5 32 Z" fill="url(#gGlass)"/>
  <rect x="-16.5" y="-13" width="33" height="30" rx="8" fill="#ffffff" opacity=".07"/>
- <path d="M-23 -20 l-6 2.8 6 2.8 Z" fill="url(#${g})"/><path d="M23 -20 l6 2.8 -6 2.8 Z" fill="url(#${g})"/>
+ <rect x="-29" y="-19" width="6.5" height="3.6" rx="1.8" fill="url(#${g})"/><rect x="22.5" y="-19" width="6.5" height="3.6" rx="1.8" fill="url(#${g})"/>
  <rect x="-18" y="-46" width="9" height="4" rx="2" fill="${ac[0]}"/><rect x="9" y="-46" width="9" height="4" rx="2" fill="${ac[0]}"/>
  <rect x="-18" y="42" width="9" height="4" rx="2" fill="${ac[1]}"/><rect x="9" y="42" width="9" height="4" rx="2" fill="${ac[1]}"/>
  </g>`; }
@@ -177,8 +177,8 @@ F['10']=svg('320 182','观察 gezichtsveld', `<path d="M160 152 L26 36 A176 176 
 <path d="M160 152 L116 28 A128 128 0 0 1 204 28 Z" fill="#c4d8f6"/><path d="M160 152 L151 24 A64 64 0 0 1 169 24 Z" fill="${BLUE}" opacity=".7"/>
 <circle cx="160" cy="152" r="7" fill="${INK}"/><text x="160" y="44" text-anchor="middle" class="mini">清晰 3°</text><text x="272" y="56" class="mini">余光 ~180°</text>
 ${cap(160,174,'转动头和眼睛去扫视 · blik niet fixeren')}`);
-F['12']=svg('240 176','车道位置', `${roadV(84,8,72,160)}<line x1="120" y1="14" x2="120" y2="162" stroke="#e2b45c" stroke-width="2.5" stroke-dasharray="10 10"/>${carTop(120,90,1)}
-${cap(120,166,'居中行驶 · midden van de rijstrook')}`);
+F['12']=svg('240 190','车道位置', `${roadV(84,8,72,160)}<line x1="120" y1="14" x2="120" y2="162" stroke="#e2b45c" stroke-width="2.5" stroke-dasharray="10 10"/>${carTop(120,90,1)}
+${cap(120,184,'居中行驶 · midden van de rijstrook')}`);
 F['13']=svg('300 160','刹车', `${roadH(0,96,300,46)}${carSide(84,75,1.1)}<path d="M154 96 H238" stroke="${BLUE}" stroke-width="2.4" stroke-dasharray="9 7" marker-end="url(#a)"/>
 ${cap(150,148,'有分寸，快停时略松 · zonder duiken')}`);
 F['14']=svg('240 160','踩离合', `<g filter="url(#sh)"><rect x="72" y="34" width="28" height="66" rx="9" fill="${BLUE}"/><rect x="116" y="46" width="24" height="54" rx="9" fill="#eef4fd" stroke="${BLUE}" stroke-width="2"/></g>
@@ -204,7 +204,7 @@ F['22']=svg('320 152','会车', `${roadH(0,54,320,46)}${carTop(66,66,0.6,'blue')
 F['23']=svg('340 150','被超车', `${roadH(0,60,340,54)}${carTop(80,88,0.6,'gray')}${carTop(190,64,0.6,'blue')}
 <path d="M214 64 q-30 -14 -66 -8" fill="none" stroke="${BLUE}" stroke-width="2.2" marker-end="url(#a)"/>${cap(170,140,'保持稳定，不加速 · niet versnellen')}`);
 // ---- rijker scenebeeld: kruispunt ----
-F['24']=svg('340 260','路口场景 · kruispunt', `
+F['24']=svg('340 274','路口场景 · kruispunt', `
 <rect x="0" y="0" width="340" height="260" fill="#f3f7ee"/>
 ${[[66,56],[274,56],[66,204],[274,204]].map(c=>`<g filter="url(#sh)"><rect x="${c[0]-58}" y="${c[1]-52}" width="116" height="104" rx="14" fill="#e9f2e2"/></g>`).join('')}
 ${treeTop(40,40,15)}${treeTop(300,40,15)}${treeTop(40,220,15)}${treeTop(300,220,15)}
@@ -216,13 +216,13 @@ ${treeTop(40,40,15)}${treeTop(300,40,15)}${treeTop(40,220,15)}${treeTop(300,220,
 <line x1="218" y1="150" x2="332" y2="150" stroke="#fff" stroke-width="3" stroke-dasharray="15 13"/>
 ${[0,1,2,3].map(i=>`<rect x="${150+i*11}" y="196" width="6" height="20" fill="#fff"/>`).join('')}
 <rect x="132" y="192" width="76" height="4" fill="#fff"/>
-${carTop(150,232,0.72,'blue')}
+${carTop(150,222,0.62,'blue')}
 <g transform="rotate(90 66 150)">${carTop(66,150,0.66,'gray')}</g>
 ${cyclistTop(300,150,1)}
-<path d="M150 208 C132 168 96 160 40 150" fill="none" stroke="${BLUE}" stroke-width="2.6" marker-end="url(#a)"/>
-<path d="M150 208 C168 168 236 160 300 150" fill="none" stroke="${BLUE}" stroke-width="2.6" marker-end="url(#a)"/>
+<path d="M150 196 C132 166 96 158 40 150" fill="none" stroke="${BLUE}" stroke-width="2.6" marker-end="url(#a)"/>
+<path d="M150 196 C168 166 236 158 300 150" fill="none" stroke="${BLUE}" stroke-width="2.6" marker-end="url(#a)"/>
 <text x="30" y="140" text-anchor="middle" class="zhlbl">左</text><text x="312" y="140" text-anchor="middle" class="zhlbl">右</text>
-${cap(170,250,'看的顺序：前 → 左 → 前 → 右')}`);
+${cap(170,268,'看的顺序：前 → 左 → 前 → 右')}`);
 F['25']=svg('240 210','转弯', `${roadV(96,0,64,210)}${roadH(0,92,240,54)}${carTop(128,180,0.62)}
 <path d="M128 156 V128 Q128 118 138 118 H214" fill="none" stroke="${BLUE}" stroke-width="3" marker-end="url(#a)"/>${cap(120,204,'先打灯、并道、让行')}`);
 F['26']=svg('300 170','坡道起步', `<path d="M14 150 L188 60 L300 60 L300 150 Z" fill="#e8edf3"/><path d="M14 150 L188 60" stroke="${SOFT}" stroke-width="3"/>${carSide(152,68,1.05)}
@@ -324,14 +324,14 @@ ${cap(250,44,L[0],'mini')}`);
 }
 // Voorrang: kruispunt, jij wacht (geel) voor voorrangsvoertuig (blauw, pijl).
 function figVoorrang(taal){ const L = tlbl('voorrang', taal);
-  return svg('260 220', L[0], `
-${roadH(10,92,240,54)}
-${roadV(96,10,54,200)}
-${carTop(123,170,0.95,'gray')}
-<path d="M123 150 v-16" stroke="#8a6d00" stroke-width="3"/><path d="M117 140 l6 -8 l6 8 z" fill="#8a6d00"/>
-${carTop(60,119,0.95,'blue')}
-<path d="M84 119 h20" stroke="#14488f" stroke-width="4"/><path d="M100 111 l10 8 l-10 8 z" fill="#14488f"/>
-${cap(60,150,L[0],'mini')}${cap(150,196,L[1],'mini')}`);
+  return svg('300 240', L[0], `
+${roadH(0,90,300,60)}
+${roadV(120,0,60,240)}
+<g transform="rotate(90 62 135)">${carTop(62,135,0.62,'blue')}</g>
+<path d="M92 135 h96" stroke="#14488f" stroke-width="4" opacity=".85"/><path d="M184 126 l13 9 l-13 9 z" fill="#14488f"/>
+${carTop(150,192,0.62,'gray')}
+<path d="M150 158 v-12" stroke="#8a6d00" stroke-width="3"/><path d="M144 148 l6 -8 l6 8 z" fill="#8a6d00"/>
+${cap(62,80,L[0],'mini')}${cap(226,206,L[1],'mini')}`);
 }
 function theorieFig(num, taal){
   return num==='2' ? figVoorrang(taal) : num==='5' ? figRemweg(taal) : num==='8' ? figDodehoek(taal) : '';
@@ -346,4 +346,38 @@ function figFor(step, zh){
   return '';
 }
 
-module.exports = { iconFor, moduleIcon, figFor, moduleBanner, tijdlijn185, theorieFig };
+
+// ---- landingsscène: taalvrij premium kruispunt voor de publieke landing ----
+// Bewust zonder tekst (labels staan in de HTML per taal). Verhoudingen
+// kloppen: autobreedte ~0,6 rijstrook; lesauto met L-dakbord wacht, blauw
+// heeft voorrang van rechtsdoorgang. Zelfde componenten als de lesfiguren.
+function landingScene(){
+  const stoep = (x,y,w,h) => `<g filter="url(#sh)"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="18" fill="#EAF2E3"/></g>
+    <g stroke="#DCE8D2" stroke-width="1.4">${Array.from({length:Math.floor(w/34)-0}, (_,i)=>`<line x1="${x+34+i*34}" y1="${y+6}" x2="${x+34+i*34}" y2="${y+h-6}"/>`).join('')}
+    ${Array.from({length:Math.floor(h/34)-0}, (_,i)=>`<line x1="${x+6}" y1="${y+34+i*34}" x2="${x+w-6}" y2="${y+34+i*34}"/>`).join('')}</g>`;
+  return `<svg viewBox="0 0 560 420" class="figsvg" role="img" aria-hidden="true">${DEFS}
+  <rect x="0" y="0" width="560" height="420" rx="16" fill="#F1F6EC"/>
+  ${stoep(12,12,204,134)}${stoep(344,12,204,134)}${stoep(12,274,204,134)}${stoep(344,274,204,134)}
+  ${treeTop(60,62,20)}${treeTop(494,58,17)}${treeTop(64,354,17)}${treeTop(500,352,21)}
+  ${bush(180,120,7)}${bush(376,128,6)}${bush(180,296,6)}${bush(384,292,7)}
+  <rect x="228" y="0" width="104" height="420" fill="#E6EBF2"/>
+  <rect x="0" y="158" width="560" height="104" fill="#E6EBF2"/>
+  <rect x="228" y="0" width="4" height="420" fill="#D5DCE6"/><rect x="328" y="0" width="4" height="420" fill="#D5DCE6"/>
+  <rect x="0" y="158" width="560" height="4" fill="#D5DCE6"/><rect x="0" y="258" width="560" height="4" fill="#D5DCE6"/>
+  <line x1="280" y1="10" x2="280" y2="146" stroke="#fff" stroke-width="3.4" stroke-dasharray="16 14" stroke-linecap="round"/>
+  <line x1="280" y1="300" x2="280" y2="410" stroke="#fff" stroke-width="3.4" stroke-dasharray="16 14" stroke-linecap="round"/>
+  <line x1="10" y1="210" x2="214" y2="210" stroke="#fff" stroke-width="3.4" stroke-dasharray="16 14" stroke-linecap="round"/>
+  <line x1="346" y1="210" x2="550" y2="210" stroke="#fff" stroke-width="3.4" stroke-dasharray="16 14" stroke-linecap="round"/>
+  ${[0,1,2,3,4].map(i=>`<rect x="${240+i*17}" y="268" width="10" height="24" rx="2" fill="#fff"/>`).join('')}
+  <rect x="232" y="262" width="96" height="4.5" rx="2" fill="#fff"/>
+  <g transform="rotate(90 130 236)">${carTop(130,236,0.82,'blue')}</g>
+  <path d="M172 236 h198" stroke="#14488f" stroke-width="5" opacity=".8"/>
+  <path d="M362 225 l17 11 l-17 11 z" fill="#14488f"/>
+  ${carTop(306,352,0.82,'red')}
+  <g filter="url(#sh)"><rect x="296" y="330" width="20" height="14" rx="3" fill="#fff"/></g>
+  <text x="306" y="341.5" text-anchor="middle" font-family="system-ui" font-size="11.5" font-weight="800" fill="#1f66d0">L</text>
+  <path d="M306 318 v-14" stroke="#8a6d00" stroke-width="3.4" opacity=".9"/><path d="M299.5 306 l6.5 -9 l6.5 9 z" fill="#8a6d00"/>
+  </svg>`;
+}
+
+module.exports = { iconFor, moduleIcon, figFor, moduleBanner, tijdlijn185, theorieFig, landingScene };

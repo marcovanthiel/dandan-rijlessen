@@ -763,12 +763,8 @@ body.v3-body{background:var(--v3-bg);color:var(--v3-inkt)}
 .v3 .v3-midcta{margin-top:36px;text-align:center}
 /* voorbeeldles */
 .v3 .v3-vbkaart{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;background:var(--v3-wit);border:1px solid var(--v3-drand);border-radius:24px;padding:28px;align-items:center}
-.v3 .v3-scene{position:relative;aspect-ratio:4/3;background:#E8F0E4;border-radius:16px;overflow:hidden}
-.v3 .v3-scene .rd{position:absolute;top:0;bottom:0;left:50%;width:34%;transform:translateX(-50%);background:#8D9AA8}
-.v3 .v3-scene .rd2{position:absolute;left:0;right:0;top:50%;height:34%;transform:translateY(-50%);background:#8D9AA8}
-.v3 .v3-scene .ca{position:absolute;width:13%;aspect-ratio:1/2;border-radius:4px}
-.v3 .v3-scene .ca.r{background:#D6473C;left:57%;top:58%}
-.v3 .v3-scene .ca.b{background:#2F6FDF;left:28%;top:40%;transform:rotate(90deg)}
+.v3 .v3-scene{border-radius:16px;overflow:hidden;line-height:0}
+.v3 .v3-scene svg{width:100%;height:auto;display:block}
 .v3 .v3-vbcopy p{color:var(--v3-dinkt)}
 .v3 .v3-zh{color:var(--v3-dmut);margin:10px 0 14px;font-size:1.05rem}
 .v3 .v3-vraag{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}

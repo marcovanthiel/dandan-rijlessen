@@ -487,6 +487,7 @@ function writeWorkerContent(perTaal){
   ).digest('hex').slice(0,10);
   const out = '// GEGENEREERD door build.js; niet handmatig bewerken.\n'
     + 'export const ASSET_VER = '+JSON.stringify(assetVer)+';\n'
+    + 'export const LANDING_FIG = '+JSON.stringify(G.landingScene())+';\n'
     + 'export const SITE = '+JSON.stringify(SITE)+';\n'
     + 'export const HOME_BANNER = '+JSON.stringify(G.moduleBanner(0))+';\n'
     + 'export const CONTENT = '+JSON.stringify(inhoud)+';\n'
