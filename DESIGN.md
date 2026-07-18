@@ -184,3 +184,9 @@ Kernboodschap: "Jouw rijbewijs. Jouw taal. Jouw tempo." Scope `.v3` (body
 - **Inhoudelijke regel (hard):** een diagram mag nooit een voorrangssituatie
   tonen die strijdig is met de bijbehorende tekst; de voorrang-figuren tonen
   nu correct dat rechts voorgaat.
+- **Fotorealistische ronde:** de homepage-voorbeeldles gebruikt nu
+  `assets/landing-priority.webp` in plaats van `landingScene()`. Fotografie is de
+  standaard voor mensen, de rode lesauto en praktijksituaties; SVG blijft alleen waar
+  een abstracte regel, afstand of route didactisch duidelijker moet zijn. De centrale
+  fotoprompt borgt de vaste rode hatchback en Dandan (lang donker haar, ronde bril,
+  saliegroen shirt) voor toekomstige generaties.

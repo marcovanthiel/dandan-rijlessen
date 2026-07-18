@@ -9,8 +9,15 @@ Per gewenst fotobeeld een kant-en-klare genereeropdracht. Foto's zijn origineel/
 | _(nog te vullen in de visualisatie-loops)_ | | | | | |
 
 Richtlijn stijl (consistent met bestaand): fotorealistische, generieke Nederlandse
-verkeers-/lesscènes, daglicht, neutrale mensen, herkenbaar NL straatbeeld; 1536×1024,
-daarna WebP 1200px q82. Geen merken/kentekens leesbaar, geen boekreproductie.
+verkeers-/lesscènes, daglicht en herkenbaar NL straatbeeld. De hoofdlesauto is steeds
+dezelfde rode hatchback met blauw L-dakbord; de leerling is consequent Dandan (volwassen
+Oost-Aziatische vrouw, lang steil donker haar, ronde bril, licht saliegroen shirt).
+Doelmaat 1536×1024, daarna WebP. Geen merken/kentekens leesbaar, geen boekreproductie.
+
+## Fotorealistisch voorbeeld op de landing (18-7-2026) — KLAAR
+`assets/landing-priority.webp` vervangt het bovenaanzicht-SVG in de voorbeeldles. De foto
+toont een gelijkwaardig Nederlands kruispunt zonder borden of haaientanden: de rode
+Dandan-lesauto komt van rechts en rijdt eerst, terwijl de grijze auto zichtbaar wacht.
 
 ## Landing-hero rijfoto (13-7) — KLAAR 16-7-2026
 De foto stond al klaar als `assets/landing-hero.webp` (gegenereerd in een eerdere ronde,

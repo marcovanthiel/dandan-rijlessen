@@ -480,14 +480,14 @@ function writeWorkerContent(perTaal){
     };
   }
   // asset-versie voor cache-busting: verandert zodra CSS/JS wijzigt.
-  const assetVer = require('crypto').createHash('md5').update(
-    fs.readFileSync(path.join(ASSETS_SRC,'style.css'),'utf8')
-    + fs.readFileSync(path.join(ASSETS_SRC,'les.js'),'utf8')
-    + fs.readFileSync(path.join(ASSETS_SRC,'interactie.js'),'utf8')
-  ).digest('hex').slice(0,10);
+  const assetHash = require('crypto').createHash('md5');
+  for(const asset of ['style.css','les.js','interactie.js','landing-hero.webp','landing-priority.webp','product-auto-b-v2.png']){
+    const file = path.join(ASSETS_SRC,asset);
+    if(fs.existsSync(file)) assetHash.update(fs.readFileSync(file));
+  }
+  const assetVer = assetHash.digest('hex').slice(0,10);
   const out = '// GEGENEREERD door build.js; niet handmatig bewerken.\n'
     + 'export const ASSET_VER = '+JSON.stringify(assetVer)+';\n'
-    + 'export const LANDING_FIG = '+JSON.stringify(G.landingScene())+';\n'
     + 'export const SITE = '+JSON.stringify(SITE)+';\n'
     + 'export const HOME_BANNER = '+JSON.stringify(G.moduleBanner(0))+';\n'
     + 'export const CONTENT = '+JSON.stringify(inhoud)+';\n'
@@ -545,7 +545,7 @@ function main(){
   for(const font of ['bricolage-latin.woff2','bricolage-latinext.woff2','bricolage-viet.woff2']){
     if(fs.existsSync(path.join(ASSETS_SRC,font))) fs.copyFileSync(path.join(ASSETS_SRC,font), path.join(DIST,'assets',font));
   }
-  for(const photo of ['landing-hero.webp','product-auto-b-v2.png']){
+  for(const photo of ['landing-hero.webp','landing-priority.webp','product-auto-b-v2.png']){
     if(fs.existsSync(path.join(ASSETS_SRC,photo))) fs.copyFileSync(path.join(ASSETS_SRC,photo), path.join(DIST,'assets',photo));
   }
   for(const ic of ['icon-192.png','icon-512.png']) if(fs.existsSync(path.join(ASSETS_SRC,ic))) fs.copyFileSync(path.join(ASSETS_SRC,ic), path.join(DIST,ic));

@@ -3,7 +3,7 @@
 // e-mailcode-login via Resend, server-side gerenderde lescontent per gebruiker.
 // Taal: chrome in de voorkeurstaal (zh/nl/en, cookie dd_lang of account),
 // lestekst in de lestaal (nu zh) met nette fallback-melding.
-import { SITE, HOME_BANNER, CONTENT, LESTALEN, TOTAL_PAGES, ASSET_VER, LANDING_FIG } from './worker-content.js';
+import { SITE, HOME_BANNER, CONTENT, LESTALEN, TOTAL_PAGES, ASSET_VER } from './worker-content.js';
 import { t, TALEN, TAALNAMEN } from './i18n.js';
 // Vlag per chrome-taal voor de taalkeuzelijst (emoji: geen assets, werkt op
 // telefoons; op oudere Windows-desktops vallen ze terug op landletters).
@@ -267,7 +267,7 @@ function landingBody(L, reviewsHtml) {
   <section class="v3-licht v3-vb" id="lessen"><div class="v3-wrap">
     <div class="v3-kop reveal"><h2>${esc(t(L, 'v3.vb'))}</h2><p class="v3-koptekst">${esc(t(L, 'hp.voorrangkop'))}</p></div>
     <div class="v3-vbkaart reveal">
-      <div class="v3-scene">${LANDING_FIG}</div>
+      <div class="v3-scene"><img src="/assets/landing-priority.webp?v=${ASSET_VER}" alt="${esc(t(L, 'hp.voorrangkop'))}" width="1536" height="1024" loading="lazy"></div>
       <div class="v3-vbcopy">
         <p>${esc(t(L, 'hp.voorrangtekst'))}</p>
         <div class="v3-zh" lang="zh">在同等路口的优先权</div>

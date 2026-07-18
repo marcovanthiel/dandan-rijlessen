@@ -40,4 +40,7 @@ npx wrangler pages deploy dist --project-name=dandan-rijlessen
 ## Belangrijk
 - Gebruik uitsluitend **AI-gegenereerde of rechtenvrij/gelicenseerde** beelden.
 - Geen scans, foto's of illustraties uit het boek.
-- Geen herkenbare gezichten, merklogo's of leesbare tekst in beeld (zit al in de stijlprompt).
+- De hoofdlesauto is steeds dezelfde compacte rode hatchback met een blauw L-dakbord.
+- Als de leerling zichtbaar is, blijft Dandan herkenbaar consistent: volwassen Oost-Aziatische
+  vrouw, lang steil donker haar, ronde bril, licht saliegroen shirt, rustige uitstraling.
+- Geen merklogo's, leesbare kentekens of tekst in beeld (zit al in de stijlprompt).

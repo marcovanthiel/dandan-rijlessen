@@ -3,7 +3,7 @@
    Het zijn nadrukkelijk GEEN reproducties of natekeningen van de foto's uit het bronboek.
    De 'key' bepaalt de bestandsnaam (img/<key>.png) en koppelt aan het juiste onderdeel op de site. */
 
-const STYLE = "Photorealistic instructional photo, modern Netherlands (Dutch) driving-school context, realistic Dutch roads, markings and signage, natural daylight, clear and clean composition, documentary style, safe and correct driving behaviour, no text, no captions, no watermark, no brand logos, no recognizable faces, 3:2 landscape.";
+const STYLE = "Photorealistic instructional photo, modern Netherlands (Dutch) driving-school context, realistic Dutch roads, markings and signage, natural daylight, clear and clean composition, documentary style, safe and correct driving behaviour. The featured learner car is always the same compact vivid-red hatchback with a small blue learner roof sign bearing a simple white L; other traffic uses neutral colours. Whenever the learner driver is visible, she is Dandan: an adult East Asian woman with long straight dark hair, round glasses, a light sage-green shirt and a calm focused expression, seated on the left-hand driver side. Keep her face, hair, glasses and wardrobe visually consistent across the full series. Natural skin, fabric and automotive texture; no CGI or illustration look. No text, no captions, no watermark, no readable licence plates, no brand logos, 3:2 landscape.";
 
 const MANIFEST = [
   // Module 1 — voertuigbeheersing

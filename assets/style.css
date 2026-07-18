@@ -765,6 +765,7 @@ body.v3-body{background:var(--v3-bg);color:var(--v3-inkt)}
 .v3 .v3-vbkaart{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;background:var(--v3-wit);border:1px solid var(--v3-drand);border-radius:24px;padding:28px;align-items:center}
 .v3 .v3-scene{border-radius:16px;overflow:hidden;line-height:0}
 .v3 .v3-scene svg{width:100%;height:auto;display:block}
+.v3 .v3-scene img{display:block;width:100%;height:100%;min-height:320px;object-fit:cover;object-position:center}
 .v3 .v3-vbcopy p{color:var(--v3-dinkt)}
 .v3 .v3-zh{color:var(--v3-dmut);margin:10px 0 14px;font-size:1.05rem}
 .v3 .v3-vraag{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
@@ -817,6 +818,7 @@ body.v3-body{background:var(--v3-bg);color:var(--v3-inkt)}
   .v3 .v3-statbalk{grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
   .v3 .v3-benefits,.v3 .v3-stappen,.v3 .v3-plans{grid-template-columns:1fr}
   .v3 .v3-vbkaart{grid-template-columns:1fr}
+  .v3 .v3-scene img{height:auto;min-height:0;object-fit:contain}
   .v3 .v3-btn{width:100%}
   .v3 .v3-acties{flex-direction:column}
   .v3 .v3-login,.v3 .v3-topcta{display:none}
@@ -824,6 +826,7 @@ body.v3-body{background:var(--v3-bg);color:var(--v3-inkt)}
   .v3 .v3-brand{white-space:nowrap}
   .v3 .v3-brand small{display:none}
   .v3 .v3-top .v3-taal{order:5}
+  .v3 .v3-taal select{max-width:132px}
   .v3 .v3-nav{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(17,22,46,.97);backdrop-filter:blur(16px);flex-direction:column;gap:0;padding:10px 24px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
   .v3 .v3-nav.open{display:flex}
   .v3 .v3-nav a{width:100%;padding:12px 0}
