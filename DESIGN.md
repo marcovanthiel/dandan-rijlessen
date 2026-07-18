@@ -170,3 +170,17 @@ Kernboodschap: "Jouw rijbewijs. Jouw taal. Jouw tempo." Scope `.v3` (body
   in de native-review-queue. Iconen: inline Lucide-stijl (24px, stroke 2).
 - Geverifieerd: desktop + mobiel (0px horizontale overflow), hamburger,
   reveal/puls met prefers-reduced-motion-respect.
+
+### Beeldkwaliteit-ronde (18-7-2026)
+- **landingScene()** in graphics.js: taalvrije premium kruispunt-SVG voor de
+  landing (stoeptegels, bomen/struiken, trottoirbanden, zebra, middenstrepen
+  die stoppen voor het kruispunt, lesauto met L-dakbord); via build.js als
+  LANDING_FIG in worker-content.js. De oude CSS-blokjes-scene is weg.
+- **Verhoudingsregel:** een auto is ~0,6x de rijstrookbreedte; bijschriften
+  nooit óver een voertuig (halo via .figsvg paint-order blijft de vangrail).
+- **carTop** heeft nu zijspiegels (alle boven-aanzichten profiteren).
+- **Reparaties:** figVoorrang (rijrichting + juiste strook), F24 (auto binnen
+  beeld, bijschrift vrij), F12 (bijschrift onder de weg).
+- **Inhoudelijke regel (hard):** een diagram mag nooit een voorrangssituatie
+  tonen die strijdig is met de bijbehorende tekst; de voorrang-figuren tonen
+  nu correct dat rechts voorgaat.
