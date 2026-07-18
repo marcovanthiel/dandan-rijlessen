@@ -70,7 +70,7 @@ const SECTION_PHOTOS = {
   },
   'theorie-4': {
     sec3: ['theorie-4_spoorwegovergang.webp'],
-    sec4: ['module-3_s39.webp'],
+    sec4: ['theorie-4_negenoog.webp'],
     sec5: ['theorie-4_verkeersbrigadier.webp'],
   },
   'theorie-5': {
