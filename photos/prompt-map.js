@@ -62,7 +62,41 @@ const MANIFEST = [
   // Module 5 — examen / ADAS / oefeningen
   { key:'module-5_examen', title:'Rijexamen', prompt:'A driving exam scene: a calm candidate driving while an examiner sits in the passenger seat with a clipboard.' },
   { key:'module-5_adas', title:'ADAS-systemen', prompt:'A modern car dashboard and windshield view showing driver-assistance systems active on a motorway.' },
-  { key:'module-5_oefening', title:'Controleoefeningen', prompt:'A driving instructor and a learner practising a manoeuvre next to a car in a quiet area.' }
+  { key:'module-5_oefening', title:'Controleoefeningen', prompt:'A driving instructor and a learner practising a manoeuvre next to a car in a quiet area.' },
+
+  // Rijbewijsvarianten en rijbewijsproces
+  { key:'am-1_voertuigtypen', title:'AM-voertuigtypen', prompt:'Dandan and an instructor compare a red moped scooter and a compact four-wheel brommobiel on a closed Dutch training lot.' },
+  { key:'am-1_praktijk', title:'AM-praktijkexamen', prompt:'Dandan safely rides a red moped through a marked Dutch practical-exam course while an examiner observes.' },
+  { key:'aanhanger-1_exam', title:'Aanhangerexamen', prompt:'The red learner car with a small box trailer performs a controlled reversing exercise on a spacious Dutch training ground.' },
+  { key:'aanhanger-1_koppeling', title:'Trekhaak controleren', prompt:'Close rear view of the uncoupled red learner car showing one correct compact European swan-neck towbar, spherical 50 mm tow ball, separate closed 13-pin socket and dedicated breakaway-cable eyelet; trailer parked out of focus at a clear distance.' },
+  { key:'info-1_gezondheidsverklaring', title:'Gezondheidsverklaring', prompt:'Dandan completes a professional eye test in an optometrist consultation room as part of driving fitness.' },
+  { key:'info-1_theorie-examen-tolk', title:'Theorie-examen met tolk', prompt:'Dandan takes an individually supervised driving-theory exam at a computer while an interpreter translates spoken instructions.' },
+  { key:'info-1_rijschool', title:'Rijschool kiezen', prompt:'Dandan and a female driving instructor discuss a trial lesson beside the open driver door of the red learner car.' },
+  { key:'motor-1_categorieen', title:'Motorcategorieën', prompt:'Dandan and an instructor compare three motorcycles that visibly progress from lightweight A1 to medium A2 and larger full-A class.' },
+  { key:'motor-1_avb', title:'AVB-oefening', prompt:'Dandan in full protective gear performs a controlled slow slalom between cones on a Dutch motorcycle training ground.' },
+  { key:'motor-1_avd-examen', title:'AVD-examen', prompt:'Dandan rides safely through a Dutch urban bend during an AVD road exam while the examiner follows by motorcycle.' },
+  { key:'motor-1_beschermende-kleding', title:'Motorkleding', prompt:'Full-body view of Dandan beside a motorcycle in certified helmet, jacket, trousers, gloves and ankle-covering boots.' },
+
+  // Aanvullende theoriebeelden
+  { key:'theorie-1_fietser-naast-auto', title:'Fietser naast de auto', prompt:'Dandan in the stationary red learner car looks directly toward a cyclist riding beside the car on the right at a Dutch junction.' },
+  { key:'theorie-2_hulpdienst', title:'Hulpdienst ruimte geven', prompt:'Dandan moves the red learner car safely to the right and stops without blocking a junction so an ambulance with blue lights can pass.' },
+  { key:'theorie-2_uitrit', title:'Uitrit', prompt:'The red learner car stops before crossing a residential sidewalk and yields to both a pedestrian and cyclist.' },
+  { key:'theorie-3_bordcategorieen', title:'Bordcategorieën', prompt:'Dandan and an instructor study a naturally installed group of correct Dutch speed, yield, mandatory-direction and parking signs.' },
+  { key:'theorie-4_spoorwegovergang', title:'Spoorwegovergang', prompt:'The red learner car waits fully behind the stop line at a Dutch railway crossing with red lights, closed barrier and passing train.' },
+  { key:'theorie-4_verkeersbrigadier', title:'Verkeersbrigadier', prompt:'A fluorescent-clad crossing guard helps children cross while the red learner car waits well before the crossing.' },
+  { key:'theorie-6_fietser-inhalen', title:'Fietser veilig inhalen', prompt:'On an open Dutch rural road the red learner car overtakes an adult cyclist with a clearly generous lateral gap.' },
+  { key:'theorie-7_parkeerverbod', title:'Parkeerverbod', prompt:'Dandan continues past a prohibited parking location with a correct European no-parking sign toward a legal bay farther ahead.' },
+  { key:'theorie-7_parkeerschijf', title:'Parkeerschijf', prompt:'Dandan places a blue parking disc on the dashboard after correctly parking the red learner car in a Dutch blue zone.' },
+  { key:'theorie-7_pech', title:'Pech op de snelweg', prompt:'The broken-down red learner car stands on the motorway shoulder while Dandan and the instructor wait behind the guardrail with a warning triangle placed behind the car.' },
+  { key:'theorie-8_scootmobiel', title:'Scootmobiel', prompt:'Dandan stops the red learner car well before a raised crossing to let an older mobility-scooter user cross safely.' },
+  { key:'theorie-8_vrachtwagen-dode-hoek', title:'Vrachtwagen en dode hoek', prompt:'The red learner car waits well behind a truck preparing a wide right turn while a cyclist remains visible near the truck blind-spot area.' },
+  { key:'theorie-9_alcohol-keuze', title:'Niet rijden na alcohol', prompt:'Dandan responsibly hands the red learner-car keys to a sober friend outside a restaurant while the car stays parked.' },
+  { key:'theorie-9_medicijnen', title:'Medicijnen en rijden', prompt:'At a pharmacy counter Dandan asks whether prescribed medicine affects driving and deliberately leaves the red car keys on the counter.' },
+  { key:'theorie-9_vermoeidheid', title:'Vermoeidheid', prompt:'Dandan has safely parked at a Dutch motorway rest area and takes a break to stretch and drink water.' },
+  { key:'theorie-9_telefoon-opbergen', title:'Telefoon opbergen', prompt:'Before setting off in the stationary red learner car Dandan places her smartphone in a closed center-console compartment.' },
+  { key:'theorie-10_lading-zekeren', title:'Lading zekeren', prompt:'Dandan tightens a correctly routed ratchet strap over boxes and a suitcase inside a utility trailer attached to the red car.' },
+  { key:'theorie-10_schade-afhandelen', title:'Schade afhandelen', prompt:'After a minor fender incident Dandan and the driver of a grey car calmly exchange details and complete a blank damage form.' },
+  { key:'theorie-11_verborgen-kind', title:'Verborgen gevaar', prompt:'A child on a small bicycle begins to emerge from behind a parked van while the approaching red learner car is already braking with ample space.' }
 ];
 
 module.exports = { STYLE, MANIFEST };

@@ -27,6 +27,112 @@ const THEORY_PHOTOS = {
   'theorie-10': { sec4: 'module-5_adas.webp' },
   'theorie-11': { sec2: 'module-4_s40.webp' },
 };
+
+// Aanvullende foto's bij concrete situaties in de tekst. Anders dan de
+// primaire praktijkfoto's vervangen deze beelden een bestaand diagram niet:
+// waar een schema didactisch nuttig is, worden schema en praktijksituatie
+// allebei getoond. `id#n` onderscheidt herhaalde ids, zoals de drie
+// examenonderdelen op de AM-, motor- en aanhangerpagina.
+const SECTION_PHOTOS = {
+  'am-1': {
+    sec1: ['am-1_voertuigtypen.webp'],
+    'examen#2': ['am-1_praktijk.webp'],
+  },
+  'aanhanger-1': {
+    'examen#1': ['aanhanger-1_exam.webp'],
+    sec4: ['aanhanger-1_koppeling.webp'],
+  },
+  'info-1': {
+    sec4: ['info-1_gezondheidsverklaring.webp'],
+    sec5: ['info-1_theorie-examen-tolk.webp'],
+    sec7: ['info-1_rijschool.webp'],
+  },
+  'motor-1': {
+    sec1: ['motor-1_categorieen.webp'],
+    'examen#2': ['motor-1_avd-examen.webp'],
+    sec5: ['motor-1_avb.webp'],
+    sec6: ['motor-1_beschermende-kleding.webp'],
+  },
+  'theorie-1': {
+    sec4: ['theorie-1_fietser-naast-auto.webp'],
+    sec7: ['module-2_s19.webp'],
+    sec8: ['theorie-10_schade-afhandelen.webp'],
+    sec9: ['module-4_s46.webp'],
+    sec12: ['module-5_oefening.webp'],
+  },
+  'theorie-2': {
+    sec3: ['module-2_s25.webp'],
+    sec4: ['theorie-2_hulpdienst.webp'],
+    sec5: ['theorie-2_uitrit.webp'],
+  },
+  'theorie-3': {
+    sec1: ['theorie-3_bordcategorieen.webp'],
+    sec5: ['module-3_s36.webp'],
+  },
+  'theorie-4': {
+    sec3: ['theorie-4_spoorwegovergang.webp'],
+    sec4: ['module-3_s39.webp'],
+    sec5: ['theorie-4_verkeersbrigadier.webp'],
+  },
+  'theorie-5': {
+    sec3: ['module-1_s13.webp'],
+    sec4: ['module-4_s40.webp'],
+    sec5: ['module-3_s33.webp'],
+  },
+  'theorie-6': {
+    sec1: ['theorie-6_fietser-inhalen.webp'],
+    sec3: ['module-2_s23.webp'],
+    sec4: ['module-3_s35.webp'],
+    sec5: ['module-3_s33.webp'],
+  },
+  'theorie-7': {
+    sec1: ['module-1_s15.webp'],
+    sec2: ['theorie-7_parkeerverbod.webp'],
+    sec3: ['theorie-7_parkeerschijf.webp'],
+    sec5: ['theorie-7_pech.webp'],
+  },
+  'theorie-8': {
+    sec1: ['module-3_s38.webp'],
+    sec3: ['motor-1_avd-examen.webp'],
+    sec4: ['theorie-8_scootmobiel.webp'],
+    sec5: ['theorie-8_vrachtwagen-dode-hoek.webp'],
+  },
+  'theorie-9': {
+    sec1: ['theorie-9_alcohol-keuze.webp'],
+    sec2: ['theorie-9_medicijnen.webp'],
+    sec3: ['theorie-9_vermoeidheid.webp'],
+    sec4: ['theorie-9_telefoon-opbergen.webp'],
+  },
+  'theorie-10': {
+    sec1: ['module-1_s1.webp'],
+    sec2: ['theorie-10_lading-zekeren.webp'],
+    sec3: ['module-4_s43.webp'],
+    adas: ['module-5_adas.webp'],
+    sec5: ['theorie-10_schade-afhandelen.webp'],
+  },
+  'theorie-11': {
+    'examen#1': ['module-5_examen.webp'],
+    sec3: ['theorie-11_verborgen-kind.webp'],
+    sec4: ['module-5_oefening.webp'],
+  },
+};
+
+function findSectionPhotos(m, s, occurrence=1){
+  const map = SECTION_PHOTOS[m.slug];
+  if(!map) return [];
+  const files = map[`${s.id}#${occurrence}`] || map[s.id] || [];
+  return files
+    .filter(file=>fs.existsSync(path.join(IMG,file)))
+    .map(file=>'img/'+file);
+}
+
+function mapWithOccurrences(scripts, fn){
+  const seen = {};
+  return scripts.map(s=>{
+    const occurrence = seen[s.id] = (seen[s.id] || 0) + 1;
+    return fn(s, occurrence);
+  });
+}
 function photoSuffix(s){
   if(s.step) return 's'+s.step;
   const k = (s.zh||'') + ' ' + (s.nl||'');
@@ -293,7 +399,7 @@ function renderIndex(modules){
     + footer();
 }
 
-function articleHtml(m, s, taal){
+function articleHtml(m, s, taal, occurrence=1){
     const stapw = STAPWOORD[taal] || STAPWOORD.zh;
     const zhTitle = s.zh;
     const pageBadge = s.page?`<a class="bookpage" href="boek-index.html#p${s.page}" title="Boekpagina / 书页">📖 boek p.${s.page}</a>`:'';
@@ -301,11 +407,17 @@ function articleHtml(m, s, taal){
     const theoFig = (m.sectie==='theorie' && s.id==='sec1') ? G.theorieFig(m.modNum, taal) : '';
     const fig = (m.sectie==='info' && s.id==='sec1') ? G.tijdlijn185(taal) : (theoFig || G.figFor(s.step, s.zh));
     const photo = findPhoto(m, s);
+    const photos = [photo, ...findSectionPhotos(m, s, occurrence)]
+      .filter((value, index, list)=>value && list.indexOf(value)===index);
     const cleanTitle = zhTitle.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*[:·]?\s*/i,'');
-    const dim = photo ? imgSize(photo) : null;
-    const figHtml = photo
-      ? `<figure class="fig photo"><img src="${photo}" alt="${esc(cleanTitle)}${s.nl?' · '+esc(s.nl):''}"${dim?` width="${dim.w}" height="${dim.h}"`:''} loading="lazy"></figure>`
-      : (fig?`<figure class="fig">${fig}</figure>`:'');
+    const photoHtml = photos.map(src=>{
+      const dim = imgSize(src);
+      return `<figure class="fig photo"><img src="${src}" alt="${esc(cleanTitle)}${s.nl?' · '+esc(s.nl):''}"${dim?` width="${dim.w}" height="${dim.h}"`:''} loading="lazy"></figure>`;
+    }).join('');
+    // Behoud de illustraties die vóór deze uitbreiding zichtbaar waren. Een
+    // primair praktijkbeeld bleef die illustratie al vervangen; aanvullende
+    // tekstfoto's worden er juist naast gezet.
+    const figHtml = (fig && !photo ? `<figure class="fig">${fig}</figure>` : '') + photoHtml;
     return `<article class="script" id="${s.id}" data-page="${s.page||''}">
       <div class="script-top">
         <div class="script-title">
@@ -325,7 +437,7 @@ function renderModule(m, modules){
     const label = (s.step?('步骤 '+s.step+' · '):'')+ s.zh.replace(/^步骤\s*\d+[ab]?\s*·?\s*/,'');
     return `<li><a href="#${s.id}">${s.page?`<span class="tocpage">p.${s.page}</span> `:''}${esc(label)}</a></li>`;
   }).join('');
-  const cards = m.scripts.map(s=>articleHtml(m,s,'zh')).join('\n');
+  const cards = mapWithOccurrences(m.scripts, (s, occurrence)=>articleHtml(m,s,'zh',occurrence)).join('\n');
   const introHtml = m.intro.length?`<div class="note">${bodyToHtml(m.intro)}</div>`:'';
   return head(m.modZh+' · '+SITE.titleZh,'',{path:m.slug,desc:m.modZh+' · '+m.modNl+' · '+SITE.tagZh})
     + header('',modules)
@@ -464,10 +576,10 @@ function writeWorkerContent(perTaal){
     num: String(m.modNum), slug: m.slug, sectie: m.sectie, zh: m.modZh, nl: m.modNl,
     introHtml: m.intro.length?('<div class="note">'+bodyToHtml(m.intro)+'</div>'):'',
     banner: G.moduleBanner(m.modNum),
-    parts: m.scripts.map(s=>({
+    parts: mapWithOccurrences(m.scripts, (s, occurrence)=>({
       id: s.id, step: s.step||'', zh: s.zh, nl: s.nl||'', page: s.page||null,
       label: (s.step?((STAPWOORD[taal]||'Stap')+' '+s.step+' · '):'')+ s.zh.replace(/^(?:步骤|Stap)\s*\d+[ab]?\s*[:·]?\s*/i,''),
-      html: articleHtml(m, s, taal),
+      html: articleHtml(m, s, taal, occurrence),
       // preview = gratis leesbaar na login; de info-sectie (rijbewijsproces) is
       // bewust volledig gratis: praktische wegwijzer en instap voor nieuwe leden.
       // 1 gratis proefles per rijbewijs-module: info volledig gratis; praktijk = leermodel;
