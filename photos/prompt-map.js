@@ -80,7 +80,7 @@ const MANIFEST = [
   // Aanvullende theoriebeelden
   { key:'theorie-1_fietser-naast-auto', title:'Fietser naast de auto', prompt:'Dandan in the stationary red learner car looks directly toward a cyclist riding beside the car on the right at a Dutch junction.' },
   { key:'theorie-2_hulpdienst', title:'Hulpdienst ruimte geven', prompt:'Dandan moves the red learner car safely to the right and stops without blocking a junction so an ambulance with blue lights can pass.' },
-  { key:'theorie-2_uitrit', title:'Uitrit', prompt:'The red learner car stops before crossing a residential sidewalk and yields to both a pedestrian and cyclist.' },
+  { key:'theorie-2_uitrit', title:'Uitrit', prompt:'Frontal view from across the road: the red learner car faces outward from a private driveway and stops fully before a continuous grey sidewalk; a pedestrian walks only on that sidewalk and a cyclist rides only on the separate red-asphalt cycle path in front of it.' },
   { key:'theorie-3_bordcategorieen', title:'Bordcategorieën', prompt:'Dandan and an instructor study a naturally installed group of correct Dutch speed, yield, mandatory-direction and parking signs.' },
   { key:'theorie-4_spoorwegovergang', title:'Spoorwegovergang', prompt:'The red learner car waits fully behind the stop line at a Dutch railway crossing with red lights, closed barrier and passing train.' },
   { key:'theorie-4_verkeersbrigadier', title:'Verkeersbrigadier', prompt:'A fluorescent-clad crossing guard helps children cross while the red learner car waits well before the crossing.' },
