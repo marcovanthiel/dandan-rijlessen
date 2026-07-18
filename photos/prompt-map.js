@@ -32,7 +32,7 @@ const MANIFEST = [
   { key:'module-2_s21', title:'Ruimtekussen', prompt:'A car driving with generous open space all around it on an open Dutch road.' },
   { key:'module-2_s22', title:'Tegemoetkomen', prompt:'Two cars passing each other on a narrow country road, one easing slightly onto the grass verge.' },
   { key:'module-2_s23', title:'Ingehaald worden', prompt:'A car being overtaken by another vehicle, seen from the overtaken driver perspective with mirror view.' },
-  { key:'module-2_s24', title:'Kruispunt', prompt:'A Dutch intersection with give-way shark-teeth markings, a car approaching and looking left and right.' },
+  { key:'module-2_s24', title:'Kruispunt', prompt:'Rear three-quarter view of Dandan in the red learner car, stopped completely before a transverse row of correctly oriented shark teeth whose points face the car, yielding beside a B6 sign to a grey car on the crossing priority road.' },
   { key:'module-2_s25', title:'Afslaan', prompt:'A car turning right at a junction with its indicator on, cyclists nearby on a Dutch street.' },
   { key:'module-2_s26', title:'Hellingproef', prompt:'A car performing a hill start on an inclined road without rolling back.' },
   { key:'module-2_s27a', title:'Achteruit rechte lijn', prompt:'A car reversing in a straight line along the right side of a quiet street, driver looking back.' },
