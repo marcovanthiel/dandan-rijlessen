@@ -429,6 +429,7 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     const pad = url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+    if (pad === '/.well-known/security.txt') return Response.redirect('https://marcovanthiel.nl/.well-known/security.txt', 301);
     const user = await getUser(request, env);
     const L = taalVan(request, user, url);
 
