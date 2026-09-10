@@ -199,10 +199,18 @@ function landingBody(L, reviewsHtml) {
     vernieuw: '<path d="M20 11a8 8 0 1 0-2.3 6.3"/><path d="M20 5v6h-6"/>',
     lagen: '<path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/>',
     kaart: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 12h4M7 15.5h7"/><circle cx="16.2" cy="10" r="1.6"/>',
+    auto: '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',
+    scooter: '<circle cx="5" cy="17" r="2.4"/><circle cx="19" cy="17" r="2.4"/><path d="M19 17 16.6 8.4A2 2 0 0 0 14.7 7H13"/><path d="M5 17h6.5l1.8-5H9"/>',
+    motor: '<circle cx="5" cy="17" r="2.6"/><circle cx="19" cy="17" r="2.6"/><path d="m5 17 2.7-5.4H12l2.2-2.8h2.3L18 12h-4"/><path d="m14 12 2 5"/>',
+    aanhanger: '<rect x="2.5" y="8" width="12" height="7" rx="1.2"/><path d="M14.5 11.5H21"/><circle cx="8.5" cy="17.8" r="1.9"/>',
+    vink: '<path d="M5 12.5l4.5 4.5L19 7"/>',
+    play: '<path d="M9 6.8v10.4a.5.5 0 0 0 .77.42l8.1-5.2a.5.5 0 0 0 0-.84l-8.1-5.2A.5.5 0 0 0 9 6.8z"/>',
   };
-  const ic = (naam, kleur) => `<svg class="v3-ic ${kleur}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[naam]}</svg>`;
+  const ic = (naam, kleur) => `<svg class="v3-ic${kleur ? ' ' + kleur : ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[naam]}</svg>`;
+  // Pijl als SVG i.p.v. het "→"-teken: spiegelt automatisch mee in RTL (CSS).
+  const pijl = '<svg class="v3-pijl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>';
   const ctaBlok = `<div class="v3-acties">
-          <a class="v3-btn v3-primair" href="/login">${begin} →</a>
+          <a class="v3-btn v3-primair" href="/login">${begin} ${pijl}</a>
           <a class="v3-btn v3-ghost" href="#zowerkt">${esc(t(L, 'v3.hoewerkt'))}</a>
         </div>
         <p class="v3-onder">${onder}</p>`;
@@ -228,8 +236,8 @@ function landingBody(L, reviewsHtml) {
         <div class="v3-pcard">
           <div class="v3-ptop"><div class="v3-ring"></div><div><b>${esc(t(L, 'hp.gvandaag'))}</b><span>${esc(t(L, 'nav.theorie'))} · 4/11</span></div></div>
           <div class="v3-psteps">
-            <div class="v3-pstep done"><span class="d">✓</span>${esc(t(L, 'landing.feat1'))}</div>
-            <div class="v3-pstep now"><span class="d">▶</span>${esc(t(L, 'hp.goefen'))}</div>
+            <div class="v3-pstep done"><span class="d">${ic('vink')}</span>${esc(t(L, 'landing.feat1'))}</div>
+            <div class="v3-pstep now"><span class="d">${ic('play')}</span>${esc(t(L, 'hp.goefen'))}</div>
             <div class="v3-pstep"><span class="d">3</span>${esc(t(L, 'hp.gvolgende'))}</div>
           </div>
         </div>
@@ -244,15 +252,16 @@ function landingBody(L, reviewsHtml) {
   </section>
   <section class="v3-band" id="talen">
     <div class="v3-wrap v3-bandkop"><h2>${esc(t(L, 'hp.talenkop'))}</h2></div>
-    <div class="v3-marquee"><div class="v3-mtrack">${marquee}${marquee}</div></div>
+    <div class="v3-marquee" dir="ltr"><div class="v3-mtrack">${marquee}${marquee}</div></div>
   </section>
   <section class="v3-licht" id="waarom"><div class="v3-wrap">
     <div class="v3-kop reveal"><h2>${esc(t(L, 'v3.waarom'))}</h2></div>
     <div class="v3-benefits">
-      <div class="v3-benefit reveal">${ic('chat', 'blauw')}<h3>${esc(t(L, 'v3.b1t'))}</h3><p>${esc(t(L, 'v3.b1x'))}</p></div>
-      <div class="v3-benefit reveal">${ic('doel', 'roze')}<h3>${esc(t(L, 'v3.b2t'))}</h3><p>${esc(t(L, 'v3.b2x'))}</p></div>
-      <div class="v3-benefit reveal">${ic('route', 'groen')}<h3>${esc(t(L, 'v3.b3t'))}</h3><p>${esc(t(L, 'v3.b3x'))}</p></div>
-      <div class="v3-benefit reveal">${ic('vernieuw', 'blauw')}<h3>${esc(t(L, 'v3.b4t'))}</h3><p>${esc(t(L, 'v3.b4x'))}</p></div>
+      <div class="v3-benefit v3-groot reveal"><span class="v3-ico blauw">${ic('chat')}</span><h3>${esc(t(L, 'v3.b1t'))}</h3><p>${esc(t(L, 'v3.b1x'))}</p>
+        <div class="v3-minichips">${talen.map((x) => `<span lang="${x}">${esc(TAALNAMEN[x])}</span>`).join('')}</div></div>
+      <div class="v3-benefit reveal"><span class="v3-ico roze">${ic('doel')}</span><h3>${esc(t(L, 'v3.b2t'))}</h3><p>${esc(t(L, 'v3.b2x'))}</p></div>
+      <div class="v3-benefit reveal"><span class="v3-ico groen">${ic('route')}</span><h3>${esc(t(L, 'v3.b3t'))}</h3><p>${esc(t(L, 'v3.b3x'))}</p></div>
+      <div class="v3-benefit v3-breed reveal"><span class="v3-ico blauw">${ic('vernieuw')}</span><h3>${esc(t(L, 'v3.b4t'))}</h3><p>${esc(t(L, 'v3.b4x'))}</p></div>
     </div>
   </div></section>
   <section class="v3-licht v3-zowerkt" id="zowerkt"><div class="v3-wrap">
@@ -262,7 +271,7 @@ function landingBody(L, reviewsHtml) {
       <li><span class="n roze">2</span><b>${esc(t(L, 'v3.stap2'))}</b></li>
       <li><span class="n groen">3</span><b>${esc(t(L, 'v3.stap3'))}</b></li>
     </ol>
-    <div class="v3-midcta reveal"><a class="v3-btn v3-primair" href="/login">${begin} →</a><p class="v3-onder donker">${onder}</p></div>
+    <div class="v3-midcta reveal"><a class="v3-btn v3-primair" href="/login">${begin} ${pijl}</a><p class="v3-onder donker">${onder}</p></div>
   </div></section>
   <section class="v3-licht v3-vb" id="lessen"><div class="v3-wrap">
     <div class="v3-kop reveal"><h2>${esc(t(L, 'v3.vb'))}</h2><p class="v3-koptekst">${esc(t(L, 'hp.voorrangkop'))}</p></div>
@@ -272,9 +281,9 @@ function landingBody(L, reviewsHtml) {
         <p>${esc(t(L, 'hp.voorrangtekst'))}</p>
         <div class="v3-zh" lang="zh">在同等路口的优先权</div>
         <div class="v3-vraag"><b>${esc(t(L, 'v3.vraag'))}</b>
-          <span class="v3-chip goed">✓ ${esc(t(L, 'hp.rechtsvoor'))}</span>
+          <span class="v3-chip goed">${ic('vink')} ${esc(t(L, 'hp.rechtsvoor'))}</span>
         </div>
-        <a class="v3-btn v3-ghost donker" href="/login">${esc(t(L, 'v3.vbknop'))} →</a>
+        <a class="v3-btn v3-ghost donker" href="/login">${esc(t(L, 'v3.vbknop'))} ${pijl}</a>
       </div>
     </div>
   </div></section>
@@ -283,29 +292,29 @@ function landingBody(L, reviewsHtml) {
     <div class="v3-kop reveal"><h2>${esc(t(L, 'landing.prijskop'))}</h2><p class="v3-koptekst licht">${esc(t(L, 'hp.eenmalig'))}</p></div>
     <div class="v3-plans reveal">
       <div class="v3-plan feat"><span class="badge">${esc(t(L, 'hp.meestgekozen'))}</span>
-        <div class="v3-ph"><span class="v3-pico">🚗</span><div><div class="v3-pname">${esc(t(L, 'nav.auto'))} · B</div><div class="v3-psub">${esc(t(L, 'hp.prijzenkop'))}</div></div></div>
-        <div class="v3-split"><span>${esc(t(L, 'nav.theorie'))}</span><b>€18<small>${t(L, 'hp.permaand')}</small></b></div>
-        <div class="v3-split"><span>${esc(t(L, 'nav.praktijk'))}</span><b>€18<small>${t(L, 'hp.permaand')}</small></b></div>
-        <div class="v3-samen"><span>${esc(t(L, 'landing.samen'))}</span><span class="v3-prijs">€24<small>${t(L, 'hp.permaand')}</small></span></div>
-        <span class="v3-free">✦ ${esc(t(L, 'landing.proefles'))}</span>
-        <a class="v3-btn v3-primair" href="/login">${begin} →</a></div>
-      ${['🛵|sectie.am|€8', '🏍️|sectie.motor|€12', '🚚|sectie.aanhanger|€8'].map((rij) => {
-        const [emo, key, eur] = rij.split('|');
-        return `<div class="v3-plan"><div class="v3-ph"><span class="v3-pico">${emo}</span><div class="v3-pname">${esc(t(L, key))}</div></div><div class="v3-prijs">${eur}<small>${t(L, 'hp.permaand')}</small></div><span class="v3-free">✦ ${esc(t(L, 'landing.proefles'))}</span><a class="v3-pbtn" href="/login">${esc(t(L, 'landing.kies'))} →</a></div>`;
+        <div class="v3-ph"><span class="v3-pico roze">${ic('auto')}</span><div><div class="v3-pname">${esc(t(L, 'nav.auto'))} · B</div><div class="v3-psub">${esc(t(L, 'hp.prijzenkop'))}</div></div></div>
+        <div class="v3-split"><span>${esc(t(L, 'nav.theorie'))}</span><b class="tnum">€18</b></div>
+        <div class="v3-split"><span>${esc(t(L, 'nav.praktijk'))}</span><b class="tnum">€18</b></div>
+        <div class="v3-samen"><span>${esc(t(L, 'landing.samen'))}</span><span class="v3-prijs tnum">€24</span></div>
+        <span class="v3-free">${ic('vink')} ${esc(t(L, 'landing.proefles'))}</span>
+        <a class="v3-btn v3-primair" href="/login">${begin} ${pijl}</a></div>
+      ${['scooter|sectie.am|€8', 'motor|sectie.motor|€12', 'aanhanger|sectie.aanhanger|€8'].map((rij) => {
+        const [icoon, key, eur] = rij.split('|');
+        return `<div class="v3-plan"><div class="v3-ph"><span class="v3-pico">${ic(icoon)}</span><div class="v3-pname">${esc(t(L, key))}</div></div><div class="v3-prijs tnum">${eur}</div><span class="v3-free">${ic('vink')} ${esc(t(L, 'landing.proefles'))}</span><a class="v3-pbtn" href="/login">${esc(t(L, 'landing.kies'))} ${pijl}</a></div>`;
       }).join('')}
     </div>
     <p class="v3-onder mid">${onder}</p>
   </div></section>
   <section class="v3-donker v3-eind"><div class="v3-wrap">
     <h2>${esc(t(L, 'hp.klaar'))}<br>${esc(t(L, 'hp.eersteles'))} <span class="v3-roze">${esc(t(L, 'hp.gratis'))}</span>.</h2>
-    <div class="v3-acties midden"><a class="v3-btn v3-primair" href="/login">${begin} →</a></div>
+    <div class="v3-acties midden"><a class="v3-btn v3-primair" href="/login">${begin} ${pijl}</a></div>
     <p class="v3-onder mid">${onder}</p>
   </div></section>
   <footer class="v3-foot"><div class="v3-wrap">
     <div class="v3-fkol"><span class="v3-brand"><span class="m">丹</span><span>Dandan Drive</span></span>
       <p>${esc(t(L, 'v3.titel1'))} ${esc(t(L, 'v3.titel2'))} ${esc(t(L, 'v3.titel3'))}</p></div>
     <div class="v3-fkol"><a href="mailto:info@dandandrive.nl">${esc(t(L, 'v3.contact'))}</a>
-      <a href="/over">Over Dandan Drive</a>
+      <a href="/over">${esc(t(L, 'nav.overons'))}</a>
       <a href="/toegankelijkheid">${esc(t(L, 'footer.a11y'))}</a>
       <a href="/partner">${esc(t(L, 'nav.partner'))}</a>
       <a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a></div>

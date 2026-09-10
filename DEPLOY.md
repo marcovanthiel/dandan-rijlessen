@@ -186,6 +186,29 @@ gecachete oude stylesheet (ongestylede pagina).
 (nav/sectie/scope/landing.*) ook in de werkmap zetten, anders vallen ze bij
 regeneratie weg (`t()` valt terug op zh). Native review van AI-vertalingen openstaand.
 
+## Landing-kwaliteitsronde (10-9-2026)
+Herontwerp-polish van de publieke landing (Variant 3 blijft het merk: donkerpaars,
+roze-blauwe CTA, Bricolage-display) volgens de kwaliteitsloop uit de skill
+webvormgeving (3 screenshot-kritiek-iteraties, nl/zh/ar + mobiel):
+- **RTL-bug opgelost (site-breed):** `.skip-link` stond op `left:-9999px`; in een
+  RTL-document rekt Chromium daardoor het scrollgebied naar links op (html-scrollWidth
+  ~11.000 px, hele pagina in een 10x zo breed canvas). Nu verborgen via
+  `translateY(-200%)` + `inset-inline-start`; extra vangnet `overflow-x:clip` op
+  `body.v3-body`. Alle ar-pagina's gecontroleerd op scrollbreedte.
+- **Geen emoji als pictogram meer:** prijskaarten (auto/scooter/motor/aanhanger),
+  vinkjes, play en pijlen zijn nu inline SVG-lijniconen in de bestaande Lucide-stijl;
+  pijlen spiegelen in RTL via `[dir="rtl"] .v3-pijl{scaleX(-1)}`; select-pijl in RTL links.
+- **Inhoudelijke fout weg:** de passen zijn eenmalig, maar de prijzen toonden
+  "/mnd" (hp.permaand). Suffix verwijderd; bedragen tabular-nums.
+- **Bento-benefits:** "In jouw taal" is nu de dominante kaart (2x2) met alle 11
+  lestaalnamen als chips (herbruikt TAALNAMEN, geen nieuwe i18n-keys); "Altijd
+  actueel" breed; iconen in getinte chips. Stappen als route met gestippelde
+  wegmarkering; statbalk met scheidingslijnen; highlight-prijskaart licht opgetild.
+- **Breakpoints:** volwaardige desktop-layout vanaf 1024 px (was 1200), hero-foto
+  aspect-ratio 16/10 (mobiel 4/3) zodat de foto niet achter de voortgangskaart verdwijnt.
+- Footer "Over Dandan Drive" nu via i18n-key nav.overons. Geen nieuwe i18n-keys,
+  pariteit groen; ASSET_VER automatisch gebumpt via node build.js.
+
 ## Toegankelijkheidsverklaring (10-9-2026)
 Publieke pagina **/toegankelijkheid** (EAA/WCAG 2.2 AA/EN 301 549; status:
 naar beste weten geheel of grotendeels conform, geen volledige conformiteitsclaim;
