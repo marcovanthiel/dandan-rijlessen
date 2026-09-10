@@ -185,3 +185,13 @@ gecachete oude stylesheet (ongestylede pagina).
 **i18n.** `i18n.js` is GEGENEREERD uit de i18n-werkmap. Handmatig toegevoegde keys
 (nav/sectie/scope/landing.*) ook in de werkmap zetten, anders vallen ze bij
 regeneratie weg (`t()` valt terug op zh). Native review van AI-vertalingen openstaand.
+
+## Toegankelijkheidsverklaring (10-9-2026)
+Publieke pagina **/toegankelijkheid** (EAA/WCAG 2.2 AA/EN 301 549; status:
+naar beste weten geheel of grotendeels conform, geen volledige conformiteitsclaim;
+melden via info@dandandrive.nl; opgesteld 10-9-2026). Opbouw:
+`toegankelijkheidBody(L)` in features.js, volledig via i18n-keys `a11y.*` +
+footerlink-key `footer.a11y` in alle 12 chrome-talen (pariteit groen). Link staat
+in beide footers (siteFooter en v3-foot in worker.js); route in worker.js naast
+/over; opgenomen in de sitemap (publiekeRoutes in build.js). LET OP de bekende
+regeneratie-gotcha: deze keys horen ook in de i18n-werkmap.

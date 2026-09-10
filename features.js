@@ -503,6 +503,21 @@ export function overBody(L) {
   <section class="lp-blk"><div class="lp-wrap lp-prose"><p>${esc(T.p1)}</p><p>${esc(T.p2)}</p><p>${esc(T.p3)}</p><div class="lp-disclaimer"><strong>CBR</strong><p>${esc(T.cbr)}</p></div><section class="lp-sources"><h2>${esc(T.sources)}</h2><p>${esc(T.sourceText)}</p><p><a href="https://www.rijksoverheid.nl/onderwerpen/verkeersveiligheid">Rijksoverheid</a> · <a href="https://www.rdw.nl/">RDW</a> · <a href="https://www.cbr.nl/">CBR</a></p></section></div></section></div>`;
 }
 
+// ---------- toegankelijkheidsverklaring (EAA; alle 12 chrome-talen) ----------
+export function toegankelijkheidBody(L) {
+  const maatregelen = ['a11y.m1', 'a11y.m2', 'a11y.m3', 'a11y.m4'].map((k) => `<li>${esc(t(L, k))}</li>`).join('');
+  return `<h1>${esc(t(L, 'a11y.titel'))}</h1>
+  <p>${esc(t(L, 'a11y.p1'))}</p>
+  <h2>${esc(t(L, 'a11y.maatregelen.kop'))}</h2>
+  <ul>${maatregelen}</ul>
+  <h2>${esc(t(L, 'a11y.status.kop'))}</h2>
+  <p>${esc(t(L, 'a11y.status.tekst'))}</p>
+  <h2>${esc(t(L, 'a11y.melden.kop'))}</h2>
+  <p>${esc(t(L, 'a11y.melden.tekst'))}</p>
+  <p><a href="mailto:info@dandandrive.nl">info@dandandrive.nl</a></p>
+  <p><small>${esc(t(L, 'a11y.datum'))}</small></p>`;
+}
+
 function scopeLabel(L, scope) {
   const auto = L === 'nl' ? 'Auto B' : 'Car B';
   if (scope === 'b') return `${auto} · theorie + praktijk`;

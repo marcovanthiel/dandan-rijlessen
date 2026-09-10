@@ -686,7 +686,7 @@ function main(){
     "});\n");
   // SEO: sitemap met taalvarianten van de publieke pagina's
   const TALEN_SEO = ['zh','nl','en','tr','ar','pl','uk','ru','es','pt','hi','vi'];
-  const publiekeRoutes = ['/', '/prijzen', '/partner', '/over',
+  const publiekeRoutes = ['/', '/prijzen', '/partner', '/over', '/toegankelijkheid',
     '/producten/auto-b-theorie', '/producten/auto-b-praktijk', '/producten/auto-b-bundel',
     '/producten/am', '/producten/motor', '/producten/be'];
   const urls = publiekeRoutes.flatMap(p => [SITE.baseUrl+p, ...TALEN_SEO.map(l=>SITE.baseUrl+p+'?taal='+l)]);

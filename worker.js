@@ -75,7 +75,7 @@ function siteHeader(L, user, mods) {
 }
 const siteFooter = (L) => `<footer class="site"><div class="container">
   <strong>Dandan Drive · ${esc(SITE.titleZh)}</strong><br>
-  ${esc(t(L, 'footer.tekst'))} · ${esc(SITE.domain)} · <a href="/over">Over Dandan Drive</a> · <a href="/login">${esc(t(L, 'nav.login'))}</a><br>
+  ${esc(t(L, 'footer.tekst'))} · ${esc(SITE.domain)} · <a href="/over">Over Dandan Drive</a> · <a href="/toegankelijkheid">${esc(t(L, 'footer.a11y'))}</a> · <a href="/login">${esc(t(L, 'nav.login'))}</a><br>
   <small>Dandan Drive is een onafhankelijk oefenplatform, geen officiële website van het CBR, RDW of de Rijksoverheid.</small>
   </div></footer>`;
 function page(L, title, inner, o = {}) {
@@ -306,6 +306,7 @@ function landingBody(L, reviewsHtml) {
       <p>${esc(t(L, 'v3.titel1'))} ${esc(t(L, 'v3.titel2'))} ${esc(t(L, 'v3.titel3'))}</p></div>
     <div class="v3-fkol"><a href="mailto:info@dandandrive.nl">${esc(t(L, 'v3.contact'))}</a>
       <a href="/over">Over Dandan Drive</a>
+      <a href="/toegankelijkheid">${esc(t(L, 'footer.a11y'))}</a>
       <a href="/partner">${esc(t(L, 'nav.partner'))}</a>
       <a href="/boek" rel="nofollow">${esc(t(L, 'boektip.link'))}</a></div>
     <div class="v3-fkol">${taalSelect('v3-taalvoet')}
@@ -458,6 +459,8 @@ export default {
     }
     if (pad === '/over' && request.method === 'GET')
       return page(L, 'Over Dandan Drive', F.overBody(L), { path: '/over', fullBleed: true });
+    if (pad === '/toegankelijkheid' && request.method === 'GET')
+      return page(L, t(L, 'a11y.titel') + ' · Dandan Drive', F.toegankelijkheidBody(L), { path: '/toegankelijkheid', desc: t(L, 'a11y.p1') });
     if (pad === '/prijzen' && request.method === 'GET')
       return page(L, t(L, 'landing.prijskop') + ' · Dandan Drive', F.prijzenBody(L, user), { user, path: '/prijzen' });
     const productMatch = pad.match(/^\/producten\/(auto-b-theorie|auto-b-praktijk|auto-b-bundel|am|motor|be)$/);
