@@ -723,6 +723,8 @@ function main(){
     "/assets/*\n" +
     "  Cache-Control: public, max-age=3600\n");
   fs.writeFileSync(path.join(DIST,'robots.txt'), "User-agent: *\nDisallow: /login\nDisallow: /account\nDisallow: /admin\nDisallow: /oefenexamen\nAllow: /\nSitemap: "+SITE.baseUrl+"/sitemap.xml\n");
+  // IndexNow: sleutelbestand in de statische root (Bing/Yandex/Seznam pingen).
+  fs.writeFileSync(path.join(DIST,'8185f0f562b8b9fe678eb129048b65c3.txt'), "8185f0f562b8b9fe678eb129048b65c3");
   console.log('Built '+modules.length+' modules, '+modules.reduce((n,m)=>n+m.scripts.length,0)+' onderdelen -> '+DIST);
 }
 main();
