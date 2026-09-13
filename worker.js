@@ -29,6 +29,78 @@ const taalCookie = (l) => `dd_lang=${l}; Path=/; Max-Age=31536000; HttpOnly; Sec
 const SESSION_DAYS = 30;
 const SESSION_MAX_AGE = SESSION_DAYS * 24 * 60 * 60;
 
+// ---------- JSON-LD (server-side gerenderd, absolute URL's) ----------
+// application/ld+json is een data-blok, geen uitvoerbaar script: niet geraakt
+// door de CSP script-src 'self'. `<` wordt ge-escaped zodat het blok niet breekt.
+function jsonLd(L, title, o = {}) {
+  const base = SITE.baseUrl;
+  const canon = base + (o.path || '/');
+  const inLang = TALEN;
+  const org = {
+    '@type': 'EducationalOrganization',
+    '@id': base + '/#org',
+    name: 'Dandan Drive',
+    alternateName: SITE.titleZh,
+    url: base + '/',
+    logo: base + '/og.png',
+    email: 'info@' + SITE.domain,
+    description: SITE.tagNl,
+    areaServed: 'NL',
+  };
+  const website = {
+    '@type': 'WebSite',
+    '@id': base + '/#website',
+    url: base + '/',
+    name: 'Dandan Drive',
+    inLanguage: inLang,
+    publisher: { '@id': base + '/#org' },
+  };
+  const graph = [org, website];
+  // Kruimelpad: home + huidige pagina (naam uit de titel, vóór de ' · '-scheiding).
+  if (o.path && o.path !== '/') {
+    const naam = String(title || '').split(' · ')[0].trim();
+    const items = [{ '@type': 'ListItem', position: 1, name: 'Dandan Drive', item: base + '/' }];
+    if (naam) items.push({ '@type': 'ListItem', position: 2, name: naam, item: canon });
+    graph.push({ '@type': 'BreadcrumbList', '@id': canon + '#breadcrumb', itemListElement: items });
+  }
+  // Productpagina's: Course + Product met echte prijs (eenmalige toegang).
+  const p = o.product && F.PRODUCT_PAGINAS[o.product];
+  if (p) {
+    const naam = L === 'nl' ? p.title : p.enTitle;
+    const beschr = o.desc || naam;
+    const offer = {
+      '@type': 'Offer',
+      price: String(p.prijs),
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      url: canon,
+      seller: { '@id': base + '/#org' },
+    };
+    graph.push({
+      '@type': 'Course',
+      '@id': canon + '#course',
+      name: naam,
+      description: beschr,
+      url: canon,
+      inLanguage: inLang,
+      provider: { '@id': base + '/#org' },
+      hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', inLanguage: inLang },
+      offers: offer,
+    });
+    graph.push({
+      '@type': 'Product',
+      '@id': canon + '#product',
+      name: naam,
+      description: beschr,
+      url: canon,
+      brand: { '@type': 'Brand', name: 'Dandan Drive' },
+      offers: offer,
+    });
+  }
+  const doc = { '@context': 'https://schema.org', '@graph': graph };
+  return `<script type="application/ld+json">${JSON.stringify(doc).replace(/</g, '\\u003c')}</script>`;
+}
+
 // ---------- html-schil ----------
 function shell(L, title, body, o = {}) {
   const noindex = o.noindex ? '<meta name="robots" content="noindex">' : '';
@@ -44,9 +116,11 @@ function shell(L, title, body, o = {}) {
 <meta property="og:type" content="website"><meta property="og:site_name" content="Dandan Drive">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canon}"><meta property="og:image" content="${SITE.baseUrl}/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">${hreflang}
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/style.css?v=${ASSET_VER}">
+${jsonLd(L, title, o)}
 </head><body data-nl="on"${(o.gated || o.bodyClass) ? ` class="${[o.gated ? 'beschermd' : '', o.bodyClass || ''].filter(Boolean).join(' ')}"` : ''}>
 <a class="skip-link" href="#inhoud">${esc(t(L, 'skip'))}</a>${body}
 <script src="/assets/search.js?v=${ASSET_VER}" defer></script><script src="/assets/interactie.js?v=${ASSET_VER}" defer></script>${o.gated ? `<script src="/assets/les.js?v=${ASSET_VER}" defer></script>` : ''}
@@ -422,6 +496,13 @@ const loginBody = (L, o = {}) => `
 // ---------- app ----------
 export default {
   async fetch(request, env, ctx) {
+    // HEAD net als GET afhandelen: dezelfde headers/status, maar zonder body.
+    // (Voorheen viel HEAD door naar de assets-fetch en gaf op HTML-routes 404.)
+    if (request.method === 'HEAD') {
+      const getReq = new Request(request.url, { method: 'GET', headers: request.headers });
+      const resp = await this.fetch(getReq, env, ctx);
+      return new Response(null, { status: resp.status, headers: resp.headers });
+    }
     const url = new URL(request.url);
     const h = url.hostname;
     if (h === 'artnijmegen.nl' || h === 'www.artnijmegen.nl' || h === 'www.dandandrive.nl') {
@@ -468,11 +549,11 @@ export default {
       return page(L, t(L, 'nav.partner') + ' · Dandan Drive', F.partnerBedanktBody(L), { path: '/partner', fullBleed: true });
     }
     if (pad === '/over' && request.method === 'GET')
-      return page(L, 'Over Dandan Drive', F.overBody(L), { path: '/over', fullBleed: true });
+      return page(L, 'Over Dandan Drive', F.overBody(L), { path: '/over', fullBleed: true, desc: 'Over Dandan Drive: het online leerplatform dat de Nederlandse rijopleiding uitlegt in elf talen, met theorie, oefenexamens en praktijkuitleg.' });
     if (pad === '/toegankelijkheid' && request.method === 'GET')
       return page(L, t(L, 'a11y.titel') + ' · Dandan Drive', F.toegankelijkheidBody(L), { path: '/toegankelijkheid', desc: t(L, 'a11y.p1') });
     if (pad === '/prijzen' && request.method === 'GET')
-      return page(L, t(L, 'landing.prijskop') + ' · Dandan Drive', F.prijzenBody(L, user), { user, path: '/prijzen' });
+      return page(L, t(L, 'landing.prijskop') + ' · Dandan Drive', F.prijzenBody(L, user), { user, path: '/prijzen', desc: 'De prijzen van Dandan Drive: eenmalige toegang tot de rijopleiding. Auto theorie of praktijk 18 euro, bundel 24 euro, AM 8 euro, motor 12 euro, aanhanger 8 euro.' });
     const productMatch = pad.match(/^\/producten\/(auto-b-theorie|auto-b-praktijk|auto-b-bundel|am|motor|be)$/);
     if (productMatch && request.method === 'GET') {
       const product = F.PRODUCT_PAGINAS[productMatch[1]];
@@ -481,6 +562,7 @@ export default {
         user,
         path: pad,
         fullBleed: true,
+        product: productMatch[1],
         desc: L === 'nl' ? `${product.title}: duidelijke uitleg, gratis preview en eenmalige toegang.` : `${product.enTitle}: clear explanation, free preview and one-time access.`,
       });
     }

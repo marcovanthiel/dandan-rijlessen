@@ -218,3 +218,33 @@ footerlink-key `footer.a11y` in alle 12 chrome-talen (pariteit groen). Link staa
 in beide footers (siteFooter en v3-foot in worker.js); route in worker.js naast
 /over; opgenomen in de sitemap (publiekeRoutes in build.js). LET OP de bekende
 regeneratie-gotcha: deze keys horen ook in de i18n-werkmap.
+
+## SEO-fixes (kleine ronde, 13-9-2026)
+Naar aanleiding van de SEO-audit (health 58/100). Alleen de kleine, veilige fixes;
+de grote taal-in-pad-verbouwing is bewust NIET gedaan (zie openstaand hieronder).
+- **JSON-LD server-side toegevoegd** (`jsonLd(L, title, o)` in worker.js, in de head
+  van `shell`). Absolute URL's. Sitebreed: `EducationalOrganization` (@id #org) +
+  `WebSite` (@id #website). Per pagina: `BreadcrumbList` (home + huidige pagina,
+  naam uit de titel). Op /producten/*: `Course` (met CourseInstance courseMode
+  online, provider = #org) en `Product` met `Offer` (echte prijs uit
+  `F.PRODUCT_PAGINAS`, EUR, InStock). CSP-veilig: `application/ld+json` is een
+  data-blok, niet geraakt door `script-src 'self'` (`<` ge-escaped naar `<`).
+- **Unieke meta-descriptions:** /prijzen en /over deelden de default (Chinees-eerst)
+  description. Beide hebben nu een eigen Nederlandse `desc`. Andere publieke pagina's
+  hadden al een eigen desc (home landing.sub, /toegankelijkheid a11y.p1, producten).
+- **HEAD-bug gefixt:** HEAD viel door naar de assets-fetch en gaf op HTML-routes 404.
+  Nu bovenaan `fetch`: HEAD wordt intern als GET afgehandeld en teruggegeven zonder
+  body (zelfde status + headers).
+- **Klein:** `og:image:width/height` (1200x630) toegevoegd. Canonical stond al op
+  elke pagina. Geen asset-wijziging, dus ASSET_VER ongewijzigd (build.js gedraaid).
+
+### Openstaand (aparte sessie + besluit Marco)
+- **Taal-in-pad-verbouwing (groot).** De kern van de audit: `?taal=xx` geeft nu 302
+  naar de kale URL en de taal komt via cookie op dezelfde URL, dus alleen de
+  standaardtaal (NL) is crawlbaar en hreflang wijst naar redirect-URL's. Advies:
+  elke taal een eigen 200-URL met self-canonical (voorkeur taal-in-pad `/en/`,
+  `/zh/`), wederkerige hreflang + x-default, sitemap met alleen canonieke URL's.
+  Raakt worker-routing, canonical/hreflang in `shell`, sitemap in build.js en de
+  cookie-taallogica. Aparte sessie; besluit + ontwerp eerst.
+- Overige audit-punten: AI-crawlerblokkade (robots, strategische keuze), dunne
+  content op product/infopagina's (contentronde), E-E-A-T op /over.
